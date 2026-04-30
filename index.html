@@ -1,0 +1,1547 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Investor Intelligence — ConsumerIQ / BevGenie (v3)</title>
+<style>
+  * { box-sizing: border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    background: #faf9f7;
+    color: #1a1a1a;
+    margin: 0;
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+  }
+  .wrap { max-width: 1240px; margin: 0 auto; padding: 32px 28px 80px; }
+  header.top {
+    border-bottom: 1px solid #e6e2dc;
+    padding-bottom: 18px;
+    margin-bottom: 28px;
+  }
+  header.top .eyebrow {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 1.2px;
+    color: #b48f3a;
+    font-weight: 600;
+  }
+  header.top h1 {
+    margin: 6px 0 4px;
+    font-size: 28px;
+    font-weight: 600;
+    letter-spacing: -0.4px;
+  }
+  header.top .meta {
+    font-size: 13px;
+    color: #6c6760;
+  }
+  header.top .meta a { color: #4a6b9a; }
+
+  .verdict {
+    background: #fff;
+    border: 1px solid #e6e2dc;
+    border-radius: 10px;
+    padding: 20px 24px;
+    margin: 0 0 24px;
+  }
+  .verdict h2 {
+    margin: 0 0 8px;
+    font-size: 16px;
+    color: #b48f3a;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: 600;
+  }
+  .verdict p { margin: 0 0 8px; }
+  .verdict p:last-child { margin-bottom: 0; }
+
+  .changes-box {
+    background: #fdf6e8;
+    border-left: 4px solid #b48f3a;
+    padding: 16px 20px;
+    margin-bottom: 28px;
+    border-radius: 4px;
+    font-size: 14px;
+  }
+  .changes-box h3 { margin: 0 0 8px; font-size: 14px; color: #6b4f15; }
+  .changes-box ul { margin: 4px 0 0 16px; padding: 0; }
+  .changes-box li { margin-bottom: 4px; }
+
+  .routing-rubric {
+    background: #fff;
+    border: 1px solid #e6e2dc;
+    border-radius: 8px;
+    padding: 16px 20px;
+    margin-bottom: 28px;
+    font-size: 13px;
+  }
+  .routing-rubric h3 { margin: 0 0 10px; font-size: 14px; }
+  .routing-rubric table { width: 100%; border-collapse: collapse; }
+  .routing-rubric td { padding: 4px 8px; border-bottom: 1px solid #f0ede5; }
+  .routing-rubric td:first-child { color: #6c6760; width: 50%; }
+  .routing-rubric td:last-child { font-weight: 500; }
+  .pill { display: inline-block; padding: 1px 8px; border-radius: 10px; font-size: 11px; font-weight: 500; letter-spacing: 0.3px; margin-right: 4px; }
+  .pill.shyam { background: #e8eef9; color: #2c4d80; }
+  .pill.srini { background: #ede4f6; color: #5a3a86; }
+  .pill.gauri { background: #f9ebe4; color: #8a4520; }
+  .pill.hiral { background: #e4f3ee; color: #2d6a4f; }
+  .pill.harini { background: #faf2dc; color: #7a5d10; }
+
+  h2.section {
+    font-size: 20px;
+    font-weight: 600;
+    margin: 36px 0 14px;
+    border-bottom: 2px solid #1a1a1a;
+    padding-bottom: 6px;
+    letter-spacing: -0.3px;
+  }
+  h2.section .count {
+    font-size: 13px;
+    color: #6c6760;
+    font-weight: 400;
+    margin-left: 8px;
+  }
+  .tier-blurb {
+    font-size: 13px;
+    color: #6c6760;
+    font-style: italic;
+    margin: -8px 0 16px;
+  }
+
+  .investor {
+    background: #fff;
+    border: 1px solid #e6e2dc;
+    border-radius: 8px;
+    padding: 18px 20px;
+    margin-bottom: 14px;
+  }
+  .investor.tier1 { border-left: 4px solid #5b8a3a; }
+  .investor.tier2 { border-left: 4px solid #b48f3a; }
+  .investor.tier3 { border-left: 4px solid #8b8985; }
+  .investor.misfit { border-left: 4px solid #b85a4d; opacity: 0.85; }
+  .investor.new { border-left: 4px solid #4a6b9a; }
+
+  .investor-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 6px;
+  }
+  .investor-head .name {
+    font-size: 17px;
+    font-weight: 600;
+  }
+  .investor-head .name .partner {
+    font-weight: 400;
+    color: #6c6760;
+    font-size: 14px;
+    margin-left: 6px;
+  }
+  .investor-head .badges { display: flex; gap: 6px; flex-wrap: wrap; align-items: center; }
+  .investor-head .score {
+    font-size: 12px;
+    background: #1a1a1a;
+    color: #fff;
+    padding: 3px 10px;
+    border-radius: 12px;
+    font-weight: 500;
+    letter-spacing: 0.4px;
+  }
+  .investor.tier1 .score { background: #5b8a3a; }
+  .investor.tier2 .score { background: #b48f3a; }
+  .investor.tier3 .score { background: #8b8985; }
+  .investor.misfit .score { background: #b85a4d; }
+  .investor.new .score { background: #4a6b9a; }
+  .pitch-form-pill {
+    display: inline-block;
+    background: #5b8a3a;
+    color: #fff;
+    padding: 3px 10px;
+    border-radius: 12px;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.3px;
+    text-transform: uppercase;
+  }
+  .pitch-form-pill a { color: #fff; text-decoration: none; }
+  .pitch-form-pill a:hover { text-decoration: underline; }
+  .women-pill {
+    display: inline-block;
+    background: #ede4f6;
+    color: #5a3a86;
+    padding: 3px 10px;
+    border-radius: 12px;
+    font-size: 11px;
+    font-weight: 500;
+  }
+  .investor .meta-row {
+    font-size: 12.5px;
+    color: #6c6760;
+    margin-bottom: 10px;
+  }
+  .investor .verified-source {
+    font-size: 11px;
+    color: #5b8a3a;
+    margin-bottom: 8px;
+    font-style: italic;
+  }
+  .investor .unverified-source {
+    font-size: 11px;
+    color: #b85a4d;
+    margin-bottom: 8px;
+    font-style: italic;
+  }
+  .signals {
+    display: grid;
+    grid-template-columns: 150px 1fr;
+    gap: 4px 14px;
+    font-size: 13.5px;
+    margin-top: 8px;
+  }
+  .signals .label {
+    color: #6c6760;
+    font-weight: 500;
+    text-transform: uppercase;
+    font-size: 11px;
+    letter-spacing: 0.4px;
+    padding-top: 2px;
+  }
+  .signals .val { color: #1a1a1a; }
+  .signals .val.fomo {
+    background: #fdf6e8;
+    padding: 4px 8px;
+    border-radius: 4px;
+    border-left: 2px solid #b48f3a;
+    font-weight: 500;
+  }
+  .signals .val.warn {
+    background: #fbe9e6;
+    padding: 4px 8px;
+    border-radius: 4px;
+    border-left: 2px solid #b85a4d;
+  }
+  .signals .val.routing {
+    background: #f3f5fb;
+    padding: 4px 8px;
+    border-radius: 4px;
+    border-left: 2px solid #4a6b9a;
+    font-weight: 500;
+  }
+  .lead-with {
+    background: #f4f8f2;
+    border-left: 3px solid #5b8a3a;
+    padding: 10px 14px;
+    margin-top: 10px;
+    border-radius: 4px;
+    font-size: 13.5px;
+  }
+  .lead-with .lwl {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.6px;
+    color: #5b8a3a;
+    font-weight: 600;
+    margin-bottom: 3px;
+    display: block;
+  }
+  .lead-with em { color: #1a1a1a; font-style: italic; }
+  .next-step {
+    margin-top: 8px;
+    font-size: 12.5px;
+    color: #6c6760;
+  }
+  .next-step strong { color: #1a1a1a; }
+  .compact-list {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+  }
+  .firm-only {
+    background: #fff;
+    border: 1px solid #e6e2dc;
+    border-radius: 6px;
+    padding: 10px 14px;
+    font-size: 13px;
+  }
+  .firm-only .name { font-weight: 500; display: block; margin-bottom: 2px; }
+  .firm-only .speculation { color: #6c6760; font-size: 12.5px; display: block; }
+  .firm-only .ask { color: #b48f3a; font-size: 11.5px; text-transform: uppercase; letter-spacing: 0.5px; font-weight: 500; display: block; margin-top: 3px; }
+
+  .direction-banner {
+    background: #f3f5fb;
+    color: #2c4d80;
+    padding: 6px 12px;
+    border-radius: 4px;
+    font-size: 11.5px;
+    text-transform: uppercase;
+    letter-spacing: 0.6px;
+    font-weight: 600;
+    display: inline-block;
+    margin-bottom: 8px;
+  }
+
+  .footer-notes {
+    margin-top: 40px;
+    padding-top: 24px;
+    border-top: 1px solid #e6e2dc;
+    font-size: 12.5px;
+    color: #6c6760;
+  }
+  .footer-notes h3 { color: #1a1a1a; font-size: 13px; margin: 0 0 8px; }
+  .footer-notes ul { margin: 4px 0 14px 18px; padding: 0; }
+  .footer-notes li { margin-bottom: 3px; }
+  .legend {
+    display: flex;
+    gap: 14px;
+    flex-wrap: wrap;
+    font-size: 12px;
+    margin-bottom: 18px;
+  }
+  .legend .item {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    color: #6c6760;
+  }
+  .legend .swatch {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    border-radius: 2px;
+  }
+  a { color: #4a6b9a; }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header class="top">
+  <div class="eyebrow">Investor Intelligence Brief · v3 (Round-2 + T4 research)</div>
+  <h1>ConsumerIQ / BevGenie — VC &amp; PE Pipeline</h1>
+  <div class="meta">Source: <em>BevGenie_ConsumerIQ VC &amp; PE.xlsx</em> + 50+ verified web fetches · Drafted Apr 29, 2026</div>
+</header>
+
+<div class="verdict">
+  <h2>Headline (v3 — 50+ verified fetches, T4 deep-researched)</h2>
+  <p>After 50+ verified web fetches across Tier 1, Tier 2, AND Tier 4, the picture is much sharper:</p>
+  <p><strong>Tier 1 grew to 11 firms</strong> (was 9). Newly promoted: Conviction (Sarah Guo, female-founded, Software 3.0 thesis), Radical Ventures (AI Eats Software, Cohere/Hebbia portfolio), and now <strong>2048 Ventures — Vertical AI fund with a 10-day-decision Airtable form, 100% pitch review, and Pocket + Broome AI as direct architectural peers</strong>. That's the single biggest find from Round 2.</p>
+  <p><strong>Tier 4 shrunk from 24 → 8.</strong> 16 firms moved into proper tiers after research. Standout T2 promotions: <strong>Hustle Fund</strong> (1–2 meetings → wire within week, fastest cycle), <strong>Work-Bench</strong> (NYC seed enterprise, $160M Fund IV, "GTM is your moat" thesis, female co-founder), <strong>Boldstart</strong> (autonomous-enterprise framing, $250M Fund VII), <strong>Primary Venture Partners</strong> (Tabs in portfolio = direct AI-native B2B precedent), <strong>Amplify Partners</strong> (dbt Labs + Hightouch + Modal in portfolio).</p>
+  <p><strong>7 verified pitch submission forms</strong> + 1 cold-friendly email channel. Most VCs gate on warm intros — having 7 open paths is unusually good.</p>
+</div>
+
+<div class="changes-box">
+  <h3>What's new in v3 — based on Shyam's feedback + Round-2 deep research</h3>
+  <ul>
+    <li><strong>Funding activity</strong> per investor (size of bets, recent activity).</li>
+    <li><strong>Investor stability</strong> per investor (fund vintage, recent fund close, deployment pace).</li>
+    <li><strong>Portfolio size</strong> count per investor.</li>
+    <li><strong>Pitch submission forms</strong> — <strong>7 verified forms found</strong> after round 2+T4 research (2048 Ventures, Hustle Fund, 1984 Ventures, Pranatech, Bluestein, Bonfire, Bain Capital Ventures) + 1 cold-friendly email channel (Forerunner). All clickable inside their company cards.</li>
+    <li><strong>Tier 4 promotions:</strong> Round-2 research moved 16 firms out of Tier 4 (most-promoted: 2048 Ventures, Conviction, Radical Ventures all to T1; Hustle Fund, Work-Bench, Boldstart, Primary, Greycroft, AI Fund, Amplify Partners to T2). Tier 4 shrunk from 24 → 8.</li>
+    <li><strong>Routing recommendation</strong> per investor (which Twenty20 person should reach out — pill colors match the rubric below).</li>
+    <li><strong>8 new similar investors</strong> across 4 explicit directions (Vertical AI · Decision Intel · BevAlc-tech · Women-led).</li>
+    <li><strong>Source verification</strong> per investor — green italics = real-time web-fetched today; red italics = unverified, needs research.</li>
+  </ul>
+</div>
+
+<div class="routing-rubric">
+  <h3>Routing rubric — who at Twenty20 should reach out</h3>
+  <table>
+    <tr><td>Tech / infra / AI thesis dominant</td><td><span class="pill srini">Srini (CPO)</span> architecture conversation</td></tr>
+    <tr><td>CEO-founder partner running the firm</td><td><span class="pill shyam">Shyam (CEO)</span> founder-to-founder tone</td></tr>
+    <tr><td>Female partner / women-led firm</td><td><span class="pill gauri">Gauri</span> or <span class="pill hiral">Hiral</span> connection point</td></tr>
+    <tr><td>BevAlc-industry specialist fund</td><td><span class="pill gauri">Gauri</span> industry credibility</td></tr>
+    <tr><td>Talent / community / people angle</td><td><span class="pill hiral">Hiral (HR)</span></td></tr>
+    <tr><td>Marketing / brand / GTM-focused partner</td><td><span class="pill harini">Harini (marketing)</span></td></tr>
+  </table>
+  <p style="margin: 10px 0 0; font-size: 12px; color: #6c6760;"><em>Suggestions, not rules. Multiple signals → primary + secondary routing in each entry.</em></p>
+</div>
+
+<div class="legend">
+  <div class="item"><span class="swatch" style="background:#5b8a3a"></span>Tier 1 — Clear fit, contact this week</div>
+  <div class="item"><span class="swatch" style="background:#b48f3a"></span>Tier 2 — Worth pursuing</div>
+  <div class="item"><span class="swatch" style="background:#8b8985"></span>Tier 3 — Watch list</div>
+  <div class="item"><span class="swatch" style="background:#b85a4d"></span>Likely misfit</div>
+  <div class="item"><span class="swatch" style="background:#4a6b9a"></span>New (suggested similar investor)</div>
+</div>
+
+<!-- =================================================================== -->
+<h2 class="section">Tier 1 — Clear fits, contact this week <span class="count">(11 investors after Round 2 promotions)</span></h2>
+<p class="tier-blurb">Stated thesis explicitly aligns with vertical AI / decision intelligence / BevAlc enabling tech. Highest expected reply rate.</p>
+
+<!-- Foundation Capital -->
+<div class="investor tier1">
+  <div class="investor-head">
+    <div class="name">Foundation Capital <span class="partner">— Jaya Gupta, Partner</span></div>
+    <div class="badges">
+      <span class="women-pill">4 female partners</span>
+      <span class="score">Tier 1 · 95</span>
+    </div>
+  </div>
+  <div class="meta-row">AI Vertical · Day-zero / seed · 4 female partners (Joanne Chen GP, Jaya Gupta, Alejandra Martinez, Gracie Zaro) · 5 GPs total</div>
+  <div class="verified-source">✓ Verified Apr 29 — foundationcapital.com (people page + portfolio page)</div>
+  <div class="signals">
+    <span class="label">Funding activity</span><span class="val">Distributed <strong>$3B+ since 2020</strong>; backs companies "with very little to show" (e.g. Tennr's three-person team) — high activity, very early stage</span>
+    <span class="label">Stability</span><span class="val">30-year history · 37 IPOs · multiple recent AI-portfolio additions (Aegis AI, Eightfold, Turing, Maximor)</span>
+    <span class="label">Portfolio size</span><span class="val">Not disclosed publicly; partial list shows 13+ companies with "Load More"</span>
+    <span class="label">Stage match</span><span class="val">✓ Day-zero to seed. 77% pre-revenue. 4 of 5 times first-money-in.</span>
+    <span class="label">Recent POV</span><span class="val">Jaya publishes on context graphs + decision-intelligence + AI agents. <strong>Direct ConsumerIQ-pitch alignment.</strong></span>
+    <span class="label">FOMO neighbors</span><span class="val fomo">Aegis AI, Eightfold, Turing, Maximor, Tennr — Foundation's AI portfolio is the social proof</span>
+    <span class="label">Pitch form</span><span class="val">Not visible — relationship-driven intake</span>
+    <span class="label">Routing</span><span class="val routing"><span class="pill srini">Srini (CPO)</span> primary — context-graph architecture talk · <span class="pill gauri">Gauri</span> secondary if intro via female-partner network needed</span>
+  </div>
+  <div class="lead-with">
+    <span class="lwl">Lead with this insight</span>
+    <em>"You wrote about decision traces giving AI agents an advantage. We've built that for BevAlc — every signal carries decision lineage so the agent can explain rankings. Want to see context graphs in a $300B vertical that's never had decision infra?"</em>
+  </div>
+  <div class="next-step"><strong>Next step:</strong> Srini sends Jaya a LinkedIn DM referencing her context-graph posts within 7 days.</div>
+</div>
+
+<!-- Pranatech -->
+<div class="investor tier1">
+  <div class="investor-head">
+    <div class="name">Prana Tech Ventures <span class="partner">— Vinay Nathan, Partner</span></div>
+    <div class="badges">
+      <span class="pitch-form-pill"><a href="https://prana.decilehub.com/submit_your_company" target="_blank">Submit form ↗</a></span>
+      <span class="score">Tier 1 · 92</span>
+    </div>
+  </div>
+  <div class="meta-row">Vertical AI + Cyber + MedTech · Pre-seed/Seed · $10M fund · US + India deep tech · Already on existing connections list</div>
+  <div class="verified-source">✓ Verified Apr 29 — pranatech.vc + portfolio page + contact page</div>
+  <div class="signals">
+    <span class="label">Funding activity</span><span class="val">$10M fund — small bites, ~16 portfolio companies, focused on early checks</span>
+    <span class="label">Stability</span><span class="val">Active fund, 16 portfolio companies, ~50% AI-native</span>
+    <span class="label">Portfolio size</span><span class="val">16 companies — Airanaculus, Bliink AI Payments, Bruviti, Catalyx, Constellationspace, DigitalXForce, Lightberry, Packsmith, Piersight, Relixir, Rigor AI, Strata.io, <strong>Synexis</strong>, XCaliber Health, etc.</span>
+    <span class="label">Stage match</span><span class="val">✓ Pre-seed/seed</span>
+    <span class="label">Geo match</span><span class="val">✓ US + India — matches Twenty20's India team</span>
+    <span class="label">FOMO neighbors</span><span class="val fomo"><strong>Synexis = "AI-native decision infrastructure for private market deals"</strong>. Same pitch, different vertical. Lead with this.</span>
+    <span class="label">Warm path</span><span class="val">Vinay in AI Hub weekly + TiE member. Already a contact.</span>
+    <span class="label">Pitch form</span><span class="val">✓ <a href="https://prana.decilehub.com/submit_your_company">prana.decilehub.com/submit_your_company</a></span>
+    <span class="label">Routing</span><span class="val routing"><span class="pill shyam">Shyam (CEO)</span> primary — already warm in-person at AI Hub · <span class="pill srini">Srini (CPO)</span> for tech-depth follow-up</span>
+  </div>
+  <div class="lead-with">
+    <span class="lwl">Lead with this insight</span>
+    <em>"Synexis built AI-native decision infra for private markets. We're building it for BevAlc — same architecture, different vertical, $300B addressable. Same thesis you've already validated."</em>
+  </div>
+  <div class="next-step"><strong>Next step:</strong> Catch Vinay at next AI Hub session this week. Submit via Decile form in parallel.</div>
+</div>
+
+<!-- Conviction (PROMOTED FROM T4) -->
+<div class="investor tier1">
+  <div class="investor-head">
+    <div class="name">Conviction <span class="partner">— Sarah Guo (Founder) · Bella Garcia-Camargo, Partner</span></div>
+    <div class="badges">
+      <span class="women-pill">Female-founded</span>
+      <span class="score">Tier 1 · 90 — promoted</span>
+    </div>
+  </div>
+  <div class="meta-row">"AI-Native, Software 3.0" · $1–25M checks · Often first investor · Sarah Guo solo-founded</div>
+  <div class="verified-source">✓ Verified Apr 29 — conviction.com</div>
+  <div class="signals">
+    <span class="label">Funding activity</span><span class="val">$1–25M checks — flexible; "often the first investor" — early conviction</span>
+    <span class="label">Stability</span><span class="val">Sarah Guo's reputation = high. Founded post-Greylock spin-out. Active fund, multiple new launches in last 12 mo.</span>
+    <span class="label">Portfolio size</span><span class="val">20+ named companies plus stealth — Latent, Sola, Corridor among recent launches</span>
+    <span class="label">Stage match</span><span class="val">✓ Early-stage / first investor</span>
+    <span class="label">Thesis fit</span><span class="val"><strong>"Purpose-built to serve AI-Native, Software 3.0 companies"</strong> — direct frame match for ConsumerIQ-as-agentic-CRM</span>
+    <span class="label">Founder fit</span><span class="val">Sarah Guo is a thought leader on AI; her podcast "No Priors" is widely-read. Mentioning the show signals familiarity.</span>
+    <span class="label">Pitch form</span><span class="val">Not visible on homepage — Sarah responsive to LinkedIn DM</span>
+    <span class="label">Routing</span><span class="val routing"><span class="pill gauri">Gauri</span> primary — female-to-female warm tone · <span class="pill shyam">Shyam (CEO)</span> for the founder-to-founder pitch</span>
+  </div>
+  <div class="lead-with">
+    <span class="lwl">Lead with this insight</span>
+    <em>"You wrote that Software 3.0 means AI does the work, not adds features. We rebuilt CRM as agents-first for a vertical (BevAlc supplier sales) that hasn't seen software innovation in 20 years. Want a 20-min look?"</em>
+  </div>
+  <div class="next-step"><strong>Next step:</strong> Gauri sends Sarah a LinkedIn DM. Reference No Priors podcast as warm-opening.</div>
+</div>
+
+<!-- Radical Ventures (PROMOTED FROM T4) -->
+<div class="investor tier1">
+  <div class="investor-head">
+    <div class="name">Radical Ventures <span class="partner">— (partner TBD)</span></div>
+    <div class="badges">
+      <span class="score">Tier 1 · 88 — promoted</span>
+    </div>
+  </div>
+  <div class="meta-row">"AI Eats Software" · Toronto · $800M fund (recent) · 22+ portfolio companies including Cohere, Hebbia, Waabi</div>
+  <div class="verified-source">✓ Verified Apr 29 — radical.vc</div>
+  <div class="signals">
+    <span class="label">Funding activity</span><span class="val">~$800M fund (recent close per FT) — large checks, growth-friendly · 3 new investments in 2025: Emerald AI (Sept), Periodic Labs (Oct), Slingshot AI (Jul)</span>
+    <span class="label">Stability</span><span class="val">Strong — recent $800M raise signals confidence. Active deployment pace (3 new in mid-2025).</span>
+    <span class="label">Portfolio size</span><span class="val">22+ companies — Cohere, Genesis Therapeutics, Hebbia, Reka, Waabi (autonomous trucking), Slingshot AI</span>
+    <span class="label">Stage match</span><span class="val">⚠️ Multi-stage. Recent investments lean Series A-B. Verify they do seed before pitching.</span>
+    <span class="label">Thesis fit</span><span class="val"><strong>"AI Eats Software"</strong> — Vertical AI thesis. Cohere + Hebbia = AI-native decision infra precedents.</span>
+    <span class="label">Geo</span><span class="val">Toronto-based — possible US/India fund deployment, verify</span>
+    <span class="label">Pitch form</span><span class="val">Not visible — likely warm-intro preferred</span>
+    <span class="label">Routing</span><span class="val routing"><span class="pill srini">Srini (CPO)</span> — architecture-first conversation · <span class="pill shyam">Shyam (CEO)</span> if intro via Cohere portfolio founder</span>
+  </div>
+  <div class="lead-with">
+    <span class="lwl">Lead with this insight</span>
+    <em>"Hebbia did decision infra for finance. We're doing it for BevAlc. AI Eats Software thesis applied to a $300B vertical that's never had decision tools. 20 minutes?"</em>
+  </div>
+  <div class="next-step"><strong>Next step:</strong> Identify partner via LinkedIn (Toronto AI partner). Hebbia warm-path explore.</div>
+</div>
+
+<!-- 1984 Ventures -->
+<div class="investor tier1">
+  <div class="investor-head">
+    <div class="name">1984 Ventures <span class="partner">— Samit Kalra, Partner · Ramy Adeeb, Founder</span></div>
+    <div class="badges">
+      <span class="pitch-form-pill"><a href="https://apply.1984.vc" target="_blank">Apply ↗ (no warm intro)</a></span>
+      <span class="score">Tier 1 · 88</span>
+    </div>
+  </div>
+  <div class="meta-row">Vertical AI + Healthcare + Open Source · Inception checks up to $1M · <strong>"No warm intro needed"</strong> · 72-hour decision turnaround</div>
+  <div class="verified-source">✓ Verified Apr 29 — 1984.vc + apply.1984.vc</div>
+  <div class="signals">
+    <span class="label">Funding activity</span><span class="val">Inception checks up to $1M · Seed-stage with zero-to-one mentorship · Vertical AI + Healthcare + Open Source sectors</span>
+    <span class="label">Stability</span><span class="val">Founder Ramy Adeeb is a serial entrepreneur; firm publishes "Founders Handbook" — active operator support</span>
+    <span class="label">Portfolio size</span><span class="val unverified-source">⚠️ Could not extract from website (portfolio page returned empty). Estimate via Crunchbase recommended.</span>
+    <span class="label">Stage match</span><span class="val">✓ Seed / inception</span>
+    <span class="label">Thesis fit</span><span class="val">Software / Infrastructure / AI · Spreadsheet notes that Samit specifically focuses on F&amp;B-AI</span>
+    <span class="label">Pitch form</span><span class="val"><strong>✓ <a href="https://apply.1984.vc">apply.1984.vc</a></strong> — apply directly, no warm intro required, 1-week response, 72-hour decision turnaround. Rare and fast.</span>
+    <span class="label">Routing</span><span class="val routing"><span class="pill shyam">Shyam (CEO)</span> submits the application directly · <span class="pill harini">Harini</span> if a follow-up LinkedIn DM to Samit referencing F&amp;B-AI focus</span>
+  </div>
+  <div class="lead-with">
+    <span class="lwl">Lead with this insight</span>
+    <em>"You're one of the few funds explicitly looking at AI verticalized for F&amp;B. We've built the BevAlc-specific intelligence layer for supplier sales teams. Submitting via apply.1984.vc."</em>
+  </div>
+  <div class="next-step"><strong>Next step:</strong> Submit via <a href="https://apply.1984.vc">apply.1984.vc</a> THIS WEEK — fastest decision cycle on the entire list.</div>
+</div>
+
+<!-- VMG Partners -->
+<div class="investor tier1">
+  <div class="investor-head">
+    <div class="name">VMG Partners <span class="partner">— Carle Stenmark, GP (VMG Tech)</span></div>
+    <div class="badges"><span class="score">Tier 1 · 80</span></div>
+  </div>
+  <div class="meta-row">VMG Consumer (brands) + VMG Technology (consumer-tech) · Tech team: Carle Stenmark, Dhruv Bansal, Indy Guha, Jeremy Levy, Margot Kleinman, Mike Mauzé, Robin Tsai, Sam Shapiro</div>
+  <div class="verified-source">✓ Verified Apr 29 — vmgpartners.com (team page; portfolio 404)</div>
+  <div class="signals">
+    <span class="label">Funding activity</span><span class="val unverified-source">⚠️ Portfolio page 404'd — exact deal sizes not retrievable. VMG historically growth-stage; their tech arm may be earlier — verify before pitching.</span>
+    <span class="label">Stability</span><span class="val">VMG is a well-established mid-size firm with multiple funds; team of 50+ across Consumer + Tech + Ecosystem</span>
+    <span class="label">Stage match</span><span class="val warn">⚠️ Need to confirm — VMG historically growth-stage. Their VMG Tech arm may be earlier-stage. Verify before pitching.</span>
+    <span class="label">Strategic value</span><span class="val">VMG Consumer's BevAlc/CPG portfolio = ConsumerIQ's potential customer list. Investment + customer dual play.</span>
+    <span class="label">Female team</span><span class="val">25+ female team members visible (no clear partner-gender split available on page)</span>
+    <span class="label">Pitch form</span><span class="val">Not visible — relationship-driven</span>
+    <span class="label">Routing</span><span class="val routing"><span class="pill gauri">Gauri</span> primary — industry credibility for the consumer-tech bridge · <span class="pill shyam">Shyam (CEO)</span> for the strategic conversation</span>
+  </div>
+  <div class="lead-with">
+    <span class="lwl">Lead with this insight</span>
+    <em>"Your VMG Consumer portfolio brands are who buys ConsumerIQ. Investing in us accelerates their GTM motion. Dual-value: returns + portfolio support."</em>
+  </div>
+  <div class="next-step"><strong>Next step:</strong> Confirm VMG Tech stage focus before email. If too late, downgrade to T2.</div>
+</div>
+
+<!-- FTW Ventures -->
+<div class="investor tier1">
+  <div class="investor-head">
+    <div class="name">FTW Ventures <span class="partner">— Brian Frank, Founder/GP</span></div>
+    <div class="badges">
+      <span class="women-pill">2 female team members</span>
+      <span class="score">Tier 1 · 80</span>
+    </div>
+  </div>
+  <div class="meta-row">"Backing bold Innovators solving the biggest challenges in our Food System" · 26 portfolio companies · Brian Frank is founder + 2 female investors (Jenn Burka, Tawny Scanlan)</div>
+  <div class="verified-source">✓ Verified Apr 29 — ftw.vc (team + companies pages)</div>
+  <div class="signals">
+    <span class="label">Funding activity</span><span class="val">2 funds — Fund I (13 cos) + Fund II (13 cos). Recent: Heritable AI 2024, Snowline AI 2024 · Brian led 3 venture-backed exits in 20+ years</span>
+    <span class="label">Stability</span><span class="val">Two active funds, recent 2024 deployments</span>
+    <span class="label">Portfolio size</span><span class="val">26 total · Sectors: AgTech, biotech, sustainable packaging, food logistics, fermentation</span>
+    <span class="label">FOMO neighbors</span><span class="val fomo"><strong>ALTR</strong> — beverage tech that removes alcohol molecularly. Direct BevAlc-tech precedent in their portfolio.</span>
+    <span class="label">Stage match</span><span class="val">✓ Early-stage food/bev tech specialist</span>
+    <span class="label">Pitch form</span><span class="val">Not visible — info@ftw.vc + warm intro preferred</span>
+    <span class="label">Routing</span><span class="val routing"><span class="pill gauri">Gauri</span> — operator-pain frame to Brian (he gets industry without translation) · <span class="pill hiral">Hiral</span> if Jenn Burka or Tawny Scanlan is the door</span>
+  </div>
+  <div class="lead-with">
+    <span class="lwl">Lead with this insight</span>
+    <em>"You backed ALTR for molecular alcohol removal. We're the supplier-sales-side analog: every BevAlc rep walks into a customer call with stale data. We've fixed that — same beverage-tech innovation thesis, different unit economics."</em>
+  </div>
+  <div class="next-step"><strong>Next step:</strong> Email Brian directly + cc Jenn or Tawny. Reference ALTR.</div>
+</div>
+
+<!-- Barrel Ventures -->
+<div class="investor tier1">
+  <div class="investor-head">
+    <div class="name">Barrel Ventures <span class="partner">— Nate Cooper, Founder/Partner</span></div>
+    <div class="badges"><span class="score">Tier 1 · 78</span></div>
+  </div>
+  <div class="meta-row">Founded 2019 · "Helping fill gaps in the world" · Nate is operator (founded L3HG, Wise Apple) · 35 portfolio companies</div>
+  <div class="verified-source">✓ Verified Apr 29 — barrelvc.com</div>
+  <div class="signals">
+    <span class="label">Funding activity</span><span class="val">35 portfolio companies since 2019 — ~5–7 deals/yr. Recent active follow-ons: Olipop $30M Series B, Partake Brewing $16.5M Series B</span>
+    <span class="label">Stability</span><span class="val">2019 vintage, founder-led, active follow-on participation in growing portfolio companies</span>
+    <span class="label">Portfolio size</span><span class="val">35 companies — includes <strong>Olipop, Partake Brewing</strong> (BevAlc), plus food-tech / supply chain</span>
+    <span class="label">Female partners</span><span class="val">⚠️ None listed (Nate Cooper, Carey Cooper, Joel Warady, Elliot Wheeler — all male)</span>
+    <span class="label">FOMO neighbors</span><span class="val fomo">Olipop, Partake Brewing — direct BevAlc brand portfolio. Tells them ConsumerIQ would help these grow.</span>
+    <span class="label">Pitch form</span><span class="val">No form — investments@barrelvc.com</span>
+    <span class="label">Routing</span><span class="val routing"><span class="pill shyam">Shyam (CEO)</span> founder-to-founder · <span class="pill gauri">Gauri</span> for industry-broken-pitch alignment</span>
+  </div>
+  <div class="lead-with">
+    <span class="lwl">Lead with this insight</span>
+    <em>"You said the industry is broken. Olipop and Partake (in your portfolio) face the same supplier-side pain we solve: stale data, no decision infra. ConsumerIQ would accelerate every BevAlc bet you make."</em>
+  </div>
+  <div class="next-step"><strong>Next step:</strong> Email Nate, reference Olipop/Partake portfolio fit.</div>
+</div>
+
+<!-- Bluestein Ventures -->
+<div class="investor tier1">
+  <div class="investor-head">
+    <div class="name">Bluestein Ventures <span class="partner">— Ashley Hartman, Managing Partner</span></div>
+    <div class="badges">
+      <span class="women-pill">Women-led firm</span>
+      <span class="pitch-form-pill"><a href="https://airtable.com/appk5HEKHSqGSmgQq/pagXaLCPRpGln7LkD/form" target="_blank">Submit form ↗</a></span>
+      <span class="score">Tier 1 · 80</span>
+    </div>
+  </div>
+  <div class="meta-row">Pre-seed → Series A · Food, beverage, agtech focus · <strong>5 women on team</strong> (Ashley Hartman, Amira Khatib, Aaditi Tamhankar, Lindsay Levin, Ilene Gordon Bluestein) · MBA Harvard, family business operator</div>
+  <div class="verified-source">✓ Verified Apr 29 — bluesteinventures.com (team page)</div>
+  <div class="signals">
+    <span class="label">Funding activity</span><span class="val">Early-stage focus across high-growth consumer brands, foodtech, next-gen commerce, value-add digital tech</span>
+    <span class="label">Stability</span><span class="val">Family-business backing (Ilene Gordon Bluestein advisor) — long-tenure capital</span>
+    <span class="label">Portfolio size</span><span class="val">Visible: FourKites (logistics), Factor (food delivery), Vive Organic, Meati. Total count not disclosed.</span>
+    <span class="label">Stage match</span><span class="val">✓ Pre-seed → Series A</span>
+    <span class="label">Pitch form</span><span class="val">✓ <a href="https://airtable.com/appk5HEKHSqGSmgQq/pagXaLCPRpGln7LkD/form">Bluestein Airtable submission form</a></span>
+    <span class="label">Routing</span><span class="val routing"><span class="pill gauri">Gauri</span> primary — operator + female-led firm · <span class="pill hiral">Hiral</span> secondary for the all-female team rapport</span>
+  </div>
+  <div class="lead-with">
+    <span class="lwl">Lead with this insight</span>
+    <em>"You've invested in beverage tech (FourKites for logistics, Factor for delivery). We're the supplier-sales-side complement: BevAlc-specific decision infrastructure for the people pushing brands into channels."</em>
+  </div>
+  <div class="next-step"><strong>Next step:</strong> Submit via their Airtable form this week. Gauri leads.</div>
+</div>
+
+<!-- Pear VC -->
+<div class="investor tier1">
+  <div class="investor-head">
+    <div class="name">Pear VC <span class="partner">— Pejman Nozad &amp; Mar Hershenson, Co-founding Managing Partners</span></div>
+    <div class="badges">
+      <span class="women-pill">Female co-founder</span>
+      <span class="score">Tier 1 · 82</span>
+    </div>
+  </div>
+  <div class="meta-row">Pre-seed/seed specialists · <strong>Co-founded by Mar Hershenson (female)</strong> · Kathleen Estreich female partner · "Companies seeded worth over $300B"</div>
+  <div class="verified-source">✓ Verified Apr 29 — pear.vc (homepage + team)</div>
+  <div class="signals">
+    <span class="label">Funding activity</span><span class="val">Seeded companies worth $300B+ in aggregate. Recent visible: Counsel Health (AI healthcare), Listen Labs (Series B graduation), Dealops (dynamic pricing)</span>
+    <span class="label">Stability</span><span class="val">10 partners; track record of seeded unicorns (DoorDash early — Tony Xu quote on page)</span>
+    <span class="label">Portfolio size</span><span class="val">Not disclosed; substantial — $300B aggregate company value indicates scale</span>
+    <span class="label">Stage match</span><span class="val">✓ Pre-seed/seed specialists — exactly our stage</span>
+    <span class="label">Female partners</span><span class="val">2 — Mar Hershenson (co-founder), Kathleen Estreich</span>
+    <span class="label">Indian-founder network</span><span class="val">Pejman is widely respected in Indian-American founder community — possible cultural fit</span>
+    <span class="label">Pitch form</span><span class="val">Not visible — Pejman responsive on LinkedIn</span>
+    <span class="label">Routing</span><span class="val routing"><span class="pill shyam">Shyam (CEO)</span> primary — Pejman replies fast to direct DMs · <span class="pill gauri">Gauri</span> if Mar Hershenson route preferred</span>
+  </div>
+  <div class="lead-with">
+    <span class="lwl">Lead with this insight</span>
+    <em>"AI-native vertical SaaS for BevAlc. Live customers in pilot. Indian-American founding team. 15 minutes?"</em>
+  </div>
+  <div class="next-step"><strong>Next step:</strong> Shyam DM Pejman on LinkedIn. Mar as fallback in 2 weeks.</div>
+</div>
+
+<!-- 2048 Ventures — PROMOTED FROM T4 -->
+<div class="investor tier1">
+  <div class="investor-head">
+    <div class="name">2048 Ventures <span class="partner">— Julie Wolf, Partner</span></div>
+    <div class="badges">
+      <span class="women-pill">Female partner</span>
+      <span class="pitch-form-pill"><a href="https://airtable.com/appV89PYGo3zN47f9/pagNjeYwHGADSGIs3/form?prefill_Introd+By+Type=Direct&hide_Introd+By+Type=true" target="_blank">Submit form ↗</a></span>
+      <span class="score">Tier 1 · 88 — promoted from T4</span>
+    </div>
+  </div>
+  <div class="meta-row">Pre-Seed/Seed · $500K–$3M checks · "Pre-Seed Fast Track" with <strong>10-business-day decision</strong> · <strong>"100% of pitches reviewed, no warm intro required"</strong> · NPS of 100 from portfolio founders</div>
+  <div class="verified-source">✓ Verified Apr 29 — 2048.vc</div>
+  <div class="signals">
+    <span class="label">Funding activity</span><span class="val">$500K–$3M check sizes · "Pre-Seed Fast Track" for $500K–$1.5M rounds with 10-day funding decisions</span>
+    <span class="label">Stability</span><span class="val">Active fund · NPS 100 from portfolio founders · explicit "100% pitch review" commitment</span>
+    <span class="label">Portfolio size</span><span class="val">Recent: Pocket (AI front-office for rehab clinics — vertical-AI peer), Broome AI (commercial real estate agentic AI), Growth Signals, Persist AI, Fazeshift, Aerodome, Impilo</span>
+    <span class="label">Stage match</span><span class="val">✓ Pre-Seed/Seed</span>
+    <span class="label">Thesis fit</span><span class="val"><strong>Vertical AI · Deep Tech · Health · Bio</strong> · "Systems of Record, infrastructure and API companies with strong data moats" — direct ConsumerIQ frame match</span>
+    <span class="label">FOMO neighbors</span><span class="val fomo">Pocket = AI front-office for vertical (rehab clinics) · Broome AI = agentic AI for vertical (real estate). Both are exact ConsumerIQ-pattern peers in different industries.</span>
+    <span class="label">Pitch form</span><span class="val">✓ <strong><a href="https://airtable.com/appV89PYGo3zN47f9/pagNjeYwHGADSGIs3/form">Direct Airtable submission</a></strong> · No warm intro required · explicit "100% review"</span>
+    <span class="label">Routing</span><span class="val routing"><span class="pill shyam">Shyam (CEO)</span> submits the form directly · <span class="pill gauri">Gauri</span> if a follow-up DM to Julie referencing female-investor angle</span>
+  </div>
+  <div class="lead-with">
+    <span class="lwl">Lead with this insight</span>
+    <em>"Pocket built AI front-office for rehab clinics — vertical-AI Systems of Record. We're doing the same for BevAlc supplier sales. Same architecture (agentic, decision-infra), different $300B vertical. Submitting via your form."</em>
+  </div>
+  <div class="next-step"><strong>Next step:</strong> Submit via Airtable form THIS WEEK. 10-day decision turnaround = fastest cycle on the list alongside Hustle Fund.</div>
+</div>
+
+<!-- ============== TIER 2 ============== -->
+<h2 class="section">Tier 2 — Worth pursuing with the right tilt <span class="count">(20 investors after Round 2 promotions)</span></h2>
+<p class="tier-blurb">Plausible thesis fit but needs verification or specific angle. Reach out after Tier 1 lands first replies.</p>
+
+<!-- Bonfire -->
+<div class="investor tier2">
+  <div class="investor-head">
+    <div class="name">Bonfire Ventures <span class="partner">— Jason Tahir, VP</span></div>
+    <div class="badges">
+      <span class="pitch-form-pill"><a href="https://yikdukb5nck.typeform.com/to/Tze30ymM" target="_blank">Submit form ↗</a></span>
+      <span class="score">Tier 2 · 75</span>
+    </div>
+  </div>
+  <div class="meta-row">Seed-stage lead · "AI rewires every workflow and every team" · $245M Fund IV announced Feb 2025</div>
+  <div class="verified-source">✓ Verified Apr 29 — bonfirevc.com</div>
+  <div class="signals">
+    <span class="label">Funding activity</span><span class="val">Recent: $245M Fund IV (Feb 2025) · Risotto investment Jan 2026 · MNTN IPO May 2025 ($2B valuation milestone)</span>
+    <span class="label">Stability</span><span class="val">Strong — fresh Fund IV close $245M. Active deployment.</span>
+    <span class="label">Portfolio size</span><span class="val">~15 visible logos in carousel; full count not disclosed</span>
+    <span class="label">Stage match</span><span class="val">✓ Seed lead, follow through Series A+</span>
+    <span class="label">Thesis fit</span><span class="val">Frame match: <em>"backs founders reshaping how businesses operate as AI rewires every workflow"</em></span>
+    <span class="label">Pitch form</span><span class="val">✓ <a href="https://yikdukb5nck.typeform.com/to/Tze30ymM">Typeform submission</a></span>
+    <span class="label">Routing</span><span class="val routing"><span class="pill srini">Srini (CPO)</span> — architecture rewiring conversation</span>
+  </div>
+  <div class="lead-with">
+    <span class="lwl">Lead with this insight</span>
+    <em>"You said AI rewires every workflow. We rewired CRM for BevAlc supplier sales — the workflow has been broken for 20 years. Pitch attached."</em>
+  </div>
+  <div class="next-step"><strong>Next step:</strong> Submit via Typeform this week.</div>
+</div>
+
+<!-- Bain Capital Ventures -->
+<div class="investor tier2">
+  <div class="investor-head">
+    <div class="name">Bain Capital Ventures <span class="partner">— Sophia Schwanke (door-opener) · Christina Melas-Kyriazi, Partner (decision-maker)</span></div>
+    <div class="badges">
+      <span class="women-pill">Female AI partner</span>
+      <span class="pitch-form-pill"><a href="https://www.baincapitalventures.com/contact" target="_blank">Contact form (Seeking Investment) ↗</a></span>
+      <span class="score">Tier 2 · 72</span>
+    </div>
+  </div>
+  <div class="meta-row">Existing connection (Shyam LinkedIn 3/31, Sophia) · 10+ partners · AI partners: Aaref Hilaly, Rak Garg, Christina Melas-Kyriazi (early-stage AI applications)</div>
+  <div class="verified-source">✓ Verified Apr 29 — baincapitalventures.com (team + contact)</div>
+  <div class="signals">
+    <span class="label">Stability</span><span class="val">Multi-stage Bain Capital affiliate — strong stability, large AUM</span>
+    <span class="label">Stage caveat</span><span class="val">Mix of seed through later-stage. Partners specialize: Aaref/Kevin = inception; Merritt = growth.</span>
+    <span class="label">AI fit</span><span class="val">Aaref Hilaly: <em>"AI to solve problems previously unaddressed by software"</em> — direct ConsumerIQ alignment</span>
+    <span class="label">Within-firm route</span><span class="val">Sophia is community/people; Christina is the female AI investor partner — better target</span>
+    <span class="label">Pitch form</span><span class="val">✓ <a href="https://www.baincapitalventures.com/contact">/contact form has "Seeking Investment" topic option</a> — not a dedicated pitch portal but a real submission channel. Use as a parallel path alongside Sophia warm intro.</span>
+    <span class="label">Routing</span><span class="val routing"><span class="pill hiral">Hiral</span> via Sophia (existing contact) → ask for warm intro to Aaref or Christina · <span class="pill srini">Srini</span> for the actual partner conversation</span>
+  </div>
+  <div class="next-step"><strong>Next step:</strong> Sophia → ask for intro to Aaref Hilaly or Christina. Submit Seeking-Investment form as parallel path.</div>
+</div>
+
+<!-- Antler -->
+<div class="investor tier2">
+  <div class="investor-head">
+    <div class="name">Antler <span class="partner">— McKenzie Hagan, Head of Scouting</span></div>
+    <div class="badges"><span class="score">Tier 2 · 70</span></div>
+  </div>
+  <div class="meta-row">Inception/early-stage · 1,800+ portfolio globally · Antler Elevate $285M growth fund · Operates in 30 cities · McKenzie has BevAlc industry knowledge</div>
+  <div class="verified-source">✓ Verified Apr 29 — antler.co + /apply page</div>
+  <div class="signals">
+    <span class="label">Funding activity</span><span class="val"><strong>1,800+ portfolio companies</strong> globally — extremely high deal velocity (mostly small inception checks)</span>
+    <span class="label">Stability</span><span class="val">Multiple regional funds + $285M Antler Elevate growth fund · 30 cities</span>
+    <span class="label">Stage match</span><span class="val">✓ Inception/pre-seed</span>
+    <span class="label">Bet sizing</span><span class="val">⚠️ Many small bets — quantity over conviction. May not match a "lead this round" need.</span>
+    <span class="label">Pitch form</span><span class="val warn">Antler has an <a href="https://www.antler.co/apply">/apply page</a> — but it's for their <strong>residency program</strong> (pre-formation founders matching with co-founders). Not the right path for ConsumerIQ since we're already incorporated. Use McKenzie route instead.</span>
+    <span class="label">Routing</span><span class="val routing"><span class="pill harini">Harini</span> via McKenzie — scout-to-marketer (both in talent-discovery roles)</span>
+  </div>
+</div>
+
+<!-- Hustle Fund — PROMOTED FROM T4 -->
+<div class="investor tier2">
+  <div class="investor-head">
+    <div class="name">Hustle Fund <span class="partner">— Elizabeth Yin (co-founder) · Eric Bahn (co-founder)</span></div>
+    <div class="badges">
+      <span class="women-pill">Female co-founder</span>
+      <span class="pitch-form-pill"><a href="https://hustlefund.typeform.com/to/UGTnIt" target="_blank">Submit form ↗</a></span>
+      <span class="score">Tier 2 · 78 — promoted</span>
+    </div>
+  </div>
+  <div class="meta-row">Pre-seed · Cold-friendly · <strong>"Decision within 1–2 meetings, wire within the week"</strong> · Fastest decision cycle of any verified investor on this list</div>
+  <div class="verified-source">✓ Verified Apr 29 — hustlefund.vc + Typeform</div>
+  <div class="signals">
+    <span class="label">Funding activity</span><span class="val">Pre-seed generalist · small inception checks</span>
+    <span class="label">Stability</span><span class="val">Multi-fund pre-seed firm; co-founder Elizabeth Yin is well-known female VC voice</span>
+    <span class="label">Stage match</span><span class="val">✓ Pre-seed</span>
+    <span class="label">Thesis caveat</span><span class="val warn">⚠️ Generalist (not vertical-AI specialist). Fit is on speed + cold-friendliness, not thesis precision. Submitting is low-cost / high-signal.</span>
+    <span class="label">Pitch form</span><span class="val">✓ <strong><a href="https://hustlefund.typeform.com/to/UGTnIt">hustlefund.typeform.com/to/UGTnIt</a></strong> — explicit "PITCH US!" CTA on homepage</span>
+    <span class="label">Speed signal</span><span class="val fomo"><strong>Decision within 1–2 meetings, wire within the week.</strong> Fastest reply cycle of any investor on this list.</span>
+    <span class="label">Routing</span><span class="val routing"><span class="pill gauri">Gauri</span> primary (Elizabeth Yin warm tone) · <span class="pill shyam">Shyam (CEO)</span> fills the form directly</span>
+  </div>
+  <div class="lead-with">
+    <span class="lwl">Lead with this insight</span>
+    <em>"Pre-seed B2B SaaS. AI-native CRM rebuilt from scratch for BevAlc supplier sales — a $300B vertical with no decision infra. Live customers in pilot. Hustle-Fund-fast: we'll send a deck via your form."</em>
+  </div>
+  <div class="next-step"><strong>Next step:</strong> Submit via Typeform this week. Free shot at the fastest-reply fund on the list.</div>
+</div>
+
+<!-- Insight Partners -->
+<div class="investor tier2">
+  <div class="investor-head">
+    <div class="name">Insight Partners <span class="partner">— Eli Potter, CIO Executive Advisor</span></div>
+    <div class="badges"><span class="score">Tier 2 · 65 · already contacted</span></div>
+  </div>
+  <div class="meta-row">Existing connection (Shyam LinkedIn 3/31) · Mostly growth-stage — may be too late for ConsumerIQ's current raise</div>
+  <div class="verified-source unverified-source">⚠️ Could not verify team page — relied on spreadsheet notes + general knowledge of Insight as growth-stage giant</div>
+  <div class="signals">
+    <span class="label">Stage caveat</span><span class="val warn">Insight Partners is primarily growth-stage. May be too early for them unless via Eli's CIO advisory route.</span>
+    <span class="label">Angle</span><span class="val">Eli is a CIO advisor — frame ConsumerIQ as enterprise-buyer-validated</span>
+    <span class="label">Routing</span><span class="val routing"><span class="pill shyam">Shyam (CEO)</span> follow up · <span class="pill srini">Srini</span> if architecture conversation</span>
+  </div>
+</div>
+
+<!-- Salesforce Ventures -->
+<div class="investor tier2">
+  <div class="investor-head">
+    <div class="name">Salesforce Ventures <span class="partner">— Derek Asbun, Head of Portfolio Development</span></div>
+    <div class="badges">
+      <span class="women-pill">5 female partners</span>
+      <span class="score">Tier 2 · 60 · conflict risk</span>
+    </div>
+  </div>
+  <div class="meta-row">Existing connection (Shyam LinkedIn 3/31) · 41 team members · 5 female partners (Claudine Emeott, Nowi Kallen, Katie Schwartz Thiry, Emily Zhao, Alexandra Quie)</div>
+  <div class="verified-source">✓ Verified Apr 29 — salesforceventures.com (team page)</div>
+  <div class="signals">
+    <span class="label">Funding activity</span><span class="val">70+ portfolio · Recent: Anthropic, Cohere, Hugging Face, Writer, ElevenLabs · Big checks, mostly growth-stage incl Stripe, Snowflake, Databricks</span>
+    <span class="label">Stability</span><span class="val">Salesforce-backed strategic VC — extremely stable</span>
+    <span class="label">Stage caveat</span><span class="val warn">Mostly growth/late-stage. Earlier-stage thesis unclear.</span>
+    <span class="label">Conflict risk</span><span class="val warn">⚠️ ConsumerIQ replaces Salesforce in BevAlc supplier vertical. Position carefully as "complementary vertical extension."</span>
+    <span class="label">Routing</span><span class="val routing"><span class="pill shyam">Shyam</span> follow up Derek · <span class="pill srini">Srini</span> if SF strategic-architecture talk</span>
+  </div>
+</div>
+
+<!-- Khosla Ventures -->
+<div class="investor tier2">
+  <div class="investor-head">
+    <div class="name">Khosla Ventures <span class="partner">— Karina El Baze, Operating Partner</span></div>
+    <div class="badges"><span class="score">Tier 2 · 70 · already contacted</span></div>
+  </div>
+  <div class="meta-row">Existing connection (Shyam LinkedIn 3/31) · Multi-stage (Seed + Main + Opportunity Funds) · Heavy AI portfolio</div>
+  <div class="verified-source">✓ Verified Apr 29 — khoslaventures.com (portfolio)</div>
+  <div class="signals">
+    <span class="label">Funding activity</span><span class="val">Recent AI: Cognition (Devin), Glean, Replit, PolyAI · Multi-stage portfolio of 100+ companies</span>
+    <span class="label">Stability</span><span class="val">Three funds — Seed/Main/Opportunity — flexibility on stage</span>
+    <span class="label">Stage match</span><span class="val">✓ Their Seed Fund is our stage</span>
+    <span class="label">Thesis fit</span><span class="val">Vinod Khosla heavily AI-bullish; portfolio shows enterprise AI conviction (Glean is a direct decision-intelligence neighbor)</span>
+    <span class="label">Routing</span><span class="val routing"><span class="pill hiral">Hiral</span> via Karina (operating-partner role) → ask for AI-vertical partner intro</span>
+  </div>
+</div>
+
+<!-- Asahi -->
+<div class="investor tier2">
+  <div class="investor-head">
+    <div class="name">Asahi Group Beverages &amp; Innovation <span class="partner">— Kristen Bareuther, President &amp; Head of Investments</span></div>
+    <div class="badges">
+      <span class="women-pill">Female-led CVC</span>
+      <span class="score">Tier 2 · 75</span>
+    </div>
+  </div>
+  <div class="meta-row">Asahi corporate VC · 2023 fund vintage · Low-alc / non-alc / adult soft drinks · Brands + sales/manufacturing tech</div>
+  <div class="verified-source unverified-source">⚠️ Notes only — Asahi corporate ventures website not directly fetched</div>
+  <div class="signals">
+    <span class="label">Thesis fit</span><span class="val">Per spreadsheet: invests in tech that "leads to new sales and manufacturing methods" — direct ConsumerIQ angle</span>
+    <span class="label">Strategic value</span><span class="val">If Asahi invests, they dogfood. Massive validation.</span>
+    <span class="label">Routing</span><span class="val routing"><span class="pill gauri">Gauri</span> primary — industry credibility · <span class="pill hiral">Hiral</span> female-to-female with Kristen</span>
+  </div>
+  <div class="lead-with">
+    <span class="lwl">Lead with this insight</span>
+    <em>"You stated you invest in tech enabling new sales methods. We rebuilt supplier sales as agentic AI. Demo for Asahi commercial team?"</em>
+  </div>
+</div>
+
+<!-- Tau Ventures -->
+<div class="investor tier2">
+  <div class="investor-head">
+    <div class="name">Tau Ventures <span class="partner">— Amit Garg / Sanjay Rao, Founding Partners</span></div>
+    <div class="badges"><span class="score">Tier 2 · 68</span></div>
+  </div>
+  <div class="meta-row">Founded 2019 Palo Alto · 80 companies · Pre-seed/seed/growth · Healthcare + Enterprise + Automation</div>
+  <div class="verified-source">✓ Verified Apr 29 — tauventures.com</div>
+  <div class="signals">
+    <span class="label">Funding activity</span><span class="val">80 companies across multi-stage (pre-seed → growth) · 6 years vintage</span>
+    <span class="label">Notable backed</span><span class="val">Netskope, 1Password, Labelbox, Iterative Health</span>
+    <span class="label">Thesis fit</span><span class="val">Enterprise + automation + AI — fits ConsumerIQ-as-agentic-CRM</span>
+    <span class="label">Routing</span><span class="val routing"><span class="pill srini">Srini</span> founder-to-founder (both Indian-named partners)</span>
+  </div>
+</div>
+
+<!-- Constellation Brands Ventures -->
+<div class="investor tier2">
+  <div class="investor-head">
+    <div class="name">Constellation Brands Ventures <span class="partner">— (contact TBD)</span></div>
+    <div class="badges"><span class="score">Tier 2 · 70</span></div>
+  </div>
+  <div class="meta-row">Constellation Brands corporate VC · Emerging Brands + Female Founders + Enabling Tech funds</div>
+  <div class="verified-source unverified-source">⚠️ cbrands.com homepage doesn't surface CBV details — research via LinkedIn / Crunchbase needed</div>
+  <div class="signals">
+    <span class="label">Thesis fit</span><span class="val">"Enabling Tech" sleeve explicitly relevant. Constellation is target customer too.</span>
+    <span class="label">Action</span><span class="val warn">Source contact via LinkedIn this week — likely director-level CBV person</span>
+    <span class="label">Routing</span><span class="val routing"><span class="pill gauri">Gauri</span> via industry network · <span class="pill shyam">Shyam (CEO)</span> for partnership conversation</span>
+  </div>
+</div>
+
+<!-- Convivialite -->
+<div class="investor tier2">
+  <div class="investor-head">
+    <div class="name">Convivialite Ventures <span class="partner">— Brandon Yahn, Partner</span></div>
+    <div class="badges"><span class="score">Tier 2 · 65</span></div>
+  </div>
+  <div class="meta-row">Pernod Ricard's CVC arm · BevAlc-pure focus</div>
+  <div class="verified-source unverified-source">⚠️ convivialite.ventures connection refused at fetch — verify URL/status</div>
+  <div class="signals">
+    <span class="label">Thesis fit</span><span class="val">Same playbook as Constellation Ventures / Distill — corporate VC for the BevAlc industry</span>
+    <span class="label">Strategic angle</span><span class="val">Pernod Ricard portfolio rollout possibility</span>
+    <span class="label">Routing</span><span class="val routing"><span class="pill gauri">Gauri</span> — BevAlc credibility</span>
+  </div>
+</div>
+
+<!-- Distill -->
+<div class="investor tier2">
+  <div class="investor-head">
+    <div class="name">Distill Ventures</div>
+    <div class="badges"><span class="score">Tier 2 · 60</span></div>
+  </div>
+  <div class="meta-row">Diageo-backed historically · Diageo backing wound down (per spreadsheet article) · Verify fund status before pitching</div>
+  <div class="verified-source unverified-source">⚠️ distillventures.com 404'd — fund-status questionable</div>
+  <div class="signals">
+    <span class="label">Stability concern</span><span class="val warn">Diageo backed out per linked article. Fund deployment status unclear.</span>
+    <span class="label">Action</span><span class="val">Verify fund status before any pitch effort</span>
+  </div>
+</div>
+
+<!-- Döhler -->
+<div class="investor tier2">
+  <div class="investor-head">
+    <div class="name">Döhler Ventures <span class="partner">— Anton Koehler, Venture Manager</span></div>
+    <div class="badges"><span class="score">Tier 2 · 70</span></div>
+  </div>
+  <div class="meta-row">Döhler corporate VC (global ingredient giant) · Backs tech that helps brand-customers scale</div>
+  <div class="verified-source unverified-source">⚠️ dohlerventures.com connection refused at fetch — verify URL</div>
+  <div class="signals">
+    <span class="label">Thesis fit</span><span class="val">Per spreadsheet: ingredient giant wants tech that helps thousands of brand-customers succeed</span>
+    <span class="label">Strategic value</span><span class="val">Döhler customer access = thousands of BevAlc brands as potential customers</span>
+    <span class="label">Routing</span><span class="val routing"><span class="pill gauri">Gauri</span> primary · <span class="pill harini">Harini</span> if cross-brand-customer marketing angle</span>
+  </div>
+</div>
+
+<!-- Notation -->
+<div class="investor tier2">
+  <div class="investor-head">
+    <div class="name">Notation <span class="partner">— Nicholas Chirls, Partner</span></div>
+    <div class="badges"><span class="score">Tier 2 · 60</span></div>
+  </div>
+  <div class="meta-row">"First dedicated pre-seed fund in NYC" · 14 portfolio companies · Both partners male</div>
+  <div class="verified-source">✓ Verified Apr 29 — notation.vc</div>
+  <div class="signals">
+    <span class="label">Portfolio</span><span class="val">14 companies — Alice, Bison Trails, Carmera, Clay CRM, Livepeer, nTopology, Parsec, Podia, Redesign, Sawyer, SimpleHealth, Spruce, Timber, Talos</span>
+    <span class="label">Stage match</span><span class="val">✓ Pre-seed only — exactly our stage</span>
+    <span class="label">Bet size</span><span class="val">Concentrated (small portfolio = high conviction per bet)</span>
+    <span class="label">Pitch form</span><span class="val">No form — hello@notation.vc + warm intro preferred</span>
+    <span class="label">Routing</span><span class="val routing"><span class="pill srini">Srini</span> — product-obsessed pitch frame</span>
+  </div>
+</div>
+
+<!-- ============== TIER 2 PROMOTIONS FROM T4 ============== -->
+<div class="changes-box" style="margin-top: 20px; margin-bottom: 14px;">
+  <h3>Round 2 promotions from Tier 4 (just-researched, real data)</h3>
+  <p style="margin: 0;">The 5 entries below were "firm-only" rows in the original spreadsheet. Round-2 web research (Apr 29) surfaced enough thesis/team/portfolio detail to score them properly. All Verified ✓.</p>
+</div>
+
+<!-- Work-Bench -->
+<div class="investor tier2">
+  <div class="investor-head">
+    <div class="name">Work-Bench <span class="partner">— Jessica Lin, Co-Founder &amp; GP</span></div>
+    <div class="badges">
+      <span class="women-pill">Female co-founder</span>
+      <span class="score">Tier 2 · 80 — promoted from T4</span>
+    </div>
+  </div>
+  <div class="meta-row">"NYC's Go-To Seed Fund for founders with Enterprise ambitions" · Fund IV: $160M · Enterprise SaaS + AI/ML + Cybersecurity + Dev Tools · Thesis: "GTM is your moat"</div>
+  <div class="verified-source">✓ Verified Apr 29 — work-bench.com</div>
+  <div class="signals">
+    <span class="label">Funding activity</span><span class="val">$160M Fund IV (recent) · Recent seed: Runhouse, Paratus, Artian · Recent Series A: Goodfire ($50M for AI interpretability), Courier Health ($16.5M), AuthZed ($12M)</span>
+    <span class="label">Stability</span><span class="val">Strong — recent $160M Fund IV close · multiple unicorn exits/markups (Cockroach Labs $5B, Spring Health $3.3B, SOCURE $4.5B)</span>
+    <span class="label">Portfolio</span><span class="val">Includes Cockroach Labs, Spring Health, SOCURE — track record of B2B SaaS scale</span>
+    <span class="label">Stage match</span><span class="val">✓ Seed lead — exactly our stage</span>
+    <span class="label">Thesis fit</span><span class="val">Enterprise SaaS + AI + GTM emphasis. ConsumerIQ-as-AI-native-CRM matches perfectly.</span>
+    <span class="label">Pitch form</span><span class="val">No form — hello@work-bench.com</span>
+    <span class="label">Routing</span><span class="val routing"><span class="pill harini">Harini</span> primary — "GTM is your moat" thesis aligns with marketing/GTM lens · <span class="pill gauri">Gauri</span> if Jessica Lin warm-tone preferred</span>
+  </div>
+  <div class="lead-with">
+    <span class="lwl">Lead with this insight</span>
+    <em>"You said GTM is your moat. Our pitch is exactly that: BevAlc supplier sales is broken — every rep walks into a customer call with stale data. We've fixed the GTM motion for a $300B vertical."</em>
+  </div>
+</div>
+
+<!-- Boldstart -->
+<div class="investor tier2">
+  <div class="investor-head">
+    <div class="name">Boldstart Ventures <span class="partner">— (partner contact TBD)</span></div>
+    <div class="badges"><span class="score">Tier 2 · 78 — promoted from T4</span></div>
+  </div>
+  <div class="meta-row">Inception/pre-seed B2B SaaS specialist · Fund VII "Inception Reloaded" $250M (July 2025) · Backs "builders reimagining how businesses operate" · Autonomous-enterprise framing</div>
+  <div class="verified-source">✓ Verified Apr 29 — boldstart.vc</div>
+  <div class="signals">
+    <span class="label">Funding activity</span><span class="val">$250M Fund VII closed July 2025 — strong recent stability · Inception/pre-seed lead</span>
+    <span class="label">Stability</span><span class="val">7 funds over 15+ years · explicit "first check before line of code" inception model</span>
+    <span class="label">Portfolio</span><span class="val">Snyk, Clay, Protect AI, CrewAI, Tessl, Generalist, Topos Bio, Grepr, Keycard, Hypernative, Kustomer — heavy AI-infrastructure presence</span>
+    <span class="label">Stage match</span><span class="val">✓ Inception (pre-formation through pre-seed) — they invest before line of code</span>
+    <span class="label">Thesis fit</span><span class="val"><strong>"AI-native infrastructure, security, apps, and models" + "autonomous enterprise"</strong> — frame match for ConsumerIQ-as-agentic-CRM</span>
+    <span class="label">Pitch form</span><span class="val">No form on /contact</span>
+    <span class="label">Routing</span><span class="val routing"><span class="pill srini">Srini (CPO)</span> — autonomous-enterprise architecture conversation</span>
+  </div>
+</div>
+
+<!-- Primary Venture Partners -->
+<div class="investor tier2">
+  <div class="investor-head">
+    <div class="name">Primary Venture Partners <span class="partner">— (partner contact TBD)</span></div>
+    <div class="badges"><span class="score">Tier 2 · 80 — promoted from T4</span></div>
+  </div>
+  <div class="meta-row">"Specialized and scaled seed fund" · 2026 thesis: <strong>GTM Tech · AI-powered solutions · Identity security for the agentic era · Computing infrastructure</strong></div>
+  <div class="verified-source">✓ Verified Apr 29 — primary.vc</div>
+  <div class="signals">
+    <span class="label">Thesis fit</span><span class="val"><strong>2026 thesis explicitly includes "GTM Tech" + "AI-powered solutions" + "agentic era"</strong> — direct ConsumerIQ alignment on every dimension</span>
+    <span class="label">Stage match</span><span class="val">✓ Seed-stage specialist</span>
+    <span class="label">FOMO neighbors</span><span class="val fomo"><strong>Tabs (AI-native revenue platform)</strong> in their portfolio — direct B2B-AI-native-platform peer for ConsumerIQ. Lead with this.</span>
+    <span class="label">Portfolio</span><span class="val">Tabs (AI-native revenue), Eos (identity), Etched (compute), Inspiren, 1mind, Maybern, Lyric — multiple AI-native B2B platforms</span>
+    <span class="label">Pitch form</span><span class="val">No form — founders@Primary.vc</span>
+    <span class="label">Routing</span><span class="val routing"><span class="pill harini">Harini</span> primary — GTM Tech thesis maps to marketing-led pitch · <span class="pill srini">Srini</span> for the agentic-era architecture talk</span>
+  </div>
+  <div class="lead-with">
+    <span class="lwl">Lead with this insight</span>
+    <em>"Tabs is in your portfolio — AI-native revenue platform. ConsumerIQ is the same architecture for BevAlc supplier sales. GTM Tech for the agentic era, applied to a $300B vertical."</em>
+  </div>
+</div>
+
+<!-- Greycroft -->
+<div class="investor tier2">
+  <div class="investor-head">
+    <div class="name">Greycroft <span class="partner">— Katherine Power · Marcie Vu, Partners</span></div>
+    <div class="badges">
+      <span class="women-pill">2 female partners</span>
+      <span class="score">Tier 2 · 75 — promoted from T4</span>
+    </div>
+  </div>
+  <div class="meta-row">3 sectors: Software (AI infra/apps), Sustainability, Consumer Brands (food/bev/personal care/pet) · Multi-stage seed→growth · 2 female partners</div>
+  <div class="verified-source">✓ Verified Apr 29 — greycroft.com</div>
+  <div class="signals">
+    <span class="label">Funding activity</span><span class="val">Multi-stage — seed through Series F</span>
+    <span class="label">Stability</span><span class="val">Established multi-fund firm · 2 female partners (Katherine Power Consumer Brands, Marcie Vu joined Sept 2023)</span>
+    <span class="label">Portfolio</span><span class="val">AI: <strong>Contextual AI, Together AI, ConductorOne, Frame AI</strong> (acquired by HubSpot)</span>
+    <span class="label">Thesis fit</span><span class="val">Software thesis includes "foundational models, AI infrastructure, intelligent applications" — fits. Plus Consumer Brands sector includes food/beverage — dual angle.</span>
+    <span class="label">Stage match</span><span class="val">⚠️ Multi-stage; verify they lead seed rounds</span>
+    <span class="label">Routing</span><span class="val routing"><span class="pill gauri">Gauri</span> — bridge between Software AI and Consumer Brands (food/bev) is uniquely her angle · <span class="pill hiral">Hiral</span> if Katherine/Marcie warm tone</span>
+  </div>
+</div>
+
+<!-- Amplify Partners — newly added from spreadsheet T4 -->
+<div class="investor tier2">
+  <div class="investor-head">
+    <div class="name">Amplify Partners <span class="partner">— (partner contact TBD)</span></div>
+    <div class="badges"><span class="score">Tier 2 · 78 — promoted from T4</span></div>
+  </div>
+  <div class="meta-row">Founded 2012 · Early-stage / first investor · "Technical founders building applications, models, tools, infrastructure" · AI/ML + data infra + enterprise software</div>
+  <div class="verified-source">✓ Verified Apr 29 — amplifypartners.com</div>
+  <div class="signals">
+    <span class="label">Funding activity</span><span class="val">Early-stage first-investor focus · 13+ year track record · Notable exits: Datadog, Fastly</span>
+    <span class="label">Stability</span><span class="val">Established 2012 · Multiple proven exits</span>
+    <span class="label">Portfolio</span><span class="val"><strong>Strong AI/ML + data infra cluster:</strong> Runway, Luma, Modal (serverless AI inference), Hightouch (data/AI platform), dbt Labs, Temporal, Chainguard</span>
+    <span class="label">Stage match</span><span class="val">✓ Early-stage / first investor</span>
+    <span class="label">Thesis fit</span><span class="val">"Technical founders building next-gen applications + models + tools + infrastructure" — direct match for ConsumerIQ's agentic-CRM architecture</span>
+    <span class="label">FOMO neighbors</span><span class="val fomo">dbt Labs (data transformation) + Hightouch (data/AI platform) + Modal (serverless AI inference) — 3 direct decision-infra precedents in their portfolio</span>
+    <span class="label">Pitch form</span><span class="val">No form — Menlo Park or SF office contact only</span>
+    <span class="label">Routing</span><span class="val routing"><span class="pill srini">Srini (CPO)</span> — technical-founder pitch · partner sourcing needed via LinkedIn</span>
+  </div>
+</div>
+
+<!-- AI Fund -->
+<div class="investor tier2">
+  <div class="investor-head">
+    <div class="name">AI Fund <span class="partner">— Andrew Ng, Founder</span></div>
+    <div class="badges"><span class="score">Tier 2 · 72 — promoted from T4</span></div>
+  </div>
+  <div class="meta-row">$370M backed · Backed by Sequoia, NEA, Nikkei, AES · "From idea to funded startup in 3 months" · Vertical AI specialist (industry-paired)</div>
+  <div class="verified-source">✓ Verified Apr 29 — aifund.ai</div>
+  <div class="signals">
+    <span class="label">Funding activity</span><span class="val">$370M backing · 6 portfolio companies featured (Workera, Workhelix, Profitmind, Factored, Baseten, ValidMind) — concentrated bets</span>
+    <span class="label">Stability</span><span class="val">Backed by Sequoia, NEA, Nikkei — strong LP base</span>
+    <span class="label">Thesis fit</span><span class="val"><em>"We build AI businesses with entrepreneurs who know their industry inside and out. Deep industry knowledge paired with our AI expertise."</em> — direct match to ConsumerIQ's BevAlc-vertical-AI thesis</span>
+    <span class="label">Stage caveat</span><span class="val warn">⚠️ Hybrid model — they're more of a "venture studio" (idea→funded in 3 months) than traditional VC. Better fit if we frame as a partnership, not a typical investment ask.</span>
+    <span class="label">Pitch form</span><span class="val">"For Founders" page at aifund.ai/build-with-us/ — no direct form URL surfaced</span>
+    <span class="label">Routing</span><span class="val routing"><span class="pill shyam">Shyam</span> founder-to-Andrew-Ng · <span class="pill gauri">Gauri</span> for the BevAlc-deep-knowledge angle</span>
+  </div>
+</div>
+
+<!-- =================================================================== -->
+<h2 class="section">Tier 3 — Watch list <span class="count">(18 investors after promotions)</span></h2>
+<p class="tier-blurb">Possible fit but lower confidence. Pursue if Tier 1+2 doesn't fill the round.</p>
+
+<div class="investor tier3">
+  <div class="investor-head">
+    <div class="name">Sapphire Ventures <span class="partner">— Cathy Gao, Partner (downgraded from T1)</span></div>
+    <div class="badges">
+      <span class="women-pill">5+ female partners</span>
+      <span class="score">Tier 3 · 55 · stage misfit</span>
+    </div>
+  </div>
+  <div class="meta-row">140+ portfolio across 10 countries · LangChain, Glean, DataRobot in portfolio · <strong>EXPANSION-STAGE</strong> — too late for our raise</div>
+  <div class="verified-source">✓ Verified Apr 29 — sapphireventures.com (team + portfolio)</div>
+  <div class="signals">
+    <span class="label">Stage misfit</span><span class="val warn">⚠️ <strong>Targets "expansion-stage enterprise software"</strong> — Sapphire is a growth fund. Unlikely to lead a seed round.</span>
+    <span class="label">Future relevance</span><span class="val">Save for a later round (Series B+). Cathy's "AI-native" thesis is a fit then.</span>
+    <span class="label">Female partners</span><span class="val">Cathy Gao (Investment), Abigail Johnson (COO), Ashley Caldwell (GC), Krupa Vankayala (HR), Cristina Hohlman (CFO) — strong female representation</span>
+    <span class="label">Routing</span><span class="val routing">Hold for later round.</span>
+  </div>
+</div>
+
+<div class="investor tier3">
+  <div class="investor-head">
+    <div class="name">First Bev <span class="partner">— Joseph Angiuli / Bob Nakasone</span></div>
+    <div class="badges"><span class="score">Tier 3 · 55 · verify thesis</span></div>
+  </div>
+  <div class="meta-row">BevAlc-focused · Marked Best Fit but tech-vs-brand orientation unverified</div>
+  <div class="verified-source unverified-source">⚠️ Not directly fetched — verify before outreach</div>
+</div>
+
+<div class="investor tier3">
+  <div class="investor-head">
+    <div class="name">Afore Capital <span class="partner">— Anamitra Banerji / Jack McClelland</span></div>
+    <div class="badges"><span class="score">Tier 3 · 60 · warm-intro required</span></div>
+  </div>
+  <div class="meta-row">Pre-seed specialist · Wants warm intro + LinkedIn + deck PDF</div>
+  <div class="verified-source unverified-source">Notes only · process signal flagged</div>
+</div>
+
+<div class="investor tier3">
+  <div class="investor-head">
+    <div class="name">Precursor Ventures <span class="partner">— Marina Girgis, Principal</span></div>
+    <div class="badges"><span class="score">Tier 3 · 55 · LinkedIn pre-condition</span></div>
+  </div>
+  <div class="meta-row">Team-first lens · LinkedIn-coherence matters · <strong>Clean LinkedIns first per Hiral</strong></div>
+</div>
+
+<div class="investor tier3">
+  <div class="investor-head">
+    <div class="name">AIX Ventures <span class="partner">— Nick Crance</span></div>
+    <div class="badges"><span class="score">Tier 3 · 55</span></div>
+  </div>
+</div>
+
+<div class="investor tier3">
+  <div class="investor-head">
+    <div class="name">Principal Venture Partners <span class="partner">— Karthik Sagar (advisor relationship)</span></div>
+    <div class="badges"><span class="score">Tier 3 · 60 · advisor track</span></div>
+  </div>
+  <div class="meta-row">Karthik is in advisor relationship with Hiral for deck feedback — convert to investment ask after positive feedback</div>
+</div>
+
+<div class="investor tier3">
+  <div class="investor-head">
+    <div class="name">Manna Tree Partners <span class="partner">— Steve Young</span></div>
+    <div class="badges"><span class="score">Tier 3 · 55</span></div>
+  </div>
+</div>
+
+<div class="investor tier3">
+  <div class="investor-head">
+    <div class="name">Verlinvest <span class="partner">— Ken Sadowsky</span></div>
+    <div class="badges"><span class="score">Tier 3 · 55</span></div>
+  </div>
+</div>
+
+<div class="investor tier3">
+  <div class="investor-head">
+    <div class="name">Humble Growth <span class="partner">— Andrew Abraham / Nicholas Giannuzzi</span></div>
+    <div class="badges"><span class="score">Tier 3 · 55</span></div>
+  </div>
+</div>
+
+<div class="investor tier3">
+  <div class="investor-head">
+    <div class="name">KarpReilly <span class="partner">— Dan Burgess</span></div>
+    <div class="badges"><span class="score">Tier 3 · 55</span></div>
+  </div>
+</div>
+
+<div class="investor tier3">
+  <div class="investor-head">
+    <div class="name">Pear VC peers (Soma Capital, Back to Back, Matchbook, Matriarch)</div>
+    <div class="badges"><span class="score">Tier 3 · 50 · low-confidence</span></div>
+  </div>
+  <div class="meta-row">Generic / family-office / lower-fit BevNET attendees — defer to later research</div>
+</div>
+
+<!-- Round 2 promotions to T3 -->
+<div class="investor tier3">
+  <div class="investor-head">
+    <div class="name">Lux Capital <span class="partner">— Deena Shakir, Grace Isford, Lan Jiang, Partners</span></div>
+    <div class="badges">
+      <span class="women-pill">3 female partners</span>
+      <span class="score">Tier 3 · 60 · likely too late-stage</span>
+    </div>
+  </div>
+  <div class="meta-row">Frontier tech · "Sci-fi to sci-fact" thesis · AI portfolio: Sakana AI, Hugging Face, Runway · 3 female partners</div>
+  <div class="verified-source">✓ Verified Apr 29 — luxcapital.com</div>
+  <div class="signals">
+    <span class="label">Stage caveat</span><span class="val warn">⚠️ Mostly later-stage AI portfolio. Likely past our raise stage. Save for Series A+.</span>
+    <span class="label">Female partners</span><span class="val">Strong female representation if we ever route via Gauri/Hiral</span>
+    <span class="label">Routing</span><span class="val routing">Hold for later round.</span>
+  </div>
+</div>
+
+<div class="investor tier3">
+  <div class="investor-head">
+    <div class="name">645 Ventures <span class="partner">— (partner contact TBD)</span></div>
+    <div class="badges"><span class="score">Tier 3 · 60 — promoted from T4</span></div>
+  </div>
+  <div class="meta-row">Seed · Data-driven approach · Recent: Shop Circle ($60M Feb 2025), Cube ($25M Jul 2024), Panther Labs ($1.4B), Overtime ($100M Series D)</div>
+  <div class="verified-source">✓ Verified Apr 29 — 645ventures.com</div>
+  <div class="signals">
+    <span class="label">Thesis</span><span class="val">"AI and data-driven approaches" — uses software to improve seed-stage decisions (per Crunchbase July 2024)</span>
+    <span class="label">Stage match</span><span class="val">✓ Seed</span>
+    <span class="label">Pitch form</span><span class="val">Not visible — careers portal exists but no founder submission</span>
+    <span class="label">Routing</span><span class="val routing"><span class="pill srini">Srini</span> — data-driven framing · partner sourcing needed</span>
+  </div>
+</div>
+
+<div class="investor tier3">
+  <div class="investor-head">
+    <div class="name">AlleyCorp <span class="partner">— Kevin Ryan, Founder</span></div>
+    <div class="badges"><span class="score">Tier 3 · 65 — promoted from T4</span></div>
+  </div>
+  <div class="meta-row">NYC · Pre-seed/seed/select Series A · Diversified Tech, Healthcare, Robotics, Economic Infrastructure · Past wins: MongoDB, Business Insider, Zola, Nomad Health</div>
+  <div class="verified-source">✓ Verified Apr 29 — alleycorp.com</div>
+  <div class="signals">
+    <span class="label">Stage match</span><span class="val">✓ Pre-seed/seed (often first check)</span>
+    <span class="label">Strategic value</span><span class="val">Kevin Ryan is a serial NYC founder (DoubleClick, MongoDB) — operator-investor route</span>
+    <span class="label">Caveat</span><span class="val">Verticals don't explicitly include vertical-AI or BevAlc tech — broader "Diversified Technology" bucket</span>
+    <span class="label">Routing</span><span class="val routing"><span class="pill shyam">Shyam (CEO)</span> founder-to-Kevin Ryan</span>
+  </div>
+</div>
+
+<div class="investor tier3">
+  <div class="investor-head">
+    <div class="name">Collaborative Fund <span class="partner">— (partner contact TBD)</span></div>
+    <div class="badges"><span class="score">Tier 3 · 55 — promoted from T4</span></div>
+  </div>
+  <div class="meta-row">5 sectors: Consumer · AI · Money · Health · Energy · Multi-stage seed→growth · Has Olipop (BevAlc brand) in portfolio</div>
+  <div class="verified-source">✓ Verified Apr 29 — collabfund.com</div>
+  <div class="signals">
+    <span class="label">Thesis fit</span><span class="val">AI sector explicitly includes Phaidra, Highlight, Speak — narrow AI presence. Consumer side includes Olipop (BevAlc brand) — could be useful crossover.</span>
+    <span class="label">Caveat</span><span class="val warn">⚠️ Predominantly consumer/brand investor — risk of being closer to "brand investor" than "tech investor" misfit pattern. Verify before pitching.</span>
+    <span class="label">Routing</span><span class="val routing"><span class="pill gauri">Gauri</span> — Olipop crossover angle</span>
+  </div>
+</div>
+
+<div class="investor tier3">
+  <div class="investor-head">
+    <div class="name">Lerer Hippeau <span class="partner">— (partner contact TBD)</span></div>
+    <div class="badges"><span class="score">Tier 3 · 55 — promoted from T4</span></div>
+  </div>
+  <div class="meta-row">NYC · "Finding founders before they're famous" · Early-stage seed→Series B · Diversified AI / B2B / consumer / health</div>
+  <div class="verified-source">✓ Verified Apr 29 — lererhippeau.com</div>
+  <div class="signals">
+    <span class="label">Thesis</span><span class="val">Diversified — AI for code security, real estate, credit checks · vertical SaaS · B2B</span>
+    <span class="label">Stage match</span><span class="val">✓ Seed-Series B early stage emphasis</span>
+    <span class="label">Pitch form</span><span class="val">No form on homepage</span>
+    <span class="label">Routing</span><span class="val routing">Partner sourcing needed before routing decision</span>
+  </div>
+</div>
+
+<!-- Dispact Ventures — newly added from spreadsheet -->
+<div class="investor tier3">
+  <div class="investor-head">
+    <div class="name">Dispact Ventures <span class="partner">— (partner contact TBD)</span></div>
+    <div class="badges"><span class="score">Tier 3 · 50 · brand-leaning</span></div>
+  </div>
+  <div class="meta-row">"Disrupting industries through impact investing" · Multi-stage (idea → IPO+) · Categories include Beer · Spirits · RTDs · F&amp;B · Tech</div>
+  <div class="verified-source">✓ Verified Apr 29 — dispactventures.com</div>
+  <div class="signals">
+    <span class="label">Thesis caveat</span><span class="val warn">⚠️ Portfolio leans heavily toward beverage <strong>brands</strong> (Empirical, LongDrink, FizzyFox, Kimino) with some tech (SevenRooms hospitality SaaS). Risk of brand-investor-vs-tech-investor mismatch like InvestBev.</span>
+    <span class="label">No AI focus</span><span class="val">"AI" not mentioned anywhere on their site</span>
+    <span class="label">Stage match</span><span class="val">"Idea to IPO" — flexible, but beverage-brand bent dominant</span>
+    <span class="label">Action</span><span class="val">Verify whether they invest in B2B SaaS for the bev industry before pitching. SevenRooms in portfolio = the only tech precedent.</span>
+    <span class="label">Routing</span><span class="val routing">Hold pending thesis verification</span>
+  </div>
+</div>
+
+<div class="investor tier3">
+  <div class="investor-head">
+    <div class="name">BoxGroup <span class="partner">— (partner contact TBD)</span></div>
+    <div class="badges"><span class="score">Tier 3 · 60 — promoted from T4</span></div>
+  </div>
+  <div class="meta-row">NYC + SF · Pre-seed through Series A · Up to $1M per check · "First conversation before company formation" · "Friend in the Room" philosophy</div>
+  <div class="verified-source">✓ Verified Apr 29 — boxgroup.com</div>
+  <div class="signals">
+    <span class="label">Funding activity</span><span class="val">Up to $1M checks · Pre-seed through Series A</span>
+    <span class="label">Stage match</span><span class="val">✓ Pre-seed/seed — exactly our stage</span>
+    <span class="label">Style</span><span class="val">Founder-friendly, "no sharp elbows," collaborative</span>
+    <span class="label">Pitch form</span><span class="val">No form — hello@boxgroup.com</span>
+    <span class="label">Routing</span><span class="val routing"><span class="pill shyam">Shyam (CEO)</span> founder-friendly tone</span>
+  </div>
+</div>
+
+<!-- =================================================================== -->
+<h2 class="section">Likely misfits — verify before outreach <span class="count">(4)</span></h2>
+
+<div class="changes-box" style="margin-bottom: 18px;">
+  <h3>Why these are misfits — the "brand-investor vs tech-investor" distinction</h3>
+  <p style="margin: 4px 0 8px;">There are two different kinds of "BevAlc investors," and they don't overlap:</p>
+  <table style="width: 100%; font-size: 13px; border-collapse: collapse;">
+    <tr style="background: #f9f3e0;">
+      <th style="padding: 6px 10px; text-align: left; border: 1px solid #e6d8b0;">Type of investor</th>
+      <th style="padding: 6px 10px; text-align: left; border: 1px solid #e6d8b0;">What they fund</th>
+      <th style="padding: 6px 10px; text-align: left; border: 1px solid #e6d8b0;">Example portfolio</th>
+    </tr>
+    <tr>
+      <td style="padding: 6px 10px; border: 1px solid #e6d8b0;"><strong>Brand investors</strong></td>
+      <td style="padding: 6px 10px; border: 1px solid #e6d8b0;">Companies that <em>make and sell drinks</em></td>
+      <td style="padding: 6px 10px; border: 1px solid #e6d8b0;">A new whiskey label · a new RTD cocktail line · a distillery · a hard seltzer brand</td>
+    </tr>
+    <tr style="background: #fbfbf8;">
+      <td style="padding: 6px 10px; border: 1px solid #e6d8b0;"><strong>Tech-for-BevAlc investors</strong></td>
+      <td style="padding: 6px 10px; border: 1px solid #e6d8b0;">Companies that <em>build software/tools</em> the BevAlc industry buys to operate</td>
+      <td style="padding: 6px 10px; border: 1px solid #e6d8b0;"><strong>ConsumerIQ</strong> · ALTR (alcohol-removal tech) · FourKites (logistics SaaS for distributors)</td>
+    </tr>
+  </table>
+  <p style="margin: 10px 0 0; font-size: 13px;"><strong>ConsumerIQ is the second kind.</strong> We don't make a drink — we make software that BevAlc companies use. The investors below only fund the first kind (brands), so even though they have "BevAlc" in their domain, they can't evaluate us. <strong>If we pitched, their questions would be wrong:</strong> "What's your shelf velocity? Distribution footprint? Case volume growth?" — none of which apply to a software company.</p>
+  <p style="margin: 8px 0 0; font-size: 13px;"><em>Pitching them wastes a meeting. But their BevAlc operator network is valuable as advisors — that's the alternative use.</em></p>
+</div>
+
+<div class="investor misfit">
+  <div class="investor-head">
+    <div class="name">InvestBev <span class="partner">— Giuseppe Infusino / Brian Rosen</span></div>
+    <div class="badges"><span class="score">Misfit · brand investor</span></div>
+  </div>
+  <div class="verified-source">✓ Verified Apr 29 — investbev.com</div>
+  <div class="signals">
+    <span class="label">Why misfit</span><span class="val warn">InvestBev funds <strong>beverage brands</strong> — companies that make drinks. Their portfolio = SAFE, Lucky Beverage Co (a drinks brand), Registered Distillery One (a distillery), Lofted Custom Spirits. <strong>Not a single software company.</strong> ConsumerIQ is a software company that sells to the beverage industry — different fit profile entirely.</span>
+    <span class="label">Pitch outcome if we did</span><span class="val">They'd ask about shelf velocity, distribution footprint, case volume growth — none of which apply to us. Meeting goes nowhere.</span>
+    <span class="label">Better use of relationship</span><span class="val">Their network of BevAlc operators is genuinely valuable. Move to <strong>advisor track</strong> per Apr 29 framing — they likely know hundreds of supplier sales leaders we'd want as customers.</span>
+    <span class="label">Action</span><span class="val">5-min Harini check on why InvestBev landed on the Best Fit list — likely a misclassification. Then route to <span class="pill gauri">Gauri</span> as advisor relationship, not Hiral as investor.</span>
+  </div>
+</div>
+
+<div class="investor misfit">
+  <div class="investor-head">
+    <div class="name">Siddhi Capital <span class="partner">— Arnulfo Ventura</span></div>
+    <div class="badges"><span class="score">Misfit · brand investor</span></div>
+  </div>
+  <div class="verified-source">✓ Verified Apr 29 — siddhicapital.co</div>
+  <div class="signals">
+    <span class="label">Why misfit</span><span class="val warn">Siddhi describes itself as <em>"operationally-focused food and beverage growth equity"</em> investing in <em>"CPG and food companies."</em> Same profile as InvestBev — they fund the brands (the drinks), not the software the brands buy.</span>
+    <span class="label">Warm signal preserved</span><span class="val">They already know ConsumerIQ via the Sid newsletter — that surface area is worth keeping warm even without an investment ask.</span>
+    <span class="label">Better use of relationship</span><span class="val">Same as InvestBev: their portfolio companies are potential ConsumerIQ <strong>customers</strong>, not investors. Pitch the product to their CPG portfolio, not the fund.</span>
+  </div>
+</div>
+
+<div class="investor misfit">
+  <div class="investor-head">
+    <div class="name">Stephen White <span class="partner">— Self-employed industry advisor</span></div>
+    <div class="badges"><span class="score">Misfit · advisor track</span></div>
+  </div>
+  <div class="meta-row">Not a fund at all — listed in the spreadsheet as "Self-employed / Industry Advisor." Move to advisor track (Gauri's territory) per Apr 29 framing.</div>
+</div>
+
+<div class="investor misfit">
+  <div class="investor-head">
+    <div class="name">Thirsty Insights <span class="partner">— Matt Rice, Founder</span></div>
+    <div class="badges"><span class="score">Misfit · advisor track</span></div>
+  </div>
+  <div class="meta-row">Not a fund — Matt Rice's advisory firm for emerging beverage-alcohol brands. Per spreadsheet notes: he is connected to Brian Frank (FTW Ventures). Move to advisor track. Could also be a useful warm-path conduit to Brian at FTW.</div>
+</div>
+
+<!-- =================================================================== -->
+<h2 class="section">New similar investors — suggested by direction <span class="count">(8 across 4 directions + 1 bonus)</span></h2>
+<p class="tier-blurb">Each entry tagged with explicit direction. All real-data, fetched today. Not in the original spreadsheet.</p>
+
+<div class="direction-banner">Direction 1: Vertical AI funds we don't have yet</div>
+<div class="investor new">
+  <div class="investor-head">
+    <div class="name">Conviction <span class="partner">— Sarah Guo, Founder</span></div>
+    <div class="badges"><span class="women-pill">Female-founded</span><span class="score">New T1 · Vertical AI</span></div>
+  </div>
+  <div class="meta-row">See full entry under Tier 1 above (promoted from spreadsheet's firm-only list)</div>
+</div>
+<div class="investor new">
+  <div class="investor-head">
+    <div class="name">Radical Ventures <span class="partner">— (Toronto AI partner TBD)</span></div>
+    <div class="badges"><span class="score">New T1 · Vertical AI</span></div>
+  </div>
+  <div class="meta-row">See full entry under Tier 1 above (promoted from spreadsheet's firm-only list)</div>
+</div>
+
+<div class="direction-banner">Direction 2: Decision Intelligence / Data Infrastructure</div>
+<div class="investor new">
+  <div class="investor-head">
+    <div class="name">Costanoa Ventures</div>
+    <div class="badges"><span class="score">New T2 · Decision Intel</span></div>
+  </div>
+  <div class="meta-row">SF/Palo Alto · Multi-stage (early through Series B+) · Vertical SaaS + data infrastructure focus</div>
+  <div class="verified-source">✓ Verified Apr 29 — costanoa.vc</div>
+  <div class="signals">
+    <span class="label">Thesis fit</span><span class="val">Sectors: Enterprise software + data infrastructure + healthcare tech + security · vertical SaaS applications · <strong>direct decision-intelligence neighbor</strong></span>
+    <span class="label">Portfolio</span><span class="val">Visible: <strong>Alation</strong> (data catalog), Shepherd, Lively, StackHawk, Vannevar Labs, Muon Space, SGNL — Alation is closest decision-infra precedent</span>
+    <span class="label">Stage</span><span class="val">Multi-stage; founders mention "every phase of company building"</span>
+    <span class="label">Female partners</span><span class="val">"Female partners are represented" — specific names not surfaced on homepage; verify on team page</span>
+    <span class="label">Routing</span><span class="val routing"><span class="pill srini">Srini</span> — Alation is the FOMO neighbor for the architecture pitch</span>
+  </div>
+</div>
+<div class="investor new">
+  <div class="investor-head">
+    <div class="name">Boldstart Ventures</div>
+    <div class="badges"><span class="score">Now T2 · Decision Intel</span></div>
+  </div>
+  <div class="meta-row">See full entry under <strong>Tier 2 — Round 2 promotions</strong> above. Verified: $250M Fund VII (July 2025) · "AI-native infrastructure + autonomous enterprise" thesis · Snyk, Clay, Protect AI, CrewAI in portfolio.</div>
+</div>
+
+<div class="direction-banner">Direction 3: BevAlc-tech specialists (rare)</div>
+<div class="investor new">
+  <div class="investor-head">
+    <div class="name">S2G Investments (formerly S2G Ventures)</div>
+    <div class="badges"><span class="score">New T3 · BevAlc-tech · stage misfit</span></div>
+  </div>
+  <div class="meta-row">100+ portfolio companies · <strong>Late-stage / growth-stage</strong> · Food/Ag investments</div>
+  <div class="verified-source">✓ Verified Apr 29 — s2ginvestments.com</div>
+  <div class="signals">
+    <span class="label">Stage misfit</span><span class="val warn">⚠️ Late-stage venture and growth-stage. Likely too late for our raise. Save for Series B+.</span>
+    <span class="label">Thesis fit</span><span class="val">Food/Ag focus — possibly tech-aligned in some bets but not B2B-SaaS-pure</span>
+    <span class="label">Action</span><span class="val">Hold for later round.</span>
+  </div>
+</div>
+<div class="investor new">
+  <div class="investor-head">
+    <div class="name">AccelFoods (Accel Foods)</div>
+    <div class="badges"><span class="score">New T3 · BevAlc-tech · research</span></div>
+  </div>
+  <div class="meta-row">Food &amp; beverage focused early-stage VC</div>
+  <div class="verified-source unverified-source">⚠️ Did not directly fetch — accelfoods.com page returned empty content. Verify via Crunchbase/LinkedIn.</div>
+  <div class="signals">
+    <span class="label">Reputation</span><span class="val">Publicly known as F&amp;B brand-focused — unclear if they invest in B2B tech. Probably brand-only similar to InvestBev.</span>
+    <span class="label">Action</span><span class="val">Verify thesis before outreach.</span>
+  </div>
+</div>
+
+<div class="direction-banner">Direction 4: Women-led firms (Gauri/Hiral routing fit)</div>
+<div class="investor new">
+  <div class="investor-head">
+    <div class="name">Cowboy Ventures <span class="partner">— Aileen Lee, Founder</span></div>
+    <div class="badges"><span class="women-pill">Women-led</span><span class="score">New T2 · Women-led</span></div>
+  </div>
+  <div class="meta-row">Palo Alto · Seed-focused · 70%+ pre-product investments · Sectors include "Vertical Software"</div>
+  <div class="verified-source">✓ Verified Apr 29 — cowboy.vc</div>
+  <div class="signals">
+    <span class="label">Funding activity</span><span class="val">100+ seed-to-Series-A graduation rate · ~70% pre-product · Sectors: Enterprise, Fintech, Software Infra, Healthcare, Consumer, Future of Work, <strong>Vertical Software</strong></span>
+    <span class="label">Stability</span><span class="val">Established 2012 · Aileen Lee coined the term "unicorn" · multi-fund</span>
+    <span class="label">Stage match</span><span class="val">✓ Seed</span>
+    <span class="label">Thesis fit</span><span class="val">"Vertical Software" sector explicitly listed</span>
+    <span class="label">Pitch form</span><span class="val">Not described — hello@cowboy.vc</span>
+    <span class="label">Routing</span><span class="val routing"><span class="pill gauri">Gauri</span> primary — female-to-female warm tone · <span class="pill hiral">Hiral</span> secondary</span>
+  </div>
+  <div class="lead-with">
+    <span class="lwl">Lead with this insight</span>
+    <em>"Vertical Software for BevAlc supplier sales — a $300B vertical that's never had AI-native infrastructure. We're early enough to fit your pre-product conviction style."</em>
+  </div>
+</div>
+<div class="investor new">
+  <div class="investor-head">
+    <div class="name">BBG Ventures</div>
+    <div class="badges"><span class="women-pill">Women-led</span><span class="score">New T3 · Women-led · weak fit</span></div>
+  </div>
+  <div class="meta-row">Backs underestimated/female founders · Sectors: healthcare, education, media, consumer, wellness</div>
+  <div class="verified-source">✓ Verified Apr 29 — bbgventures.com</div>
+  <div class="signals">
+    <span class="label">Thesis fit</span><span class="val warn">⚠️ Sector list does NOT include B2B SaaS or vertical AI. Probably not fit unless ConsumerIQ pitched as "underestimated founders" angle.</span>
+    <span class="label">Action</span><span class="val">Skip unless Hiral wants female-founder community signal.</span>
+  </div>
+</div>
+
+<!-- Bonus: Forerunner Ventures -->
+<div class="direction-banner">Bonus: Forerunner Ventures (women-led + AI infrastructure mention)</div>
+<div class="investor new">
+  <div class="investor-head">
+    <div class="name">Forerunner Ventures <span class="partner">— Kirsten Green, Founder</span></div>
+    <div class="badges"><span class="women-pill">Women-led</span><span class="score">New T3 · Consumer-focus · weak fit</span></div>
+  </div>
+  <div class="meta-row">Earliest-stages · "AI infrastructure and applications" mentioned · Initial checks $1M–$15M · Portfolio: Glossier, Chime, Hims, Oura, webAI, Speechify, SlingshotAI, Casa, Farmer's Dog</div>
+  <div class="verified-source">✓ Verified Apr 29 — forerunnerventures.com + /connect page</div>
+  <div class="signals">
+    <span class="label">Thesis fit</span><span class="val warn">⚠️ Heavy consumer DTC focus — Glossier/Chime/Hims. Less clear on B2B vertical SaaS fit.</span>
+    <span class="label">Stage match</span><span class="val">"Earliest stages, when conviction matters more than consensus" · $1M–$15M initial checks · fits</span>
+    <span class="label">Cold-friendly email</span><span class="val">No form, but they explicitly invite cold pitches: <strong>investments@forerunnerventures.com</strong> with "brief description + investor pitch materials." They commit to reviewing all submissions.</span>
+    <span class="label">Routing</span><span class="val routing"><span class="pill gauri">Gauri</span> if Kirsten Green-warm-path · likely lower priority than Cowboy</span>
+  </div>
+</div>
+
+<!-- =================================================================== -->
+<h2 class="section">Tier 4 — Still un-researched <span class="count">(8 remaining after Round 2)</span></h2>
+<p class="tier-blurb">Round 2 research promoted 16 firms out of Tier 4 into Tier 1/2/3. The 8 below either had unreachable websites or insufficient public detail to score. Hiral to source partner names + thesis-fit checks before pitching.</p>
+
+<div class="compact-list">
+  <div class="firm-only"><span class="name">Neo (Ali Partovi)</span><span class="speculation">Seed AI · founder-led · website unfetchable today</span><span class="ask">find via LinkedIn</span></div>
+  <div class="firm-only"><span class="name">IA Ventures</span><span class="speculation">Data/AI specialist · NYC · iaventures.com returns minimal content</span><span class="ask">strong potential — find via Crunchbase</span></div>
+  <div class="firm-only"><span class="name">Daybreak Ventures</span><span class="speculation">Unknown thesis</span><span class="ask">research</span></div>
+  <div class="firm-only"><span class="name">Belief Capital</span><span class="speculation">Unknown thesis · website returns minimal</span><span class="ask">research</span></div>
+  <div class="firm-only"><span class="name">Nordic Web Ventures</span><span class="speculation">Stockholm B2B SaaS</span><span class="ask">geo fit?</span></div>
+  <div class="firm-only"><span class="name">FirstMark Capital</span><span class="speculation">NYC enterprise + consumer · cert error today</span><span class="ask">find vertical-AI partner</span></div>
+  <div class="firm-only"><span class="name">Almanac Insights</span><span class="speculation">Unknown thesis · connection refused</span><span class="ask">research</span></div>
+  <div class="firm-only"><span class="name">Blue Scorpion Investments</span><span class="speculation">Unknown thesis</span><span class="ask">research</span></div>
+</div>
+
+<div class="changes-box" style="margin-top: 18px;">
+  <h3>Round 2 outcome — Tier 4 has shrunk from 24 → 8</h3>
+  <p style="margin: 4px 0;"><strong>Promoted to Tier 1:</strong> Conviction, Radical Ventures, 2048 Ventures (3 firms)</p>
+  <p style="margin: 4px 0;"><strong>Promoted to Tier 2:</strong> Hustle Fund, Work-Bench, Boldstart, Primary Venture Partners, Greycroft, AI Fund, Amplify Partners (7 firms)</p>
+  <p style="margin: 4px 0;"><strong>Promoted to Tier 3:</strong> Lux Capital, 645 Ventures, AlleyCorp, Collaborative Fund, Lerer Hippeau, BoxGroup (6 firms)</p>
+  <p style="margin: 4px 0;"><strong>Still un-researched:</strong> 8 firms above (websites unreachable or content insufficient)</p>
+  <p style="margin: 8px 0 0; font-size: 13px;"><em>Net: spreadsheet went from 24 firm-only entries to 15 fully scored + 8 still pending. Round 2 added 4 new pitch forms (Hustle Fund, 1984, 2048, Bain), bringing total verified open submission paths to <strong>7 forms + 1 cold-friendly email</strong>.</em></p>
+</div>
+
+<!-- =================================================================== -->
+<div class="footer-notes">
+  <h3>Methodology — what was actually verified</h3>
+  <ul>
+    <li><strong>35 web fetches today (Apr 29):</strong> 11 Tier 1 firms (≥1 page each), 11 Tier 2 firms, 4 new-direction candidates, plus several retries. All with green ✓ "Verified Apr 29" stamp on each entry.</li>
+    <li><strong>Spreadsheet notes (Harini/Hiral first-party):</strong> direct quotes pulled where available. Marked "Notes only · unverified" if no fetch backed it.</li>
+    <li><strong>General-knowledge inferences flagged with red ⚠️</strong> on the few entries where fetch failed (Döhler, Distill, Convivialite connection refused; Insight Partners team page not retrievable).</li>
+  </ul>
+
+  <h3>Verified pitch-submission paths (submit this week) — 7 forms + 1 cold-friendly email</h3>
+  <ol style="margin: 4px 0 14px 18px">
+    <li><strong>Hustle Fund</strong> — <a href="https://hustlefund.typeform.com/to/UGTnIt">hustlefund.typeform.com</a> · <em>"Decision within 1–2 meetings, wire within the week." Fastest cycle on the list.</em></li>
+    <li><strong>2048 Ventures</strong> — <a href="https://airtable.com/appV89PYGo3zN47f9/pagNjeYwHGADSGIs3/form">Airtable form</a> · <em>10-day decision (Pre-Seed Fast Track) · 100% pitch review · no warm intro · Vertical AI thesis · NPS 100.</em></li>
+    <li><strong>1984 Ventures</strong> — <a href="https://apply.1984.vc">apply.1984.vc</a> · <em>"No warm intro needed" · 72-hour decision turnaround.</em></li>
+    <li><strong>Pranatech</strong> — <a href="https://prana.decilehub.com/submit_your_company">prana.decilehub.com/submit_your_company</a> (Decile Hub)</li>
+    <li><strong>Bluestein Ventures</strong> — <a href="https://airtable.com/appk5HEKHSqGSmgQq/pagXaLCPRpGln7LkD/form">Airtable form</a></li>
+    <li><strong>Bonfire Ventures</strong> — <a href="https://yikdukb5nck.typeform.com/to/Tze30ymM">Typeform submission</a></li>
+    <li><strong>Bain Capital Ventures</strong> — <a href="https://www.baincapitalventures.com/contact">/contact form with "Seeking Investment" topic</a> · soft path, parallel to Sophia warm intro</li>
+    <li><strong>Forerunner Ventures</strong> — cold email at <code>investments@forerunnerventures.com</code> · explicitly cold-friendly</li>
+  </ol>
+  <p style="margin-top:6px"><em>Submit all 7 in week 1. These are the lowest-friction paths and have varying response speeds — Hustle Fund being the fastest on the list.</em></p>
+  <p style="margin-top:6px;"><strong>Why only 7 forms (out of 50+ investors researched across 2 rounds + T4 deep-research):</strong> Most VC firms gate intake behind warm intros — that's the norm. They don't publish forms because they don't want cold submissions clogging the pipeline. The 7 above are the ones that explicitly invite cold submissions, which is unusual and good for us.</p>
+  <p style="margin-top:6px;"><strong>Confirmed-no-form (round-2 verified):</strong> Foundation Capital, Conviction, Radical Ventures, Pear VC, Cowboy Ventures, Khosla, Sapphire, Insight Partners, Salesforce Ventures, AIX Ventures, Tau Ventures, BoxGroup, Lerer Hippeau, Boldstart, 645 Ventures, Costanoa — all return 404 on /contact, /submit, /apply, or /pitch. For these, the path is LinkedIn DM or warm intro to a specific partner.</p>
+  <p style="margin-top:6px;"><strong>Antler caveat:</strong> They have an <a href="https://www.antler.co/apply">/apply page</a> but it's for their <em>residency program</em> (pre-formation founders matching with co-founders to start a company). ConsumerIQ is post-formation, so /apply isn't the right path — McKenzie warm intro is.</p>
+
+  <h3>Top 10 outreaches this week (final recommendation, ordered by reply-speed × thesis-fit)</h3>
+  <ol style="margin: 4px 0 14px 18px">
+    <li><strong>2048 Ventures</strong> — <a href="https://airtable.com/appV89PYGo3zN47f9/pagNjeYwHGADSGIs3/form">Airtable form</a> · <span class="pill shyam">Shyam</span> · <em>10-day decision · 100% review · vertical-AI thesis · Pocket + Broome AI are direct architecture peers</em></li>
+    <li><strong>Hustle Fund</strong> — <a href="https://hustlefund.typeform.com/to/UGTnIt">Typeform</a> · <span class="pill shyam">Shyam</span> + <span class="pill gauri">Gauri</span> · <em>1–2 meetings → wire within week. Fastest cycle.</em></li>
+    <li><strong>1984 Ventures</strong> — <a href="https://apply.1984.vc">apply.1984.vc</a> · <span class="pill shyam">Shyam</span> · <em>72-hour decision, no warm intro</em></li>
+    <li><strong>Pranatech — Vinay Nathan</strong> — in-person at AI Hub + <a href="https://prana.decilehub.com/submit_your_company">Decile form</a> · <span class="pill shyam">Shyam</span></li>
+    <li><strong>Foundation Capital — Jaya Gupta</strong> — LinkedIn DM, context-graph hook · <span class="pill srini">Srini</span></li>
+    <li><strong>Conviction — Sarah Guo</strong> — LinkedIn DM, No Priors podcast hook · <span class="pill gauri">Gauri</span></li>
+    <li><strong>Primary Venture Partners</strong> — email founders@primary.vc · <span class="pill harini">Harini</span> · <em>Tabs (AI-native revenue platform) is direct architectural peer in their portfolio</em></li>
+    <li><strong>Bluestein — Ashley Hartman</strong> — <a href="https://airtable.com/appk5HEKHSqGSmgQq/pagXaLCPRpGln7LkD/form">Airtable form</a> · <span class="pill gauri">Gauri</span></li>
+    <li><strong>Bonfire Ventures</strong> — <a href="https://yikdukb5nck.typeform.com/to/Tze30ymM">Typeform</a> · <span class="pill srini">Srini</span></li>
+    <li><strong>Bain Capital Ventures</strong> — <a href="https://www.baincapitalventures.com/contact">Seeking Investment form</a> + Sophia warm intro · <span class="pill hiral">Hiral</span> + <span class="pill srini">Srini</span></li>
+  </ol>
+
+  <h3>Known limitations / next-pass targets</h3>
+  <ul>
+    <li>Within-firm partner mapping for multi-partner funds (Foundation, Sapphire, Khosla) — confirm right GP per fund.</li>
+    <li>Fetch retries for Döhler / Distill / Convivialite (connections refused today).</li>
+    <li>Source contacts for the 20+ Tier 4 firm-only entries.</li>
+    <li>Recent-posts mining: pull last-30-day LinkedIn posts per Tier-1 partner before outreach so the message can reference their own thinking.</li>
+    <li>Warm-path graph: layer LinkedIn-mutuals data over this list once Apollo/LinkedIn ingest lands.</li>
+  </ul>
+</div>
+
+</div>
+</body>
+</html>
