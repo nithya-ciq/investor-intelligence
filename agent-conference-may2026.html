@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Agent Conference 2026 — Cross-Match Brief · ConsumerIQ</title>
+<style>
+  * { box-sizing: border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    background: #faf9f7;
+    color: #1a1a1a;
+    margin: 0;
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+  }
+  .wrap { max-width: 1180px; margin: 0 auto; padding: 32px 28px 80px; }
+  header.top {
+    border-bottom: 1px solid #e6e2dc;
+    padding-bottom: 18px;
+    margin-bottom: 28px;
+  }
+  header.top .eyebrow {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 1.2px;
+    color: #4a6b9a;
+    font-weight: 600;
+  }
+  header.top h1 {
+    margin: 6px 0 4px;
+    font-size: 28px;
+    font-weight: 600;
+    letter-spacing: -0.4px;
+  }
+  header.top .meta { font-size: 13px; color: #6c6760; }
+  header.top .meta a { color: #4a6b9a; }
+
+  .verdict {
+    background: #fff;
+    border: 1px solid #e6e2dc;
+    border-radius: 10px;
+    padding: 20px 24px;
+    margin: 0 0 28px;
+  }
+  .verdict h2 {
+    margin: 0 0 8px;
+    font-size: 16px;
+    color: #5b8a3a;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: 600;
+  }
+  .verdict p { margin: 0 0 8px; }
+  .verdict p:last-child { margin-bottom: 0; }
+
+  .conf-meta {
+    background: #f3f5fb;
+    border-left: 4px solid #4a6b9a;
+    padding: 16px 20px;
+    margin-bottom: 28px;
+    border-radius: 4px;
+    font-size: 14px;
+  }
+  .conf-meta h3 { margin: 0 0 8px; font-size: 14px; color: #2c4d80; }
+  .conf-meta dl { margin: 4px 0 0; display: grid; grid-template-columns: 130px 1fr; gap: 4px 14px; }
+  .conf-meta dt { color: #6c6760; font-weight: 500; font-size: 12px; text-transform: uppercase; letter-spacing: 0.4px; }
+  .conf-meta dd { margin: 0; }
+
+  h2.section {
+    font-size: 20px;
+    font-weight: 600;
+    margin: 36px 0 14px;
+    border-bottom: 2px solid #1a1a1a;
+    padding-bottom: 6px;
+    letter-spacing: -0.3px;
+  }
+  h2.section .count {
+    font-size: 13px;
+    color: #6c6760;
+    font-weight: 400;
+    margin-left: 8px;
+  }
+  .section-blurb { font-size: 13px; color: #6c6760; font-style: italic; margin: -8px 0 16px; }
+
+  .target {
+    background: #fff;
+    border: 1px solid #e6e2dc;
+    border-radius: 8px;
+    padding: 16px 18px;
+    margin-bottom: 12px;
+  }
+  .target.priority1 { border-left: 4px solid #5b8a3a; }
+  .target.priority2 { border-left: 4px solid #b48f3a; }
+  .target.priority3 { border-left: 4px solid #8b8985; }
+
+  .target-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 6px;
+  }
+  .target-head .name { font-size: 17px; font-weight: 600; }
+  .target-head .name .person { font-weight: 400; color: #6c6760; font-size: 14px; margin-left: 6px; }
+  .target-head .badge {
+    font-size: 11px;
+    background: #1a1a1a;
+    color: #fff;
+    padding: 3px 10px;
+    border-radius: 12px;
+    font-weight: 500;
+    letter-spacing: 0.4px;
+  }
+  .target.priority1 .badge { background: #5b8a3a; }
+  .target.priority2 .badge { background: #b48f3a; }
+  .target.priority3 .badge { background: #8b8985; }
+
+  .target .meta-row { font-size: 12.5px; color: #6c6760; margin-bottom: 8px; }
+  .target .signals {
+    display: grid;
+    grid-template-columns: 130px 1fr;
+    gap: 4px 14px;
+    font-size: 13.5px;
+    margin-top: 6px;
+  }
+  .target .label {
+    color: #6c6760;
+    font-weight: 500;
+    text-transform: uppercase;
+    font-size: 11px;
+    letter-spacing: 0.4px;
+    padding-top: 2px;
+  }
+  .target .val { color: #1a1a1a; }
+  .target .val.brief-link {
+    background: #f3f5fb;
+    padding: 4px 8px;
+    border-radius: 4px;
+    border-left: 2px solid #4a6b9a;
+  }
+  .pill { display: inline-block; padding: 1px 8px; border-radius: 10px; font-size: 11px; font-weight: 500; letter-spacing: 0.3px; margin-right: 4px; }
+  .pill.shyam { background: #e8eef9; color: #2c4d80; }
+  .pill.srini { background: #ede4f6; color: #5a3a86; }
+  .pill.gauri { background: #f9ebe4; color: #8a4520; }
+  .pill.hiral { background: #e4f3ee; color: #2d6a4f; }
+  .pill.harini { background: #faf2dc; color: #7a5d10; }
+
+  .lead-with {
+    background: #f4f8f2;
+    border-left: 3px solid #5b8a3a;
+    padding: 10px 14px;
+    margin-top: 10px;
+    border-radius: 4px;
+    font-size: 13.5px;
+  }
+  .lead-with .lwl {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.6px;
+    color: #5b8a3a;
+    font-weight: 600;
+    margin-bottom: 3px;
+    display: block;
+  }
+  .lead-with em { color: #1a1a1a; font-style: italic; }
+
+  .pre-event-checklist {
+    background: #fdf6e8;
+    border-left: 4px solid #b48f3a;
+    padding: 16px 20px;
+    margin: 28px 0;
+    border-radius: 4px;
+  }
+  .pre-event-checklist h3 { margin: 0 0 10px; font-size: 14px; color: #6b4f15; }
+  .pre-event-checklist table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  .pre-event-checklist th { text-align: left; padding: 6px 8px; font-size: 11.5px; text-transform: uppercase; letter-spacing: 0.4px; color: #6c6760; border-bottom: 1px solid #e6d8b0; }
+  .pre-event-checklist td { padding: 8px; border-bottom: 1px solid #f0ede5; vertical-align: top; }
+  .pre-event-checklist .deadline { color: #b85a4d; font-weight: 600; font-size: 12px; }
+
+  .similar-not-attending {
+    background: #fff;
+    border: 1px solid #e6e2dc;
+    border-radius: 8px;
+    padding: 16px 20px;
+    margin: 24px 0;
+  }
+  .similar-not-attending h3 { margin: 0 0 8px; font-size: 14px; }
+  .similar-not-attending p { margin: 0 0 8px; font-size: 13px; }
+
+  .footer-notes {
+    margin-top: 40px;
+    padding-top: 24px;
+    border-top: 1px solid #e6e2dc;
+    font-size: 12.5px;
+    color: #6c6760;
+  }
+  .footer-notes h3 { color: #1a1a1a; font-size: 13px; margin: 0 0 8px; }
+  .footer-notes ul { margin: 4px 0 14px 18px; padding: 0; }
+  .footer-notes li { margin-bottom: 3px; }
+
+  .legend {
+    display: flex;
+    gap: 14px;
+    flex-wrap: wrap;
+    font-size: 12px;
+    margin-bottom: 18px;
+  }
+  .legend .item { display: flex; align-items: center; gap: 5px; color: #6c6760; }
+  .legend .swatch { display: inline-block; width: 10px; height: 10px; border-radius: 2px; }
+
+  a { color: #4a6b9a; }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header class="top">
+  <div class="eyebrow">Event Cross-Match Brief — Hybrid (Event × Investor × Customer Intelligence)</div>
+  <h1>The Agent Conference 2026 — Target list for Shyam &amp; Srini</h1>
+  <div class="meta">May 4-5, 2026 · NYC · Cross-referenced against <a href="./index.html">investor-intelligence-brief</a> v3.3 · Drafted Apr 30, 2026</div>
+</header>
+
+<div class="verdict">
+  <h2>Verdict — GO</h2>
+  <p><strong>This event is on-thesis for ConsumerIQ in a way CBC wasn't.</strong> The Agent Conference's three tracks — <strong>Agentic Enterprises, Agentic Engineering, Agentic Industries</strong> — are exactly ConsumerIQ's frame. Whereas at CBC we'd be a software vendor among brand operators, here we'd be one of the on-pattern companies in the room.</p>
+  <p>Three priority outcomes worth justifying the trip on their own:</p>
+  <ol style="margin: 0 0 0 18px; padding: 0;">
+    <li><strong>Jai Das (Sapphire)</strong> — start the relationship for Series B+ even though Sapphire is stage-misfit for our current raise</li>
+    <li><strong>Joe Moura (CrewAI)</strong> — direct architectural peer (Insight Partners portfolio); potential advisor relationship</li>
+    <li><strong>Brett Gibson (Initialized Capital)</strong> — newly added to investor brief at <strong>Tier 1 · 82</strong>; seed-stage specialist; in-person founder-to-founder meet</li>
+  </ol>
+  <p>Plus 2 net-new investor pipeline additions (Notable Capital, Georgian) and access to architectural FOMO neighbors (CrewAI, Glean) for advisor pursuit.</p>
+</div>
+
+<div class="conf-meta">
+  <h3>Event details</h3>
+  <dl>
+    <dt>Dates</dt><dd>May 4-5, 2026 (Mon-Tue)</dd>
+    <dt>Location</dt><dd>New York Hilton Midtown, NYC · in-person</dd>
+    <dt>URL</dt><dd><a href="https://www.agentconference.com/" target="_blank">agentconference.com</a></dd>
+    <dt>Tracks</dt><dd>Agentic Enterprises · Agentic Engineering · Agentic Industries</dd>
+    <dt>Speakers</dt><dd>200+ confirmed (Chief AI Officers, AI Founders/CTOs, Tech Leaders, VCs, Media)</dd>
+    <dt>Top sponsors</dt><dd>Diamond: Bright Data · Strategic: NYSE Wired, theCUBE · Gold: Chargebee, DataRobot, Fetch.ai, Rasa · Silver: Databricks, Cockroach Labs, New Relic, CircleCI</dd>
+    <dt>Audience</dt><dd>"Chief AI &amp; Innovation Officers · C-Suite &amp; Senior Executives · AI Engineers &amp; Technologists · Founders · Product Leaders · VC / Investors"</dd>
+  </dl>
+</div>
+
+<div class="legend">
+  <div class="item"><span class="swatch" style="background:#5b8a3a"></span>Priority 1 — Pre-arrange in-person meet</div>
+  <div class="item"><span class="swatch" style="background:#b48f3a"></span>Priority 2 — Worth pursuing if access</div>
+  <div class="item"><span class="swatch" style="background:#8b8985"></span>Priority 3 — Opportunistic / relationship-build</div>
+</div>
+
+<!-- ═══════════════════════════════════════ INVESTORS ═══════════════════════════════════════ -->
+<h2 class="section">Investors at the conference <span class="count">(4 confirmed speakers)</span></h2>
+<p class="section-blurb">Cross-referenced against the investor-intelligence brief. Each entry shows tier from main brief + conference-specific routing.</p>
+
+<div class="target priority1">
+  <div class="target-head">
+    <div class="name">Initialized Capital <span class="person">— Brett Gibson, Managing Partner (speaking)</span></div>
+    <div class="badge">P1 · NEW · Tier 1 · 82</div>
+  </div>
+  <div class="meta-row">Seed-stage specialist · 28 unicorns historically · Garry Tan founded (now YC President, here as Board Partner) · Kim-Mai Cutler + Zoe Perret female partners</div>
+  <div class="signals">
+    <span class="label">Why P1</span><span class="val"><strong>Best stage match of any investor at this event.</strong> Initialized leads seed rounds, has 2 female partners (Gauri/Hiral routing), and recent 2026 deals (10x Science, Alien, Bland Co) confirm active deployment at exactly our raise stage.</span>
+    <span class="label">Cross-link</span><span class="val brief-link">See <a href="./index.html#initialized-capital">full Tier 1 entry</a> in main investor brief — added today (Apr 30) from this conference signal</span>
+    <span class="label">Routing</span><span class="val"><span class="pill shyam">Shyam (CEO)</span> primary — founder-to-founder · <span class="pill gauri">Gauri</span> if Kim-Mai or Zoe is the warmer route</span>
+    <span class="label">Pre-event</span><span class="val">DM Brett by May 1 referencing Initialized's seed-stage thesis + ConsumerIQ's agentic-CRM frame. Aim to lock 15-min coffee at the Hilton.</span>
+  </div>
+  <div class="lead-with">
+    <span class="lwl">Lead with this insight</span>
+    <em>"You're speaking at Agent Conference on agentic AI. We're an agentic CRM for BevAlc supplier sales — multi-agent architecture in a $300B vertical that's never had decision infra. 15-min coffee at the Hilton during the conference?"</em>
+  </div>
+</div>
+
+<div class="target priority1">
+  <div class="target-head">
+    <div class="name">Sapphire Ventures <span class="person">— Jai Das, President + Partner (speaking)</span></div>
+    <div class="badge">P1 · Tier 3 · 55 (in main brief)</div>
+  </div>
+  <div class="meta-row">President + Partner · Heavy AI-native portfolio (LangChain, Glean, DataRobot) · Stage = expansion; too late for our raise BUT relationship is worth starting now for Series B+</div>
+  <div class="signals">
+    <span class="label">Why P1 (despite stage misfit)</span><span class="val">Shyam's note in main brief flagged Cathy Gao's "AI-native companies become core to how work gets done" thesis as a clean fit. Sapphire is too late stage for our seed raise — but Jai Das is the firm's President + Partner, and starting the relationship in person at an aligned conference is far better than a cold-email when we're at Series B+.</span>
+    <span class="label">Cross-link</span><span class="val brief-link">See <a href="./index.html#sapphire-ventures">Sapphire's Tier 3 entry</a> in main brief — confirmed expansion-stage</span>
+    <span class="label">Routing</span><span class="val"><span class="pill shyam">Shyam (CEO)</span> · "early relationship build, not pitch this round"</span>
+    <span class="label">Pre-event</span><span class="val">Don't pitch the round. Lead with: "we're aware Sapphire is expansion-stage; we'd just like to introduce ourselves as an emerging vertical-AI company."</span>
+  </div>
+</div>
+
+<div class="target priority2">
+  <div class="target-head">
+    <div class="name">Notable Capital <span class="person">— Hans Tung, Partner (speaking)</span></div>
+    <div class="badge">P2 · NEW · Tier 3 · 60</div>
+  </div>
+  <div class="meta-row">Formerly GGV Capital US · $5B AUM · 32 IPOs · 25-year track record · 3 female partners · Series A → Series F multi-stage</div>
+  <div class="signals">
+    <span class="label">Why P2</span><span class="val">Notable's portfolio is heavily AI-aligned (Anthropic, fal, Wispr Flow, Lindy, Vercel). Hans Tung is a senior partner. Trip ROI = high if the relationship starts now even though stage-fit is for Series A+ at minimum. Recent 2025 activity = $9B+ deal volume.</span>
+    <span class="label">Cross-link</span><span class="val brief-link">See <a href="./index.html#notable-capital">full Tier 3 entry</a> in main investor brief — added today (Apr 30)</span>
+    <span class="label">Routing</span><span class="val"><span class="pill shyam">Shyam</span> founder-to-Hans · "introduce now, pursue at Series A+"</span>
+    <span class="label">Pre-event</span><span class="val">DM Hans by May 1. Reference Notable's Anthropic + Lindy bets and ConsumerIQ as "Lindy for BevAlc supplier sales."</span>
+  </div>
+</div>
+
+<div class="target priority3">
+  <div class="target-head">
+    <div class="name">Georgian <span class="person">— Margaret Wu, Partner (speaking)</span></div>
+    <div class="badge">P3 · NEW · Tier 3 · 55</div>
+  </div>
+  <div class="meta-row">Toronto · Growth-stage applied-AI / B2B SaaS · ⚠️ Site is JS-rendered (couldn't fetch directly); placement based on speaker confirmation + general knowledge</div>
+  <div class="signals">
+    <span class="label">Why P3</span><span class="val">Conference attendance + general AI/B2B-SaaS thesis fit. Held to P3 because (a) couldn't verify thesis depth via fetch, (b) Georgian historically growth-stage / Series B+. In-person conversation at the conference is the cheapest way to validate stage focus.</span>
+    <span class="label">Cross-link</span><span class="val brief-link">See <a href="./index.html#georgian">full Tier 3 entry</a> in main investor brief — added today (Apr 30)</span>
+    <span class="label">Routing</span><span class="val"><span class="pill srini">Srini (CPO)</span> for B2B-AI architecture conversation · or <span class="pill gauri">Gauri</span></span>
+    <span class="label">Pre-event</span><span class="val">Optional. If Brett Gibson and Hans Tung are locked, use Margaret as opportunistic. Otherwise skip.</span>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════ ARCHITECTURAL PEERS ═══════════════════════════════════════ -->
+<h2 class="section">Architectural peers — high-leverage advisor / partnership candidates <span class="count">(2 confirmed speakers)</span></h2>
+<p class="section-blurb">These are companies whose architecture is a direct ConsumerIQ peer. Even if not investors, the relationship is high-value (advisor, technical partner, customer reference).</p>
+
+<div class="target priority1">
+  <div class="target-head">
+    <div class="name">CrewAI <span class="person">— Joe Moura, Founder/CEO (speaking)</span></div>
+    <div class="badge">P1 · Architectural peer · advisor candidate</div>
+  </div>
+  <div class="meta-row">"Leading AI multi-agent platform" (per Insight Partners portfolio description) · Open-source agent framework + commercial offering · In Insight Partners portfolio (Series A)</div>
+  <div class="signals">
+    <span class="label">Why P1</span><span class="val"><strong>Top FOMO neighbor in our entire investor brief.</strong> CrewAI is what Insight Partners points to as their flagship agentic-AI investment. ConsumerIQ-as-multi-agent-CRM IS literally CrewAI applied to a vertical (BevAlc supplier sales).</span>
+    <span class="label">Strategic value</span><span class="val">If Joe Moura becomes an advisor, the credential cascades: (a) opens the door at Insight Partners, (b) signal to other AI-vertical funds, (c) potential technical partnership / OEM relationship for the agentic infrastructure layer.</span>
+    <span class="label">Routing</span><span class="val"><span class="pill srini">Srini (CPO)</span> primary — architecture-to-architecture conversation · <span class="pill shyam">Shyam</span> for the strategic / advisor ask</span>
+    <span class="label">Pre-event</span><span class="val">DM Joe by May 1 with concrete "would love your read on our multi-agent CRM architecture for BevAlc — 15 min at the Hilton?"</span>
+  </div>
+  <div class="lead-with">
+    <span class="lwl">Lead with this insight</span>
+    <em>"CrewAI is the agent framework. ConsumerIQ is what happens when you apply that framework to a $300B vertical that's never had decision infra. Same architectural family, different layer of the stack. Want a 15-min look at how we're using CrewAI patterns for BevAlc supplier sales?"</em>
+  </div>
+</div>
+
+<div class="target priority2">
+  <div class="target-head">
+    <div class="name">Glean <span class="person">— Arvind Jain, Founder/CEO (speaking)</span></div>
+    <div class="badge">P2 · Architectural neighbor · advisor candidate</div>
+  </div>
+  <div class="meta-row">Work AI platform · Decision-intelligence-adjacent · In Khosla Ventures portfolio (per main brief)</div>
+  <div class="signals">
+    <span class="label">Why P2</span><span class="val">Glean and ConsumerIQ are different layers of the same idea: Glean = horizontal AI for unstructured-knowledge work; ConsumerIQ = vertical AI for structured-decision work in BevAlc. Adjacent enough to anchor a "we're the vertical to your horizontal" pitch.</span>
+    <span class="label">Strategic value</span><span class="val">If Arvind warms up: (a) introduces us at Khosla Ventures (Karina El Baze is our existing Khosla contact — this would be a stronger angle), (b) credibility signal for the decision-intelligence framing.</span>
+    <span class="label">Routing</span><span class="val"><span class="pill srini">Srini (CPO)</span> · "vertical-to-horizontal" framing</span>
+    <span class="label">Pre-event</span><span class="val">DM Arvind referencing Glean's decision-infrastructure work + ConsumerIQ's BevAlc verticalization. Optional given his profile may not respond.</span>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════ CUSTOMER PROSPECTS ═══════════════════════════════════════ -->
+<h2 class="section">Customer prospects — speakers worth meeting <span class="count">(5 priority candidates)</span></h2>
+<p class="section-blurb">Speakers from companies that match ConsumerIQ's customer profile (enterprise + AI-aware + sales-org-driven). These aren't BevAlc but represent the broader pattern.</p>
+
+<div class="target priority2">
+  <div class="target-head">
+    <div class="name">Thomson Reuters <span class="person">— Steve Hasker, CEO (speaking)</span></div>
+    <div class="badge">P2 · Customer-pattern</div>
+  </div>
+  <div class="meta-row">Content + data + AI infrastructure giant · CEO speaking signal = strategic investment in agentic AI · Content + data parallels to BevAlc-supplier-data world</div>
+  <div class="signals">
+    <span class="label">Why P2</span><span class="val">Thomson Reuters is investing heavily in agentic AI for legal/professional services — adjacent pattern to ConsumerIQ's BevAlc-supplier-sales-intelligence. CEO speaking signals corporate-development interest.</span>
+    <span class="label">Routing</span><span class="val"><span class="pill shyam">Shyam (CEO)</span> · CEO-to-CEO networking</span>
+  </div>
+</div>
+
+<div class="target priority3">
+  <div class="target-head">
+    <div class="name">Akamai <span class="person">— Bobby Blumofe, Chief Scientist (speaking)</span></div>
+    <div class="badge">P3 · Infra customer</div>
+  </div>
+  <div class="meta-row">Edge / infrastructure giant · Adjacent customer profile</div>
+</div>
+
+<div class="target priority3">
+  <div class="target-head">
+    <div class="name">Vanguard <span class="person">— Karun Appapogu (speaking)</span></div>
+    <div class="badge">P3 · Enterprise pattern</div>
+  </div>
+  <div class="meta-row">Financial enterprise — adjacent to BevAlc enterprise pattern</div>
+</div>
+
+<div class="target priority3">
+  <div class="target-head">
+    <div class="name">Upwork <span class="person">— Andrew Rabinovich (speaking)</span></div>
+    <div class="badge">P3 · Marketplace pattern</div>
+  </div>
+  <div class="meta-row">Marketplace platform — agentic-AI use case adjacent to ConsumerIQ's supplier-buyer dynamics</div>
+</div>
+
+<div class="target priority3">
+  <div class="target-head">
+    <div class="name">Linear <span class="person">— Tom Moor (speaking)</span></div>
+    <div class="badge">P3 · Decision-tool peer</div>
+  </div>
+  <div class="meta-row">Decision-tooling peer (project management) · Possible technical partnership</div>
+</div>
+
+<!-- ═══════════════════════════════════════ SIMILAR INVESTORS NOT ATTENDING ═══════════════════════════════════════ -->
+<div class="similar-not-attending">
+  <h3>"Similar to Sapphire" investors NOT at this event — but worth pre-positioning around</h3>
+  <p>Shyam asked: <em>"there could likely be other similar ones..."</em> — meaning investors with theses similar to Sapphire's. Direct answer:</p>
+  <p><strong>Coverage of agentic AI surges around this conference.</strong> Investors not attending will still be reading the press coverage and following the news cycle. Submitting via their open forms during/right after the event = higher signal-to-noise:</p>
+  <table style="width: 100%; border-collapse: collapse; font-size: 13px; margin-top: 8px;">
+    <tr style="background: #fafaf7;">
+      <th style="padding: 6px 8px; text-align: left; font-size: 11px; text-transform: uppercase; color: #6c6760;">Firm (in our brief)</th>
+      <th style="padding: 6px 8px; text-align: left; font-size: 11px; text-transform: uppercase; color: #6c6760;">Tier</th>
+      <th style="padding: 6px 8px; text-align: left; font-size: 11px; text-transform: uppercase; color: #6c6760;">Why pre-position around the event</th>
+    </tr>
+    <tr><td style="padding: 6px 8px; border-bottom: 1px solid #f0ede5;"><strong>Foundation Capital</strong> (Jaya Gupta)</td><td style="padding: 6px 8px; border-bottom: 1px solid #f0ede5;">T1 · 95</td><td style="padding: 6px 8px; border-bottom: 1px solid #f0ede5;">Jaya publishes on context graphs — submit/DM right after the conference, reference event highlights</td></tr>
+    <tr style="background: #fafaf7;"><td style="padding: 6px 8px; border-bottom: 1px solid #f0ede5;"><strong>2048 Ventures</strong></td><td style="padding: 6px 8px; border-bottom: 1px solid #f0ede5;">T1 · 88</td><td style="padding: 6px 8px; border-bottom: 1px solid #f0ede5;">Pocket + Broome AI = direct vertical-AI peers; submit Airtable form during conference (10-day decision)</td></tr>
+    <tr><td style="padding: 6px 8px; border-bottom: 1px solid #f0ede5;"><strong>Conviction</strong> (Sarah Guo)</td><td style="padding: 6px 8px; border-bottom: 1px solid #f0ede5;">T1 · 90</td><td style="padding: 6px 8px; border-bottom: 1px solid #f0ede5;">No Priors podcast covers agentic AI heavily — DM Sarah right after the conference referencing event takeaways</td></tr>
+    <tr style="background: #fafaf7;"><td style="padding: 6px 8px; border-bottom: 1px solid #f0ede5;"><strong>Bonfire Ventures</strong></td><td style="padding: 6px 8px; border-bottom: 1px solid #f0ede5;">T2 · 75</td><td style="padding: 6px 8px; border-bottom: 1px solid #f0ede5;">"AI rewires every workflow" thesis — submit Typeform during conference</td></tr>
+    <tr><td style="padding: 6px 8px;"><strong>Insight Partners</strong> (Eli Potter)</td><td style="padding: 6px 8px;">T2 · 70</td><td style="padding: 6px 8px;">CrewAI is in their portfolio — Joe Moura (CrewAI) is speaking, mention this in follow-up to Eli's earlier 3/31 message</td></tr>
+  </table>
+</div>
+
+<!-- ═══════════════════════════════════════ PRE-EVENT CHECKLIST ═══════════════════════════════════════ -->
+<div class="pre-event-checklist">
+  <h3>Pre-event checklist — actions by deadline</h3>
+  <table>
+    <thead>
+      <tr><th>Action</th><th>Who</th><th>Deadline</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>LinkedIn DM <strong>Brett Gibson (Initialized)</strong> — set up 15-min coffee</td>
+        <td><span class="pill shyam">Shyam</span></td>
+        <td><span class="deadline">May 1</span></td>
+      </tr>
+      <tr>
+        <td>LinkedIn DM <strong>Joe Moura (CrewAI)</strong> — architectural conversation</td>
+        <td><span class="pill srini">Srini</span></td>
+        <td><span class="deadline">May 1</span></td>
+      </tr>
+      <tr>
+        <td>LinkedIn DM <strong>Jai Das (Sapphire)</strong> — relationship intro, not pitch</td>
+        <td><span class="pill shyam">Shyam</span></td>
+        <td><span class="deadline">May 1</span></td>
+      </tr>
+      <tr>
+        <td>LinkedIn DM <strong>Hans Tung (Notable)</strong> — Anthropic/Lindy reference</td>
+        <td><span class="pill shyam">Shyam</span></td>
+        <td><span class="deadline">May 2</span></td>
+      </tr>
+      <tr>
+        <td>Optional: DM <strong>Margaret Wu (Georgian)</strong> if other meets confirmed</td>
+        <td><span class="pill srini">Srini</span> or <span class="pill gauri">Gauri</span></td>
+        <td>May 2</td>
+      </tr>
+      <tr>
+        <td>Optional: DM <strong>Arvind Jain (Glean)</strong> — vertical-to-horizontal framing</td>
+        <td><span class="pill srini">Srini</span></td>
+        <td>May 2</td>
+      </tr>
+      <tr>
+        <td>Submit <strong>2048 Ventures Airtable form</strong> referencing conference timing</td>
+        <td><span class="pill shyam">Shyam</span></td>
+        <td><span class="deadline">May 3</span></td>
+      </tr>
+      <tr>
+        <td>Submit <strong>Bonfire Ventures Typeform</strong> referencing conference timing</td>
+        <td><span class="pill srini">Srini</span></td>
+        <td>May 3</td>
+      </tr>
+      <tr>
+        <td>Travel logistics: Hilton Midtown reservations + meeting calendar holds</td>
+        <td><span class="pill hiral">Hiral</span></td>
+        <td><span class="deadline">May 2</span></td>
+      </tr>
+      <tr>
+        <td>Pitch deck refresh — prepare a 5-min agentic-AI-vertical-CRM teaser version specifically for in-person hand-offs</td>
+        <td><span class="pill harini">Harini</span></td>
+        <td><span class="deadline">May 3</span></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- ═══════════════════════════════════════ FOOTER ═══════════════════════════════════════ -->
+<div class="footer-notes">
+  <h3>Cross-link with main investor brief</h3>
+  <p>3 firms from this event have been added to the main <a href="./index.html">investor-intelligence brief</a> v3.4 (Apr 30):</p>
+  <ul>
+    <li><strong>Initialized Capital</strong> → Tier 1 · 82 (newly added)</li>
+    <li><strong>Notable Capital</strong> → Tier 3 · 60 (newly added)</li>
+    <li><strong>Georgian</strong> → Tier 3 · 55 (newly added, JS-rendered site couldn't be directly verified)</li>
+  </ul>
+
+  <h3>This is a 3rd intelligence surface</h3>
+  <p>Worth flagging: this event-investor cross-match is a <strong>third surface</strong> beyond the existing CRM (event intelligence) and investor brief (pipeline intelligence) — it's a "what events should we attend, and who's there from our existing pipeline?" Should be considered as a candidate product capability for ConsumerIQ's hype/spike architecture.</p>
+
+  <h3>Methodology</h3>
+  <ul>
+    <li>Speaker list extracted from agentconference.com (Apr 30 fetch)</li>
+    <li>Each speaker's firm cross-referenced against investor-intelligence-brief.html v3.3</li>
+    <li>3 new investors (Initialized, Notable, Georgian) deep-researched today and added to main brief</li>
+    <li>Architectural peer companies identified via FOMO-neighbor analysis from main brief</li>
+    <li>Pre-event outreach plan structured to balance high-priority direct outreach with lower-friction form submissions</li>
+  </ul>
+</div>
+
+</div>
+</body>
+</html>
