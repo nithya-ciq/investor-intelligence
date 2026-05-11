@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>VC Reverse Pitch · May 13 NYC — Deep Analysis · ConsumerIQ / BevGenie</title>
+<style>
+  * { box-sizing: border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    background: #faf9f7;
+    color: #1a1a1a;
+    margin: 0;
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+  }
+  .wrap { max-width: 1180px; margin: 0 auto; padding: 32px 28px 80px; }
+
+  /* ─── Tab nav ─── */
+  .tab-nav {
+    display: flex;
+    gap: 0;
+    border-bottom: 1px solid #e6e2dc;
+    margin-bottom: 24px;
+    flex-wrap: wrap;
+  }
+  .tab-nav a {
+    padding: 10px 18px;
+    text-decoration: none;
+    color: #6c6760;
+    font-size: 13px;
+    font-weight: 500;
+    border-bottom: 2px solid transparent;
+    margin-bottom: -1px;
+    transition: color 0.15s, border-color 0.15s;
+  }
+  .tab-nav a:hover { color: #1a1a1a; }
+  .tab-nav a.active { color: #1a1a1a; border-bottom-color: #5b8a3a; font-weight: 600; }
+
+  header.top {
+    border-bottom: 1px solid #e6e2dc;
+    padding-bottom: 18px;
+    margin-bottom: 28px;
+  }
+  header.top .eyebrow {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 1.2px;
+    color: #b48f3a;
+    font-weight: 600;
+  }
+  header.top h1 {
+    margin: 6px 0 4px;
+    font-size: 28px;
+    font-weight: 600;
+    letter-spacing: -0.4px;
+  }
+  header.top .meta { font-size: 13px; color: #6c6760; }
+  header.top .meta a { color: #4a6b9a; }
+
+  .verdict {
+    background: #fff;
+    border: 1px solid #e6e2dc;
+    border-radius: 10px;
+    padding: 20px 24px;
+    margin: 0 0 28px;
+  }
+  .verdict h2 {
+    margin: 0 0 8px;
+    font-size: 16px;
+    color: #5b8a3a;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: 600;
+  }
+  .verdict p { margin: 0 0 8px; }
+  .verdict p:last-child { margin-bottom: 0; }
+
+  .event-meta {
+    background: #f3f5fb;
+    border-left: 4px solid #4a6b9a;
+    padding: 16px 20px;
+    margin-bottom: 28px;
+    border-radius: 4px;
+    font-size: 14px;
+  }
+  .event-meta h3 { margin: 0 0 8px; font-size: 14px; color: #2c4d80; }
+  .event-meta dl { margin: 4px 0 0; display: grid; grid-template-columns: 140px 1fr; gap: 6px 14px; }
+  .event-meta dt { color: #6c6760; font-weight: 500; font-size: 12px; text-transform: uppercase; letter-spacing: 0.4px; }
+  .event-meta dd { margin: 0; }
+
+  h2.section {
+    font-size: 20px;
+    font-weight: 600;
+    margin: 36px 0 14px;
+    border-bottom: 2px solid #1a1a1a;
+    padding-bottom: 6px;
+    letter-spacing: -0.3px;
+  }
+  h2.section .count {
+    font-size: 13px;
+    color: #6c6760;
+    font-weight: 400;
+    margin-left: 8px;
+  }
+  .section-blurb { font-size: 13px; color: #6c6760; font-style: italic; margin: -8px 0 16px; }
+
+  /* ─── VC cards ─── */
+  .vc {
+    background: #fff;
+    border: 1px solid #e6e2dc;
+    border-radius: 8px;
+    padding: 20px 22px;
+    margin-bottom: 16px;
+  }
+  .vc.tier1 { border-left: 5px solid #5b8a3a; }
+  .vc.tier2 { border-left: 5px solid #b48f3a; }
+  .vc.tier3 { border-left: 5px solid #8b8985; }
+  .vc.misfit { border-left: 5px solid #b85a4d; background: #fdf6f5; }
+
+  .vc-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 6px;
+  }
+  .vc-head .name { font-size: 19px; font-weight: 600; }
+  .vc-head .name .partner { font-weight: 400; color: #6c6760; font-size: 14px; margin-left: 6px; }
+  .vc-head .badge {
+    font-size: 11px;
+    background: #1a1a1a;
+    color: #fff;
+    padding: 3px 10px;
+    border-radius: 12px;
+    font-weight: 500;
+    letter-spacing: 0.4px;
+  }
+  .vc.tier1 .badge { background: #5b8a3a; }
+  .vc.tier2 .badge { background: #b48f3a; }
+  .vc.tier3 .badge { background: #8b8985; }
+  .vc.misfit .badge { background: #b85a4d; }
+
+  .vc .summary { font-size: 13px; color: #6c6760; margin: 0 0 14px; font-style: italic; }
+
+  .vc .row {
+    display: grid;
+    grid-template-columns: 150px 1fr;
+    gap: 6px 16px;
+    font-size: 13.5px;
+    padding: 8px 0;
+    border-top: 1px solid #f0ede5;
+  }
+  .vc .row:first-of-type { border-top: 0; }
+  .vc .label {
+    color: #6c6760;
+    font-weight: 500;
+    text-transform: uppercase;
+    font-size: 11px;
+    letter-spacing: 0.4px;
+    padding-top: 2px;
+  }
+  .vc .val { color: #1a1a1a; }
+  .vc .val .accent { color: #5b8a3a; font-weight: 600; }
+  .vc .val .warn { color: #b85a4d; font-weight: 600; }
+  .vc .val ul { margin: 4px 0 0 16px; padding: 0; }
+  .vc .val li { margin-bottom: 3px; }
+
+  .vc .ask-frame {
+    background: #f4f8f2;
+    border-left: 3px solid #5b8a3a;
+    padding: 12px 14px;
+    margin-top: 14px;
+    border-radius: 4px;
+    font-size: 13.5px;
+  }
+  .vc.misfit .ask-frame { background: #fff; border-left-color: #b85a4d; }
+  .vc.misfit .ask-frame .lwl { color: #b85a4d; }
+  .vc .ask-frame .lwl {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.6px;
+    color: #5b8a3a;
+    font-weight: 600;
+    margin-bottom: 4px;
+    display: block;
+  }
+  .vc .ask-frame em { color: #1a1a1a; font-style: italic; }
+
+  .pill { display: inline-block; padding: 1px 8px; border-radius: 10px; font-size: 11px; font-weight: 500; letter-spacing: 0.3px; margin-right: 4px; }
+  .pill.shyam { background: #e8eef9; color: #2c4d80; }
+  .pill.fit { background: #e8f4dc; color: #3d5e26; }
+  .pill.partial { background: #fdf2d9; color: #6b4f15; }
+  .pill.misfit { background: #f9d9d4; color: #7a2a1c; }
+
+  /* ─── Application checklist ─── */
+  .checklist {
+    background: #fdf6e8;
+    border-left: 4px solid #b48f3a;
+    padding: 16px 20px;
+    margin: 28px 0;
+    border-radius: 4px;
+  }
+  .checklist h3 { margin: 0 0 10px; font-size: 14px; color: #6b4f15; }
+  .checklist table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  .checklist th { text-align: left; padding: 6px 8px; font-size: 11.5px; text-transform: uppercase; letter-spacing: 0.4px; color: #6c6760; border-bottom: 1px solid #e6d8b0; }
+  .checklist td { padding: 8px; border-bottom: 1px solid #f0ede5; vertical-align: top; }
+  .checklist .deadline { color: #b85a4d; font-weight: 600; font-size: 12px; white-space: nowrap; }
+
+  .footer-notes {
+    margin-top: 40px;
+    padding-top: 24px;
+    border-top: 1px solid #e6e2dc;
+    font-size: 12.5px;
+    color: #6c6760;
+  }
+  .footer-notes h3 { color: #1a1a1a; font-size: 13px; margin: 0 0 8px; }
+  .footer-notes ul { margin: 4px 0 14px 18px; padding: 0; }
+  .footer-notes li { margin-bottom: 4px; }
+
+  a { color: #4a6b9a; }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<!-- ═══════════════ TAB NAV ═══════════════ -->
+<nav class="tab-nav">
+  <a href="index.html">Main Brief — Full Pipeline</a>
+  <a href="agent-conference-may2026.html">Agent Conference · May 4-5</a>
+  <a href="vc-reverse-pitch-may13.html" class="active">VC Reverse Pitch · May 13</a>
+</nav>
+
+<header class="top">
+  <div class="eyebrow">Curated event · Application required · Deep analysis</div>
+  <h1>Founders &amp; Funders — VC Reverse Pitch · May 13 NYC</h1>
+  <div class="meta">5 VCs each give 5-min "reverse pitch" on thesis + check size · curated 1:1 meetings follow · Seed / Series A founders only · location revealed on approval</div>
+</header>
+
+<!-- ═══════════════ VERDICT ═══════════════ -->
+<div class="verdict">
+  <h2>Verdict — apply, but be selective on which VC to seek meetings with</h2>
+  <p><strong>Worth applying.</strong> The "reverse pitch" format is rare — VCs publicly stating their thesis means we walk in already knowing the angle. Curated 1:1s mean guaranteed face time <em>if matched</em>. Anti-pattern: most pitch events are unmoderated room-mingling; this one is filtered.</p>
+  <p><strong>Of the 5 VCs on stage, 2 are real BevGenie fits, 1 is conditional, 2 are not.</strong> Apply only if Shyam can carve a half-day for NYC May 13. Top targets are <strong>Red Bike Capital (Rachel ten Brink)</strong> and <strong>Alumni Ventures (Drew Collins)</strong>. Skip Plum Alley conversation entirely.</p>
+  <p><strong>Single highest-value match: Red Bike Capital.</strong> Their portfolio already includes <em>Daash Intelligence</em> (predictive commerce intelligence), <em>AthenaHQ</em> (AEO/GEO platform), and <em>Hetal Retail</em> (AI-powered merchandising) — three direct architectural peers of BevGenie. Rachel ten Brink's 20+ years at P&amp;G, L'Oréal, and Estée Lauder makes her the rare investor who'll grok BevAlc supplier commercial workflows without 30 minutes of context-setting.</p>
+</div>
+
+<!-- ═══════════════ EVENT MECHANICS ═══════════════ -->
+<div class="event-meta">
+  <h3>📋 Event mechanics</h3>
+  <dl>
+    <dt>Date</dt><dd>Wednesday, May 13, 2026</dd>
+    <dt>Location</dt><dd>NYC (exact venue sent upon approval — gated curation)</dd>
+    <dt>Format</dt><dd>5 VCs each pitch 5 minutes on their thesis, preferred industries/regions, check sizes, and what they're actively looking for. Networking + curated 1:1s follow.</dd>
+    <dt>Audience</dt><dd>Seed and Series A founders raising capital + active investors. Approval required.</dd>
+    <dt>Track record</dt><dd>"Previous events have resulted in multiple term sheets and successful funding rounds" (organizer-stated)</dd>
+    <dt>Application</dt><dd><a href="https://www.foundersnfunders.com/events" target="_blank">foundersnfunders.com/events</a> · "Limited spots, this event will fill up" — apply promptly</dd>
+    <dt>Why this format wins</dt><dd>Reverse-pitch removes the "guess the thesis" friction. VCs commit publicly to what they're looking for → easier to know whether to pursue.</dd>
+  </dl>
+</div>
+
+<!-- ═══════════════ SECTION ═══════════════ -->
+<h2 class="section">The 5 VCs — fit analysis <span class="count">priority-ordered</span></h2>
+<p class="section-blurb">Tier reflects current-stage fit (pre-seed → seed → Series A) against BevGenie's profile: agentic intelligence platform for BevAlc supplier commercial teams. Vertical-AI in a regulated $300B category that hasn't seen software innovation in 20 years.</p>
+
+<!-- ═══════════════ #1 RED BIKE CAPITAL ═══════════════ -->
+<div class="vc tier1">
+  <div class="vc-head">
+    <div class="name">Red Bike Capital <span class="partner">— Rachel ten Brink, GP &amp; CEO + Herman Goihman, GP</span></div>
+    <div class="badge">Tier 1 · 🥇 strongest fit of the 5</div>
+  </div>
+  <p class="summary">Latina + woman-led early-stage NY fund · Bank of America–backed · "Vertical &amp; AI" is literally the first focus area on their website · Rachel's 20+ years at P&amp;G, L'Oréal, and Estée Lauder = rare CPG-operator investor who understands brand-distributor-retailer dynamics</p>
+
+  <div class="row">
+    <span class="label">Thesis (verbatim)</span>
+    <span class="val">"Early stage VC fund based in New York that invests in <strong>Vertical &amp; AI, Fintech and Health &amp; Wellness</strong>." Looks for "experienced, technical founders with deep founder-market fit, solving big problems while demonstrating capital efficiency." Distinctive angle: <strong>go-to-market execution and distribution as core value drivers</strong> — helps secure first enterprise customers.</span>
+  </div>
+  <div class="row">
+    <span class="label">Stage + check</span>
+    <span class="val">Early-stage (seed). Check size not publicly disclosed but typical fund-size pattern + 17–21 portfolio cos suggests $250K–$1.5M initial checks. Founded 2021. <span class="pill fit">Clean stage match for pre-seed/seed</span></span>
+  </div>
+  <div class="row">
+    <span class="label">Direct portfolio peers</span>
+    <span class="val">
+      <ul>
+        <li><strong>Daash Intelligence</strong> — predictive commerce intelligence (the exact category BevGenie sits in)</li>
+        <li><strong>AthenaHQ</strong> — AEO/GEO (answer engine optimization) platform · vertical-AI for marketing</li>
+        <li><strong>Hetal Retail</strong> — AI-powered merchandising · retail vertical-AI</li>
+        <li><strong>Cavalry AI</strong>, <strong>OpStream AI</strong>, <strong>Flockshop</strong> — AI/enterprise software cluster</li>
+        <li><strong>TomoCredit</strong> (unicorn exit), <strong>Brij.it</strong>, <strong>Fernish</strong> (acquired), <strong>Hero Cosmetics</strong> (acquired) — commerce/fintech wins</li>
+      </ul>
+      <strong>Three of these (Daash, AthenaHQ, Hetal) are direct architectural peers — predictive AI for commerce workflows.</strong> Rachel has already underwritten this exact pattern.
+    </span>
+  </div>
+  <div class="row">
+    <span class="label">Why this is the #1 match</span>
+    <span class="val">
+      <ul>
+        <li><strong>CPG operator pedigree</strong> — Rachel ran brand work at P&amp;G + L'Oréal + Estée Lauder for ~15 years. She personally has sold into the exact distributor + retailer networks BevAlc suppliers fight on. No context-setting needed.</li>
+        <li><strong>YC operator empathy</strong> — Rachel was YC-backed (Scentbird, top 2% of YC revenue, scaled to 500K+ subs, raised $29M). She knows what pre-seed/seed grind looks like.</li>
+        <li><strong>GTM-first thesis</strong> — Red Bike's stated differentiation is "helping secure first enterprise customers." BevGenie is exactly at the stage where this matters most.</li>
+        <li><strong>Capital-efficient bias</strong> — explicit criterion. BevGenie's small-team, India-cost-base efficiency story plays well here.</li>
+        <li><strong>Sources 80% of deals founder-to-founder</strong> — meaning peer referrals matter more than warm intros from other VCs. The conference + reverse-pitch format is exactly this kind of channel.</li>
+      </ul>
+    </span>
+  </div>
+  <div class="row">
+    <span class="label">Anti-fit signals</span>
+    <span class="val"><em>None material.</em> Geography (NY) ✓ · Stage (seed) ✓ · Thesis (vertical AI for commerce) ✓ · Operator empathy ✓ · Portfolio precedent ✓</span>
+  </div>
+  <div class="row">
+    <span class="label">Partner backgrounds</span>
+    <span class="val"><strong>Rachel ten Brink (GP/CEO)</strong> · Scentbird co-founder · 20+ years P&amp;G, L'Oréal, Estée Lauder · 18 prior angel investments · YC alum · <a href="https://www.linkedin.com/in/rachel-ten-brink-a08151/" target="_blank">LinkedIn</a><br><strong>Herman Goihman (GP)</strong> · 20yrs asset management (Bear Stearns, BofA) · deployed $2B+ — handles the financial-rigor side of diligence</span>
+  </div>
+  <div class="row">
+    <span class="label">How to reach</span>
+    <span class="val"><a href="https://redbikecapital.com/" target="_blank">redbikecapital.com</a> · contact form on site · primary route: at the May 13 event itself · founder-to-founder reference is the highest-converting channel</span>
+  </div>
+  <div class="row">
+    <span class="label">Routing</span>
+    <span class="val"><span class="pill shyam">Shyam (CEO)</span> — founder-to-founder · lead with Rachel's CPG/distribution background as the connector, not the technology stack</span>
+  </div>
+
+  <div class="ask-frame">
+    <span class="lwl">Suggested opening (post-reverse-pitch 1:1)</span>
+    <em>"Rachel — your L'Oréal / Estée Lauder time means you've sold into the exact three-tier system BevAlc suppliers live in. BevGenie is the agentic intelligence platform for those supplier commercial teams. It's the closest pattern to Daash Intelligence in your portfolio, applied to a $300B vertical that's never had decision infrastructure. We're capital-efficient (India-cost-base, small senior team), at pre-seed, and the GTM challenge — getting the first 5 supplier customers — is exactly what your fund is built around. Worth 15 more minutes?"</em>
+  </div>
+</div>
+
+<!-- ═══════════════ #2 ALUMNI VENTURES ═══════════════ -->
+<div class="vc tier2">
+  <div class="vc-head">
+    <div class="name">Alumni Ventures <span class="partner">— Drew Collins, Investor (NYC)</span></div>
+    <div class="badge">Tier 2 · 🥈 clean stage fit · follow-on / round-filler</div>
+  </div>
+  <p class="summary">"America's Largest Venture Firm for Individuals" — syndicate-style fund that invests at every stage from pre-seed to Series B · Drew specifically covers AI + B2B SaaS at pre-seed/seed in NY · 271 seed investments in the fund's history with average round size $5M</p>
+
+  <div class="row">
+    <span class="label">Thesis</span>
+    <span class="val">AV's AI &amp; Robotics Fund explicitly targets <strong>vertical and enterprise AI</strong>, AI copilots, AI-wrapped service firms, frontier models, synthetic data, and cybersecurity for the AI era. Drew's personal sweet spot: <strong>AI + B2B SaaS at pre-seed/seed</strong> (per public investor profiles).</span>
+  </div>
+  <div class="row">
+    <span class="label">Stage + check</span>
+    <span class="val">Drew invests in rounds of <strong>$100K–$10M</strong> via AV's syndicate model. AV typically <strong>participates alongside a lead</strong> — not as the lead investor. <span class="pill partial">Useful for filling a round, not anchoring it</span></span>
+  </div>
+  <div class="row">
+    <span class="label">Recent investments</span>
+    <span class="val">AV made 93 investments in 2025; 23 already in early 2026. Drew specifically backed <strong>HeyMilo</strong> and <strong>Bolto</strong> at seed in March 2025 (both AI/B2B SaaS).</span>
+  </div>
+  <div class="row">
+    <span class="label">Why it's a fit</span>
+    <span class="val">
+      <ul>
+        <li><strong>Stage match is clean</strong> — Drew's focus is exactly pre-seed/seed</li>
+        <li><strong>Thesis match</strong> — vertical &amp; enterprise AI is the fund's stated bucket</li>
+        <li><strong>NYC-based</strong> — face-time at this event becomes a real check, not a "follow up by email"</li>
+        <li><strong>Syndicate firepower</strong> — AV brings ~9,000 individual LPs; the network value is real for downstream warm intros</li>
+      </ul>
+    </span>
+  </div>
+  <div class="row">
+    <span class="label">Anti-fit signals</span>
+    <span class="val">
+      <ul>
+        <li><span class="warn">AV doesn't lead rounds</span> — they're an alongside investor. If we need a lead, this is not the conversation.</li>
+        <li>Highly diversified (~30 deals per portfolio fund) → less hands-on partnership than a concentrated seed fund</li>
+        <li>Drew is listed as "Associate" on their AI Fund page — confirm decision authority during the conversation</li>
+      </ul>
+    </span>
+  </div>
+  <div class="row">
+    <span class="label">How to reach</span>
+    <span class="val">Conference 1:1 (primary) · <a href="https://www.av.vc/" target="_blank">av.vc</a> "Book an Intro Call" form · <a href="https://www.linkedin.com/in/drewcollinsbusiness/" target="_blank">Drew on LinkedIn</a></span>
+  </div>
+  <div class="row">
+    <span class="label">Routing</span>
+    <span class="val"><span class="pill shyam">Shyam (CEO)</span> · pre-seed/seed founder-to-investor framing · emphasize that we're looking for a lead PLUS syndicate (positions AV correctly)</span>
+  </div>
+
+  <div class="ask-frame">
+    <span class="lwl">Suggested opening</span>
+    <em>"Drew — your portfolio (HeyMilo, Bolto) shows a clear B2B-SaaS-meets-AI pattern. BevGenie is an agentic intelligence platform for BevAlc supplier commercial teams — vertical AI applied to a $300B category that's never had real decision infrastructure. We're pre-seed, building toward a $1.5–2M round, and looking for a lead with strong syndicate firepower behind it. Does AV's AI &amp; Robotics Fund participate in rounds at this stage?"</em>
+  </div>
+</div>
+
+<!-- ═══════════════ #3 THOMSON REUTERS VENTURES ═══════════════ -->
+<div class="vc tier2">
+  <div class="vc-head">
+    <div class="name">Thomson Reuters Ventures <span class="partner">— Karen Lopez, Investment Team</span></div>
+    <div class="badge">Tier 2 · 🥉 conditional · regulatory angle only</div>
+  </div>
+  <p class="summary">Strategic CVC backed by Thomson Reuters · $150M Fund II launched Feb 2026 · Heavy thesis match on <strong>agentic AI for regulated workflows</strong> — but BevAlc is not in their sector list. Worth pursuing only if Shyam leads with the TTB + state ABC + three-tier compliance angle.</p>
+
+  <div class="row">
+    <span class="label">Thesis</span>
+    <span class="val">"<em>The legal, tax, and risk industries are being rebuilt right now</em>." Sectors: <strong>Legal Tech, Tax &amp; Accounting, Fintech, Risk &amp; Compliance, News &amp; Media</strong>. Active 2026 thesis: <strong>"Know Your Agent" (KYA)</strong> — identity + governance for agentic-AI commerce. Bullish on regulated-vertical agentic AI specifically.</span>
+  </div>
+  <div class="row">
+    <span class="label">Stage + check + fund</span>
+    <span class="val"><strong>$150M Fund II</strong> (Feb 2026) · 21 portfolio companies as of Feb 2026 · 4 new investments in last 12 months · stage flex from seed to Series B+</span>
+  </div>
+  <div class="row">
+    <span class="label">Recent portfolio (agentic-AI cluster)</span>
+    <span class="val">
+      <ul>
+        <li><strong>Materia</strong> — agentic-AI accounting (acquired by Thomson Reuters Oct 2024)</li>
+        <li><strong>Supio</strong> — AI for personal injury law</li>
+        <li><strong>Greenlite AI</strong> — agentic AI for financial-crime compliance</li>
+        <li><strong>AgentSmyth</strong> — autonomous trading agents</li>
+        <li><strong>Solve Intelligence</strong> — Series B Q4 2025</li>
+        <li><strong>FirmPilot, Contents, Bretton AI</strong> — recent business/productivity software bets</li>
+      </ul>
+      <strong>Pattern: vertical agentic-AI for regulated professional workflows.</strong> BevAlc fits the pattern; just doesn't fit the sector list.
+    </span>
+  </div>
+  <div class="row">
+    <span class="label">Why it's conditional</span>
+    <span class="val">BevAlc has heavy regulatory machinery (TTB federal, 50 state ABCs, three-tier distribution required by law in most states). If we frame BevGenie as <strong>"vertical agentic-AI for one of the most heavily regulated commercial workflows in the US"</strong>, the pattern match holds. <strong>Without the regulatory framing, the conversation will fall flat</strong> — they don't have a beverage-alcohol thesis bucket.</span>
+  </div>
+  <div class="row">
+    <span class="label">Anti-fit signals</span>
+    <span class="val">
+      <ul>
+        <li>BevAlc isn't on their official sector list — they're sector-disciplined, not opportunistic</li>
+        <li>Karen is "newest team member" (ex-Lazard, ex-Angeles Investors) — likely needs to defer to senior partners on novel-sector exceptions</li>
+        <li>$150M strategic CVC = patient capital but slower decision cycles than pure-financial early-stage funds</li>
+      </ul>
+    </span>
+  </div>
+  <div class="row">
+    <span class="label">How to reach</span>
+    <span class="val">Conference 1:1 (primary) · <a href="https://www.thomsonreuters.com/en/ventures" target="_blank">thomsonreuters.com/en/ventures</a> · <a href="https://www.linkedin.com/in/karen-lopez-195921b4/" target="_blank">Karen on LinkedIn</a></span>
+  </div>
+  <div class="row">
+    <span class="label">Routing</span>
+    <span class="val"><span class="pill shyam">Shyam (CEO)</span> · <strong>compliance-first framing</strong>, not vertical-AI generalist framing</span>
+  </div>
+
+  <div class="ask-frame">
+    <span class="lwl">Suggested opening (regulatory angle is the unlock)</span>
+    <em>"Karen — your portfolio (Materia, Greenlite AI, Supio) shows a clear pattern: agentic AI for the most regulated professional workflows in the US. BevAlc is the most regulated commercial workflow you've probably never thought about — federal TTB labeling, 50 state ABC commissions, mandatory three-tier distribution. BevGenie is the agentic intelligence platform for supplier commercial teams operating inside that compliance lattice. The KYA thesis applies directly: which agent has authority to commit a supplier on a deal? We'd value 15 minutes on whether this pattern is interesting even outside your stated sectors."</em>
+  </div>
+</div>
+
+<!-- ═══════════════ #4 PRESIDIO VENTURES ═══════════════ -->
+<div class="vc tier3">
+  <div class="vc-head">
+    <div class="name">Presidio Ventures (Sumitomo CVC) <span class="partner">— Tyler Schinto, Senior Principal</span></div>
+    <div class="badge">Tier 3 · ⚠️ stage misfit · relationship-for-later</div>
+  </div>
+  <p class="summary">Corporate VC arm of Sumitomo Corp, founded 1998 · 132 portfolio companies over 26 years · 6 unicorns (Dexterity, Bob, Extend, etc.) · <strong>Typical entry is Series A ($11.4M avg) or Series B ($29.3M avg), not seed</strong> · Strategic angle: Japan/Asia market expansion</p>
+
+  <div class="row">
+    <span class="label">Thesis</span>
+    <span class="val">"Help technologies of tomorrow secure their place in the global market." Sectors: <strong>Enterprise IT, Cybersecurity, AI, Digital Media, Mobility, IoT, Fintech, Robotics</strong>. Strategic value-add: <strong>Japan and broader Asia expansion</strong> via Sumitomo's network.</span>
+  </div>
+  <div class="row">
+    <span class="label">Stage + check</span>
+    <span class="val">Series A avg $11.4M · Series B avg $29.3M · 40+ SaaS investments · 31 Series B + 20 Series A historical deals. <span class="pill partial">Too early for them at pre-seed</span> — they typically enter once there's a Series A lead in place</span>
+  </div>
+  <div class="row">
+    <span class="label">Tyler Schinto specifically</span>
+    <span class="val">Board observer at <strong>Atropos Health</strong> (real-world clinical evidence AI · Series A 2023, $33M Series B 2024) · <strong>Tealium</strong> (customer data platform — interesting adjacency to BevGenie's data architecture) · <strong>Citrine Informatics</strong> (engineering software). All three are growth-stage / Series A+ pattern bets.</span>
+  </div>
+  <div class="row">
+    <span class="label">Why pursue anyway</span>
+    <span class="val">
+      <ul>
+        <li><strong>Relationship-for-later</strong> — Shyam at Series A in 12–18 months is exactly Tyler's sweet spot. Build the rapport at this event for a warm-intro later.</li>
+        <li><strong>Tealium adjacency</strong> — Tyler personally underwrites customer-data-platform investments. BevGenie's intelligence layer sits on top of that pattern.</li>
+        <li><strong>Japan/Asia option</strong> — if BevGenie ever expands internationally, Sumitomo's network is non-trivial. Worth being on Tyler's radar before he's needed.</li>
+      </ul>
+    </span>
+  </div>
+  <div class="row">
+    <span class="label">Anti-fit signals</span>
+    <span class="val">
+      <ul>
+        <li><span class="warn">Stage misfit at pre-seed</span> — they don't anchor seed rounds</li>
+        <li>Corporate VC decision speeds are slower than pure-financial funds</li>
+        <li>Strategic-investor terms (rights, ROFRs, info rights) can create downstream complications if accepted before there's a strong lead</li>
+      </ul>
+    </span>
+  </div>
+  <div class="row">
+    <span class="label">How to reach</span>
+    <span class="val">Conference 1:1 (primary) · <a href="https://presidio-ventures.com/" target="_blank">presidio-ventures.com</a> · <a href="https://www.linkedin.com/in/tylerschinto/" target="_blank">Tyler on LinkedIn</a></span>
+  </div>
+  <div class="row">
+    <span class="label">Routing</span>
+    <span class="val"><span class="pill shyam">Shyam (CEO)</span> · <strong>relationship-building, not capital-seeking</strong> — explicitly position the conversation as "we'll be back at Series A"</span>
+  </div>
+
+  <div class="ask-frame">
+    <span class="lwl">Suggested opening (relationship-first frame)</span>
+    <em>"Tyler — Sumitomo's stage focus is Series A+ and we're pre-seed, so this isn't an ask for a check today. But your Tealium board work means you've underwritten the customer-data-platform layer that BevGenie sits on top of. We're building the agentic intelligence layer for BevAlc supplier commercial teams — Series A in roughly 12–18 months. Wanted to be on your radar early so the Series A conversation isn't a cold start."</em>
+  </div>
+</div>
+
+<!-- ═══════════════ #5 PLUM ALLEY ═══════════════ -->
+<div class="vc misfit">
+  <div class="vc-head">
+    <div class="name">Plum Alley <span class="partner">— Nate Wang, VP Investments</span></div>
+    <div class="badge">Misfit · ❌ skip — three independent reasons</div>
+  </div>
+  <p class="summary">Founded 2011 to fund women entrepreneurs in STEM · $100M cumulative deployed across 36 companies · Series A stage focus · Sector focus is <strong>frontier tech + medical breakthroughs + drug discovery</strong></p>
+
+  <div class="row">
+    <span class="label">Thesis</span>
+    <span class="val">"Invests in early stage frontier technology and medical breakthrough companies with a mission to change the world for the better." Heavy emphasis on <strong>drug discovery AI</strong> — projects cost reduction in pharma R&amp;D from $450M → $2B+ to a fraction via AI.</span>
+  </div>
+  <div class="row">
+    <span class="label">Why it's a misfit (3 independent reasons)</span>
+    <span class="val">
+      <ol style="margin: 0 0 0 18px;">
+        <li><span class="warn">Stage misfit</span> — Series A focus; we're pre-seed</li>
+        <li><span class="warn">Thesis misfit</span> — frontier tech + medical/drug-discovery; B2B-SaaS-CRM-for-alcohol-distribution is none of those</li>
+        <li><span class="warn">Founder-diversity criteria misfit</span> — Plum Alley exists to fund women + gender-diverse founders in STEM. ConsumerIQ's named founders are male. Even if we pitched, we wouldn't fit the fund's mandate.</li>
+      </ol>
+      Any one of these by itself would be enough reason to skip. All three together = a hard no.
+    </span>
+  </div>
+  <div class="row">
+    <span class="label">What to do at the event</span>
+    <span class="val">Polite handshake during networking, no 1:1 request, no deep conversation. <strong>Don't waste a curated-meeting slot on Plum Alley</strong> — those slots are limited and better spent on Red Bike or Alumni Ventures.</span>
+  </div>
+
+  <div class="ask-frame">
+    <span class="lwl">Do NOT pitch — but be ready if she's in the room</span>
+    <em>If introduced by someone else: "Great to meet you — your portfolio doesn't overlap with where BevGenie sits, but I'd love your recommendations for early-stage NYC funds that specialize in vertical AI for regulated commercial workflows." Use it as a referral-fishing moment, not a pitch.</em>
+  </div>
+</div>
+
+<!-- ═══════════════ APPLICATION CHECKLIST ═══════════════ -->
+<div class="checklist">
+  <h3>🗓 Application + day-of execution</h3>
+  <table>
+    <thead><tr><th>When</th><th>What</th><th>Owner</th></tr></thead>
+    <tbody>
+      <tr>
+        <td><span class="deadline">ASAP · before May 11</span></td>
+        <td>Apply via <a href="https://www.foundersnfunders.com/events" target="_blank">foundersnfunders.com/events</a> · "Limited spots" — don't delay past Monday. Submit one-pager that leads with: vertical AI, $300B BevAlc category, agentic intelligence platform, pre-seed.</td>
+        <td><span class="pill shyam">Shyam</span></td>
+      </tr>
+      <tr>
+        <td><span class="deadline">If approved</span></td>
+        <td>Request curated 1:1 meetings <strong>in this priority order</strong>: (1) Red Bike Capital — Rachel ten Brink, (2) Alumni Ventures — Drew Collins, (3) Thomson Reuters Ventures — Karen Lopez. Skip 1:1 request for Plum Alley; opportunistic only for Presidio.</td>
+        <td><span class="pill shyam">Shyam</span></td>
+      </tr>
+      <tr>
+        <td><span class="deadline">Day before · May 12</span></td>
+        <td>Refresh on each VC's recent portfolio additions (Red Bike: any new Q1-Q2 2026 announcements; TR Ventures: any new KYA-thesis investments). Have the right 3 references ready for each VC: Daash Intelligence (Red Bike), HeyMilo (Drew/AV), Greenlite AI (TR Ventures).</td>
+        <td><span class="pill shyam">Shyam</span></td>
+      </tr>
+      <tr>
+        <td><span class="deadline">May 13 · arrival</span></td>
+        <td>Pick up badge. Capture the room layout. Identify which VC is on stage during which 5-min slot so you know who to position near during networking.</td>
+        <td><span class="pill shyam">Shyam</span></td>
+      </tr>
+      <tr>
+        <td><span class="deadline">May 13 · 1:1 windows</span></td>
+        <td>For Rachel ten Brink: lead with the L'Oréal / Estée Lauder + three-tier-distribution connector. For Drew Collins: lead with the HeyMilo / Bolto B2B-SaaS-AI pattern. For Karen Lopez: lead with KYA + BevAlc regulatory machinery. Ask each: "what does an active conversation look like in 30 days?"</td>
+        <td><span class="pill shyam">Shyam</span></td>
+      </tr>
+      <tr>
+        <td><span class="deadline">May 14 · morning</span></td>
+        <td>Personalized follow-up to each curated-meeting VC within 18 hours: reference one specific thing they said + attach the 5-min pitch deck + propose a concrete next step (deck walkthrough, intro to portfolio peer, technical-architecture call).</td>
+        <td><span class="pill shyam">Shyam</span></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- ═══════════════ FOOTER ═══════════════ -->
+<div class="footer-notes">
+  <h3>Methodology + sources</h3>
+  <ul>
+    <li>Each VC verified via firm website + Crunchbase/PitchBook/Tracxn investor profile + recent press coverage as of May 11, 2026</li>
+    <li>Portfolio peer-pattern mapping: Daash Intelligence (Red Bike) — predictive commerce intelligence; AthenaHQ (Red Bike) — AEO/GEO; Hetal Retail (Red Bike) — AI merchandising; HeyMilo + Bolto (Drew Collins) — B2B-SaaS-AI; Materia + Greenlite + Supio + AgentSmyth (TR Ventures) — agentic-AI in regulated verticals; Tealium + Atropos (Presidio) — CDP/clinical-evidence patterns</li>
+    <li>Tier rationale: Tier 1 = direct thesis + portfolio + operator-fit; Tier 2 = strong on 2 of 3; Tier 3 = relationship-for-later; Misfit = ≥2 independent disqualifiers</li>
+    <li>This page mirrors the structure of the Agent Conference brief — for the broader 65-organization pipeline see the <a href="index.html">Main Brief</a> tab</li>
+  </ul>
+
+  <h3>Open questions for the user</h3>
+  <ul>
+    <li>Has Shyam applied yet? If approved date passes, this analysis becomes moot.</li>
+    <li>Is the May 13 event date correct? (Image showed May 13; some Founders &amp; Funders NYC iterations have used May 12.)</li>
+    <li>Should we extend this same analysis pattern to other Founders &amp; Funders / NYTechWeek events in May? Several are open during NY Tech Week.</li>
+  </ul>
+</div>
+
+</div>
+</body>
+</html>

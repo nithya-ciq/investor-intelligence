@@ -211,10 +211,22 @@
   .legend .swatch { display: inline-block; width: 10px; height: 10px; border-radius: 2px; }
 
   a { color: #4a6b9a; }
+
+  /* ─── Tab nav ─── */
+  .tab-nav { display: flex; gap: 0; border-bottom: 1px solid #e6e2dc; margin-bottom: 24px; flex-wrap: wrap; }
+  .tab-nav a { padding: 10px 18px; text-decoration: none; color: #6c6760; font-size: 13px; font-weight: 500; border-bottom: 2px solid transparent; margin-bottom: -1px; transition: color 0.15s, border-color 0.15s; }
+  .tab-nav a:hover { color: #1a1a1a; }
+  .tab-nav a.active { color: #1a1a1a; border-bottom-color: #5b8a3a; font-weight: 600; }
 </style>
 </head>
 <body>
 <div class="wrap">
+
+<nav class="tab-nav">
+  <a href="index.html">Main Brief — Full Pipeline</a>
+  <a href="agent-conference-may2026.html" class="active">Agent Conference · May 4-5</a>
+  <a href="vc-reverse-pitch-may13.html">VC Reverse Pitch · May 13</a>
+</nav>
 
 <header class="top">
   <div class="eyebrow">In-event playbook · Tomorrow + Day-after</div>

@@ -314,10 +314,37 @@
     border-radius: 2px;
   }
   a { color: #4a6b9a; }
+
+  /* ─── Tab nav (shared across all 3 pages) ─── */
+  .tab-nav {
+    display: flex;
+    gap: 0;
+    border-bottom: 1px solid #e6e2dc;
+    margin-bottom: 24px;
+    flex-wrap: wrap;
+  }
+  .tab-nav a {
+    padding: 10px 18px;
+    text-decoration: none;
+    color: #6c6760;
+    font-size: 13px;
+    font-weight: 500;
+    border-bottom: 2px solid transparent;
+    margin-bottom: -1px;
+    transition: color 0.15s, border-color 0.15s;
+  }
+  .tab-nav a:hover { color: #1a1a1a; }
+  .tab-nav a.active { color: #1a1a1a; border-bottom-color: #5b8a3a; font-weight: 600; }
 </style>
 </head>
 <body>
 <div class="wrap">
+
+<nav class="tab-nav">
+  <a href="index.html" class="active">Main Brief — Full Pipeline</a>
+  <a href="agent-conference-may2026.html">Agent Conference · May 4-5</a>
+  <a href="vc-reverse-pitch-may13.html">VC Reverse Pitch · May 13</a>
+</nav>
 
 <header class="top">
   <div class="eyebrow">Investor Intelligence Brief · v3 (Round-2 + T4 research)</div>
@@ -356,6 +383,31 @@
 </div>
 
 <!-- =================================================================== -->
+<!-- ═════════ MAY 13 NYC VC REVERSE PITCH — ADDED MAY 11 ═════════ -->
+<div style="background: #f4f8f2; border: 1px solid #cfe1bf; border-left: 4px solid #5b8a3a; border-radius: 8px; padding: 18px 22px; margin: 0 0 28px;">
+  <div style="font-size: 11px; text-transform: uppercase; letter-spacing: 1px; color: #5b8a3a; font-weight: 600; margin-bottom: 4px;">📅 Live event opportunity · May 13, NYC</div>
+  <h3 style="margin: 0 0 8px; font-size: 18px; font-weight: 600;">Founders &amp; Funders — VC Reverse Pitch (curated 5-VC event)</h3>
+  <p style="margin: 0 0 10px; font-size: 14px;"><strong>5 VCs each pitch their thesis for 5 minutes, then curated 1:1 meetings follow.</strong> Application gated — apply via <a href="https://www.foundersnfunders.com/events" target="_blank">foundersnfunders.com/events</a> ASAP. <strong>Of the 5, 2 are direct BevGenie fits</strong> — full deep analysis on the <a href="vc-reverse-pitch-may13.html"><strong>VC Reverse Pitch · May 13</strong> tab</a>.</p>
+  <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px 24px; font-size: 13px; margin-top: 10px;">
+    <div>
+      <strong style="color: #5b8a3a;">🥇 Red Bike Capital · Rachel ten Brink</strong> — Latina + woman-led NY fund. Portfolio includes Daash Intelligence + AthenaHQ + Hetal Retail (all direct architectural peers). Rachel ran brand work at P&amp;G, L'Oréal, Estée Lauder for 15+ years — rare CPG operator who'll grok BevAlc supplier dynamics without context-setting. <strong>Tier 1 fit.</strong>
+    </div>
+    <div>
+      <strong style="color: #b48f3a;">🥈 Alumni Ventures · Drew Collins</strong> — NYC-based AI/B2B SaaS investor at pre-seed/seed. AV's AI &amp; Robotics Fund covers vertical/enterprise AI. Caveat: AV typically participates alongside a lead, doesn't anchor rounds. <strong>Tier 2 fit, useful for round-filling.</strong>
+    </div>
+    <div>
+      <strong style="color: #b48f3a;">🥉 Thomson Reuters Ventures · Karen Lopez</strong> — $150M Fund II. Heavy thesis on agentic AI for regulated workflows (Materia, Greenlite AI, Supio). BevAlc isn't in their sector list — pitch <em>only</em> if leading with TTB/state-ABC/three-tier-compliance angle. <strong>Tier 2 conditional.</strong>
+    </div>
+    <div>
+      <strong style="color: #8b8985;">⚠️ Presidio Ventures · Tyler Schinto</strong> — Sumitomo CVC, Series A+ stage. Too early for current raise but worth relationship-building for Series A in 12-18mo. Tyler underwrites Tealium (customer-data-platform adjacency). <strong>Tier 3 / relationship-for-later.</strong>
+    </div>
+    <div style="grid-column: 1 / -1;">
+      <strong style="color: #b85a4d;">❌ Plum Alley · Nate Wang</strong> — three independent disqualifiers: Series A stage, frontier-tech/drug-discovery thesis, women-founder mandate. Don't waste a curated-meeting slot. <strong>Misfit.</strong>
+    </div>
+  </div>
+  <p style="margin: 12px 0 0; font-size: 13px;"><a href="vc-reverse-pitch-may13.html" style="font-weight: 600;">→ Open the deep analysis with verbatim thesis, portfolio peer-pattern mapping, ask-frames, and application checklist</a></p>
+</div>
+
 <h2 class="section">Tier 1 — Clear fits, contact this week <span class="count">(12 investors)</span></h2>
 <p class="tier-blurb">Stated thesis explicitly aligns with vertical AI / decision intelligence / BevAlc enabling tech. Highest expected reply rate.</p>
 
