@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Stephen White — Advisor / Industry Connector Analysis · ConsumerIQ / BevGenie</title>
+<style>
+  * { box-sizing: border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    background: #faf9f7;
+    color: #1a1a1a;
+    margin: 0;
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+  }
+  .wrap { max-width: 1180px; margin: 0 auto; padding: 32px 28px 80px; }
+
+  .tab-nav { display: flex; gap: 0; border-bottom: 1px solid #e6e2dc; margin-bottom: 24px; flex-wrap: wrap; }
+  .tab-nav a { padding: 10px 18px; text-decoration: none; color: #6c6760; font-size: 13px; font-weight: 500; border-bottom: 2px solid transparent; margin-bottom: -1px; transition: color 0.15s, border-color 0.15s; }
+  .tab-nav a:hover { color: #1a1a1a; }
+  .tab-nav a.active { color: #1a1a1a; border-bottom-color: #5b8a3a; font-weight: 600; }
+
+  header.top { border-bottom: 1px solid #e6e2dc; padding-bottom: 18px; margin-bottom: 28px; }
+  header.top .eyebrow { font-size: 11px; text-transform: uppercase; letter-spacing: 1.2px; color: #5a3a86; font-weight: 600; }
+  header.top h1 { margin: 6px 0 4px; font-size: 28px; font-weight: 600; letter-spacing: -0.4px; }
+  header.top .meta { font-size: 13px; color: #6c6760; }
+  header.top .meta a { color: #4a6b9a; }
+
+  .verdict {
+    background: #fff;
+    border: 1px solid #e6e2dc;
+    border-radius: 10px;
+    padding: 20px 24px;
+    margin: 0 0 28px;
+    border-left: 5px solid #5a3a86;
+  }
+  .verdict h2 {
+    margin: 0 0 8px;
+    font-size: 16px;
+    color: #5a3a86;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: 600;
+  }
+  .verdict p { margin: 0 0 8px; }
+  .verdict p:last-child { margin-bottom: 0; }
+
+  .profile-snapshot {
+    background: #f6f3fa;
+    border-left: 4px solid #5a3a86;
+    padding: 18px 22px;
+    margin-bottom: 28px;
+    border-radius: 4px;
+  }
+  .profile-snapshot h3 { margin: 0 0 10px; font-size: 14px; color: #43286e; text-transform: uppercase; letter-spacing: 0.6px; }
+  .profile-snapshot dl { margin: 0; display: grid; grid-template-columns: 170px 1fr; gap: 8px 16px; font-size: 13.5px; }
+  .profile-snapshot dt { color: #6c6760; font-weight: 500; font-size: 11px; text-transform: uppercase; letter-spacing: 0.4px; padding-top: 3px; }
+  .profile-snapshot dd { margin: 0; }
+
+  h2.section {
+    font-size: 20px;
+    font-weight: 600;
+    margin: 36px 0 14px;
+    border-bottom: 2px solid #1a1a1a;
+    padding-bottom: 6px;
+    letter-spacing: -0.3px;
+  }
+  .section-blurb { font-size: 13px; color: #6c6760; font-style: italic; margin: -8px 0 16px; }
+
+  .contribution {
+    background: #fff;
+    border: 1px solid #e6e2dc;
+    border-radius: 8px;
+    padding: 16px 20px;
+    margin-bottom: 12px;
+    border-left: 4px solid #5b8a3a;
+  }
+  .contribution.high-priority { border-left-color: #5b8a3a; }
+  .contribution.medium-priority { border-left-color: #b48f3a; }
+  .contribution.future { border-left-color: #4a6b9a; }
+  .contribution .lead {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.6px;
+    color: #5b8a3a;
+    font-weight: 600;
+    margin-bottom: 4px;
+  }
+  .contribution.medium-priority .lead { color: #b48f3a; }
+  .contribution.future .lead { color: #4a6b9a; }
+  .contribution h3 { margin: 0 0 6px; font-size: 16px; font-weight: 600; }
+  .contribution .body { font-size: 13.5px; color: #1a1a1a; }
+  .contribution .body p { margin: 0 0 6px; }
+  .contribution .body p:last-child { margin-bottom: 0; }
+  .contribution .why-now { background: #f4f8f2; padding: 8px 10px; border-radius: 4px; margin-top: 8px; font-size: 12.5px; }
+
+  .ai-pov {
+    background: #fef9ed;
+    border-left: 4px solid #b48f3a;
+    padding: 18px 22px;
+    margin: 0 0 28px;
+    border-radius: 4px;
+  }
+  .ai-pov h3 { margin: 0 0 8px; font-size: 14px; color: #6b4f15; text-transform: uppercase; letter-spacing: 0.6px; }
+  .ai-pov ul { margin: 4px 0 8px 18px; padding: 0; font-size: 13.5px; }
+  .ai-pov li { margin-bottom: 4px; }
+
+  .ask-table {
+    background: #fff;
+    border: 1px solid #e6e2dc;
+    border-radius: 8px;
+    padding: 16px 20px;
+    margin: 28px 0;
+  }
+  .ask-table h3 { margin: 0 0 12px; font-size: 14px; text-transform: uppercase; letter-spacing: 0.6px; color: #1a1a1a; }
+  .ask-table table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  .ask-table th { text-align: left; padding: 8px 10px; font-size: 11.5px; text-transform: uppercase; letter-spacing: 0.4px; color: #6c6760; border-bottom: 2px solid #1a1a1a; }
+  .ask-table td { padding: 10px; border-bottom: 1px solid #f0ede5; vertical-align: top; font-size: 13.5px; }
+  .ask-table .tier { font-weight: 600; white-space: nowrap; }
+  .ask-table .tier.t1 { color: #5b8a3a; }
+  .ask-table .tier.t2 { color: #b48f3a; }
+  .ask-table .tier.t3 { color: #5a3a86; }
+
+  .meeting-plan {
+    background: #fdf6e8;
+    border-left: 4px solid #b48f3a;
+    padding: 18px 22px;
+    margin: 28px 0;
+    border-radius: 4px;
+  }
+  .meeting-plan h3 { margin: 0 0 10px; font-size: 14px; color: #6b4f15; }
+  .meeting-plan .step { margin-bottom: 14px; padding-bottom: 14px; border-bottom: 1px dashed #e6d8b0; }
+  .meeting-plan .step:last-child { margin-bottom: 0; padding-bottom: 0; border-bottom: 0; }
+  .meeting-plan .step-num { font-size: 11px; text-transform: uppercase; letter-spacing: 0.6px; color: #6b4f15; font-weight: 600; }
+  .meeting-plan .step-title { font-size: 15px; font-weight: 600; margin: 4px 0 6px; }
+  .meeting-plan .step-body { font-size: 13.5px; color: #1a1a1a; }
+
+  .red-flags {
+    background: #fdf6f5;
+    border: 1px solid #e8c5c0;
+    border-left: 4px solid #b85a4d;
+    padding: 16px 20px;
+    margin: 28px 0;
+    border-radius: 4px;
+  }
+  .red-flags h3 { margin: 0 0 8px; font-size: 14px; color: #7a2a1c; text-transform: uppercase; letter-spacing: 0.6px; }
+  .red-flags ul { margin: 4px 0 0 18px; padding: 0; font-size: 13.5px; }
+  .red-flags li { margin-bottom: 6px; }
+
+  .footer-notes { margin-top: 40px; padding-top: 24px; border-top: 1px solid #e6e2dc; font-size: 12.5px; color: #6c6760; }
+  .footer-notes h3 { color: #1a1a1a; font-size: 13px; margin: 0 0 8px; }
+  .footer-notes ul { margin: 4px 0 14px 18px; padding: 0; }
+  .footer-notes li { margin-bottom: 4px; }
+
+  a { color: #4a6b9a; }
+  .pill { display: inline-block; padding: 1px 8px; border-radius: 10px; font-size: 11px; font-weight: 500; letter-spacing: 0.3px; margin-right: 4px; }
+  .pill.shyam { background: #e8eef9; color: #2c4d80; }
+  .pill.diageo { background: #f6f3fa; color: #5a3a86; }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<nav class="tab-nav">
+  <a href="index.html">Main Brief — Full Pipeline</a>
+  <a href="agent-conference-may2026.html">Agent Conference · May 4-5</a>
+  <a href="vc-reverse-pitch-may13.html">VCReversePitch</a>
+  <a href="stephen-white-advisor.html" class="active">StephenWhite</a>
+</nav>
+
+<header class="top">
+  <div class="eyebrow">Advisor / industry-connector analysis · Pre-meeting prep</div>
+  <h1>Stephen White — Diageo SVP, potential BevGenie advisor</h1>
+  <div class="meta">Sitting <strong>SVP Marketing &amp; Innovation, Diageo North America</strong> · 22 years at Diageo · Westport CT · Fellow of The Marketing Academy · 2026 Judge, CEO Magazine Executive of the Year · <a href="https://www.linkedin.com/in/stephen-white-12220b4/" target="_blank">LinkedIn</a></div>
+</header>
+
+<!-- ═══════════════ VERDICT ═══════════════ -->
+<div class="verdict">
+  <h2>Verdict — this isn't just an advisor opportunity. He's a sitting buyer-persona insider at the largest possible BevGenie customer.</h2>
+  <p><strong>Stephen White runs Marketing &amp; Innovation for Diageo's entire North America business.</strong> Diageo is the world's largest spirits company — Johnnie Walker, Guinness, Smirnoff, Captain Morgan, Tanqueray, Don Julio, Casamigos. His Innovation org is exactly the function inside Diageo that evaluates software like BevGenie. He is, in one person: a target customer, a competitive-intel goldmine, a credential-cascade source for VCs, and an industry-network anchor.</p>
+  <p><strong>Most valuable single thing he can do: get BevGenie into a Diageo NA design-partner pilot.</strong> Even an unpaid pilot with one Johnnie Walker national-accounts team would reset BevGenie's investor narrative from "pre-seed BevAlc startup" to "the platform Diageo is piloting." That's worth more than any advisor equity.</p>
+  <p><strong>What to NOT do:</strong> walk into the first meeting and pitch him. He's a 22-year corporate executive, not a casual networker — the founder who arrives with a clear, listening-first agenda and a sharp ask wins. Treat the first conversation as voice-of-customer + thought-leadership engagement, not as a closing pitch.</p>
+</div>
+
+<!-- ═══════════════ PROFILE SNAPSHOT ═══════════════ -->
+<div class="profile-snapshot">
+  <h3>📇 Profile snapshot</h3>
+  <dl>
+    <dt>Current role</dt><dd><strong>Senior Vice President, Marketing &amp; Innovation, North America</strong> at Diageo (2023–present)</dd>
+    <dt>Tenure at Diageo</dt><dd>22 years (joined 2004 as European Innovation Lead) — full career arc inside one of the world's most respected beverage companies</dd>
+    <dt>Geographic breadth</dt><dd>Europe → Africa → Indian Ocean → MENA → Global Travel Retail → North America. <strong>Has operated across nearly every regional structure Diageo has.</strong></dd>
+    <dt>Marquee roles</dt><dd>Global Marketing VP, Johnnie Walker (2008-2011) · Global Marketing Director, Premium Rums (2006-2008) · MD Indian Ocean + Regional CMO Africa (2014-2017) · GM Europe &amp; Africa Innovation, SVP (2017-2023)</dd>
+    <dt>Pre-Diageo</dt><dd>11 years at <strong>Boots Healthcare International</strong> (UK consumer healthcare FMCG) — National Account Manager → Marketing Manager. <strong>Means he speaks fluent CPG, not just BevAlc.</strong></dd>
+    <dt>Education</dt><dd><strong>MBA with Distinction</strong> from Nottingham University Business School (2000-2003) · BSc (Hons) Mathematics &amp; Economics from Loughborough University (1991-1994). <strong>Math + economics undergrad = analytical mind, not just brand-marketing instinct.</strong></dd>
+    <dt>External recognition</dt><dd><strong>Fellow of The Marketing Academy</strong> (UK senior-marketer mentorship network) · <strong>2026 Judge — Executive of the Year, CEO Magazine</strong></dd>
+    <dt>Public voice (recent)</dt><dd>3 thought-leadership articles in April–May 2026: "Seven Forces Reshaping Beverage Alcohol" · "Alcohol Is Not Broken. It Is Mispriced." · "The Breakout Curve" (on building billion-dollar consumer brands). <strong>Pattern suggests he's actively building a post-corporate platform / preparing for a board portfolio.</strong></dd>
+  </dl>
+</div>
+
+<!-- ═══════════════ AI POV ═══════════════ -->
+<div class="ai-pov">
+  <h3>🤖 Does he have a POV on AI? — Yes. Here's the evidence.</h3>
+  <p style="font-size:13.5px; margin:0 0 10px;">No direct article by him on AI surfaced in research, BUT his role and Diageo's AI activity strongly imply he holds (and likely owns) a real-world AI thesis:</p>
+  <ul>
+    <li><strong>His title literally contains "Innovation"</strong> — at Diageo, the Innovation org is where emerging tech (including AI) gets tested. AI vendor evaluations on the North America side likely route through his function.</li>
+    <li><strong>Diageo has been visibly aggressive on AI in 2024-2025</strong>: GenAI-personalized Johnnie Walker bottles, <em>Flavour Forecast</em> with Ai Palette, the "Think Party" AI panel for consumer trends, AI-enhanced tasting kits. As SVP Marketing &amp; Innovation, NA — he's either sponsoring or directly adjacent to these initiatives.</li>
+    <li><strong>His recent article "Alcohol Is Not Broken. It Is Mispriced."</strong> reframes the category-contraction narrative as a <em>data + pricing</em> problem — directly aligned with what BevGenie does (decision intelligence on commercial workflows). He's already thinking in BevGenie's frame.</li>
+    <li><strong>Math + economics undergrad + MBA with distinction</strong> — analytical foundation, not just brand-marketing instinct. He'll engage with the agentic-AI architecture conversation, not glaze over it.</li>
+    <li><strong>Diageo's "AI advantage" strategy</strong> (publicly covered) emphasizes precision marketing + consumer insight + supply chain — all areas where Stephen's marketing+innovation function intersects. <strong>He knows what AI <em>can't</em> currently do</strong> at scale inside Diageo, which is where BevGenie's wedge is.</li>
+  </ul>
+  <p style="font-size:13.5px; margin:8px 0 0;"><strong>Strategic implication:</strong> Don't pitch him AI generically. He's already past that. The conversation is about <em>which specific agentic workflows actually unlock value in BevAlc commercial teams</em> — and BevGenie has worked answers to that.</p>
+</div>
+
+<!-- ═══════════════ CONTRIBUTIONS SECTION ═══════════════ -->
+<h2 class="section">How he can contribute — 10 concrete value vectors beyond "advisor"</h2>
+<p class="section-blurb">Ranked by impact-per-effort given BevGenie's current pre-seed stage. The first 3 are the killers; the rest are accretive.</p>
+
+<div class="contribution high-priority">
+  <div class="lead">① Highest-leverage · Stage-defining if it lands</div>
+  <h3>Diageo North America design-partner pilot</h3>
+  <div class="body">
+    <p>Stephen sits at the exact intersection where a Diageo pilot could be authorized — Marketing &amp; Innovation, North America. <strong>Even a small, unpaid pilot with one Diageo commercial team (e.g. a Johnnie Walker national-accounts pod, or the Casamigos commercial team) would transform BevGenie's positioning</strong> from "early-stage BevAlc startup" to "the platform Diageo is piloting." Investor narrative shifts immediately.</p>
+    <div class="why-now"><strong>Why now:</strong> BevGenie has Sera Luce validated. Adding a Diageo logo (even at pilot stage) gives Tier-1 and Tier-2 VCs the demand-side proof they need. Without a marquee customer reference, the seed conversation is harder.</div>
+  </div>
+</div>
+
+<div class="contribution high-priority">
+  <div class="lead">② Highest-leverage · Irreplaceable product input</div>
+  <h3>Voice-of-customer sessions — 2-3 deep dives on BevAlc supplier workflows</h3>
+  <div class="body">
+    <p>Sit with Shyam + Srini for 90-min sessions on: (a) how a Diageo NA commercial team's day actually flows, (b) where data lives + where it doesn't, (c) what decisions take how long + why, (d) where Salesforce / Crunchtime / Lilypad / Encompass fall short in practice, (e) which agentic workflows would unlock the most value if they worked. This is the kind of insider product input you usually pay $500/hr consulting firms for and get diluted-secondhand versions.</p>
+    <div class="why-now"><strong>Why now:</strong> The Pattern-B core-job designs in BevGenie's roadmap need real-world ground-truth from an SVP at the largest possible customer. Right now they're informed by Sera Luce + Srini's intuition.</div>
+  </div>
+</div>
+
+<div class="contribution high-priority">
+  <div class="lead">③ Highest-leverage · Investor-narrative unlock</div>
+  <h3>Named advisor on cap table + investor deck</h3>
+  <div class="body">
+    <p>Adding "Stephen White, SVP Marketing &amp; Innovation, Diageo North America" as a named advisor on the BevGenie deck is a <strong>credential cascade</strong>. Specifically resonates with: Rachel ten Brink (Red Bike — CPG operator-investor will instantly recognize the weight), Karen Lopez (TR Ventures — signals BevGenie has real industry pull), 2048 Ventures (vertical-AI thesis values industry experts), and the Insight Partners conversation if it ever happens. <strong>The signal is "this founder can convene Diageo SVPs around the product."</strong> That's hard to fake.</p>
+    <div class="why-now"><strong>Why now:</strong> The May 13 VC Reverse Pitch and ongoing Tier-1 outreach both happen in the next 2-6 weeks. A named advisor by then meaningfully raises conversion odds.</div>
+  </div>
+</div>
+
+<div class="contribution medium-priority">
+  <div class="lead">④ High-value · Competitive intelligence</div>
+  <h3>Diageo-insider competitive teardown of Salesforce / Crunchtime / Lilypad / Encompass</h3>
+  <div class="body">
+    <p>Diageo evaluates every major BevAlc commercial-platform vendor. Stephen will know — directly or one degree removed — what each vendor actually does well, where they fail in real deployments, what they charge Diageo, and what stops Diageo from switching. <strong>This is the most honest competitive teardown BevGenie can possibly get.</strong> Folds straight into the product positioning + pricing + Series A competitive slide.</p>
+    <div class="why-now"><strong>Why now:</strong> Current competitive slides are built from public research. Stephen converts that into operator-truth.</div>
+  </div>
+</div>
+
+<div class="contribution medium-priority">
+  <div class="lead">⑤ High-value · Pricing reality</div>
+  <h3>Insider pricing benchmarks for commercial software in BevAlc supplier orgs</h3>
+  <div class="body">
+    <p>Stephen knows what Diageo pays per-seat-per-month for various commercial tools. <strong>BevGenie's pricing should be calibrated to this insider data</strong>, not to what feels right from the founder's gut. He'll also know which budget line items new tools come out of — critical for sales motion design.</p>
+    <div class="why-now"><strong>Why now:</strong> Pricing decisions get baked into early customer contracts and become hard to change later. Get this right pre-launch.</div>
+  </div>
+</div>
+
+<div class="contribution medium-priority">
+  <div class="lead">⑥ Network · Buyer-side intros</div>
+  <h3>Introductions to peer suppliers — Pernod Ricard, Bacardi, Beam Suntory, Brown-Forman, Constellation</h3>
+  <div class="body">
+    <p>Senior BevAlc executives migrate across suppliers regularly. Stephen's 22-year Diageo network spans former colleagues now at Pernod Ricard, Bacardi, Beam Suntory, Brown-Forman, Constellation, plus the major distributor-side execs at Southern Glazer's, Republic National, Breakthru. <strong>Each warm intro is a BevGenie design-partner conversation that would otherwise take 6 months of cold outreach.</strong></p>
+    <div class="why-now"><strong>Why now:</strong> A multi-supplier customer pipeline (not just Sera Luce + Diageo pilot) is what unlocks Series A.</div>
+  </div>
+</div>
+
+<div class="contribution medium-priority">
+  <div class="lead">⑦ Network · Industry visibility</div>
+  <h3>Industry conference + speaking access (IWSR, Drinks Innovation Forum, BevNet, etc.)</h3>
+  <div class="body">
+    <p>Stephen is a sought-after speaker + judge in the industry circuit. He can either get Shyam onto a panel at one of these (massive credibility lift for a pre-seed founder) or arrange a private meet-the-CMO breakfast adjacent to one. <strong>Industry conference panel slots normally take 2 years of relationship-building to earn.</strong></p>
+    <div class="why-now"><strong>Why now:</strong> Public visibility compounds — a panel appearance in Q3 2026 sets up speaking + customer-intro flywheels for 2027.</div>
+  </div>
+</div>
+
+<div class="contribution medium-priority">
+  <div class="lead">⑧ Network · Talent pipeline</div>
+  <h3>Warm referrals for BevGenie's first commercial hires</h3>
+  <div class="body">
+    <p>When BevGenie hires its first Head of GTM, VP Sales, or industry-experienced Customer Success Lead, the candidates ideally come from Diageo / Pernod Ricard / Brown-Forman commercial-team alumni. <strong>Stephen's network is the warm pool</strong> for these roles. Even one good referral saves 4-6 months of recruiter time + $30K-50K in fees.</p>
+    <div class="why-now"><strong>Why now:</strong> First commercial hire decision is approaching as BevGenie moves past founding-team-only.</div>
+  </div>
+</div>
+
+<div class="contribution future">
+  <div class="lead">⑨ Strategic option · Future capital path</div>
+  <h3>Optional path to Diageo strategic CVC / Distill Ventures relationship</h3>
+  <div class="body">
+    <p>Diageo's Distill Ventures arm has been contracting (per industry reporting), but a strategic Diageo investment at Series A or later — through DV or a direct corporate investment — remains an option if the pilot relationship lands well. <strong>Stephen would be the most natural internal champion for that conversation.</strong> Caveat: strategic CVC capital has terms baggage (ROFRs, info rights); evaluate against pure-financial alternatives.</p>
+    <div class="why-now"><strong>Why now:</strong> Not immediate (Series A territory) but the relationship-seeding starts at advisor stage.</div>
+  </div>
+</div>
+
+<div class="contribution future">
+  <div class="lead">⑩ Strategic option · Brand-side adjacent market</div>
+  <h3>Bridge to non-BevAlc CPG via his Boots Healthcare background</h3>
+  <div class="body">
+    <p>Stephen's 11 pre-Diageo years at Boots Healthcare (UK consumer healthcare FMCG) means he understands non-alcohol CPG vocabulary. <strong>If BevGenie ever wants to extend the platform into adjacent CPG verticals</strong> (beauty / health / functional beverages), Stephen's the connector between BevAlc-only-credibility and broader-CPG-credibility. Daash Intelligence (Red Bike portfolio) sits in exactly this beauty/CPG adjacency.</p>
+    <div class="why-now"><strong>Why now:</strong> Not relevant in the next 12 months — but the platform architecture decisions made now affect adjacency potential later.</div>
+  </div>
+</div>
+
+<!-- ═══════════════ ASKS TABLE ═══════════════ -->
+<div class="ask-table">
+  <h3>🎯 What to ask for — tiered asks, sequenced by trust-earned</h3>
+  <table>
+    <thead><tr><th style="width:90px;">Tier</th><th>Ask</th><th>What we offer in return</th><th>Trigger</th></tr></thead>
+    <tbody>
+      <tr>
+        <td class="tier t1">Tier 1<br><span style="font-weight:400; font-size:11px;">Meeting 1</span></td>
+        <td><strong>30-minute "voice-of-customer" listening session.</strong> No pitch. We ask him questions; we listen.</td>
+        <td>Free for him; we send a sharp follow-up summary of his framing applied to one specific BevGenie use case — demonstrating we listened + thought about it.</td>
+        <td>Use his recent "Seven Forces Reshaping Beverage Alcohol" article as the warm-in. "Three of your seven forces map directly to problems we're solving — wanted to learn how you frame them from inside Diageo."</td>
+      </tr>
+      <tr>
+        <td class="tier t2">Tier 2<br><span style="font-weight:400; font-size:11px;">Meeting 2-3</span></td>
+        <td><strong>BevGenie product walkthrough (30-45 min)</strong> with the specific ask: "poke holes." We want him to push back on the architecture, pricing, GTM, anything.</td>
+        <td>Acknowledgment in our roadmap that his feedback shaped X feature; ongoing visibility into BevGenie's progress as a friend-of-the-company.</td>
+        <td>Only after Tier 1 has happened and the follow-up summary landed well. Don't push to demo on Meeting 1.</td>
+      </tr>
+      <tr>
+        <td class="tier t2">Tier 2<br><span style="font-weight:400; font-size:11px;">Month 1-2</span></td>
+        <td><strong>Formal advisor agreement</strong>: 0.25–0.5% equity vesting over 24 months in exchange for ~4 hours/month strategic input + permission to use his name in investor materials + up to 6 high-quality intros over the relationship.</td>
+        <td>Standard advisor equity grant; visibility into a fast-moving early-stage company; potential board-portfolio building block if he's exploring post-Diageo moves.</td>
+        <td>Only after demo + a strong second meeting. Don't propose equity in Meeting 1.</td>
+      </tr>
+      <tr>
+        <td class="tier t3">Tier 3<br><span style="font-weight:400; font-size:11px;">Month 2-6 · the prize</span></td>
+        <td><strong>Diageo NA design-partner pilot.</strong> One team, one specific BevGenie agent workflow, $0 paid, 6-week scope. Goal is reference, not revenue.</td>
+        <td>Diageo gets early access to a tool that — if it works — saves their commercial team meaningful time. Stephen gets internal credit for championing useful innovation. We get the marquee logo.</td>
+        <td>After advisor relationship is formal + after we've shipped one or two pieces of his feedback into the product (proving we execute on input).</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- ═══════════════ MEETING PLAN ═══════════════ -->
+<div class="meeting-plan">
+  <h3>🗓 Meeting plan — sequence + content for first 3 conversations</h3>
+
+  <div class="step">
+    <div class="step-num">Meeting 1 · listening session</div>
+    <div class="step-title">"Tell me what you're seeing from inside Diageo NA"</div>
+    <div class="step-body">
+      <p><strong>Goal:</strong> Learn + signal that BevGenie respects his expertise. <strong>Not:</strong> pitch or demo.</p>
+      <p><strong>Opening (60 sec):</strong> "Stephen — your 'Seven Forces' piece + 'Alcohol Is Not Broken, It Is Mispriced' both land directly on what we're building. We're early-stage; we have one validated customer (Sera Luce) and we're building the agentic intelligence layer for BevAlc supplier commercial teams. Before I tell you anything more, I'd love your read on what an SVP of Marketing &amp; Innovation at Diageo would actually find useful — and what's noise."</p>
+      <p><strong>Questions to bring:</strong></p>
+      <ul style="margin: 4px 0 0 16px; padding: 0; font-size: 13px;">
+        <li>"Inside Diageo NA, what's the daily-friction problem in commercial workflows that nobody's solved yet?"</li>
+        <li>"Which 'reshaping forces' from your article would BevGenie's customers feel first?"</li>
+        <li>"Of the tools you've evaluated for the commercial side, what consistently disappoints?"</li>
+        <li>"If a startup walked in with one specific BevAlc-agentic-AI workflow, which one would have a chance of getting attention internally — and which would be DOA?"</li>
+        <li>"Outside Diageo — who are 1-2 people in the industry whose perspective you'd want me to hear?"</li>
+      </ul>
+      <p style="margin-top:8px;"><strong>Close (60 sec):</strong> "This was incredibly useful. Can I send you a one-pager that takes your framing and shows how we'd apply it? No pressure — just want you to see the actual product mapped to what you said."</p>
+    </div>
+  </div>
+
+  <div class="step">
+    <div class="step-num">Meeting 2 · demo + reciprocal value</div>
+    <div class="step-title">"Here's how your framing changed our roadmap"</div>
+    <div class="step-body">
+      <p><strong>Goal:</strong> Show BevGenie executes on input. Earn the right to ask for the advisor relationship.</p>
+      <p><strong>Structure:</strong> 30-min product walkthrough where Shyam <em>explicitly references Stephen's points from Meeting 1</em>. "When you said X, that made us re-think Y — here's what changed." Then 15 min open feedback. Then propose formal advisor relationship as the close.</p>
+      <p><strong>What to demo:</strong> the single sharpest workflow — likely the distributor-brief-generation agent or the competitive-intelligence agent. <strong>Not</strong> the full platform tour. One thing, done well, with clear before/after.</p>
+    </div>
+  </div>
+
+  <div class="step">
+    <div class="step-num">Meeting 3 · the pilot conversation</div>
+    <div class="step-title">"What would it take to get one Diageo NA team using this for 6 weeks?"</div>
+    <div class="step-body">
+      <p><strong>Goal:</strong> Convert relationship into a concrete pilot path.</p>
+      <p><strong>Frame:</strong> "Stephen — given what you've seen, we'd love to put this in front of one of your NA commercial teams for 6 weeks at no cost. We want the feedback; you get the option of a real tool if it works. What would need to be true for that conversation to be possible?" <strong>Listen to the answer carefully</strong> — it tells you exactly what Diageo's procurement / legal / IT / commercial-leadership chain looks like for new-tool evaluation.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════ RED FLAGS ═══════════════ -->
+<div class="red-flags">
+  <h3>⚠️ Red flags + how to handle</h3>
+  <ul>
+    <li><strong>Sitting Diageo SVP = employment constraints.</strong> He cannot formally advise startups Diageo could acquire or compete with without internal approval. Surface this in Meeting 2: "Are there any internal-approval steps you'd want to run before we formalize?" Respect the answer.</li>
+    <li><strong>Marketing &amp; Innovation org ≠ Commercial / Sales org.</strong> The Diageo NA budget for new commercial-platform software likely sits with the President of US Spirits (Stephen Rust, separate Stephen) or his org, not with Marketing &amp; Innovation. <strong>Stephen White can be an internal champion but is not the ultimate budget holder.</strong> Plan the pilot path accordingly — he gets us in the door; conversion still needs the commercial-side decision-maker.</li>
+    <li><strong>22-year corporate insider blind spots.</strong> He may underestimate the urgency / risk-tolerance of pre-seed startup operations. Don't take his "Diageo would need 6 months for that" timeline as a binding constraint on BevGenie's own timeline.</li>
+    <li><strong>Innovation roles sometimes mean "evaluate but don't deploy."</strong> If after Meeting 3 there's no concrete pilot path, downgrade expectations: he's a valuable advisor + intro source, not a customer path. Don't anchor the GTM plan on him.</li>
+    <li><strong>Confidentiality: Diageo internals are sensitive.</strong> Don't ask him for proprietary numbers, internal vendor RFP details, or competitor-bid information. Keep the conversation at the "category insight" level, not "Diageo's actual data" level. He'll trust you more for showing this discipline.</li>
+    <li><strong>The "I'll think about it" risk.</strong> Senior corporate executives are polite. If he says "let me consider it" after Meeting 2, follow up in 7 days with a concrete next step proposal — don't let it drift into 6 months of polite ambiguity.</li>
+  </ul>
+</div>
+
+<!-- ═══════════════ NET ═══════════════ -->
+<h2 class="section">Net assessment</h2>
+<p style="font-size: 14px;">Stephen White is unusually well-positioned to be a high-impact advisor specifically because <strong>his current job is to evaluate the exact kind of tool BevGenie is building, at the exact company we'd most want as a customer</strong>. The 10 contribution vectors above are real and compounding — even half of them landing is transformational for a pre-seed BevAlc-vertical-AI startup.</p>
+<p style="font-size: 14px;"><strong>Probability-weighted highest-value outcome:</strong> a Diageo NA design-partner pilot in Q3 2026 that becomes the BevGenie reference customer at Series A. <strong>Probability-weighted floor outcome:</strong> 4-6 high-quality industry intros + 2-3 voice-of-customer sessions + a credentialed name on the cap table. <strong>Both outcomes are accretive to BevGenie's current path; the floor case is achievable inside 60 days if the first meeting goes well.</strong></p>
+<p style="font-size: 14px;"><strong>Recommended posture going into Meeting 1:</strong> respectful, curious, listening-first. Lead with his thought leadership; defer the demo. Earn the right to ask for the pilot through showing — across two or three meetings — that BevGenie listens, executes, and respects his time.</p>
+
+<!-- ═══════════════ FOOTER ═══════════════ -->
+<div class="footer-notes">
+  <h3>Sources used in this analysis</h3>
+  <ul>
+    <li><a href="https://www.linkedin.com/in/stephen-white-12220b4/" target="_blank">Stephen White — LinkedIn profile</a> (public surface)</li>
+    <li>RocketReach professional profile — career history + current title verification</li>
+    <li>Diageo public press: Johnnie Walker GenAI bottle (2024), Flavour Forecast / Ai Palette partnership, Think Party AI panel — establishing Diageo's AI portfolio context</li>
+    <li>LinkedIn-surfaced articles by Stephen: "Seven Forces Reshaping Beverage Alcohol" (Apr 2026), "Alcohol Is Not Broken. It Is Mispriced." (Apr 2026), "The Breakout Curve" (May 2026)</li>
+    <li>Marketing Week, Consumer Goods Technology, Marketing Dive — coverage of Diageo's AI strategy under which Stephen's Innovation function operates</li>
+  </ul>
+
+  <h3>Open questions for the user to confirm</h3>
+  <ul>
+    <li>Who in the team is making the introduction to Stephen — and what's the existing relationship strength?</li>
+    <li>Is the first meeting scheduled? If so — when? The Meeting-1 prep above assumes ~1 week of runway to assemble talking points and review his three articles.</li>
+    <li>Should we add Stephen to the Main Brief's "advisors" or "industry network" section once a relationship is formal? (Currently the brief tracks investors only.)</li>
+    <li>Are there sensitivities about him given Twenty20's relationship to Diageo (e.g., past pilots, prior conversations, mutual contacts)?</li>
+  </ul>
+</div>
+
+</div>
+</body>
+</html>
