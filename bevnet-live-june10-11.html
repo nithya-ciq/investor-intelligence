@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BevNET Live NYC 2026 — Workshop Attendee Cross-Match · ConsumerIQ / BevGenie</title>
+<style>
+  * { box-sizing: border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    background: #faf9f7;
+    color: #1a1a1a;
+    margin: 0;
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+  }
+  .wrap { max-width: 1180px; margin: 0 auto; padding: 32px 28px 80px; }
+
+  .tab-nav { display: flex; gap: 0; border-bottom: 1px solid #e6e2dc; margin-bottom: 24px; flex-wrap: wrap; }
+  .tab-nav a { padding: 10px 18px; text-decoration: none; color: #6c6760; font-size: 13px; font-weight: 500; border-bottom: 2px solid transparent; margin-bottom: -1px; transition: color 0.15s, border-color 0.15s; }
+  .tab-nav a:hover { color: #1a1a1a; }
+  .tab-nav a.active { color: #1a1a1a; border-bottom-color: #5b8a3a; font-weight: 600; }
+
+  header.top { border-bottom: 1px solid #e6e2dc; padding-bottom: 18px; margin-bottom: 28px; }
+  header.top .eyebrow { font-size: 11px; text-transform: uppercase; letter-spacing: 1.2px; color: #4a6b9a; font-weight: 600; }
+  header.top h1 { margin: 6px 0 4px; font-size: 28px; font-weight: 600; letter-spacing: -0.4px; }
+  header.top .meta { font-size: 13px; color: #6c6760; }
+  header.top .meta a { color: #4a6b9a; }
+
+  .verdict { background: #fff; border: 1px solid #e6e2dc; border-radius: 10px; padding: 20px 24px; margin: 0 0 28px; }
+  .verdict h2 { margin: 0 0 8px; font-size: 16px; color: #5b8a3a; text-transform: uppercase; letter-spacing: 1px; font-weight: 600; }
+  .verdict p { margin: 0 0 8px; }
+  .verdict p:last-child { margin-bottom: 0; }
+
+  .event-meta { background: #f3f5fb; border-left: 4px solid #4a6b9a; padding: 16px 20px; margin-bottom: 28px; border-radius: 4px; font-size: 14px; }
+  .event-meta h3 { margin: 0 0 8px; font-size: 14px; color: #2c4d80; }
+  .event-meta dl { margin: 4px 0 0; display: grid; grid-template-columns: 140px 1fr; gap: 6px 14px; }
+  .event-meta dt { color: #6c6760; font-weight: 500; font-size: 12px; text-transform: uppercase; letter-spacing: 0.4px; }
+  .event-meta dd { margin: 0; }
+
+  h2.section { font-size: 20px; font-weight: 600; margin: 36px 0 14px; border-bottom: 2px solid #1a1a1a; padding-bottom: 6px; letter-spacing: -0.3px; }
+  h2.section .count { font-size: 13px; color: #6c6760; font-weight: 400; margin-left: 8px; }
+  .section-blurb { font-size: 13px; color: #6c6760; font-style: italic; margin: -8px 0 16px; }
+
+  .target { background: #fff; border: 1px solid #e6e2dc; border-radius: 8px; padding: 16px 20px; margin-bottom: 12px; }
+  .target.priority1 { border-left: 5px solid #5b8a3a; }
+  .target.priority2 { border-left: 5px solid #b48f3a; }
+  .target.priority3 { border-left: 5px solid #8b8985; }
+  .target.unverified { background: #fdf6f5; border-left: 5px solid #b85a4d; }
+
+  .target-head { display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: 10px; margin-bottom: 6px; }
+  .target-head .name { font-size: 17px; font-weight: 600; }
+  .target-head .name .person { font-weight: 400; color: #6c6760; font-size: 14px; margin-left: 6px; }
+  .target-head .badge { font-size: 11px; background: #1a1a1a; color: #fff; padding: 3px 10px; border-radius: 12px; font-weight: 500; letter-spacing: 0.4px; }
+  .target.priority1 .badge { background: #5b8a3a; }
+  .target.priority2 .badge { background: #b48f3a; }
+  .target.priority3 .badge { background: #8b8985; }
+  .target.unverified .badge { background: #b85a4d; }
+
+  .target .meta-row { font-size: 12.5px; color: #6c6760; margin-bottom: 8px; }
+  .target .signals { display: grid; grid-template-columns: 140px 1fr; gap: 4px 14px; font-size: 13.5px; margin-top: 6px; }
+  .target .label { color: #6c6760; font-weight: 500; text-transform: uppercase; font-size: 11px; letter-spacing: 0.4px; padding-top: 2px; }
+  .target .val { color: #1a1a1a; }
+  .target .val.warn { background: #fdf2d9; padding: 6px 10px; border-radius: 4px; border-left: 2px solid #b48f3a; }
+  .target .val.fomo { background: #f4f8f2; padding: 6px 10px; border-radius: 4px; border-left: 2px solid #5b8a3a; font-weight: 500; }
+
+  .pill { display: inline-block; padding: 1px 8px; border-radius: 10px; font-size: 11px; font-weight: 500; letter-spacing: 0.3px; margin-right: 4px; }
+  .pill.shyam { background: #e8eef9; color: #2c4d80; }
+  .pill.srini { background: #ede4f6; color: #5a3a86; }
+  .pill.gauri { background: #f9ebe4; color: #8a4520; }
+  .pill.hiral { background: #e4f3ee; color: #2d6a4f; }
+
+  .ask-frame { background: #f4f8f2; border-left: 3px solid #5b8a3a; padding: 10px 14px; margin-top: 10px; border-radius: 4px; font-size: 13.5px; }
+  .ask-frame .lwl { font-size: 11px; text-transform: uppercase; letter-spacing: 0.6px; color: #5b8a3a; font-weight: 600; margin-bottom: 3px; display: block; }
+  .ask-frame em { color: #1a1a1a; font-style: italic; }
+
+  .checklist { background: #fdf6e8; border-left: 4px solid #b48f3a; padding: 16px 20px; margin: 28px 0; border-radius: 4px; }
+  .checklist h3 { margin: 0 0 10px; font-size: 14px; color: #6b4f15; }
+  .checklist table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  .checklist th { text-align: left; padding: 6px 8px; font-size: 11.5px; text-transform: uppercase; letter-spacing: 0.4px; color: #6c6760; border-bottom: 1px solid #e6d8b0; }
+  .checklist td { padding: 8px; border-bottom: 1px solid #f0ede5; vertical-align: top; }
+  .checklist .deadline { color: #b85a4d; font-weight: 600; font-size: 12px; white-space: nowrap; }
+
+  .footer-notes { margin-top: 40px; padding-top: 24px; border-top: 1px solid #e6e2dc; font-size: 12.5px; color: #6c6760; }
+  .footer-notes h3 { color: #1a1a1a; font-size: 13px; margin: 0 0 8px; }
+  .footer-notes ul { margin: 4px 0 14px 18px; padding: 0; }
+  .footer-notes li { margin-bottom: 4px; }
+
+  a { color: #4a6b9a; }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<nav class="tab-nav">
+  <a href="index.html">Main Brief — Full Pipeline</a>
+  <a href="agent-conference-may2026.html">Agent Conference · May 4-5</a>
+  <a href="vc-reverse-pitch-may13.html">VCReversePitch</a>
+  <a href="bevnet-live-june10-11.html" class="active">BevNETLive</a>
+</nav>
+
+<header class="top">
+  <div class="eyebrow">Workshop attendee cross-match · June 10-11 NYC · ~4 weeks out</div>
+  <h1>BevNET Live NYC 2026 — Workshop Attendees Cross-Match</h1>
+  <div class="meta">Srini presenting BevGenie's workshop · Metropolitan Pavilion · 26 attendees registered for our workshop = warm audience · <a href="https://www.bevnet.com/events/bevnetlivenyc2026/" target="_blank">bevnet.com/events/bevnetlivenyc2026</a></div>
+</header>
+
+<!-- ═══════════════ VERDICT ═══════════════ -->
+<div class="verdict">
+  <h2>Verdict — 1 investor in the room (Sebastian Dreher) + 5 strategic targets + warm audience by definition</h2>
+  <p><strong>Critical context:</strong> these 26 people <em>registered for OUR workshop</em> ("The Hidden AI Advantage: What Winning Brands Know Before You Do," led by Srini). They self-selected into our audience. Conversion math here is fundamentally different from cold conference outreach.</p>
+  <p><strong>4 highest-leverage targets to lock face-time with</strong> (ranked):</p>
+  <ol style="margin: 0 0 0 18px; padding: 0;">
+    <li><strong>Sebastian Dreher (Döhler Ventures US, Managing Director)</strong> — only verified investor in the workshop audience. ~95 portfolio investments across F&amp;B/tech globally. CVC funded off Döhler's balance sheet (no fund timeline pressure). <strong>Highest-stake target.</strong></li>
+    <li><strong>Michael Bronstein (AlixPartners, Director · Consumer Products / Beverages)</strong> — co-author of AlixPartners' "5 undercurrents reshaping the alcoholic beverage industry." Direct relevance to BevGenie's wedge.</li>
+    <li><strong>Jay Pierce + Ryan Reigel (Muller, Inc — Philadelphia's 3rd-biggest distributor)</strong> — 2 attendees from one company = real engagement. Distributor-side lens on supplier behavior. 200 employees, 8M cases/year, Molson Coors distributor.</li>
+    <li><strong>David Fudge (Aplós, Co-Founder + CEO)</strong> — non-alcoholic spirits brand growing 500%+ YoY. Active operator-founder. Adjacent peer in BevAlc supplier-side commercial work.</li>
+  </ol>
+  <p><strong>Plus:</strong> 4 more strategic prospects (Altria, Wegmans, Instacart, plus the public-agenda investor speakers Elly Truesdell at New Fare + Hank Spring at KarpReilly — both already in our main investor pipeline). Pre-event prep checklist is at the bottom of this page.</p>
+</div>
+
+<!-- ═══════════════ EVENT DETAILS ═══════════════ -->
+<div class="event-meta">
+  <h3>📍 Event details</h3>
+  <dl>
+    <dt>Dates</dt><dd>June 10-11, 2026 (Wed-Thu)</dd>
+    <dt>Location</dt><dd>Metropolitan Pavilion, NYC · in-person</dd>
+    <dt>Format</dt><dd>2-day conference + sponsored workshops + 1:1 meetings with retailers &amp; investors + Beverage School + New Beverage Showdown</dd>
+    <dt>Our slot</dt><dd><strong>Srini presents BevGenie's sponsored workshop: "The Hidden AI Advantage — What Winning Brands Know Before You Do."</strong> The 26 attendees on this list registered specifically for this workshop.</dd>
+    <dt>Public agenda</dt><dd>"The Investment Landscape" track features Daniel Grubbs (ex-PepsiCo M&amp;A), <strong>Elly Truesdell (New Fare Partners)</strong>, <strong>Hank Spring (KarpReilly)</strong>, Rogers Healy (Morrison Seger). <em>Two of these are in our existing investor pipeline.</em></dd>
+    <dt>Strategy</dt><dd>This is a captive-audience event. We don't need to convince people to listen; they signed up. The job is to identify who's worth a 1:1 follow-up + ensure Sebastian Dreher gets a dedicated 15-min conversation.</dd>
+  </dl>
+</div>
+
+<!-- ═══════════════ #1 PRIORITY: SEBASTIAN DREHER ═══════════════ -->
+<h2 class="section">🔥 #1 priority — the investor in the workshop audience</h2>
+
+<div class="target priority1">
+  <div class="target-head">
+    <div class="name">Döhler Ventures <span class="person">— Sebastian Dreher, Managing Director US</span></div>
+    <div class="badge">T1 · only verified investor in the workshop</div>
+  </div>
+  <div class="meta-row">German F&amp;B-ingredients giant Döhler Group's CVC arm · ~95+ investments globally · 25 led in US · Funded directly off Döhler's balance sheet (no fund timeline) · LA-based US office · Sebastian leads US since 2016</div>
+  <div class="signals">
+    <span class="label">Why Tier 1</span><span class="val"><strong>Only verified investor in the workshop registrants.</strong> The fact that he registered for OUR workshop means he's already curious about AI-for-BevAlc. We don't need to warm him up; we need to convert curiosity into a conversation.</span>
+    <span class="label">Thesis (verbatim)</span><span class="val">"<em>We are a long-term oriented and entrepreneurial investor empowering early-stage startups in the Nutrition &amp; Technology ecosystem.</em>" Focus areas: F&amp;B technology · plant-based ingredient innovations · health/nutrition/lifestyle products · digital commerce + online platforms · health-functionality-sustainability trends.</span>
+    <span class="label">Recent portfolio · F&amp;B-tech precedents</span><span class="val"><strong>Vertosa</strong> (2024 announcement — cannabis-infused beverages; "strategic partnership to develop innovative life science beverages") · <strong>Chromologics</strong> (Nov 2025 — specialty chemicals) · <strong>Recess</strong> (beverages) · <strong>NuKoKo</strong> (food products) · plus the Ai Palette partnership (AI-for-flavor-forecasting) referenced in earlier work.</span>
+    <span class="label">Why BevGenie fits</span><span class="val">Vertosa precedent shows Döhler invests in <em>category-defining tech-enabled beverage plays</em>, not just brands. BevGenie is the same architectural shape — F&amp;B-tech applied to a commercial workflow — but at the supplier intelligence layer rather than the product-formulation layer.</span>
+    <span class="label">Stage caveat</span><span class="val">Döhler typically invests at seed / Series A. Independent CVC structure means patient capital + strategic value beyond the check (their ingredients + ops network). Caveat: corporate VC always comes with some strategic alignment expectation — evaluate against pure-financial alternatives.</span>
+    <span class="label">How to reach</span><span class="val">In person at our workshop · LinkedIn: <a href="https://www.linkedin.com/in/drsebdreher/" target="_blank">linkedin.com/in/drsebdreher</a> · Döhler Ventures site: <a href="https://www.doehler-ventures.com/" target="_blank">doehler-ventures.com</a> · LA-based, often travels for events.</span>
+    <span class="label">Routing</span><span class="val"><span class="pill shyam">Shyam (CEO)</span> primary — founder-to-investor conversation. <span class="pill srini">Srini (CPO)</span> for the architectural-peer conversation about AI-in-beverage workflows (Vertosa parallel).</span>
+    <span class="label">🎯 The Day-Of move</span><span class="val fomo">After Srini's workshop, Sebastian is one of the first people Srini should approach: "<em>Sebastian — saw you signed up. Curious what brought you to the workshop. Want to grab 15 min during break?</em>" Direct, no over-pitch. Then Shyam takes the deeper conversation if substance emerges.</span>
+  </div>
+
+  <div class="ask-frame">
+    <span class="lwl">Suggested opener for the 1:1 (after workshop)</span>
+    <em>"Sebastian — really appreciate you registering for the workshop. Your Vertosa investment is the closest parallel to what we're building — except we sit one layer up, in the commercial-workflow intelligence layer rather than the product formulation layer. We're agentic AI for BevAlc supplier sales, marketing, and insights teams — a $300B vertical that's never had decision infrastructure. Curious what you saw at the workshop that resonated, and whether the architectural pattern is interesting to Döhler at this stage."</em>
+  </div>
+
+  <div class="ask-frame" style="background:#fef9ed; border-left-color:#b48f3a;">
+    <span class="lwl" style="color:#6b4f15;">What we KNOW he'll ask</span>
+    <em>(1) "What's your proprietary data advantage?" (2) "How do you compare to Stackline / Numerator / Circana?" (3) "Who are your design-partners?" (4) "What's the typical user — sales rep? CMO? Insights director?" Have crisp 30-second answers for each.</em>
+  </div>
+</div>
+
+<!-- ═══════════════ STRATEGIC PROSPECTS ═══════════════ -->
+<h2 class="section">🎯 Strategic prospects in the workshop audience <span class="count">(5 cards · ranked)</span></h2>
+<p class="section-blurb">Customer-side, retailer-side, and consulting-side strategic conversations. These aren't pitches — they're ways to deepen our industry network + product intelligence.</p>
+
+<div class="target priority2">
+  <div class="target-head">
+    <div class="name">AlixPartners <span class="person">— Michael Bronstein, Director (Consumer Products / Beverages)</span></div>
+    <div class="badge">P2 · industry-thesis-aligned consulting</div>
+  </div>
+  <div class="meta-row">Top-tier management consulting firm · Mike based in NYC · ~2 decades split between consulting + corporate roles in BevAlc + ecommerce · Past roles in supplier commercial strategy, sales, finance, procurement</div>
+  <div class="signals">
+    <span class="label">Why P2</span><span class="val"><strong>Co-author of AlixPartners' "5 undercurrents reshaping the alcoholic beverage industry"</strong> — directly aligned with the macro thesis BevGenie is built on. AlixPartners is one of the firms supplier CFOs read for strategic frameworks; having our wedge resonate with their thinking translates into customer-acquisition tailwinds.</span>
+    <span class="label">Strategic value</span><span class="val">(a) Industry-thesis amplification — if Mike likes what we're doing, AlixPartners thought-leadership can include us in their next BevAlc report. (b) Consulting-firm intel on M&amp;A activity + which suppliers are stressed (= ready to buy). (c) AlixPartners specifically advises CFOs on "margin expansion through commercial excellence" — exactly our pitch.</span>
+    <span class="label">How to reach</span><span class="val">Workshop attendee · AlixPartners bio: <a href="https://www.alixpartners.com/our-people/28743/mike-bronstein/" target="_blank">alixpartners.com/our-people/28743/mike-bronstein</a> · LinkedIn search: "Michael Bronstein AlixPartners"</span>
+    <span class="label">Routing</span><span class="val"><span class="pill shyam">Shyam (CEO)</span> for the strategic-industry conversation</span>
+    <span class="label">🎯 The move</span><span class="val">Reference his "5 undercurrents" piece in the opener. Lead with: "your <em>commercial-execution-as-margin-expansion</em> framing is exactly the buyer pain we automate." 15 min is enough.</span>
+  </div>
+</div>
+
+<div class="target priority2">
+  <div class="target-head">
+    <div class="name">Muller, Inc <span class="person">— Jay Pierce + Ryan Reigel (2 attendees)</span></div>
+    <div class="badge">P2 · distributor lens · 2-attendee signal</div>
+  </div>
+  <div class="meta-row">Philadelphia's 3rd-biggest beverage distributor · 200 employees · 8M cases/year · 400+ brands from 40+ suppliers · Award-winning Molson Coors distributor · Serves Bucks/Berks/Chester/Delaware/Montgomery/Philadelphia Counties · Multi-generation family business since 1956</div>
+  <div class="signals">
+    <span class="label">Why P2 (the 2-attendee signal)</span><span class="val"><strong>Two attendees from one company in a paid workshop = real intent, not a casual sign-up.</strong> Muller is sending both Jay (likely a leadership/commercial role) and Ryan (likely operations or sales). This means we're in their evaluation set somehow.</span>
+    <span class="label">Strategic value</span><span class="val">Distributors aren't BevGenie's direct customer (we serve suppliers) — but understanding the distributor lens is critical product input. Suppliers' workflows have to interface with distributor workflows, and Muller represents the kind of distributor that 400+ supplier brands ship through. <em>What signals matter to Muller? What data do they expect from suppliers? Where does the supplier-distributor handshake break down?</em></span>
+    <span class="label">How to reach</span><span class="val">Workshop attendee · Muller site: <a href="https://mullerbev.com/" target="_blank">mullerbev.com</a> · LinkedIn search both names</span>
+    <span class="label">Routing</span><span class="val"><span class="pill gauri">Gauri</span> (BevAlc industry credibility) + <span class="pill shyam">Shyam</span> for the strategic conversation</span>
+    <span class="label">🎯 The move</span><span class="val">Both attendees together for 20 min after the workshop. Frame as <em>"we sell to suppliers, but our product only works if it produces output that's actually useful to distributors. We'd love your perspective on what supplier teams should be optimizing for in your eyes."</em></span>
+  </div>
+</div>
+
+<div class="target priority2">
+  <div class="target-head">
+    <div class="name">Aplós <span class="person">— David Fudge, Co-Founder + CEO</span></div>
+    <div class="badge">P2 · architectural peer · operator-founder</div>
+  </div>
+  <div class="meta-row">Non-alcoholic functional spirits brand · Co-founded 2020 with Emily Onkey · Raised $5.5M Series A (2023) · ~100K cases annually · Wholesale up 500%+ YoY · In 2,000+ retail stores · David's background: brand/digital marketing at Hudson Jeans, Bonobos, Hearst, MTV Networks, Club Monaco</div>
+  <div class="signals">
+    <span class="label">Why P2</span><span class="val"><strong>Architectural peer at the supplier-brand level.</strong> Aplós is exactly the kind of growing BevAlc-adjacent supplier brand that's BevGenie's eventual customer profile. David is also clearly thinking about category-level questions ("once-in-a-generation realignment of the adult beverage industry" — his quote in Global Drinks Intel).</span>
+    <span class="label">Strategic value</span><span class="val">(a) Peer-founder conversation — he's lived the growth-stage operator grind. (b) Sub-customer perspective: at 100K cases / 2,000 stores, Aplós is on the cusp of being too big for spreadsheets but too small for enterprise tools. Exactly our buyer wedge. (c) His brand-marketing background = useful sounding-board for our own narrative.</span>
+    <span class="label">How to reach</span><span class="val">Workshop attendee · Aplós: <a href="https://aplos.world/" target="_blank">aplos.world</a> · LinkedIn search: "David Fudge Aplós"</span>
+    <span class="label">Routing</span><span class="val"><span class="pill shyam">Shyam (CEO)</span> peer-founder conversation</span>
+    <span class="label">🎯 The move</span><span class="val">10-15 min coffee. <em>"You're at exactly the scale where we want to be useful. What does your week look like when you're prepping for a major retailer expansion?"</em> Pure listening.</span>
+  </div>
+</div>
+
+<div class="target priority2 unverified">
+  <div class="target-head">
+    <div class="name">Altria <span class="person">— Ali Stein (role unverified — see below)</span></div>
+    <div class="badge">P2 · cautious · could be high-value or mid</div>
+  </div>
+  <div class="meta-row">Altria is parent of Philip Morris USA · ~10% stake in ABInBev (via SABMiller deal) · Invested in JUUL, Cronos cannabis · Alternative-products giant exploring BevAlc + adjacent categories</div>
+  <div class="signals">
+    <span class="label">⚠️ Verification gap</span><span class="val warn"><strong>Could not verify Ali Stein's specific title at Altria from public sources.</strong> Two possibilities: (1) she's a junior or mid-level employee with limited LinkedIn footprint, or (2) the "Ali Stein" name corresponds to a different person than the senior profiles surfaced. Recommend Shyam or Hiral checks her LinkedIn directly before the workshop to set expectations correctly.</span>
+    <span class="label">Why still P2</span><span class="val">Even an entry-level Altria contact is valuable for industry-network expansion. Altria's strategic interests in BevAlc + cannabis make any conversation relevant if she's working on those areas.</span>
+    <span class="label">Strategic value</span><span class="val">(a) Industry-intelligence: what's Altria thinking about in alternative-products / BevAlc / cannabis. (b) Network: Altria-side connections are useful if BevGenie ever pursues large-supplier or strategic-investor conversations.</span>
+    <span class="label">Routing</span><span class="val"><span class="pill hiral">Hiral</span> (chief of staff) — do LinkedIn diligence before the workshop and report back. Then route as appropriate.</span>
+    <span class="label">🎯 The move</span><span class="val">Brief, friendly. Don't pitch. <em>"What brought you to the workshop?"</em> Listen for whether she's looking at BevAlc, cannabis, or alternative products. Calibrate from there.</span>
+  </div>
+</div>
+
+<div class="target priority3">
+  <div class="target-head">
+    <div class="name">Wegmans Food Markets <span class="person">— David Germick, Category Manager</span></div>
+    <div class="badge">P3 · retailer-side, but not BevAlc category</div>
+  </div>
+  <div class="meta-row">Major US grocery retailer · ~110 stores · Premium positioning · David is a Category Manager · <strong>Note: David has a PharmD (Doctor of Pharmacy) and is NOT in the beer/wine/spirits category</strong> (those merchants at Wegmans are Mark Agnello, Jeff Morse, Mary Zink, John Kozlowski)</div>
+  <div class="signals">
+    <span class="label">⚠️ Important caveat</span><span class="val warn">David is a Wegmans Category Manager, but verified not in beer/wine/spirits — his Pharmacy background suggests he covers a different category (likely health/wellness/pharmacy/OTC adjacent to beverage). He may be at our workshop to learn about AI more broadly, not because Wegmans BevAlc is buying.</span>
+    <span class="label">Strategic value</span><span class="val">Lower than initially scored. He's at the workshop = curious about AI in retail. (a) Inside-retailer perspective on what supplier reps do well/badly at category reviews — generalizable across categories. (b) Possible warm intro to actual Wegmans BevAlc merchants (Mark Agnello et al.) if conversation goes well.</span>
+    <span class="label">Routing</span><span class="val"><span class="pill shyam">Shyam (CEO)</span> opportunistic — short conversation, ask for an intro to the BevAlc merchants if the chemistry's there</span>
+    <span class="label">🎯 The move</span><span class="val">10 min, low effort. <em>"Curious what brought you to the workshop. Any Wegmans use of AI you'd share? And — if it's interesting — would you mind introducing us to whoever covers BevAlc at Wegmans?"</em> Direct ask, no over-pitch.</span>
+  </div>
+</div>
+
+<div class="target priority3">
+  <div class="target-head">
+    <div class="name">Instacart <span class="person">— Ashley Wilkinson, Sales Leader</span></div>
+    <div class="badge">P3 · e-commerce / delivery angle · NY-based</div>
+  </div>
+  <div class="meta-row">On-demand grocery + alcohol delivery platform · Alcohol delivery in 26 states + DC, ~75% US household reach · Ashley is Sales Leader, NY-based · Not specifically alcohol-category but on the broader supplier-facing side</div>
+  <div class="signals">
+    <span class="label">Why P3</span><span class="val">Instacart is reach + last-mile for many supplier-brand customers. Not our direct customer today — we sell to suppliers, not to delivery platforms. But Instacart's data on supplier-brand performance at retail is rich, and they're recently bullish on alcohol-category investments (Bottlecapps partnership, 75% household reach milestone).</span>
+    <span class="label">Strategic value</span><span class="val">Relationship-build. If BevGenie ever extends to supplier e-commerce workflows, Instacart is the natural partner. Today = networking only.</span>
+    <span class="label">Routing</span><span class="val"><span class="pill shyam">Shyam (CEO)</span> opportunistic · low-priority for today</span>
+    <span class="label">🎯 The move</span><span class="val">10 min if calendar allows. <em>"Curious how you think about supplier-brand data inside Instacart — what's the gap between what suppliers want from you and what you can give them?"</em> Pure intelligence-gathering.</span>
+  </div>
+</div>
+
+<!-- ═══════════════ EMERGING BRAND OPERATORS ═══════════════ -->
+<h2 class="section">🌱 Emerging brand operators / supplier-side founders <span class="count">(3 cards + lighter list)</span></h2>
+<p class="section-blurb">Founders running smaller / emerging BevAlc supplier brands. Future customer candidates + peer-founder conversations.</p>
+
+<div class="target priority3">
+  <div class="target-head">
+    <div class="name">Columbus Brewing Company <span class="person">— Eric Bean</span></div>
+    <div class="badge">P3 · regional craft brewer</div>
+  </div>
+  <div class="meta-row">Established Ohio craft brewery · Known for IPAs (Bodhi, Creeper) · Eric likely senior commercial / brand role</div>
+  <div class="signals">
+    <span class="label">Why P3</span><span class="val">Regional craft brewer is a representative supplier customer-prospect profile — too big for spreadsheets, too small for enterprise platforms.</span>
+    <span class="label">🎯 The move</span><span class="val">If time allows: 10 min, ask about their current commercial-data setup + biggest distributor-side coordination headaches.</span>
+  </div>
+</div>
+
+<div class="target priority3">
+  <div class="target-head">
+    <div class="name">nutpods <span class="person">— Matt Witherell</span></div>
+    <div class="badge">P3 · adjacent CPG · not BevAlc supplier</div>
+  </div>
+  <div class="meta-row">Established non-dairy creamer brand · Adjacent CPG · Not BevAlc supplier directly</div>
+  <div class="signals">
+    <span class="label">Why P3</span><span class="val">Established CPG brand at scale. Not our buyer persona today. But Matt at our workshop = curious about AI for CPG — could be future Hype + buzz partner if we extend to broader CPG someday.</span>
+    <span class="label">🎯 The move</span><span class="val">Quick handshake + listen. Low-priority for today's investor / customer goals.</span>
+  </div>
+</div>
+
+<div class="target priority3">
+  <div class="target-head">
+    <div class="name">ColdHaus Direct Inc <span class="person">— Paul Fenton + Mark Russell + David Millen (3 attendees!)</span></div>
+    <div class="badge">P3 · Canadian beverage logistics · 3-attendee signal</div>
+  </div>
+  <div class="meta-row">Canadian beverage logistics / distribution · 3 attendees from this company = highest single-company attendance · Worth a 10-min group conversation</div>
+  <div class="signals">
+    <span class="label">Why P3</span><span class="val"><strong>3 attendees from one company is the highest engagement signal on the entire list.</strong> Either they're sending a delegation to actually evaluate something, or it's a coincidence of internal-event-budget. Worth understanding which.</span>
+    <span class="label">🎯 The move</span><span class="val">10-15 min group conversation. <em>"What brought 3 of you to the workshop? Is there a specific use case ColdHaus is exploring?"</em> Direct question — if there's a real opportunity, they'll volunteer it.</span>
+  </div>
+</div>
+
+<!-- ═══════════════ SMALL / LIGHT FOLLOW-UP ═══════════════ -->
+<h2 class="section">🤷 Smaller / lighter follow-up <span class="count">(remaining 10)</span></h2>
+<p class="section-blurb">These attendees are either small brands, single-attendees with unclear strategic fit, or duplicates. Don't dedicate scheduled time — handshake during open networking is enough. Capture business cards + flag any that mention something interesting.</p>
+
+<div class="target priority3">
+  <div class="signals" style="grid-template-columns: 1fr;">
+    <ul style="margin: 0 0 0 18px; padding: 0; font-size: 13.5px;">
+      <li><strong>Diana Ark Chen · Core Home</strong> — sustainable kitchenware. Not BevAlc supplier. Skip unless she mentions specifically.</li>
+      <li><strong>DENA Strehlow · Threotech LLC</strong> — unclear what this company does; check on the day.</li>
+      <li><strong>Simon Glassier · Cask Canning</strong> — beverage canning service. Supplier-adjacent ops. Handshake.</li>
+      <li><strong>Ed Lavery · Calebrate</strong> — beverage brand (limited info publicly). Handshake.</li>
+      <li><strong>MICHELLE Feliciano · New to Market Solutions, Corp</strong> — consulting / market-entry services. Handshake.</li>
+      <li><strong>Autumn Martin · GnuSante Creations</strong> — beverage / wellness brand. Handshake.</li>
+      <li><strong>Ariana Pourbabak · Ariva Pharma</strong> — pharma (appears twice in list — duplicate registration). Pharma not BevAlc. Skip.</li>
+      <li><strong>Marie-Sophie Desormeau · Myce (drinkmyce.com)</strong> — beverage brand. Handshake.</li>
+      <li><strong>Paul Harrison · Trilogy Flavors</strong> — flavors / ingredients supplier. Adjacent. Handshake.</li>
+      <li><strong>Bryan Hansen · KA-EX</strong> — beverage brand (hangover-recovery drink). Handshake.</li>
+      <li><strong>Zack Grasso · Pesche (drinkpesche.com)</strong> — beverage brand. Handshake.</li>
+      <li><strong>Thomas Vail · Calaveras Energy</strong> — energy beverage. Handshake.</li>
+    </ul>
+  </div>
+</div>
+
+<!-- ═══════════════ PUBLIC AGENDA INTERSECTION ═══════════════ -->
+<h2 class="section">🎤 Public-agenda intersection — investors already in our pipeline</h2>
+<p class="section-blurb">The official BevNET investor panel ("The Investment Landscape") features two firms already in our main investor pipeline. Worth intercepting separately from the workshop.</p>
+
+<div class="target priority2">
+  <div class="target-head">
+    <div class="name">New Fare Partners <span class="person">— Elly Truesdell</span></div>
+    <div class="badge">P2 · already in our main pipeline</div>
+  </div>
+  <div class="meta-row">Elly speaking on the "Investment Landscape" investor panel · Recommend referencing the existing main brief entry on New Fare Partners (and the Apr 27-30 investor-arc memory) when prepping the intercept</div>
+  <div class="signals">
+    <span class="label">🎯 The move</span><span class="val">Be at the panel exit. <em>"Elly — we wrote you up in our investor pipeline already; would love a quick chat about whether the F&amp;B+tech thesis at New Fare extends to vertical AI for supplier commercial teams."</em></span>
+  </div>
+</div>
+
+<div class="target priority2">
+  <div class="target-head">
+    <div class="name">KarpReilly <span class="person">— Hank Spring</span></div>
+    <div class="badge">P2 · already in our main pipeline (T3 currently)</div>
+  </div>
+  <div class="meta-row">Hank speaking on the same "Investment Landscape" panel · KarpReilly is currently T3 in our pipeline (growth-stage CPG focus = stage misfit historically)</div>
+  <div class="signals">
+    <span class="label">🎯 The move</span><span class="val">Lighter intercept. <em>"Hank — we have KarpReilly in our pipeline; have a sense your stage is later than where we are now, but curious how your thinking on early CPG bets is evolving."</em></span>
+  </div>
+</div>
+
+<!-- ═══════════════ PRE-EVENT PREP CHECKLIST ═══════════════ -->
+<div class="checklist">
+  <h3>🗓 Pre-event prep + day-of execution (~4 weeks runway)</h3>
+  <table>
+    <thead><tr><th>When</th><th>Action</th><th>Owner</th></tr></thead>
+    <tbody>
+      <tr>
+        <td><span class="deadline">By May 22</span></td>
+        <td>Hiral does diligence on <strong>Ali Stein at Altria</strong> — find her LinkedIn, confirm role, decide whether she's worth scheduled time or just a handshake. Flag back to Shyam.</td>
+        <td><span class="pill hiral">Hiral</span></td>
+      </tr>
+      <tr>
+        <td><span class="deadline">By May 29</span></td>
+        <td>Send <strong>Sebastian Dreher</strong> a pre-event DM. <em>"Sebastian — saw you registered for our workshop on June 10. Would love 15 min during a break to share a bit more about what we're building — your Vertosa investment is one of the closest architectural parallels in beverage we've seen. Coffee?"</em> Lock 15-min coffee.</td>
+        <td><span class="pill shyam">Shyam</span></td>
+      </tr>
+      <tr>
+        <td><span class="deadline">By May 29</span></td>
+        <td>Send <strong>Michael Bronstein (AlixPartners)</strong> a pre-event DM referencing the "5 undercurrents" piece. Lock 15-20 min for after the workshop.</td>
+        <td><span class="pill shyam">Shyam</span></td>
+      </tr>
+      <tr>
+        <td><span class="deadline">By Jun 3</span></td>
+        <td>Send <strong>Jay Pierce + Ryan Reigel (Muller)</strong> a joint DM. <em>"Two of you signed up = curious what brought you. Would love 20 min after the workshop to learn how Muller thinks about supplier-side data."</em></td>
+        <td><span class="pill gauri">Gauri</span> or <span class="pill shyam">Shyam</span></td>
+      </tr>
+      <tr>
+        <td><span class="deadline">By Jun 3</span></td>
+        <td>Pre-event DM <strong>David Fudge (Aplós)</strong> for peer-founder coffee — 10-15 min during break.</td>
+        <td><span class="pill shyam">Shyam</span></td>
+      </tr>
+      <tr>
+        <td><span class="deadline">Jun 8-9</span></td>
+        <td>Final prep: Srini's workshop deck timed-and-rehearsed. Shyam has crisp 30-sec answers ready for Sebastian Dreher's likely questions (proprietary-data advantage, competitive landscape vs Stackline/Numerator, design partners, user persona).</td>
+        <td><span class="pill srini">Srini</span> + <span class="pill shyam">Shyam</span></td>
+      </tr>
+      <tr>
+        <td><span class="deadline">Jun 10 · 9am</span></td>
+        <td>Arrive at Metropolitan Pavilion early. Check workshop room + AV. Print 30 one-pagers (BevGenie one-pager, not full deck). Have business cards ready for at least 30 conversations.</td>
+        <td><span class="pill srini">Srini</span> + <span class="pill shyam">Shyam</span></td>
+      </tr>
+      <tr>
+        <td><span class="deadline">Jun 10 · workshop slot</span></td>
+        <td>Srini delivers workshop. <strong>Strategy: explicitly call out 2-3 priority attendees by name during the talk</strong> ("happy to take questions on this from Sebastian + Mike afterward"). Forces the post-workshop intercept to feel natural.</td>
+        <td><span class="pill srini">Srini</span></td>
+      </tr>
+      <tr>
+        <td><span class="deadline">Jun 10 · post-workshop</span></td>
+        <td><strong>15-min coffee with Sebastian Dreher</strong> · then <strong>15-20 min with Mike Bronstein</strong> · then <strong>20 min joint with Muller pair</strong>. In that order — investor first, then strategic prospects.</td>
+        <td><span class="pill shyam">Shyam</span> (Srini in shadow)</td>
+      </tr>
+      <tr>
+        <td><span class="deadline">Jun 10 · evening</span></td>
+        <td>Be at the "Investment Landscape" panel exit. Intercept <strong>Elly Truesdell (New Fare)</strong> and <strong>Hank Spring (KarpReilly)</strong>. 5 min each is enough to lock a follow-up.</td>
+        <td><span class="pill shyam">Shyam</span></td>
+      </tr>
+      <tr>
+        <td><span class="deadline">Jun 11 · all day</span></td>
+        <td>Day 2 = peer-founder + smaller-brand conversations. David Fudge (Aplós), Eric Bean (Columbus Brewing), ColdHaus group, Wegmans + Instacart opportunistic. Don't over-schedule — leave room for serendipitous "we saw your workshop yesterday" walk-ups.</td>
+        <td><span class="pill shyam">Shyam</span></td>
+      </tr>
+      <tr>
+        <td><span class="deadline">Jun 12 · morning</span></td>
+        <td>Within 24 hrs of conference close: <strong>personalized follow-up emails</strong> to every priority target. Reference one specific thing from the conversation. Sebastian Dreher's followup is the most important — should propose a structured next conversation.</td>
+        <td><span class="pill hiral">Hiral</span> drafts; <span class="pill shyam">Shyam</span> sends</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- ═══════════════ FOOTER ═══════════════ -->
+<div class="footer-notes">
+  <h3>Sources verified — cross-checked across primary + independent web</h3>
+  <ul>
+    <li><strong>Workshop attendee list</strong>: <code>BNL Workshop Reponses BevGenie Updated 6_3.xlsx</code> (26 unique attendees + 1 duplicate)</li>
+    <li><strong>BevNET Live NYC 2026 dates + venue + agenda</strong>: <a href="https://www.bevnet.com/events/bevnetlivenyc2026/" target="_blank">bevnet.com/events/bevnetlivenyc2026</a></li>
+    <li><strong>Sebastian Dreher / Döhler Ventures</strong>: <a href="https://www.doehler-ventures.com/" target="_blank">doehler-ventures.com</a> · BevNET coverage of Döhler's "Decade of Investment" · Vertosa investment press release (PR Newswire, 2024) · LinkedIn profile (drsebdreher)</li>
+    <li><strong>Michael Bronstein / AlixPartners</strong>: <a href="https://www.alixpartners.com/our-people/28743/mike-bronstein/" target="_blank">alixpartners.com/our-people/28743/mike-bronstein</a> · AlixPartners "5 undercurrents" article (co-authored)</li>
+    <li><strong>Muller, Inc</strong>: <a href="https://mullerbev.com/" target="_blank">mullerbev.com</a> · Datanyze + Yelp + Brewbound press</li>
+    <li><strong>David Fudge / Aplós</strong>: Aplós press coverage (Food Dive, Spirits Business, Global Drinks Intel) · Aplós org chart on theorg.com</li>
+    <li><strong>David Germick / Wegmans</strong>: LinkedIn (verified Category Manager) · Wegmans Wine/Beer/Spirits merchant list (verified he's NOT in this category)</li>
+    <li><strong>Ashley Wilkinson / Instacart</strong>: LinkedIn (verified Sales Leader, NY) · Instacart alcohol-delivery press (Grocery Dive, Progressive Grocer)</li>
+    <li><strong>Ali Stein / Altria</strong>: ⚠️ <strong>Specific role could not be verified from public sources</strong> — Hiral to do LinkedIn diligence before workshop</li>
+  </ul>
+
+  <h3>Open questions for Shyam / Hiral</h3>
+  <ul>
+    <li>Has Sebastian Dreher ever met with us before? (His Vertosa investment shows he tracks F&amp;B-tech, so worth checking if he's in any of our prior demo records)</li>
+    <li>Hiral: confirm Ali Stein's specific role at Altria before May 22 + report back</li>
+    <li>Is anyone from the team going to attend Day 1 morning sessions (where Sebastian Dreher might also be) vs only the workshop slot?</li>
+    <li>Should we offer Sebastian Dreher a preview of the workshop content before the event to deepen engagement?</li>
+    <li>Are there any prior touchpoints with Muller, Aplós, AlixPartners, or any of the others we should fold in? (Check pre-sales transcripts before sending DMs)</li>
+  </ul>
+</div>
+
+</div>
+</body>
+</html>
