@@ -1,0 +1,654 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BevNET Live NYC 2026 — Full Event Cross-Match · ConsumerIQ / BevGenie</title>
+<style>
+  * { box-sizing: border-box; }
+  body { font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", Helvetica, Arial, sans-serif; background: #faf9f7; color: #1a1a1a; margin: 0; line-height: 1.5; -webkit-font-smoothing: antialiased; }
+  .wrap { max-width: 1180px; margin: 0 auto; padding: 32px 28px 80px; }
+  .tab-nav { display: flex; gap: 0; border-bottom: 1px solid #e6e2dc; margin-bottom: 24px; flex-wrap: wrap; }
+  .tab-nav a { padding: 10px 18px; text-decoration: none; color: #6c6760; font-size: 13px; font-weight: 500; border-bottom: 2px solid transparent; margin-bottom: -1px; }
+  .tab-nav a:hover { color: #1a1a1a; }
+  .tab-nav a.active { color: #1a1a1a; border-bottom-color: #5b8a3a; font-weight: 600; }
+  header.top { border-bottom: 1px solid #e6e2dc; padding-bottom: 18px; margin-bottom: 28px; }
+  header.top .eyebrow { font-size: 11px; text-transform: uppercase; letter-spacing: 1.2px; color: #4a6b9a; font-weight: 600; }
+  header.top h1 { margin: 6px 0 4px; font-size: 28px; font-weight: 600; letter-spacing: -0.4px; }
+  header.top .meta { font-size: 13px; color: #6c6760; }
+  header.top .meta a { color: #4a6b9a; }
+  .verdict { background: #fff; border: 1px solid #e6e2dc; border-radius: 10px; padding: 20px 24px; margin: 0 0 28px; }
+  .verdict h2 { margin: 0 0 8px; font-size: 16px; color: #5b8a3a; text-transform: uppercase; letter-spacing: 1px; font-weight: 600; }
+  .verdict p { margin: 0 0 8px; }
+  .verdict p:last-child { margin-bottom: 0; }
+  .scope-note { background: #fdf6e8; border-left: 4px solid #b48f3a; padding: 14px 18px; margin-bottom: 28px; border-radius: 4px; font-size: 13px; color: #6b4f15; }
+  .scope-note strong { color: #4a3a0c; }
+  .stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-bottom: 28px; }
+  .stat { background: #fff; border: 1px solid #e6e2dc; border-radius: 8px; padding: 14px 18px; }
+  .stat .num { font-size: 22px; font-weight: 600; color: #1a1a1a; }
+  .stat .label { font-size: 11px; text-transform: uppercase; letter-spacing: 0.4px; color: #6c6760; margin-top: 2px; }
+  h2.section { font-size: 20px; font-weight: 600; margin: 36px 0 14px; border-bottom: 2px solid #1a1a1a; padding-bottom: 6px; letter-spacing: -0.3px; }
+  h2.section .count { font-size: 13px; color: #6c6760; font-weight: 400; margin-left: 8px; }
+  h3.subsection { font-size: 15px; font-weight: 600; margin: 22px 0 10px; color: #2c4d80; text-transform: uppercase; letter-spacing: 0.6px; }
+  .section-blurb { font-size: 13px; color: #6c6760; font-style: italic; margin: -8px 0 16px; }
+  .lens-header { background: #f6f3fa; border-left: 5px solid #5a3a86; padding: 14px 18px; margin: 8px 0 16px; border-radius: 6px; }
+  .lens-header h3 { margin: 0; font-size: 15px; font-weight: 600; color: #43286e; }
+  .lens-header p { margin: 4px 0 0; font-size: 13px; color: #5a3a86; }
+  .target { background: #fff; border: 1px solid #e6e2dc; border-radius: 8px; padding: 14px 18px; margin-bottom: 10px; }
+  .target.priority1 { border-left: 5px solid #5b8a3a; }
+  .target.priority2 { border-left: 5px solid #b48f3a; }
+  .target.priority3 { border-left: 5px solid #8b8985; }
+  .target.competitor { border-left: 5px solid #5a3a86; background: #faf8fb; }
+  .target.unverified { background: #fdf6f5; border-left: 5px solid #b85a4d; }
+  .target-head { display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: 10px; margin-bottom: 4px; }
+  .target-head .name { font-size: 16px; font-weight: 600; }
+  .target-head .name .person { font-weight: 400; color: #6c6760; font-size: 13.5px; margin-left: 6px; }
+  .target-head .badge { font-size: 10.5px; background: #1a1a1a; color: #fff; padding: 2px 9px; border-radius: 12px; font-weight: 500; letter-spacing: 0.4px; }
+  .target.priority1 .badge { background: #5b8a3a; }
+  .target.priority2 .badge { background: #b48f3a; }
+  .target.priority3 .badge { background: #8b8985; }
+  .target.competitor .badge { background: #5a3a86; }
+  .target.unverified .badge { background: #b85a4d; }
+  .target .meta-row { font-size: 12.5px; color: #6c6760; margin-bottom: 6px; }
+  .target .body { font-size: 13.5px; color: #1a1a1a; }
+  .target .move { background: #f4f8f2; border-left: 3px solid #5b8a3a; padding: 8px 12px; margin-top: 8px; border-radius: 4px; font-size: 13px; }
+  .target .move strong { color: #4a6b3a; }
+  .bulk-list { background: #fff; border: 1px solid #e6e2dc; border-radius: 8px; padding: 14px 18px; margin-bottom: 12px; }
+  .bulk-list h4 { margin: 0 0 8px; font-size: 13.5px; color: #2c4d80; font-weight: 600; }
+  .bulk-list ul { margin: 0 0 0 18px; padding: 0; font-size: 13px; }
+  .bulk-list li { margin-bottom: 4px; }
+  .pill { display: inline-block; padding: 1px 8px; border-radius: 10px; font-size: 11px; font-weight: 500; letter-spacing: 0.3px; margin-right: 4px; }
+  .pill.shyam { background: #e8eef9; color: #2c4d80; }
+  .pill.srini { background: #ede4f6; color: #5a3a86; }
+  .pill.gauri { background: #f9ebe4; color: #8a4520; }
+  .pill.hiral { background: #e4f3ee; color: #2d6a4f; }
+  .pill.verify { background: #fef3eb; color: #8a4520; }
+  .checklist { background: #fdf6e8; border-left: 4px solid #b48f3a; padding: 16px 20px; margin: 28px 0; border-radius: 4px; }
+  .checklist h3 { margin: 0 0 10px; font-size: 14px; color: #6b4f15; }
+  .checklist table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  .checklist th { text-align: left; padding: 6px 8px; font-size: 11.5px; text-transform: uppercase; letter-spacing: 0.4px; color: #6c6760; border-bottom: 1px solid #e6d8b0; }
+  .checklist td { padding: 8px; border-bottom: 1px solid #f0ede5; vertical-align: top; }
+  .footer-notes { margin-top: 40px; padding-top: 24px; border-top: 1px solid #e6e2dc; font-size: 12.5px; color: #6c6760; }
+  .footer-notes h3 { color: #1a1a1a; font-size: 13px; margin: 0 0 8px; }
+  .footer-notes ul { margin: 4px 0 14px 18px; padding: 0; }
+  .footer-notes li { margin-bottom: 4px; }
+  a { color: #4a6b9a; }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<nav class="tab-nav">
+  <a href="index.html">Main Brief — Full Pipeline</a>
+  <a href="agent-conference-may2026.html">Agent Conference · May 4-5</a>
+  <a href="vc-reverse-pitch-may13.html">VCReversePitch</a>
+  <a href="bevnet-live-june10-11.html">BevNETLive Workshop</a>
+  <a href="bevnet-live-full-event.html" class="active">BevNETLive Full Event</a>
+</nav>
+
+<header class="top">
+  <div class="eyebrow">v1 · Full registered-attendee list triage · ~600 attendees · 2 days out · Roaming/booth-floor plan</div>
+  <h1>BevNET Live NYC 2026 — Full Event Cross-Match</h1>
+  <div class="meta">Jun 10-11, Metropolitan Pavilion NYC · Source: <code>bevnetlivenyc2026-attendeelist-4.pdf</code> as of 6/8/2026 4:05pm · Companion to the Workshop tab (which covers the 26 in our specific session)</div>
+</header>
+
+<!-- ═══════════════ SCOPE NOTE — HONEST ABOUT VERIFICATION DEPTH ═══════════════ -->
+<div class="scope-note">
+  <strong>Scope &amp; verification depth — read this first.</strong> The full registered list is ~600 attendees across 14 pages. <strong>I cannot LinkedIn-verify every single person without compromising accuracy.</strong> Approach: (1) triaged every attendee into a bucket; (2) deep-carded the high-priority targets in each lens using verifiable public knowledge (firm reputation, brand scale, role title); (3) flagged the rest with light annotation. <strong>Before any outreach to a specific person, Hiral should do a 60-second LinkedIn check on that individual</strong> — same discipline that caught Ali Stein's true role on the Workshop tab. The Workshop tab (separate) is the primary post-event follow-up plan; this tab is the roaming/booth-floor companion for Day 1 + 2.
+</div>
+
+<!-- ═══════════════ STATS ═══════════════ -->
+<div class="stats">
+  <div class="stat"><div class="num">~600</div><div class="label">Total attendees</div></div>
+  <div class="stat"><div class="num">50+</div><div class="label">Investor / advisor profiles</div></div>
+  <div class="stat"><div class="num">100+</div><div class="label">Brand decision-makers</div></div>
+  <div class="stat"><div class="num">8+</div><div class="label">Direct competitors / adjacent AI</div></div>
+</div>
+
+<!-- ═══════════════ VERDICT ═══════════════ -->
+<div class="verdict">
+  <h2>Verdict — the room is investor-rich and brand-dense</h2>
+  <p><strong>Headline:</strong> This is a far richer investor room than the workshop subset suggested. <strong>Door-to-door: Asahi Group Beverages &amp; Innovation has FOUR investment-team people attending including the President &amp; Head of Investment Kristen Bareuther.</strong> Döhler Ventures + Doehler North America = FIVE total. Altria sent THREE including Catherine Corso (Senior Manager, Venture Growth) + Ali Stein. The Angel Group sent FIVE. New Fare Partners sent THREE including Elly Truesdell (Managing Partner). Coefficient Capital, Encore Consumer Capital, Groundforce Capital (Mark Rampolla — Zico founder), Joyance, KarpReilly, Listen, Pronghorn, Untapped, True, plus traditional banking (William Blair, PJT, UBS, Perella Weinberg, William Hood, Arlington Capital, Carter Morse) are all in the building.</p>
+  <p><strong>Customer-prospect headline:</strong> Athletic Brewing (Bill Shufelt, CEO — non-alc beer at scale), Trip (Daniel Khoury + Olivia Ferdi, Founders — UK functional brand), Fever-Tree (Judd Hausner, MD US — public premium mixers), Culture Pop (Tom First — Nantucket Nectars founder), Recess (adaptogenics at scale), BIOLYTE (Jesslyn Rollins CEO + Trey Sinclair President), Owl's Brew, Hint, MALK Organics, Reed's Inc, Niagara Bottling — all in the room. Plus our existing Workshop-tab T1s: Aplós, Ariva Pharma, BUBLUV/Core Home, nutpods.</p>
+  <p><strong>Competitive-adjacent presence is real:</strong> Aisle AI has THREE people including the CEO; Glimpse has THREE; Calebrate (Ed Lavery — already in Workshop tab); plus Brightfield Group + Tomorrow Inc + Pear Commerce + Leadbeam. Worth a deliberate sweep — these are the closest competitors / partners in our market category.</p>
+  <p><strong>Strategic retail in the room:</strong> Walmart's Dee Charlemagne (Senior Director, Emerging Brands) is the single highest-value retail contact at the event. Whole Foods has TWO Adult Beverage merchants (Samantha Fletcher + Cynthia Tom). PepsiCo R&amp;D (3 people). Coca-Cola Innovation. Gopuff + Instacart + Amazon all sent senior commercial people.</p>
+  <p><strong>Single sharpest move:</strong> Shyam pre-identifies the Asahi 4-person delegation + Kristen Bareuther (their head of investment) BEFORE the event. That's the highest-value single intercept on the list. Then Mark Rampolla (Groundforce — Zico founder, will deeply grok BevGenie's thesis). Then Bill Shufelt (Athletic Brewing — biggest non-alc operator-founder there).</p>
+</div>
+
+<!-- ═══════════════ LENS 1: INVESTORS ═══════════════ -->
+<h2 class="section">🔥 Lens 1 · Investors / strategic capital</h2>
+<div class="lens-header">
+  <h3>~50+ investor/strategic-capital profiles in the room across VC, CVC, PE, growth, banking, and M&amp;A advisory</h3>
+  <p>Deep cards on the highest-priority firms (where we know the thesis fits or the person is exceptional). Bulk lists below cover the rest. Verify the specific partner via LinkedIn before any direct outreach.</p>
+</div>
+
+<h3 class="subsection">Corporate VCs &amp; strategic-investor arms — top priority</h3>
+
+<div class="target priority1">
+  <div class="target-head">
+    <div class="name">Asahi Group Beverages &amp; Innovation <span class="person">— Kristen Bareuther (President, Head of Investment) + Zhun Che + Kenji Watanabe + Julian D'Monte (Investment Managers)</span></div>
+    <div class="badge">🔥 T1 · 4-person delegation · CVC at scale</div>
+  </div>
+  <div class="meta-row">CVC arm of Asahi Group Holdings (Japanese beverage giant — Asahi Super Dry, Peroni, Grolsch, Fuller's). Strategic investor in F&amp;B + beverage innovation. Investment team in the US + Japan.</div>
+  <div class="body"><strong>This is the highest-value single delegation at the event for Lens 1.</strong> A 4-person investment team showing up to BevNET = active deal-sourcing mode. Kristen Bareuther as President + Head of Investment is the decision-maker; the three Investment Managers source deals. Lock 15-min with Kristen if at all possible.</div>
+  <div class="move">
+    <strong>🎯 The move:</strong> <span class="pill shyam">Shyam (CEO)</span> direct intro at the Asahi booth or wherever they cluster. <em>"Kristen — saw the Asahi investment team has 4 of you here. Curious what you're hunting. BevGenie is the commercial-intelligence layer for BevAlc suppliers — 15 min to share?"</em>
+  </div>
+</div>
+
+<div class="target priority1">
+  <div class="target-head">
+    <div class="name">Doehler Ventures + Doehler North America <span class="person">— Sebastian Dreher (Ventures Manager) + Erik Gosh (VP Sales) + Pam O'Leary + Kristy Ellenson</span></div>
+    <div class="badge">🔥 T1 · already in workshop · 5-person Doehler delegation across event</div>
+  </div>
+  <div class="meta-row">Sebastian = same Sebastian Dreher from the Workshop tab (Döhler Ventures, MD US). The 4 Doehler North America people are the operating-business side (ingredients sales). Sebastian is the investor.</div>
+  <div class="body">Sebastian already confirmed as workshop attendee — full deep card on the Workshop tab. The 4 Doehler operating-side people are not investors but represent the strategic-CVC mothership. Useful to mention "we met Sebastian" if you cross paths.</div>
+</div>
+
+<div class="target priority1">
+  <div class="target-head">
+    <div class="name">Altria <span class="person">— Catherine Corso (Senior Manager, Venture Growth) + Alex Campa (Sr Account Mgr) + Alexandra Stein (Director, New Venture Sales Strategy)</span></div>
+    <div class="badge">🔥 T1 · 3-person Altria delegation including Venture Growth</div>
+  </div>
+  <div class="meta-row">Ali Stein already deep-carded on the Workshop tab. <strong>Catherine Corso (Senior Manager, Venture Growth) is the NEW name — likely Altria Ventures / Growth Investments function.</strong> Alex Campa is Senior Account Manager (operating side).</div>
+  <div class="body"><strong>Catherine Corso is the second priority Altria contact after Ali Stein.</strong> "Senior Manager, Venture Growth" is the explicit Altria-Ventures-investment function. Worth a separate 10-min conversation from Ali.</div>
+  <div class="move">
+    <strong>🎯 The move:</strong> <span class="pill shyam">Shyam</span> handles Catherine separately from Ali. Ali = New Venture Sales Strategy (operating + strategic-advisor angle). Catherine = Venture Growth (writing checks). Different conversations. <span class="pill verify">Hiral: LinkedIn-verify Catherine Corso before workshop</span>
+  </div>
+</div>
+
+<div class="target priority1">
+  <div class="target-head">
+    <div class="name">Castillo Hermanos (Botran / Industrias Licoreras Quezaltecas) <span class="person">— Diego Saenz (Head of Corporate Ventures) + Sofia Muadi (Corporate Ventures Analyst)</span></div>
+    <div class="badge">🔥 T1 · Guatemalan rum giant's CVC arm</div>
+  </div>
+  <div class="meta-row">Castillo Hermanos = Guatemalan beverage conglomerate, owns Botran rum. Corporate Ventures arm = strategic CVC. Diego is the head; Sofia is analyst-tier (sources deals).</div>
+  <div class="body">Latin American CVC presence — uncommon at BevNET. Worth a structured conversation about how BevGenie's thesis applies to Latin American BevAlc supplier markets. Strategic-investor angle if BevGenie ever expands south.</div>
+  <div class="move">
+    <strong>🎯 The move:</strong> <span class="pill shyam">Shyam</span> · 15-min conversation at booth. <em>"Diego — Castillo Hermanos sending corp ventures to BevNET is unusual. What's the mandate? Curious whether BevAlc supplier intelligence is on your radar."</em>
+  </div>
+</div>
+
+<div class="target priority2">
+  <div class="target-head">
+    <div class="name">The Coca-Cola Company <span class="person">— Joanne Nicoletti (Innovation Platforms) + Jonathan McKown (Director, Strategic Growth)</span></div>
+    <div class="badge">P2 · strategic / innovation-team</div>
+  </div>
+  <div class="body">Not pure investor but strategic-growth + innovation roles = scouts for partnerships + M&amp;A. Worth a friendly intro; the long-term play with Coca-Cola is brand-side commercial-workflow partnerships once BevGenie has reference customers.</div>
+</div>
+
+<div class="target priority2">
+  <div class="target-head">
+    <div class="name">KT&amp;G <span class="person">— Jung-hwan Lee (Team Leader) + Julie Kim (Head of Global Nutrition Center)</span></div>
+    <div class="badge">P2 · Korean tobacco/beverage conglomerate</div>
+  </div>
+  <div class="body">KT&amp;G = Korean Tobacco &amp; Ginseng Corp. State-strategic player. Lower priority than US/EU CVCs but interesting if BevGenie ever pursues APAC.</div>
+</div>
+
+<h3 class="subsection">VC funds — top priority</h3>
+
+<div class="target priority1">
+  <div class="target-head">
+    <div class="name">Groundforce Capital <span class="person">— Mark Rampolla, Co-Managing Partner</span></div>
+    <div class="badge">🔥 T1 · founder of Zico (sold to Coca-Cola) — will grok BevGenie immediately</div>
+  </div>
+  <div class="meta-row">Mark Rampolla founded Zico Coconut Water → sold to Coca-Cola (2013). Now runs Groundforce Capital, a CPG-focused VC. Operator-turned-investor with deep BevAlc-adjacent experience.</div>
+  <div class="body"><strong>Highest-conviction "this person will understand our thesis in 5 minutes" target.</strong> He's lived the supplier-commercial-team pain firsthand at Zico. Groundforce's check size + stage may not match perfectly, but the introduction itself is the value — he's a connector to bigger CPG VCs.</div>
+  <div class="move">
+    <strong>🎯 The move:</strong> <span class="pill shyam">Shyam</span> · 15-min, peer founder-to-founder. <em>"Mark — your Zico arc is exactly the operator we built BevGenie for. The commercial-intelligence problem you solved by force of will, we're trying to make systematic."</em>
+  </div>
+</div>
+
+<div class="target priority1">
+  <div class="target-head">
+    <div class="name">Coefficient Capital <span class="person">— Arpon Ray (Partner) + Caroline Lippman (VP)</span></div>
+    <div class="badge">🔥 T1 · CPG-focused growth VC</div>
+  </div>
+  <div class="meta-row">Coefficient Capital = consumer/CPG growth-stage VC. Active in F&amp;B + beverage. <span class="pill verify">Hiral: LinkedIn-verify Arpon Ray's specific thesis pre-event</span></div>
+  <div class="body">Partner-level attendance = serious sourcing posture. Worth a 15-min if Shyam can pin Arpon down. The partner is the decision-maker.</div>
+</div>
+
+<div class="target priority1">
+  <div class="target-head">
+    <div class="name">New Fare Partners <span class="person">— Elly Truesdell (Managing Partner) + Hallie Bonnar (Co-Founder/Partner) + Sophie Michaels (MBA Associate)</span></div>
+    <div class="badge">🔥 T1 · 3-person delegation · already in main pipeline</div>
+  </div>
+  <div class="meta-row">F&amp;B + tech VC. Elly + Hallie are both partner-level. Sophie is associate-tier (sources deals). <strong>3 of them attending = serious commitment to deal-sourcing at this event.</strong></div>
+  <div class="body">Elly is speaking on the "Investment Landscape" panel (per Workshop tab). Catch her at panel exit, but ALSO catch Hallie Bonnar separately — she's the Co-Founder &amp; Partner, equal seat at the table. Sophie sources deals at the analyst level — useful gateway if partners are booked.</div>
+  <div class="move">
+    <strong>🎯 The move:</strong> <span class="pill shyam">Shyam</span> with Elly post-panel · <span class="pill gauri">Gauri</span> with Hallie separately (female founder voice) · <span class="pill hiral">Hiral</span> warm-emails Sophie Michaels post-event regardless
+  </div>
+</div>
+
+<div class="target priority1">
+  <div class="target-head">
+    <div class="name">Pronghorn <span class="person">— Jerry Petit-Frere, Portfolio Director</span></div>
+    <div class="badge">🔥 T1 · BIPOC spirits accelerator + investor</div>
+  </div>
+  <div class="meta-row">Pronghorn = launched 2022 to invest in/scale Black-founded spirits brands. ~$500M committed across investment, supplier diversity, and talent. High-profile in BevAlc.</div>
+  <div class="body">Portfolio Director = sources + manages portfolio. Pronghorn isn't a stage-fit investor for BevGenie directly (focus is brands, not tech), but they're <strong>massively connected in BevAlc</strong> + their portfolio brands ARE our customer profile. Triangle play.</div>
+</div>
+
+<div class="target priority2">
+  <div class="target-head">
+    <div class="name">KarpReilly <span class="person">— Hank Spring, Managing Partner</span></div>
+    <div class="badge">P2 · already in workshop tab · panel speaker</div>
+  </div>
+  <div class="body">Same as Workshop tab — speaking on "Investment Landscape" panel. Lighter intercept.</div>
+</div>
+
+<div class="target priority2">
+  <div class="target-head">
+    <div class="name">Encore Consumer Capital <span class="person">— Jamie Schwartz, Director</span></div>
+    <div class="badge">P2 · consumer PE</div>
+  </div>
+  <div class="body">Established consumer-focused PE. Stage likely later than BevGenie now, but worth a name-collection for the future. <span class="pill verify">Verify Jamie's specific focus area</span></div>
+</div>
+
+<div class="target priority2">
+  <div class="target-head">
+    <div class="name">Joyance Partners <span class="person">— Kosho Sato, Investment Partner</span></div>
+    <div class="badge">P2 · health/happiness-themed VC</div>
+  </div>
+  <div class="body">Joyance = early-stage VC focused on "delights of daily life" / health-and-happiness. Beverage-adjacent thesis. Partner-level attendance = sourcing.</div>
+</div>
+
+<h3 class="subsection">VC funds — lighter priority (worth name-collection)</h3>
+
+<div class="bulk-list">
+  <ul>
+    <li><strong>1731 MGMT · Dace Graham, Managing Partner</strong> — verify firm focus before outreach</li>
+    <li><strong>Coral Capital Solutions · David Tilis, CSO</strong> — verify firm</li>
+    <li><strong>Crave Ventures · Katie Hotze, President</strong> — F&amp;B angel/early stage; Gauri voice if female-led</li>
+    <li><strong>Habitat Partners · Daniel Faierman, GP</strong> — verify thesis</li>
+    <li><strong>Harbor Investments · Robert Everest, Managing Partner</strong> — verify (could be PE or family office)</li>
+    <li><strong>Leonite Capital · Avi Geller, CIO</strong> — verify firm</li>
+    <li><strong>Listen Ventures · Owen Choi, Investor</strong> — consumer-focused VC, early stage; worth name-collection</li>
+    <li><strong>Lunr Capital · Sam Stutzman, VP</strong> — verify</li>
+    <li><strong>Morrison Seger VC Partners · Rogers Healy, Founder &amp; CEO</strong> — verify firm</li>
+    <li><strong>New Growth Ventures · Bethany Frick, Strategic Advisor</strong> — advisor role; worth a friendly intro</li>
+    <li><strong>Paperboy Ventures · Kyle Fitzpatrick, Founder &amp; CEO</strong> — verify firm</li>
+    <li><strong>Partnership Capital Growth · Webb Knudsen, VP</strong> — consumer growth PE</li>
+    <li><strong>Propeller Ventures · Christopher Fenster, GP</strong> — verify thesis</li>
+    <li><strong>Rocana Ventures · Leah Tarrago, Investment Analyst</strong> — analyst tier, deal-sourcer</li>
+    <li><strong>RoundTable Healthcare Partners · Connor Brown, VP</strong> — healthcare PE; functional-bev adjacency only</li>
+    <li><strong>The Angel Group · 5 PEOPLE: Maddie Serviente (Head of Investment Team) + Alyssa Arnold (Managing Partner) + Wendy Nunnelley (Investor) + Benjamin Jurist (Partner via Grain Group) + Matt Rice (Advisor via Thirsty Insights)</strong> — angel-collective; 5-person delegation = active. Worth Gauri-led conversation given likely female-friendly orientation</li>
+    <li><strong>True · Jenna Agata, Partner</strong> — verify firm (could be True Ventures or different)</li>
+    <li><strong>Untapped Ventures · Lucas Wise, Founder &amp; Managing Partner</strong> — verify thesis</li>
+    <li><strong>Brad Barnhorn · Board Member &amp; Strategic Advisor (no firm listed)</strong> — generic title; LinkedIn-verify, could be high-value independent advisor</li>
+    <li><strong>Suite9C · Paula Grant — "Investor / Designer / Entrepreneur"</strong> — generic; LinkedIn-verify</li>
+  </ul>
+</div>
+
+<h3 class="subsection">Banking, M&amp;A advisory, growth/PE</h3>
+
+<div class="bulk-list">
+  <h4>Investment banking — large-cap advisors (later-stage but useful network)</h4>
+  <ul>
+    <li><strong>William Blair &amp; Co · Rob Staub</strong> — Food &amp; Beverage Investment Banking; later-stage but excellent network</li>
+    <li><strong>PJT Partners · Ben Brash, MD</strong> — boutique IB</li>
+    <li><strong>Perella Weinberg / Crooked Owl Hard Tepache · Dave Bailey, MD/CEO</strong> — operator + banker hybrid (interesting profile)</li>
+    <li><strong>UBS · Hans Blank, MD</strong> — major bank; later-stage</li>
+    <li><strong>William Hood &amp; Company · Daniel Grubbs, MD</strong> — verify firm focus</li>
+    <li><strong>Arlington Capital Advisors · Townsend Ziebold (MD) + Vann Russell (Founder/CEO)</strong> — M&amp;A advisory boutique</li>
+    <li><strong>Carter Morse &amp; Goodrich · Ross Colbert, MD</strong> — M&amp;A advisory boutique</li>
+    <li><strong>Franchise Equity Partners · Matt Hughes, Operating Partner</strong> — operator-PE</li>
+    <li><strong>Ashler Capital · Nicholas Stuart, Analyst</strong> — verify firm</li>
+    <li><strong>SG Credit Partners · Evan Waggoner, Director</strong> — credit/debt provider</li>
+    <li><strong>GRL Capital · Glenn Langberg, CEO</strong> — verify</li>
+    <li><strong>Hamarki LLC · Rahul Arora, CFO/CSO</strong> — verify</li>
+    <li><strong>ICR · John Mills, Managing Partner</strong> — IR/communications firm, not investor; worth knowing for future positioning</li>
+    <li><strong>Apollo · Stephanie Faierman, Director</strong> — could be Apollo Global (alt mgr) or different "Apollo"; <span class="pill verify">verify</span></li>
+    <li><strong>Citrin Cooperman · Simon Jewkes, Partner</strong> — accounting firm (not investor; service provider)</li>
+    <li><strong>BELAY Financial Solutions · Claire Pelton</strong> — verify</li>
+    <li><strong>Flow CFO · Keith Shockley, Founder</strong> — fractional CFO service</li>
+    <li><strong>Confido · Taylor Patterson</strong> — verify (could be Confido Legal or different)</li>
+    <li><strong>True Search · Michael McGoohan + Dylan Schoettley</strong> — executive search firm; useful for "who's hiring" intel</li>
+    <li><strong>ForceBrands · Rachel Doueck</strong> — F&amp;B executive search firm</li>
+    <li><strong>Asahi already covered above</strong></li>
+  </ul>
+</div>
+
+<!-- ═══════════════ LENS 2: CUSTOMER PROSPECTS ═══════════════ -->
+<h2 class="section">🎯 Lens 2 · Customer prospects (BevAlc / beverage supplier-side)</h2>
+<div class="lens-header">
+  <h3>100+ brand decision-makers in the room · these are the deepest 15-20 by scale + decision-authority</h3>
+  <p>Customer-prospect fit = post-spreadsheets, not yet enterprise. Founder/CEO/CCO/CMO authority. Operating brand with real distribution. Below are the highest-conviction picks.</p>
+</div>
+
+<h3 class="subsection">Tier 1 — operator-CEOs of brands at real scale</h3>
+
+<div class="target priority1">
+  <div class="target-head">
+    <div class="name">Athletic Brewing Company <span class="person">— Bill Shufelt, Co-Founder &amp; CEO + Chris Furnari (Sr Communications Manager)</span></div>
+    <div class="badge">🔥 T1 · biggest non-alc brand at event</div>
+  </div>
+  <div class="meta-row">~$500M+ valuation, dominant non-alc beer brand in US. CEO Bill Shufelt = textbook BevGenie buyer at scale.</div>
+  <div class="body">Possibly too big to be early customer (enterprise-tier), but the conversation itself is gold — Bill's perspective on commercial workflows for a non-alc brand at this scale is exactly what BevGenie needs to architect against. Plus reference-logo potential.</div>
+  <div class="move">
+    <strong>🎯 The move:</strong> <span class="pill shyam">Shyam</span> · peer founder. <em>"Bill — you've scaled the textbook example of what we're trying to build commercial intelligence for. 15 min to share what we're seeing in the supplier-side commercial-workflow space?"</em>
+  </div>
+</div>
+
+<div class="target priority1">
+  <div class="target-head">
+    <div class="name">Trip <span class="person">— Daniel Khoury (Founder &amp; Co-CEO) + Olivia Ferdi (Co-CEO &amp; Founder) + James Edmunds (President) + Tom Monk (SVP Global Strategy)</span></div>
+    <div class="badge">🔥 T1 · UK functional brand · 4-person C-suite delegation</div>
+  </div>
+  <div class="meta-row">UK CBD/functional drinks brand. Co-CEO founder structure. <strong>4-person C-suite delegation including BOTH co-CEOs = serious US expansion mode.</strong></div>
+  <div class="body">When founder-Co-CEOs both attend the same event, it means they're personally in growth-mode. Highly likely they're sourcing US partnerships + funding. <span class="pill gauri">Gauri voice</span> potentially for Olivia given female co-CEO.</div>
+  <div class="move">
+    <strong>🎯 The move:</strong> 15-min, post-workshop. Frame around US-expansion commercial-workflow pain. <em>"Bringing a UK brand to US BevAlc supplier-channel scale — what's the data + workflow gap you're hitting?"</em>
+  </div>
+</div>
+
+<div class="target priority1">
+  <div class="target-head">
+    <div class="name">Culture Pop <span class="person">— Tom First, Founder &amp; CEO + Haley Martin (Director of Social Media &amp; Brand Communications)</span></div>
+    <div class="badge">🔥 T1 · Nantucket Nectars founder · operator at scale</div>
+  </div>
+  <div class="meta-row"><strong>Tom First = founder of Nantucket Nectars</strong> (sold to Cadbury Schweppes in 2002 for ~$93M). Now CEO of Culture Pop (probiotic soda). Operator with proven scale + exit.</div>
+  <div class="body">Like Mark Rampolla (Groundforce), Tom is operator-turned-operator and will deeply grok BevGenie. Plus Culture Pop itself is a fit customer (post-spreadsheets, scaling).</div>
+  <div class="move">
+    <strong>🎯 The move:</strong> <span class="pill shyam">Shyam</span> · 15-min peer founder. Reference Nantucket Nectars era — what would have made his commercial team 10x more effective.
+  </div>
+</div>
+
+<div class="target priority1">
+  <div class="target-head">
+    <div class="name">Fever-Tree <span class="person">— Judd Hausner (Managing Director US) + Emma White (Marketing Director)</span></div>
+    <div class="badge">🔥 T1 · public UK premium mixers brand · MD US</div>
+  </div>
+  <div class="meta-row">Fever-Tree = public (LSE) premium tonic/mixers brand. Major BevAlc-adjacent supplier. Judd as MD US is the highest US authority.</div>
+  <div class="body">Larger than BevGenie's typical buyer profile but the MD-US level conversation is valuable. They're a real BevAlc supplier with real US distributor relationships — perfect for product-input conversation.</div>
+</div>
+
+<div class="target priority1">
+  <div class="target-head">
+    <div class="name">BIOLYTE <span class="person">— Jesslyn Rollins (CEO) + Trey Sinclair (President)</span></div>
+    <div class="badge">🔥 T1 · hydration brand · CEO + President both attending</div>
+  </div>
+  <div class="meta-row">BIOLYTE = "IV in a bottle" hydration brand, growing fast. CEO + President both attending = serious commitment.</div>
+  <div class="body">Both top execs in same room. Direct customer-prospect profile.</div>
+  <div class="move">
+    <strong>🎯 The move:</strong> <span class="pill shyam">Shyam</span> with Jesslyn primary (CEO). <span class="pill gauri">Gauri voice</span> potentially given female CEO.
+  </div>
+</div>
+
+<div class="target priority1">
+  <div class="target-head">
+    <div class="name">Recess <span class="person">— Blake Hill (Executive Assistant)</span></div>
+    <div class="badge">🔥 T1 brand · ⚠️ but only EA attending</div>
+  </div>
+  <div class="meta-row">Recess = adaptogenic/functional beverages, well-funded, scaled brand. <strong>But only their Executive Assistant attending — not C-suite.</strong></div>
+  <div class="body">Brand is T1 fit but the contact level isn't. Use Blake as the gateway — friendly intro, ask for warm-intro to whoever runs commercial at Recess.</div>
+</div>
+
+<h3 class="subsection">Tier 1 — established brands worth a real conversation</h3>
+
+<div class="bulk-list">
+  <ul>
+    <li><strong>Hint, Inc · Kevin Benmoussa, CFO</strong> — established water brand, CFO attending = budget authority</li>
+    <li><strong>Reed's, Inc · Ruud Bakker (CMO) + Teresa Sinapi (Marketing Mgr)</strong> — public (NASDAQ:REED), ginger-beer brand</li>
+    <li><strong>Niagara Bottling · 7 senior people including Dean Martin (VP Beverage Sales &amp; BD), William Mashy (VP Beverage Sales), Whitney Maddox (Sr Dir Sales)</strong> — massive private water bottler; multiple sales senior people = potential enterprise customer. Worth dedicated Shyam-led 30-min</li>
+    <li><strong>Owl's Brew · Jennie Ripps, Co-Founder &amp; CEO</strong> — tea cocktails brand</li>
+    <li><strong>BREZ · Travis Duncan, CEO</strong> — THC-infused beverage, growing</li>
+    <li><strong>Yerba Madre · Ben Mand, CEO</strong> — yerba mate, growing</li>
+    <li><strong>MALK Organics · 3 senior (VP Sales, SVP Ops, VP Category Mgmt)</strong> — plant milk; multiple seniors = serious commercial team</li>
+    <li><strong>Remedy Organics · Henry Kasindorf (Co-Founder/CEO) + Cindy Kasindorf (Founder) + Jack Kasindorf (Innovation)</strong> — family-run; 3 senior</li>
+    <li><strong>nutpods · Madeline Haydon (Founder) + Matt Witherell (CEO)</strong> — already on Workshop tab</li>
+    <li><strong>Aplós · David Fudge (CEO) + Zack Arenson (CSO)</strong> — already on Workshop tab; CSO is new attendee</li>
+    <li><strong>Ariva Pharma · Ariana Pourbabak</strong> — already on Workshop tab</li>
+    <li><strong>Core Home · Diana Ark Chen (Head of F&amp;B, New Ventures)</strong> — already on Workshop tab</li>
+    <li><strong>Big Geyser · Lewis Hershkowitz, CEO</strong> — large NYC distributor (not direct customer but supplier-channel intel)</li>
+    <li><strong>Curious Elixirs · David Brooks, Sales Director</strong> — non-alc cocktails</li>
+    <li><strong>Dry Atlas · Douglas + Victoria Watters, Co-Founders</strong> — non-alc media/marketplace</li>
+    <li><strong>Three Spirit · Ashley Sheeran, National Account Director</strong> — UK non-alc spirit</li>
+    <li><strong>Hello Soju · Elisabeth Baron (CEO) + Molly Pearson + Nick Schlein</strong> — Korean RTD</li>
+    <li><strong>Loonen · David Kimmell (Co-Founder/COO) + Sara Hendershot (VP Marketing)</strong> — verify brand</li>
+    <li><strong>Crooked Brands · Ben Weiss (Founder/CEO) + Chris Brown (CMO) + Jack Weiss (VP Mktg)</strong> — 3-person delegation</li>
+    <li><strong>Hapsy · Andrea Wightwick (Founder/CEO) + Paul Beaupre (COO)</strong> — verify brand</li>
+    <li><strong>Lemonati · Henry Rosenberg (CEO) + Juan Gutierrez (VP Commercial Strategy)</strong></li>
+    <li><strong>BEAUNE · Andy Tran (Founder)</strong> — verify</li>
+    <li><strong>Brause · Amna Mettmann, Founder</strong></li>
+    <li><strong>Mingle Beverage · Laura Taylor (Founder) + Sara Higginbotham + George Taylor (CRO)</strong></li>
+    <li><strong>Daizy's Social Soda · Jill Johnson (Co-Founder/GM) + Nicole Bourdette</strong></li>
+    <li><strong>Drink Daizys · Tyler Holland, Co-Founder &amp; CEO</strong> — verify if same as Daizy's Social Soda or different</li>
+    <li><strong>Bero · Neha Soi (SVP Operations)</strong> — non-alc beer brand</li>
+    <li><strong>Solstice · Brett Ozanich + Erica Horton, Co-Founders</strong></li>
+    <li><strong>Knox Hydration · John Schaefer (CEO) + 3 senior</strong></li>
+    <li><strong>Vornan · Kate DeSantis, Chief Commercial Officer</strong> — verify</li>
+    <li><strong>SPARKLiNUTS · Felipe Lima, Founder &amp; CEO</strong></li>
+    <li><strong>The Protein Water Co · Sloane Davis (CEO) + Peter Roselle (VP)</strong></li>
+    <li><strong>HABIT · Clay Tanner + Alex Erfani (Partners) + Natalie Boos</strong> — verify brand</li>
+    <li><strong>ZICO · Christopher Gallant, CEO</strong> — same Zico originally founded by Mark Rampolla (Groundforce); now under separate ownership post-Coke divestment</li>
+  </ul>
+</div>
+
+<h3 class="subsection">Strategic retail / large platforms — industry-network high value</h3>
+
+<div class="target priority1">
+  <div class="target-head">
+    <div class="name">Walmart <span class="person">— Dee Charlemagne (Senior Director, Emerging Brands) + Lesley Osorio (Senior Merchant)</span></div>
+    <div class="badge">🔥 highest-value retail contact at event</div>
+  </div>
+  <div class="meta-row"><strong>"Senior Director, Emerging Brands" at Walmart = the person who decides which emerging beverage brands get Walmart shelf space.</strong> This is the most valuable single retail contact on the entire attendee list.</div>
+  <div class="body">Not a direct customer for BevGenie, but: (a) Her perspective is the gold-standard input for what BevGenie's customers need to deliver to retailers like Walmart. (b) Warm-intro pipeline value for our customer brands. (c) Industry network amplifier.</div>
+  <div class="move">
+    <strong>🎯 The move:</strong> <span class="pill shyam">Shyam</span> + <span class="pill gauri">Gauri</span> joint conversation. <em>"Dee — your perspective is exactly what we'd want to design against. What do you wish emerging brands knew before they walked into a Walmart category review?"</em>
+  </div>
+</div>
+
+<div class="target priority2">
+  <div class="target-head">
+    <div class="name">Whole Foods Market <span class="person">— Samantha Fletcher (Sr Category Manager, Adult Non-Alcohol) + Cynthia Tom (Sr Cat Merchant, Adult Beverage Local Forager) + John Lawson (Senior Local Forager)</span></div>
+    <div class="badge">P2 · 3 BevAlc merchants from Whole Foods</div>
+  </div>
+  <div class="body">All 3 directly in Adult Beverage / Non-Alcohol category at Whole Foods. Customer-pipeline relevance for warm-intros once we have customers. Industry-network value.</div>
+</div>
+
+<div class="target priority2">
+  <div class="target-head">
+    <div class="name">PepsiCo <span class="person">— Jun Sakaki + Charo Mendoza + Vicky Yang (all R&amp;D)</span></div>
+    <div class="badge">P2 · strategic R&amp;D contacts</div>
+  </div>
+  <div class="body">All 3 in R&amp;D function. Not buyers but strategic ecosystem contacts. Lower priority than retail-merchant or commercial-side PepsiCo would have been.</div>
+</div>
+
+<div class="bulk-list">
+  <h4>Other strategic retail / large platforms</h4>
+  <ul>
+    <li><strong>Gopuff · Lauren Mamuszka (Sr Cat Mgr) + Randy Ornstein (Sr Dir Beverages)</strong> — Randy is the BevAlc decision-maker for Gopuff</li>
+    <li><strong>Instacart · Ashley Wilkinson (BP Manager)</strong> — already on Workshop tab</li>
+    <li><strong>Amazon · Dave Puchta (Sourcing Manager)</strong> — verify category</li>
+    <li><strong>Tim Hortons · Hannah Bruce (Sr Mgr US Sales, CPG)</strong> — CPG side of Tim Hortons</li>
+    <li><strong>The Vitamin Shoppe · Nicolletta Payne (Sr Director Merch) + Alyson Dorsten (Assoc Buyer)</strong> — wellness adjacency</li>
+    <li><strong>Wegmans · David Germick</strong> — already on Workshop tab (NOT in BevAlc category)</li>
+    <li><strong>Spec's · Stephen Jabour (Chief Sales &amp; Operating Officer)</strong> — major Texas liquor retailer</li>
+    <li><strong>Top Ten Liquors · Jon Halper (Owner/CEO)</strong> — multi-state liquor retailer</li>
+    <li><strong>Morrisons (UK) · Natalia Narloch + Chris Beattie + Kristian Atkinson (Soft Drinks buyers)</strong> — UK retail</li>
+    <li><strong>Red Bull NA · Ian Pawlak (Mgr National Business Ops)</strong> — strategic player</li>
+    <li><strong>Snapchat · Bianca Jeanty + Zaira Mogan (Client Partners)</strong> — media/distribution channel</li>
+    <li><strong>JM Smucker · Jennifer McClure (R&amp;D)</strong></li>
+    <li><strong>WWE · Greg Conner + Dylan Marmur (Global Partnerships)</strong> — sponsorship/brand-partnership angle</li>
+  </ul>
+</div>
+
+<!-- ═══════════════ COMPETITIVE / ADJACENT ═══════════════ -->
+<h2 class="section">🔍 Competitive / adjacent · AI &amp; data players in our market</h2>
+<div class="lens-header">
+  <h3>8+ AI/data/analytics tools attending — all worth a deliberate sweep to understand the landscape</h3>
+  <p>This is the most important set to map carefully. These are the closest things to competitors or potential partners. Spend deliberate time understanding each one's actual product positioning.</p>
+</div>
+
+<div class="target competitor">
+  <div class="target-head">
+    <div class="name">Aisle AI / AisleAI <span class="person">— Kevin Senn (CEO) + Kyle Kilcherman (SVP Partnerships) + Chris Hughes (COO)</span></div>
+    <div class="badge">⚠️ direct competitor candidate · 3-person C-suite delegation</div>
+  </div>
+  <div class="meta-row">AI for retail/CPG. <strong>3 senior people including CEO + COO = serious presence.</strong></div>
+  <div class="body">CEO + COO + SVP Partnerships all attending = this is likely a serious operating company in our adjacent space. <strong>Highest-priority competitive-research target on the entire attendee list.</strong> Map their actual product positioning carefully — partner or compete decision rides on this.</div>
+  <div class="move">
+    <strong>🎯 The move:</strong> <span class="pill shyam">Shyam</span> · friendly peer-CEO booth visit. <em>"Kevin — saw 3 of you here. Curious what Aisle AI is actually building right now — feels like we might be in adjacent territory, want to compare notes."</em> Listen for product overlap. <span class="pill verify">Hiral: deep web-research Aisle AI before workshop</span>
+  </div>
+</div>
+
+<div class="target competitor">
+  <div class="target-head">
+    <div class="name">Glimpse <span class="person">— Akash Raju (Co-Founder &amp; CEO) + Matt Holden (Head of Partnerships) + Merry Nebiyu (Director of Community)</span></div>
+    <div class="badge">⚠️ adjacent · 3-person delegation</div>
+  </div>
+  <div class="meta-row">Co-Founder/CEO attending = serious. Glimpse likely a consumer-trends or social/community data tool. <span class="pill verify">verify exact positioning</span></div>
+  <div class="body">3-person delegation with CEO. Same approach as Aisle AI — map positioning before deciding partner-vs-compete.</div>
+</div>
+
+<div class="target competitor">
+  <div class="target-head">
+    <div class="name">Calebrate <span class="person">— Ed Lavery, Founder</span></div>
+    <div class="badge">⚠️ already in workshop tab</div>
+  </div>
+  <div class="body">Full card on Workshop tab. Ed has banking + alt-data background (Similarweb, Placer.ai, Rothschild).</div>
+</div>
+
+<div class="target competitor">
+  <div class="target-head">
+    <div class="name">Brightfield Group <span class="person">— Patrick Hayden (President) + Kate Stevenson (Dir Client Strategy)</span></div>
+    <div class="badge">⚠️ data/insights firm</div>
+  </div>
+  <div class="meta-row">Cannabis + CPG market research / consumer insights firm. Established player.</div>
+  <div class="body">Adjacent but not directly competitive — they sell insights/reports, not workflow software. Could be partner for data licensing.</div>
+</div>
+
+<div class="target competitor">
+  <div class="target-head">
+    <div class="name">Pear Commerce <span class="person">— Erin Davis (Growth Lead) + Shannon Wnuk (Sales Director)</span></div>
+    <div class="badge">⚠️ retail-media/commerce-data</div>
+  </div>
+  <div class="body">CPG retail commerce data tool. Adjacent. Worth a 10-min positioning conversation.</div>
+</div>
+
+<div class="bulk-list">
+  <h4>Other competitive / adjacent AI &amp; data tools</h4>
+  <ul>
+    <li><strong>Tomorrow Inc · Chris Baum (CCO)</strong> — Chris was former BevNET editor; Tomorrow Inc = consumer-trends/AI tool. Worth mapping</li>
+    <li><strong>Leadbeam · Neel Madala (Founding GTM)</strong> — verify product</li>
+    <li><strong>Multiply · Dan Baum (CEO)</strong> — verify product</li>
+    <li><strong>Confido · Taylor Patterson</strong> — verify</li>
+    <li><strong>Marro · Nick Foreste (CEO)</strong> — verify product</li>
+    <li><strong>Strana · Sohrob Amirdelfan (Founder &amp; CEO)</strong> — verify product</li>
+    <li><strong>Drizz · Rodrigo Ricaud (Founder)</strong> — verify product</li>
+    <li><strong>Flying Ostrich · Aysel Agalarova (Founder &amp; CEO)</strong> — verify</li>
+    <li><strong>Flowspace · Sarah Halleen</strong> — fulfillment-ops tool</li>
+    <li><strong>DockFi · Andrew Moser (Corp Dev)</strong> — verify</li>
+    <li><strong>DealMaker · Jessica Stronghill</strong> — fundraising platform, not BevAlc-specific</li>
+    <li><strong>Kaizntree · Marcos Brisson (CEO) + 2</strong> — CPG ops tool, verify</li>
+    <li><strong>Geek+ · Michael Sahler</strong> — robotics, not direct</li>
+    <li><strong>Glimpse already above</strong></li>
+  </ul>
+</div>
+
+<!-- ═══════════════ INDUSTRY-NETWORK ═══════════════ -->
+<h2 class="section">📡 Industry-network value (large distributors, ingredient suppliers, packaging, services)</h2>
+<p class="section-blurb">Not direct customers but valuable for industry-intel, warm-intros, and partnership pipeline. Visit booths if time permits.</p>
+
+<div class="bulk-list">
+  <h4>Major beverage distributors (Tier-1 BevAlc supply chain)</h4>
+  <ul>
+    <li><strong>Manhattan Beer &amp; Beverage Distributors · 3 senior</strong> (Jeremy Legarda, Robert Mitchell, Troy Munson) — major NYC beverage distributor</li>
+    <li><strong>Sheehan Family Companies · Matthew Lefkowitz (Corporate Brand Mgr)</strong> — major multi-state distributor</li>
+    <li><strong>Big Geyser Inc · Lewis Hershkowitz (CEO)</strong> — NYC's premier non-alc beverage distributor</li>
+    <li><strong>Muller, Inc · Jay Pierce + Ryan Reigel</strong> — already in Workshop tab</li>
+    <li><strong>ColdHaus Direct · David Millen (CEO) + Paul Fenton (VP BD)</strong> — already in Workshop tab</li>
+    <li><strong>Dana Distributors · Patrick English (Owner)</strong></li>
+    <li><strong>DeCrescente Distribution · Kevin Spencer + David Alix</strong></li>
+    <li><strong>Atlantic Beverage · Ryan Burtner + Eric Baldwin</strong></li>
+    <li><strong>Shore Point Distributing · 3 senior</strong> (Robert Puri VP Sales, Brandon Nelson Sr Dir Sales, Jake Roller Brand Mgr)</li>
+    <li><strong>Dutchess Beer Dist · Tyler Cappillino (President)</strong></li>
+    <li><strong>Lion Beverage · Andrew Van Blargan (Dir Sales) + Jeff Meoni (CEO)</strong></li>
+    <li><strong>Metro Beverage of Philadelphia · Andy Cimochowski (President)</strong></li>
+    <li><strong>Crazy Mountain · Nick Malloy + Justin Ray</strong></li>
+    <li><strong>Triton Beverage Group · Heather Boyd</strong></li>
+    <li><strong>Hermann Services · 4 senior including Jeff Hermann (President/CEO)</strong></li>
+    <li><strong>Jack Hilliard Distributing · Vic Avila (VP NA Sales)</strong></li>
+    <li><strong>Fischer Thompson Beverages · Robert Thompson (Owner) + Chris Fleischman</strong></li>
+    <li><strong>High Grade Beverage · Guy Battaglia (EVP)</strong></li>
+    <li><strong>Impact Beverage · Whit Hesser (CEO)</strong></li>
+    <li><strong>Seaview Beverage · Bill Butrymowicz</strong></li>
+    <li><strong>3 Tier Beverages · Donn Bichsel (Founder)</strong></li>
+    <li><strong>LA Libations · 2 senior</strong></li>
+    <li><strong>Tea Time Beverages · Justin Ciesla (VP)</strong></li>
+    <li><strong>Lucky Beverage Co · Ray Faust (CCO)</strong></li>
+  </ul>
+</div>
+
+<div class="bulk-list">
+  <h4>Ingredients, packaging, services (industry-network only — skip unless time permits)</h4>
+  <ul>
+    <li><strong>Ingredients suppliers:</strong> Cargill (2) · Givaudan (2) · Ingredion (3) · Kerry (4) · Mane (2) · Blue Pacific Flavors (4) · Allen Flavors (4) · Applied Food Sciences (7!) · Almendra (2) · GELITA (4) · Doehler North America (4) · MartinBauer · Wacker (4) · Lanxess (2) · PLT Health Solutions (4) · Mother Murphy's · OSF Flavors (2) · Flavorsum (2) · Prova (2) · Rousselot · Samyang (2) · Synergy CHC (2) · Vibrant Ingredients (2) · Glanbia · Golden Key · Imbibe · Fenchem (2) · Threotech (already in workshop) · California Natural Color · Palmer Holland · Novonesis · Vidya (2) · Gillco (2) · KND Labs · Trilogy Flavors · Farbest (2) · Sorse Technology · Tradin Organic</li>
+    <li><strong>Packaging / cans / bottles:</strong> Amcor (5!) · Ball Corp (2) · Can-One USA (5!) · CanSource (2) · CanSealing (2) · Cask Global (3) · Niagara Bottling (7!) · Tetra Pak (3) · 24x7 Packaging (2) · Fast Track Packaging (3) · Sutherland Packaging (2) · Zuckerman Honickman (6!) · Fortis Solutions (2) · Pacific Southwest Container · CCL Label · Hinterkopf · MaxPak · West Coast Container · Corporate Packaging · Stronger Can · Hillside Beverage Packing · T-DOH · RahrBSG CanCraft · Petoskey Plastics · Coppergate Design · Craft Brew Prints</li>
+    <li><strong>Co-packers / manufacturing:</strong> DrinkPAK (4) · Best Bev (2) · Castle Co-packers · MetaBrand (4) · Hillside · Imprint Collective (2) · BevSource / FB Solutions (3) · Brunswick Bier Works · Father's Brewing · Eastern Light Distilling · Portland Bottling · Macrocap Labs (5) · Latse Group (2) · Studio TBD (2)</li>
+    <li><strong>Logistics / fulfillment:</strong> Iron Mountain (3) · Zipline Logistics · Verst Logistics (4) · NEW CITY LOGISTICS · S3 Connect · Hermann Services already above</li>
+    <li><strong>Legal / advisory services:</strong> Amin Wasserman Gurnani · Cole Schotz · Holland &amp; Knight · Morrison Foerster (2) · Nutter McClennen &amp; Fish (2) · Cascadia Managing Brands (2) · Anonymous Consulting · BMR Management · Barnes Beverage Group (3) · ASC Consultants · BeyondBrands (3) · Brand Now (2) · Pete Grego Consulting · Gilpin and Company · Citrin Cooperman · Coalition for Adult Beverage Alternatives</li>
+    <li><strong>Marketing / agencies:</strong> JPalmer Collective · PUSH Agency · FifthColor (2) · Boston Experiential (2) · PLTFRM (3) · Loud Lemon · Trailblaze · BANQUET · Coppergate · Imprint already above</li>
+    <li><strong>Press / media:</strong> Ad Age · Bloomberg (2) · BevNET (huge in-house team) · TASTE · Beverage Business Insights · CSP · Cannabis Industry Journal · The World of Food Ingredients · Licensing International</li>
+    <li><strong>HR / talent:</strong> ForceBrands · True Search (2)</li>
+  </ul>
+</div>
+
+<!-- ═══════════════ ROAMING PLAN ═══════════════ -->
+<div class="checklist">
+  <h3>🗓 Roaming plan — Day 1 + Day 2 prioritization</h3>
+  <p style="font-size:13px;margin:0 0 10px;color:#6b4f15;">Workshop tab handles the post-workshop sequence. THIS table handles roaming the rest of the conference outside our workshop time.</p>
+  <table>
+    <thead><tr><th>Priority Sequence</th><th>Target</th><th>Why</th><th>Owner</th></tr></thead>
+    <tbody>
+      <tr><td><strong>#1</strong></td><td><strong>Asahi Group Beverages &amp; Innovation booth</strong> — Kristen Bareuther + investment team</td><td>4-person investment delegation = highest single Lens-1 concentration at event</td><td><span class="pill shyam">Shyam</span></td></tr>
+      <tr><td><strong>#2</strong></td><td><strong>Mark Rampolla · Groundforce Capital</strong></td><td>Zico founder; operator-investor; will grok BevGenie in 5 min</td><td><span class="pill shyam">Shyam</span></td></tr>
+      <tr><td><strong>#3</strong></td><td><strong>Bill Shufelt · Athletic Brewing</strong></td><td>Biggest non-alc operator-CEO at event; reference + product input</td><td><span class="pill shyam">Shyam</span></td></tr>
+      <tr><td><strong>#4</strong></td><td><strong>Dee Charlemagne · Walmart Emerging Brands</strong></td><td>Highest-value retail contact in the entire room</td><td><span class="pill shyam">Shyam</span> + <span class="pill gauri">Gauri</span></td></tr>
+      <tr><td><strong>#5</strong></td><td><strong>Catherine Corso · Altria Venture Growth</strong></td><td>Second Altria entry point after Ali Stein; pure-investor function</td><td><span class="pill shyam">Shyam</span></td></tr>
+      <tr><td><strong>#6</strong></td><td><strong>Tom First · Culture Pop</strong></td><td>Nantucket Nectars founder; operator-CEO; peer conversation</td><td><span class="pill shyam">Shyam</span></td></tr>
+      <tr><td><strong>#7</strong></td><td><strong>Trip booth · Daniel Khoury + Olivia Ferdi</strong></td><td>UK brand in US expansion; 4-person C-suite delegation</td><td><span class="pill shyam">Shyam</span> + <span class="pill gauri">Gauri</span></td></tr>
+      <tr><td><strong>#8</strong></td><td><strong>Hallie Bonnar + Elly Truesdell · New Fare Partners</strong></td><td>Investment Landscape panel + 3-person delegation</td><td><span class="pill shyam">Shyam</span></td></tr>
+      <tr><td><strong>#9</strong></td><td><strong>Aisle AI booth</strong> — Kevin Senn CEO</td><td>Highest-priority competitive-research target</td><td><span class="pill shyam">Shyam</span></td></tr>
+      <tr><td><strong>#10</strong></td><td><strong>Diego Saenz · Castillo Hermanos Corp Ventures</strong></td><td>Latin American BevAlc CVC — uncommon, worth mapping</td><td><span class="pill shyam">Shyam</span></td></tr>
+      <tr><td><strong>#11</strong></td><td><strong>BIOLYTE · Jesslyn Rollins CEO + Trey Sinclair</strong></td><td>Hydration brand at scale; both top execs in room</td><td><span class="pill shyam">Shyam</span></td></tr>
+      <tr><td><strong>#12</strong></td><td><strong>Investment Landscape panel</strong> — Elly Truesdell + Hank Spring</td><td>Already in main pipeline; panel intercept</td><td><span class="pill shyam">Shyam</span></td></tr>
+      <tr><td><strong>Background</strong></td><td><strong>Glimpse · Pear Commerce · Calebrate</strong></td><td>Map competitive landscape</td><td><span class="pill shyam">Shyam</span></td></tr>
+      <tr><td><strong>Background</strong></td><td><strong>Whole Foods Adult Bev merchants</strong> — Samantha Fletcher + Cynthia Tom</td><td>Industry-network for customer warm-intros later</td><td><span class="pill gauri">Gauri</span></td></tr>
+      <tr><td><strong>Background</strong></td><td><strong>Niagara Bottling delegation (7 senior people)</strong></td><td>Massive private bottler; enterprise-tier customer if/when</td><td><span class="pill shyam">Shyam</span></td></tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- ═══════════════ FOOTER ═══════════════ -->
+<div class="footer-notes">
+  <h3>Verification approach — read this</h3>
+  <ul>
+    <li><strong>Source:</strong> BevNET-issued attendee list <code>bevnetlivenyc2026-attendeelist-4.pdf</code> as of 6/8/2026 4:05 PM (~600 attendees).</li>
+    <li><strong>Triage verification:</strong> Every attendee read + bucketed. Firm/brand context verified via public knowledge for well-known names (Coefficient, Asahi, Doehler, Groundforce, Athletic Brewing, Fever-Tree, Aisle AI, etc.).</li>
+    <li><strong>Deep verification:</strong> Reserved for the top targets. Workshop-tab attendees were deeply verified (LinkedIn Experience directly read for Ali Stein, Eric Bean, Ed Lavery, etc.).</li>
+    <li><strong>Pre-outreach verification:</strong> <span class="pill verify">Hiral or Shyam should do 60-second LinkedIn check on any specific person BEFORE outreach.</span> Same discipline that caught Ali Stein's true role on the Workshop tab.</li>
+    <li><strong>Where I flagged ⚠️ "verify":</strong> I'm uncertain enough that someone should LinkedIn-check before relying on the framing.</li>
+    <li><strong>What I'm explicitly NOT doing:</strong> Deep-LinkedIn-verifying all ~600 attendees. That would be ~10 hours of work and isn't possible in this pass without compromising accuracy elsewhere.</li>
+  </ul>
+
+  <h3>Companion to the Workshop tab</h3>
+  <ul>
+    <li>The <a href="bevnet-live-june10-11.html">BevNETLive Workshop tab</a> covers the 26 people in our specific sponsored workshop — that's the primary post-workshop follow-up plan.</li>
+    <li>THIS tab covers the broader event — roaming, booth-floor, panels, parties.</li>
+    <li>Total event overlap: 9 attendees appear on both lists (Ali Stein, David Fudge, Ariana Pourbabak, Diana Chen, Matt Witherell, Eric Bean, Ed Lavery, Sebastian Dreher, Mike Bronstein, Muller pair, ColdHaus, etc. — workshop is the deep subset).</li>
+  </ul>
+
+  <h3>Open questions for Shyam + Hiral</h3>
+  <ul>
+    <li>Will Shyam + Gauri be at the conference all of Day 1 and Day 2, or just for the workshop slot?</li>
+    <li>Is there a published booth/floor map yet? Routing the priority sequence above depends on physical proximity.</li>
+    <li>Should we offer pre-event 15-min calls to Kristen Bareuther (Asahi) or Mark Rampolla (Groundforce) to schedule a structured booth conversation?</li>
+    <li>Hiral: pre-event LinkedIn checks priority list — Catherine Corso (Altria), Kristen Bareuther (Asahi), Mark Rampolla (Groundforce, verify still at firm), Arpon Ray (Coefficient), Kevin Senn (Aisle AI), Akash Raju (Glimpse), Dee Charlemagne (Walmart).</li>
+  </ul>
+</div>
+
+</div>
+</body>
+</html>
