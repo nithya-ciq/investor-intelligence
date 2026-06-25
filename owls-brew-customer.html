@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Owl's Brew — Customer Pre-Call Intel · ConsumerIQ / BevGenie</title>
+<style>
+  * { box-sizing: border-box; }
+  body { font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", Helvetica, Arial, sans-serif; background: #faf9f7; color: #1a1a1a; margin: 0; line-height: 1.5; -webkit-font-smoothing: antialiased; }
+  .wrap { max-width: 1180px; margin: 0 auto; padding: 32px 28px 80px; }
+  .tab-nav { display: flex; gap: 0; border-bottom: 1px solid #e6e2dc; margin-bottom: 24px; flex-wrap: wrap; }
+  .tab-nav a { padding: 10px 18px; text-decoration: none; color: #6c6760; font-size: 13px; font-weight: 500; border-bottom: 2px solid transparent; margin-bottom: -1px; }
+  .tab-nav a:hover { color: #1a1a1a; }
+  .tab-nav a.active { color: #1a1a1a; border-bottom-color: #5b8a3a; font-weight: 600; }
+  header.top { border-bottom: 1px solid #e6e2dc; padding-bottom: 18px; margin-bottom: 28px; }
+  header.top .eyebrow { font-size: 11px; text-transform: uppercase; letter-spacing: 1.2px; color: #4a6b9a; font-weight: 600; }
+  header.top h1 { margin: 6px 0 4px; font-size: 28px; font-weight: 600; letter-spacing: -0.4px; }
+  header.top .meta { font-size: 13px; color: #6c6760; }
+  header.top .meta a { color: #4a6b9a; }
+  .verdict { background: #fff; border: 1px solid #e6e2dc; border-radius: 10px; padding: 20px 24px; margin: 0 0 28px; }
+  .verdict h2 { margin: 0 0 8px; font-size: 16px; color: #5b8a3a; text-transform: uppercase; letter-spacing: 1px; font-weight: 600; }
+  .verdict p { margin: 0 0 8px; }
+  .verdict p:last-child { margin-bottom: 0; }
+  .scope-note { background: #fdf6e8; border-left: 4px solid #b48f3a; padding: 14px 18px; margin-bottom: 28px; border-radius: 4px; font-size: 13px; color: #6b4f15; }
+  .scope-note strong { color: #4a3a0c; }
+  .event-meta { background: #f3f5fb; border-left: 4px solid #4a6b9a; padding: 16px 20px; margin-bottom: 28px; border-radius: 4px; font-size: 14px; }
+  .event-meta h3 { margin: 0 0 8px; font-size: 14px; color: #2c4d80; }
+  .event-meta dl { margin: 4px 0 0; display: grid; grid-template-columns: 160px 1fr; gap: 6px 14px; }
+  .event-meta dt { color: #6c6760; font-weight: 500; font-size: 12px; text-transform: uppercase; letter-spacing: 0.4px; }
+  .event-meta dd { margin: 0; }
+  h2.section { font-size: 20px; font-weight: 600; margin: 36px 0 14px; border-bottom: 2px solid #1a1a1a; padding-bottom: 6px; letter-spacing: -0.3px; }
+  h2.section .count { font-size: 13px; color: #6c6760; font-weight: 400; margin-left: 8px; }
+  h3.subsection { font-size: 15px; font-weight: 600; margin: 22px 0 10px; color: #2c4d80; text-transform: uppercase; letter-spacing: 0.6px; }
+  .lens-header { background: #f6f3fa; border-left: 5px solid #5a3a86; padding: 14px 18px; margin: 8px 0 16px; border-radius: 6px; }
+  .lens-header h3 { margin: 0; font-size: 15px; font-weight: 600; color: #43286e; }
+  .lens-header p { margin: 4px 0 0; font-size: 13px; color: #5a3a86; }
+  .target { background: #fff; border: 1px solid #e6e2dc; border-radius: 8px; padding: 16px 20px; margin-bottom: 12px; }
+  .target.priority1 { border-left: 5px solid #5b8a3a; }
+  .target.priority2 { border-left: 5px solid #b48f3a; }
+  .target.priority3 { border-left: 5px solid #8b8985; }
+  .target.unverified { background: #fdf6f5; border-left: 5px solid #b85a4d; }
+  .target-head { display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: 10px; margin-bottom: 6px; }
+  .target-head .name { font-size: 17px; font-weight: 600; }
+  .target-head .name .person { font-weight: 400; color: #6c6760; font-size: 14px; margin-left: 6px; }
+  .target-head .badge { font-size: 11px; background: #1a1a1a; color: #fff; padding: 3px 10px; border-radius: 12px; font-weight: 500; letter-spacing: 0.4px; }
+  .target.priority1 .badge { background: #5b8a3a; }
+  .target.priority2 .badge { background: #b48f3a; }
+  .target.priority3 .badge { background: #8b8985; }
+  .target.unverified .badge { background: #b85a4d; }
+  .target .meta-row { font-size: 12.5px; color: #6c6760; margin-bottom: 8px; }
+  .target .signals { display: grid; grid-template-columns: 140px 1fr; gap: 4px 14px; font-size: 13.5px; margin-top: 6px; }
+  .target .label { color: #6c6760; font-weight: 500; text-transform: uppercase; font-size: 11px; letter-spacing: 0.4px; padding-top: 2px; }
+  .target .val { color: #1a1a1a; }
+  .target .val.fomo { background: #f4f8f2; padding: 6px 10px; border-radius: 4px; border-left: 2px solid #5b8a3a; font-weight: 500; }
+  .target .val.warn { background: #fdf2d9; padding: 6px 10px; border-radius: 4px; border-left: 2px solid #b48f3a; }
+  .ask-frame { background: #f4f8f2; border-left: 3px solid #5b8a3a; padding: 10px 14px; margin-top: 10px; border-radius: 4px; font-size: 13.5px; }
+  .ask-frame .lwl { font-size: 11px; text-transform: uppercase; letter-spacing: 0.6px; color: #5b8a3a; font-weight: 600; margin-bottom: 3px; display: block; }
+  .ask-frame em { color: #1a1a1a; font-style: italic; }
+  .checklist { background: #fdf6e8; border-left: 4px solid #b48f3a; padding: 16px 20px; margin: 28px 0; border-radius: 4px; }
+  .checklist h3 { margin: 0 0 10px; font-size: 14px; color: #6b4f15; }
+  .checklist table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  .checklist th { text-align: left; padding: 6px 8px; font-size: 11.5px; text-transform: uppercase; letter-spacing: 0.4px; color: #6c6760; border-bottom: 1px solid #e6d8b0; }
+  .checklist td { padding: 8px; border-bottom: 1px solid #f0ede5; vertical-align: top; }
+  .footer-notes { margin-top: 40px; padding-top: 24px; border-top: 1px solid #e6e2dc; font-size: 12.5px; color: #6c6760; }
+  .footer-notes h3 { color: #1a1a1a; font-size: 13px; margin: 0 0 8px; }
+  .footer-notes ul { margin: 4px 0 14px 18px; padding: 0; }
+  .footer-notes li { margin-bottom: 4px; }
+  a { color: #4a6b9a; }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<nav class="tab-nav">
+  <a href="index.html">Main Brief — Full Pipeline</a>
+  <a href="agent-conference-may2026.html">Agent Conference · May 4-5</a>
+  <a href="vc-reverse-pitch-may13.html">VCReversePitch · May 13</a>
+  <a href="bevnet-live-june10-11.html">BevNETLive Workshop</a>
+  <a href="bevnet-live-full-event.html">BevNETLive Full Event</a>
+  <a href="vc-reverse-pitch-sf-june23.html">VCReversePitch · SF Jun 23</a>
+  <a href="owls-brew-customer.html" class="active">Owl's Brew · Customer</a>
+</nav>
+
+<header class="top">
+  <div class="eyebrow">Customer pre-call intel · 4-person buying committee · Jennie Ripps initiated via LinkedIn</div>
+  <h1>Owl's Brew — Pre-Call Intelligence Brief</h1>
+  <div class="meta">First scheduled call · attendees: Jennie Ripps (Co-Founder &amp; CEO) + Maria Littlefield (Co-Founder, President &amp; Creative) + Jeff White (role TBC) + Derek Lam (Director of Finance &amp; Operations) · BevGenie positioned as <strong>decision intelligence for beverage supplier commercial teams</strong></div>
+</header>
+
+<div class="scope-note">
+  <strong>Verification trust map:</strong> Owl's Brew company + Jennie + Maria + Derek = strongly verified (LinkedIn snippets + company site + recent press). <strong>⚠️ Jeff White NOT verified at Owl's Brew</strong> — no public source places him on the team. Top candidate is a long-time CPG/beverage exec at ROOTS NW National Collective (medium confidence), but recommend asking Jennie for his title or LinkedIn URL before the call so we don't anchor on the wrong person.
+</div>
+
+<div class="verdict">
+  <h2>Verdict — 4-person buying committee = serious eval, not tire-kick</h2>
+  <p><strong>Strong buying signal.</strong> Ripps wouldn't pull her co-founder + finance director + (likely) commercial lead into a 30-min first call unless she's already mentally framing "could we use this." Composition is textbook — economic buyer (Ripps) + brand gatekeeper (Littlefield) + finance/ops gatekeeper (Lam) + likely commercial operator (White). Treat this as buying-mode, not discovery-mode.</p>
+  <p><strong>What's likely driving the call:</strong> Owl's Brew has launched <strong>4 new SKU families in 18 months</strong> (Chelsea Handler Vodka Lemonade Jan 2025, Sun Tea &amp; Vodka Jul 2025, Spiked Pop, Functional Non-Alc Mixers Jun 2026) across <strong>9 national chains + stadium accounts</strong> — Target, Whole Foods, Trader Joe's, Publix, Sprouts, H-E-B, Total Wine, BevMo, Kroger/Ralphs + Yankee Stadium, SoFi, Highmark, Disney/Epcot, TAO Group. They have acute distributor-velocity-tracking and shelf-defense pressure with a lean analytics bench (no public VP Sales / CMO / CRO listed).</p>
+  <p><strong>Cap-table context that matters:</strong> Their CVC backer <strong>ZX Ventures (AB InBev's CVC arm) effectively wound down</strong> — no new investments since Feb 2023; listed among CVCs that didn't make it to 2025. Strategic implication: Owl's Brew lost their big-beer distribution muscle + institutional capital partner right as they're scaling commercially. They've also not raised publicly since the $9M Series A in 2021. <strong>They're going it alone during massive expansion = even more reason to want better commercial intelligence.</strong></p>
+  <p><strong>Who to win:</strong> <strong>Derek Lam.</strong> He's the financial gatekeeper / technical buyer with the Metabrew analytics + logistics background. He'll scrutinize unit economics, pricing, ROI, data accuracy, contract terms. Ripps decides yes; Lam decides no.</p>
+  <p><strong>Trap to avoid:</strong> Don't lead with AI/agentic capability — Jennie's mindset is brand/product-builder, not data-tools-operator (zero mentions of analytics or distributor management across her long-form interviews). Lead with commercial pain (distributor performance, shelf defense, velocity tracking across 9 chains × 4 SKU families) — let the AI/architecture story emerge as the means.</p>
+</div>
+
+<!-- ═══════════════ EVENT DETAILS ═══════════════ -->
+<div class="event-meta">
+  <h3>📍 Pre-call context</h3>
+  <dl>
+    <dt>How it started</dt><dd>Shyam reached out to <strong>Jennie Ripps on LinkedIn</strong>; she replied she was interested.</dd>
+    <dt>Then</dt><dd>Moved to email; Jennie <strong>looped in 3 more people</strong> for a first call. That's the buying-committee signal — first call, full committee already assembled.</dd>
+    <dt>The committee</dt><dd>Jennie Ripps (CEO, economic buyer) · Maria Littlefield (Co-Founder, brand gatekeeper) · Jeff White (commercial operator, role unverified) · Derek Lam (Director of Finance &amp; Operations, financial gatekeeper)</dd>
+    <dt>Our positioning</dt><dd>BevGenie = decision intelligence for beverage supplier commercial teams (sales / marketing / insights workflows)</dd>
+  </dl>
+</div>
+
+<!-- ═══════════════ COMPANY ═══════════════ -->
+<h2 class="section">🏢 Company · Owl's Brew (Metabrew Inc.)</h2>
+
+<div class="target priority1">
+  <div class="target-head">
+    <div class="name">Owl's Brew <span class="person">— founded 2013 · NYC HQ · ~$18.3M raised across rounds (no public round since 2021 Series A)</span></div>
+    <div class="badge">🔥 strong customer-prospect profile · classic post-spreadsheets pre-enterprise</div>
+  </div>
+  <div class="meta-row"><strong>Verified scaling story:</strong> Tea-based RTD brand started 2013 with "boozy tea" hard cocktails. Has materially expanded in last 18 months — now spans hard tea + hard soda + spirits-based RTDs + functional non-alc mixers. Multi-channel: traditional grocery + premium liquor + on-premise stadiums/hospitality + DTC/Amazon/TikTok Shop.</div>
+  <div class="signals">
+    <span class="label">Product line (verified)</span><span class="val"><strong>4 new SKU families since Jan 2025:</strong> Chelsea Handler Vodka Lemonade (Jan 2025, 100-cal, 3 flavors, celeb-anchored) · Sun Tea &amp; Vodka Variety Pack (Jul 2025, 5% ABV, back to spirits-based roots) · Spiked Pop (hard-soda line) · Functional Non-Alc Mixers (Jun 2026, hibiscus + green tea + L-Theanine, "Drink Wise" positioning, DTC + Amazon + TikTok Shop). Plus original hard tea seltzers + Skinny Hibiscus Margarita w/ Jeannie Mai + Tequila Tromba.</span>
+    <span class="label">Distribution</span><span class="val">Off-premise: <strong>Target, Whole Foods, Trader Joe's, Publix, Sprouts, H-E-B, Total Wine, BevMo!, Kroger/Ralphs</strong> (5 of top-10 US grocers). On-premise: <strong>Yankee Stadium, SoFi, Highmark, Disney/Epcot, TAO Group, LDV Hospitality.</strong> Older "4K stores" number is stale; exact 2026 count not public but materially larger.</span>
+    <span class="label">Funding state</span><span class="val warn"><strong>No public round since $9M Series A 2021</strong> (Formidable Asset Management lead) — ~$18.3M total. <strong>ZX Ventures (AB InBev's CVC) effectively wound down</strong> — no new investments since Feb 2023, listed among CVCs that "didn't make it to 2025." Cap-table status unclear but strategic implication is clear: they've lost their Big-Beer distribution muscle + institutional capital partner.</span>
+    <span class="label">Leadership architecture</span><span class="val"><strong>Lean commercial bench.</strong> Ripps (CEO), Littlefield (Co-founder/President/Creative), <strong>Jeannie Mai (Chief Brand Officer — celebrity hire signaling brand-marketing investment)</strong>, Bart Silvestro (leadership). <strong>NO publicly visible VP Sales / CMO / CRO</strong> — the analytics + commercial-ops layer is thin. That IS the BevGenie buying-pain.</span>
+    <span class="label">Buying signal</span><span class="val fomo"><strong>STRONG.</strong> Classic post-spreadsheets, pre-enterprise inflection. 4 new SKU families × 9 chains × multi-state distributor network × stadium/on-premise complexity, with thin analytics layer and no fresh institutional capital. They have acute distributor-velocity-tracking + shelf-defense pressure right now.</span>
+    <span class="label">Competitive frame</span><span class="val">Hard-tea category is moving fast — Surfside is eating share. Owl's Brew is defending category position while trying to expand into new categories (hard soda, non-alc mixers). Margin compression + shelf-defense pressure intensifies their need for commercial intelligence.</span>
+  </div>
+</div>
+
+<!-- ═══════════════ THE FOUR PEOPLE ═══════════════ -->
+<h2 class="section">👥 The 4-person committee on the call</h2>
+<div class="lens-header">
+  <h3>How to think about who's in the room + what each cares about</h3>
+  <p>Economic buyer (Ripps) + brand gatekeeper (Littlefield) + financial gatekeeper (Lam) + likely commercial operator (White, role unverified). 4 distinct evaluation lenses — design the conversation so each lens gets directly addressed.</p>
+</div>
+
+<div class="target priority1">
+  <div class="target-head">
+    <div class="name">Jennie Ripps <span class="person">— Co-Founder &amp; CEO · economic buyer + executive sponsor</span></div>
+    <div class="badge">🔥 decides yes · mission-fit lens</div>
+  </div>
+  <div class="meta-row"><strong>Verified background:</strong> UPenn '03 English. Tea sommelier. <strong>Founded B2B Brew Lab Tea before Owl's Brew</strong> (clients: Momofuku, Sweetgreen, Soho House) — so she's done two beverage businesses in different shapes (B2B premium tea → B2C RTD cocktails). Owl's Brew founded 2013 with Maria Littlefield.</div>
+  <div class="signals">
+    <span class="label">Recent public voice</span><span class="val">Penn CS Radio (Apr 2024), Authority Magazine, Hartford 2023 Innovator. Champions the <strong>Wise Women Collective</strong> (pushback on "4% women in BevAlc leadership"), #BoozyBookClub, clean-ingredient narrative.</span>
+    <span class="label">Mindset</span><span class="val"><strong>Brand/product-builder, NOT data-tools-operator.</strong> Across all long-form interviews: zero mentions of analytics, distributor management, sales-rep tooling, dashboards. She talks about product innovation, mission, women-in-BevAlc, brand-building.</span>
+    <span class="label">What she cares about on the call</span><span class="val">Mission fit, brand integrity, women-founder/operator alignment, "is this real" check on the company behind BevGenie, story arc of how this helps Owl's Brew compete. Will be turned OFF by deep-tech pitch.</span>
+    <span class="label">Role on call</span><span class="val fomo"><strong>Economic buyer + executive sponsor.</strong> She'll decide whether to take this further; she won't decide the technical specifics. Show her the "could this be real for Owl's Brew?" answer + let Lam stress-test the financials.</span>
+  </div>
+  <div class="ask-frame">
+    <span class="lwl">Calibrated for Jennie · don't lead with AI</span>
+    <em>"Jennie — thanks for pulling the team in. Your 18-month sprint across four SKU families and into 9 national chains is exactly the inflection point we built BevGenie for: when a great brand is winning shelf faster than the analyst layer behind it can keep up. Before I show anything, I'd love to hear from each of you on where the seams are showing in commercial ops right now — distributor performance, shelf defense, velocity by SKU, the stuff that should be automated but isn't."</em>
+  </div>
+</div>
+
+<div class="target priority2">
+  <div class="target-head">
+    <div class="name">Maria Littlefield <span class="person">— Co-Founder, President &amp; Creative Director · brand gatekeeper</span></div>
+    <div class="badge">P2 · brand-integrity lens</div>
+  </div>
+  <div class="meta-row"><strong>Verified still active:</strong> Met Ripps at NYC marketing/advertising firm 2009. Co-author of <em>Wise Cocktails</em> (2015). Forbes 30 Under 30. Co-founded Wise Women Collective with Jennie. Recent media: RTD Mag Oct 2025, Thirsty Thursdays podcast Dec 2025 (talks about scaling Owl's Brew to 22+ states).</div>
+  <div class="signals">
+    <span class="label">Function on team</span><span class="val">President + Creative Director — owns brand identity, creative output, retail visual presence, brand-partnership decisions (Chelsea Handler, Jeannie Mai). Likely also touches on-premise / hospitality activation.</span>
+    <span class="label">What she cares about on the call</span><span class="val">Brand integrity at retail + on-premise touchpoints. Shelf positioning. Demographic targeting. The story Owl's Brew can tell investors / press / retailers once BevGenie is in place. NOT back-office dashboards.</span>
+    <span class="label">Role on call</span><span class="val"><strong>Brand gatekeeper.</strong> If she senses the tool would homogenize the brand voice or constrain creative agility, she'll quietly veto.</span>
+  </div>
+  <div class="ask-frame">
+    <span class="lwl">Hook for Maria</span>
+    <em>"Maria — the brand work you've done with Chelsea Handler and Jeannie Mai, plus the Wise Women Collective positioning, is exactly what makes Owl's Brew defensible — but it gets harder to maintain that brand DNA when commercial decisions are happening across 9 chains and hundreds of distributor accounts. BevGenie's job isn't to flatten the brand voice — it's to give your commercial team enough velocity that you stay in front of the brand-protection conversations, not behind them."</em>
+  </div>
+</div>
+
+<div class="target priority1">
+  <div class="target-head">
+    <div class="name">Derek Lam <span class="person">— Director of Finance &amp; Operations · NOT the fashion designer</span></div>
+    <div class="badge">🔥 financial gatekeeper · THE ONE TO WIN</div>
+  </div>
+  <div class="meta-row"><strong>Verified, with disambiguation:</strong> Derek Lam at Owl's Brew (Metabrew Inc.) is a different person from the fashion designer Derek Lam. NYU Econ. Internally promoted at Metabrew from Finance/Analytics/Logistics Associate → Director of Finance &amp; Operations. <strong>No investor-firm affiliation — investor-rep hypothesis explicitly rejected with high confidence.</strong></div>
+  <div class="signals">
+    <span class="label">Function on team</span><span class="val">Owns finance + operations across Metabrew (the parent entity). Came up through analytics + logistics — so he's already the person at Owl's Brew who's been doing some version of what BevGenie automates, likely in spreadsheets + manual analysis.</span>
+    <span class="label">What he cares about on the call</span><span class="val"><strong>Unit economics. Pricing. ROI. Data accuracy. Contract terms. Integration complexity. Time-to-value.</strong> He'll be the one asking "what's the data source," "how does this integrate with our existing stack," "what's the per-seat cost," "how long to implement."</span>
+    <span class="label">Role on call</span><span class="val fomo"><strong>Financial gatekeeper / technical buyer = THE ONE TO WIN.</strong> Jennie says yes, Maria doesn't object — but Lam decides whether the math works. He's also the most likely to be a long-term BevGenie power-user since he's already swimming in the data they'd be consuming.</span>
+    <span class="label">Strategic note</span><span class="val">Lam's analytics+logistics background means he'll instantly recognize the value of what BevGenie does — but he'll also instantly recognize whether your data sources / methodology / accuracy are real. <strong>Be precise on data sources (TTB, NABCA, distributor feeds) when he asks.</strong></span>
+  </div>
+  <div class="ask-frame">
+    <span class="lwl">Hook for Derek</span>
+    <em>"Derek — your background through Metabrew analytics and logistics is exactly the persona we built this for. The honest pitch: you're already doing some version of this work today, just in spreadsheets and partial views. BevGenie is the data + agent layer that takes the manual stitching off your plate. Happy to go deep on data sources (TTB depletions, NABCA control-state, distributor feeds), integration shape, and per-account economics — when in the conversation works for you?"</em>
+  </div>
+</div>
+
+<div class="target unverified">
+  <div class="target-head">
+    <div class="name">Jeff White <span class="person">— role at Owl's Brew NOT publicly verified</span></div>
+    <div class="badge">⚠️ verify with Jennie before the call</div>
+  </div>
+  <div class="meta-row"><strong>No public source places a "Jeff White" on the Owl's Brew / Metabrew team.</strong> Two candidate hypotheses, both with limited corroboration:</div>
+  <div class="signals">
+    <span class="label">Top candidate (medium confidence)</span><span class="val"><strong>Jeff White at ROOTS NW National Collective</strong> — 18+ year CPG/beverage exec with brand-building + national distributor relations background. Exact archetype Owl's Brew would need at this scale stage. If this is him: <strong>Head of Sales / commercial lead — decision-maker for distributor-management + chain-sales pain.</strong></span>
+    <span class="label">Secondary candidate</span><span class="val">Jeff White, Sr Director of Chain Sales at USBev. Less likely given different industry context.</span>
+    <span class="label">Action before the call</span><span class="val warn"><strong>Ask Jennie via email:</strong> "Quick housekeeping — could you share Jeff's title + LinkedIn URL? Want to make sure I prep usefully for the call." This is normal/zero-cost and disambiguates fully.</span>
+    <span class="label">If he's commercial (most likely)</span><span class="val">His career has zero AI signal (based on Jeff White / ROOTS NW background). <strong>Lead with distributor performance + chain-sales velocity, NOT agentic capability.</strong> He'll respond to "we close the gap between what your distributors report and what's actually moving on shelf" much faster than "we have a multi-agent architecture."</span>
+  </div>
+  <div class="ask-frame">
+    <span class="lwl">Hook for Jeff (assuming commercial lead)</span>
+    <em>"Jeff — the bottom of the funnel is what we're focused on. You've got 4 SKU families launching across 9 national chains + stadium accounts. Most supplier sales teams at your scale are still piecing together distributor performance from PDFs, retailer scan reports, and broker recap calls. BevGenie unifies that into a single decision view for your commercial team. Curious where you're feeling the worst friction right now — chain account reviews? Distributor incentive tracking? Or the back-channel between sales and finance?"</em>
+  </div>
+</div>
+
+<!-- ═══════════════ CALL PLAYBOOK ═══════════════ -->
+<h2 class="section">🎯 Call playbook</h2>
+
+<div class="checklist">
+  <h3>🗓 Suggested 30-min structure</h3>
+  <table>
+    <thead><tr><th>Minute</th><th>What happens</th><th>Goal</th></tr></thead>
+    <tbody>
+      <tr><td><strong>0-2</strong></td><td>Open with Jennie-calibrated frame (see her card). Acknowledge the 18-month sprint. Don't pitch yet.</td><td>Tone-set: this isn't a generic pitch.</td></tr>
+      <tr><td><strong>2-10</strong></td><td><strong>Discovery round-robin.</strong> "Before I show anything, I'd love each of you to share where commercial ops is showing the most friction." Maria → brand-protection at retail. Lam → finance/data. White → distributor + chain sales. Jennie → the strategic gap.</td><td>Surface their language for the pain. Use it back at them. Critical: don't let one person dominate.</td></tr>
+      <tr><td><strong>10-20</strong></td><td><strong>BevGenie framing:</strong> decision intelligence built for commercial teams at suppliers your exact size. Show 2 specific patterns: distributor-velocity gap detection + shelf-defense brief automation. Reference the 9-chains + stadium-accounts reality back at them.</td><td>Resonance check — are they leaning in? Watch Lam's face; he's the signal.</td></tr>
+      <tr><td><strong>20-26</strong></td><td><strong>Lam-led deep-dive.</strong> Data sources (TTB, NABCA, distributor feeds), integration shape, per-account economics, time-to-value. Be precise.</td><td>Win the financial gatekeeper. Without him, nothing moves.</td></tr>
+      <tr><td><strong>26-30</strong></td><td><strong>Close with concrete next step.</strong> Propose either (a) 2-week pilot scope sketch, (b) data-environment walk-through with Lam, or (c) follow-up call with their distributor-management workflow walked through in detail.</td><td>Don't end with "we'll send a deck." End with a specific dated follow-up.</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- ═══════════════ POST-CALL FOLLOW-UP ═══════════════ -->
+<div class="checklist">
+  <h3>🗓 Post-call follow-up plan</h3>
+  <table>
+    <thead><tr><th>When</th><th>Action</th><th>Owner</th></tr></thead>
+    <tbody>
+      <tr><td>Within 4 hrs of call</td><td><strong>Group thank-you email</strong> referencing one specific thing each of the 4 said on the call. Confirm next step dated specifically (not "we'll be in touch").</td><td>Shyam</td></tr>
+      <tr><td>Within 24 hrs</td><td><strong>1:1 to Derek Lam</strong> — propose a 30-min data-shape conversation with him specifically. Frame as "I want to make sure we're being precise about what BevGenie would actually do for your finance + ops side."</td><td>Shyam</td></tr>
+      <tr><td>Within 24 hrs</td><td><strong>1:1 to Jennie</strong> — short note reinforcing the mission/operator framing. Could mention the Wise Women Collective if it came up naturally.</td><td>Shyam</td></tr>
+      <tr><td>Within 48 hrs</td><td><strong>Internal debrief</strong> — Shyam + Gauri capture: who in the room was leaning in vs cautious, what specific pain was named, what objections surfaced, what to address in next conversation.</td><td>Shyam → Gauri</td></tr>
+      <tr><td>Within 1 week</td><td>If positive signal, propose the next call (data walkthrough w/ Lam, or pilot-scope sketch with full team).</td><td>Shyam</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- ═══════════════ FOOTER ═══════════════ -->
+<div class="footer-notes">
+  <h3>Sources verified</h3>
+  <ul>
+    <li><strong>Owl's Brew company:</strong> owlsbrew.com + BevNET coverage (Chelsea Handler launch Jan 2025, Sun Tea &amp; Vodka Jul 2025, Functional Mixers Jun 2026) + PRNewswire (Spiked Pop launch) + Crunchbase / Tracxn (funding history)</li>
+    <li><strong>ZX Ventures wind-down:</strong> AlphaSense + Global Venturing reporting on CVCs that didn't make it to 2025; no new ZX Ventures investments since Feb 2023</li>
+    <li><strong>Jennie Ripps:</strong> LinkedIn (auth-walled headline) + Penn CS Radio interview Apr 2024 + Authority Magazine + Hartford Innovator 2023 + Wise Women Collective website</li>
+    <li><strong>Maria Littlefield:</strong> LinkedIn + RTD Magazine Oct 2025 + Thirsty Thursdays podcast Dec 2025 + Wise Cocktails (2015) co-author credit + Forbes 30 Under 30 archive</li>
+    <li><strong>Derek Lam (Metabrew/Owl's Brew):</strong> LinkedIn + Metabrew org-chart sources (NOT the fashion designer)</li>
+    <li><strong>Jeff White:</strong> ⚠️ <strong>NOT VERIFIED at Owl's Brew.</strong> Top candidate identified at ROOTS NW National Collective; secondary candidate at USBev. Recommend verifying with Jennie via email before the call.</li>
+  </ul>
+
+  <h3>Trust map — what to be careful about</h3>
+  <ul>
+    <li><strong>Jeff White's role at Owl's Brew is unverified.</strong> Don't anchor a pitch arc to assumptions about his function until Jennie confirms.</li>
+    <li>The "4K stores" historic distribution number is stale — the 2026 footprint is materially larger (9 national chains + on-premise) but the exact count is not publicly disclosed.</li>
+    <li>Cap-table state of the ZX Ventures / AB InBev relationship is unclear post-wind-down — could still be on the cap table even if no new capital from them is forthcoming.</li>
+    <li>No public funding round since 2021 = unknown whether they're profitable, runway-burning, or quietly raising. Worth a soft probe in conversation but don't make it the centerpiece.</li>
+  </ul>
+
+  <h3>Investor-language rule check</h3>
+  <ul>
+    <li>This is a CUSTOMER call, not an investor call. Vocabulary can be slightly more flexible than investor briefs, but defaulting to <strong>"decision intelligence" + "beverage"</strong> still lands cleaner with Jennie (brand-builder, not tech operator).</li>
+    <li>Internal jargon (Pattern A/B, Manager-Analyst-Agent, JTBD) should stay out of the call entirely.</li>
+  </ul>
+</div>
+
+</div>
+</body>
+</html>
