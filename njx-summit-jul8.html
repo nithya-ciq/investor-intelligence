@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NJx Venture Summit — July 8, 2026 · ConsumerIQ / BevGenie Brief</title>
+<style>
+  * { box-sizing: border-box; }
+  body { font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", Helvetica, Arial, sans-serif; background: #faf9f7; color: #1a1a1a; margin: 0; line-height: 1.5; -webkit-font-smoothing: antialiased; }
+  .wrap { max-width: 1180px; margin: 0 auto; padding: 32px 28px 80px; }
+  .tab-nav { display: flex; gap: 0; border-bottom: 1px solid #e6e2dc; margin-bottom: 24px; flex-wrap: wrap; }
+  .tab-nav a { padding: 10px 18px; text-decoration: none; color: #6c6760; font-size: 13px; font-weight: 500; border-bottom: 2px solid transparent; margin-bottom: -1px; }
+  .tab-nav a:hover { color: #1a1a1a; }
+  .tab-nav a.active { color: #1a1a1a; border-bottom-color: #5b8a3a; font-weight: 600; }
+  header.top { border-bottom: 1px solid #e6e2dc; padding-bottom: 18px; margin-bottom: 28px; }
+  header.top .eyebrow { font-size: 11px; text-transform: uppercase; letter-spacing: 1.2px; color: #4a6b9a; font-weight: 600; }
+  header.top h1 { margin: 6px 0 4px; font-size: 28px; font-weight: 600; letter-spacing: -0.4px; }
+  header.top .meta { font-size: 13px; color: #6c6760; }
+  header.top .meta a { color: #4a6b9a; }
+  .verdict { background: #fff; border: 1px solid #e6e2dc; border-radius: 10px; padding: 20px 24px; margin: 0 0 28px; }
+  .verdict h2 { margin: 0 0 8px; font-size: 16px; color: #b48f3a; text-transform: uppercase; letter-spacing: 1px; font-weight: 600; }
+  .verdict p { margin: 0 0 8px; }
+  .verdict p:last-child { margin-bottom: 0; }
+  .scope-note { background: #fdf6e8; border-left: 4px solid #b48f3a; padding: 14px 18px; margin-bottom: 28px; border-radius: 4px; font-size: 13px; color: #6b4f15; }
+  .scope-note strong { color: #4a3a0c; }
+  .event-meta { background: #f3f5fb; border-left: 4px solid #4a6b9a; padding: 16px 20px; margin-bottom: 28px; border-radius: 4px; font-size: 14px; }
+  .event-meta h3 { margin: 0 0 8px; font-size: 14px; color: #2c4d80; }
+  .event-meta dl { margin: 4px 0 0; display: grid; grid-template-columns: 140px 1fr; gap: 6px 14px; }
+  .event-meta dt { color: #6c6760; font-weight: 500; font-size: 12px; text-transform: uppercase; letter-spacing: 0.4px; }
+  .event-meta dd { margin: 0; }
+  h2.section { font-size: 20px; font-weight: 600; margin: 36px 0 14px; border-bottom: 2px solid #1a1a1a; padding-bottom: 6px; letter-spacing: -0.3px; }
+  h2.section .count { font-size: 13px; color: #6c6760; font-weight: 400; margin-left: 8px; }
+  .target { background: #fff; border: 1px solid #e6e2dc; border-radius: 8px; padding: 16px 20px; margin-bottom: 12px; }
+  .target.priority1 { border-left: 5px solid #5b8a3a; }
+  .target.priority2 { border-left: 5px solid #b48f3a; }
+  .target.priority3 { border-left: 5px solid #8b8985; }
+  .target-head { display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: 10px; margin-bottom: 6px; }
+  .target-head .name { font-size: 17px; font-weight: 600; }
+  .target-head .name .person { font-weight: 400; color: #6c6760; font-size: 14px; margin-left: 6px; }
+  .target-head .badge { font-size: 11px; background: #1a1a1a; color: #fff; padding: 3px 10px; border-radius: 12px; font-weight: 500; letter-spacing: 0.4px; }
+  .target.priority1 .badge { background: #5b8a3a; }
+  .target.priority2 .badge { background: #b48f3a; }
+  .target.priority3 .badge { background: #8b8985; }
+  .target .meta-row { font-size: 12.5px; color: #6c6760; margin-bottom: 8px; }
+  .target .signals { display: grid; grid-template-columns: 140px 1fr; gap: 4px 14px; font-size: 13.5px; margin-top: 6px; }
+  .target .label { color: #6c6760; font-weight: 500; text-transform: uppercase; font-size: 11px; letter-spacing: 0.4px; padding-top: 2px; }
+  .target .val { color: #1a1a1a; }
+  .target .val.fomo { background: #f4f8f2; padding: 6px 10px; border-radius: 4px; border-left: 2px solid #5b8a3a; font-weight: 500; }
+  .ask-frame { background: #f4f8f2; border-left: 3px solid #5b8a3a; padding: 10px 14px; margin-top: 10px; border-radius: 4px; font-size: 13.5px; }
+  .ask-frame .lwl { font-size: 11px; text-transform: uppercase; letter-spacing: 0.6px; color: #5b8a3a; font-weight: 600; margin-bottom: 3px; display: block; }
+  .ask-frame em { color: #1a1a1a; font-style: italic; }
+  .bulk-list { background: #fff; border: 1px solid #e6e2dc; border-radius: 8px; padding: 14px 18px; margin-bottom: 12px; }
+  .bulk-list h4 { margin: 0 0 8px; font-size: 13.5px; color: #2c4d80; font-weight: 600; }
+  .bulk-list ul { margin: 0 0 0 18px; padding: 0; font-size: 13px; }
+  .bulk-list li { margin-bottom: 4px; }
+  .footer-notes { margin-top: 40px; padding-top: 24px; border-top: 1px solid #e6e2dc; font-size: 12.5px; color: #6c6760; }
+  .footer-notes h3 { color: #1a1a1a; font-size: 13px; margin: 0 0 8px; }
+  .footer-notes ul { margin: 4px 0 14px 18px; padding: 0; }
+  .footer-notes li { margin-bottom: 4px; }
+  a { color: #4a6b9a; }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<nav class="tab-nav">
+  <a href="index.html">Main Brief — Full Pipeline</a>
+  <a href="agent-conference-may2026.html">Agent Conference · May 4-5</a>
+  <a href="vc-reverse-pitch-may13.html">VCReversePitch · May 13</a>
+  <a href="bevnet-live-june10-11.html">BevNETLive Workshop</a>
+  <a href="bevnet-live-full-event.html">BevNETLive Full Event</a>
+  <a href="vc-reverse-pitch-sf-june23.html">VCReversePitch · SF Jun 23</a>
+  <a href="owls-brew-customer.html">Owl's Brew · Customer</a>
+  <a href="njx-summit-jul8.html" class="active">NJx Summit · Jul 8</a>
+</nav>
+
+<header class="top">
+  <div class="eyebrow">Event assessment brief · July 8, 2026 · Central NJ · Attend-or-skip decision</div>
+  <h1>NJx Venture Summit — Summer 2026</h1>
+  <div class="meta">Wednesday July 8 · VentureX co-working, Skillman NJ · 12-hour regional innovation summit · Free · Source: <a href="https://www.eventbrite.com/e/njx-venture-summit-summer-2026-tickets-1983231077540" target="_blank">Eventbrite</a> + <a href="https://www.njxventuresummit.com/" target="_blank">njxventuresummit.com</a></div>
+</header>
+
+<div class="scope-note">
+  <strong>Different shape from prior briefs.</strong> This is an <em>attend-or-skip decision brief</em>, not a pre-event contact map. The 2026 speaker + sponsor lineup is still thin on public pages (only 2 speakers confirmed, no attendee list published). If Shyam decides to attend, we can build a full contact-map brief closer to the date once more of the lineup is announced.
+</div>
+
+<div class="verdict">
+  <h2>Verdict — CONDITIONAL YES · only if calendar is otherwise open</h2>
+  <p><strong>Signal-to-effort ratio is medium.</strong> This is a regional NJ innovation summit — angel-and-early-stage-institutional crowd, not a curated national-tier VC gathering. Comparable in tier to a well-run Startup Grind chapter. Free admission + Central NJ (~1 hr from NYC/Philly) keeps the cost of attending low, and the room genuinely writes checks (Pricklee + BMI OrganBank both funded off the Dec 2025 iteration).</p>
+  <p><strong>🔑 The single strongest signal:</strong> <strong>1435 Capital (Ben Jen)</strong> — the summit's lead host — invested in <strong>Pricklee</strong> (NJ-based functional beverage / cactus water) at the Dec 2025 event. <strong>Direct precedent for beverage funding in this exact room.</strong> Plus 1435 Capital just launched the <strong>Garden State Innovation Fund</strong> ($25M, NJ-focused early-stage). Ben Jen is the highest-value single target on the entire attendee list.</p>
+  <p><strong>Contrast with recent events:</strong> Lower signal than VC Reverse Pitch SF (curated LP room) or BevNET Live NYC (beverage-native). BevGenie is a national/vertical-AI play, not a NJ-regional-brand play — so most of the room isn't stage-fit. But Ben Jen specifically is worth the ~2 hr drive alone.</p>
+  <p><strong>Recommendation:</strong> Skip if the calendar is tight or if there's a competing SF/NYC investor conversation that day. Attend if the day is otherwise open — treat as a Ben-Jen-specific meeting with the rest of the day as bonus networking.</p>
+</div>
+
+<div class="event-meta">
+  <h3>📍 Event details</h3>
+  <dl>
+    <dt>Date</dt><dd>Wednesday, July 8, 2026 · 8 AM – 8 PM ET (12-hour single-day summit)</dd>
+    <dt>Location</dt><dd>VentureX co-working, 23 Orchard Road, Montgomery/Skillman, NJ 08558 (Central NJ, ~1 hr NYC/Philly)</dd>
+    <dt>Format</dt><dd>Regional innovation summit — startup showcase pitches, panels, "live stages," unstructured networking. <strong>NOT a competitive pitch competition with a prize.</strong> Pitch slots already at capacity — Shyam would attend as a general attendee.</dd>
+    <dt>Price</dt><dd>Free admission, free parking</dd>
+    <dt>Organizer</dt><dd>NJx Venture Summit Corporation (501(c)(3), EIN 99-4035989). Co-hosted by <strong>1435 Capital</strong>, VentureX, Startup Grind Princeton, Cogent Connections, Montgomery Innovation Hub.</dd>
+    <dt>Cadence</dt><dd>Twice-yearly (Summer + Winter) — July 2025, Dec 2025, and now July 2026. Also has a Philadelphia Spring edition. Regional franchise, not a national platform.</dd>
+    <dt>Expected size</dt><dd>~170 registered at Dec 2025 iteration; likely similar or slightly larger for July.</dd>
+  </dl>
+</div>
+
+<!-- ═══════════════ TIER 1: THE ONE REAL TARGET ═══════════════ -->
+<h2 class="section">🔥 Tier 1 · The single target worth showing up for <span class="count">(1)</span></h2>
+
+<div class="target priority1">
+  <div class="target-head">
+    <div class="name">1435 Capital <span class="person">— Ben Jen, Managing Partner</span></div>
+    <div class="badge">🔥 T1 · direct beverage-funding precedent · summit's lead host</div>
+  </div>
+  <div class="meta-row"><strong>Verified:</strong> Ben Jen = Managing Partner at 1435 Capital, based Skillman NJ. 1435 Capital is a 2025 NJBIZ Power Business honoree. <strong>Just launched the Garden State Innovation Fund</strong> ($25M, NJ-focused early-stage). Effectively runs NJx Venture Summit as the anchor host.</div>
+  <div class="signals">
+    <span class="label">Fund thesis</span><span class="val">NJ-focused early-stage (pre-seed / seed) across AI, biotech, clean tech, and opportunistic CPG/beverage. NOT beverage-specialist, but has explicitly written a check into the space (Pricklee).</span>
+    <span class="label">Direct beverage precedent</span><span class="val fomo"><strong>Pricklee</strong> — NJ-based cactus-water functional beverage brand. 1435 Capital announced an angel check at the Dec 2025 summit. This is the load-bearing signal that BevGenie has a real conversation to have here (beverage-adjacent is a live thesis, not off-thesis).</span>
+    <span class="label">Also announced at Dec 2025</span><span class="val">Check into <strong>BMI OrganBank</strong> (medtech / organ preservation). So 1435 is genuinely deploying at these events, not just hosting.</span>
+    <span class="label">BevGenie fit</span><span class="val">ADJACENT-LEAN. Ben invests in beverage BRANDS (like Pricklee), not B2B SaaS for beverage brands. But he understands the category firsthand from the Pricklee investment. Frame BevGenie as "the infrastructure your Pricklee-type portfolio brands need to scale commercial ops" rather than a direct-check ask.</span>
+    <span class="label">The move</span><span class="val fomo">Show up to the summit specifically to get 15 minutes with Ben. Reference Pricklee explicitly in the intro. Ask what Pricklee's commercial-execution pain looks like as they scale — his answer is either "I've been thinking about this" (green light for BevGenie relationship) or "not our focus" (helpful signal to move on).</span>
+    <span class="label">Alternative</span><span class="val">Email <code>christopher@1435capital.com</code> (the operations contact) before the event to (a) confirm Ben will be there in person and (b) request a specific meeting slot. Zero-cost, disambiguates whether the trip is worth it.</span>
+  </div>
+  <div class="ask-frame">
+    <span class="lwl">60-sec hook for Shyam</span>
+    <em>"Ben — I saw 1435 backed Pricklee at your Dec summit, which is why I came out today specifically. We're building the commercial-intelligence layer that scaling beverage brands need — decision intelligence for their sales, marketing, and insights teams, wired into distributor data and retail scan data. We're not asking you to write our check — we're asking whether the beverage brands you back would benefit from something like this as they scale into national chains. Curious about the pain you saw at Pricklee that made you invest, and where the operational gap is when they start hitting distribution scale."</em>
+  </div>
+</div>
+
+<!-- ═══════════════ TIER 2: CONFIRMED SPEAKERS ═══════════════ -->
+<h2 class="section">🎤 Confirmed speakers / moderators <span class="count">(2)</span></h2>
+
+<div class="target priority2">
+  <div class="target-head">
+    <div class="name">Citrin Cooperman <span class="person">— James Catalano, Partner</span></div>
+    <div class="badge">P2 · service-provider · moderating "Fundraising &amp; Valuation for AI Startups"</div>
+  </div>
+  <div class="meta-row">Partner at Citrin Cooperman (accounting firm — already a summit sponsor). Moderating the <strong>"Fundraising &amp; Valuation for AI Startups"</strong> panel at 10:20 AM.</div>
+  <div class="signals">
+    <span class="label">Why P2</span><span class="val">Service provider (accounting), not an investor. Doesn't write checks. BUT he's connected to the NJ startup + investor ecosystem via Citrin's practice — could be a useful warm-intro path to firms he serves.</span>
+    <span class="label">The move</span><span class="val">Attend his panel if the schedule works; introduce briefly after. No hard ask — network-building only.</span>
+  </div>
+</div>
+
+<div class="target priority3">
+  <div class="target-head">
+    <div class="name">Steve Socolof <span class="person">— speaking on "Raising Angel Money — Insights from Seasoned Investors"</span></div>
+    <div class="badge">P3 · verify firm affiliation before the event</div>
+  </div>
+  <div class="meta-row">Named speaker on the angel-investing panel. Public firm affiliation not clearly documented on Eventbrite/summit page.</div>
+  <div class="signals">
+    <span class="label">Verify before</span><span class="val">Hiral (or 60 sec of LinkedIn search) — confirm Steve's current firm + role before the event. If he's an active NJ-area angel with a beverage or CPG history, upgrade. Otherwise treat as networking-only.</span>
+  </div>
+</div>
+
+<!-- ═══════════════ INVESTOR FIRMS IN THE ROOM ═══════════════ -->
+<h2 class="section">💼 Investor / partner firms associated with the summit</h2>
+
+<div class="bulk-list">
+  <h4>VC / Angel groups</h4>
+  <ul>
+    <li><strong>1435 Capital</strong> — lead host (deep-carded above)</li>
+    <li><strong>NJ Angels · JumpStart NJ Angel Network · HBS Angels · TiE Silicon Valley NJ</strong> — regional angel groups. Small individual checks; useful for building an angel round if BevGenie ever does one.</li>
+    <li><strong>AV VC · Tech Council Ventures · Aventurine · Pranatech</strong> — smaller NJ-area institutional early-stage funds. Verify individual theses before pursuing.</li>
+    <li><strong>Techstars</strong> — accelerator, not a direct check writer for a company at BevGenie's stage.</li>
+  </ul>
+  <p style="font-size:12.5px;color:#6c6760;margin-top:8px;">None of these are beverage-specialists; all are opportunistically CPG/beverage at best. If a specific partner from any of them is announced closer to the date, we can deep-card.</p>
+</div>
+
+<div class="bulk-list">
+  <h4>Service partners (not investors, but ecosystem-connected)</h4>
+  <ul>
+    <li><strong>Citrin Cooperman</strong> (accounting) — James Catalano attending, already covered</li>
+    <li>Greenberg Traurig (legal, prior year)</li>
+    <li>Valley Bank · Leader Bank (banking)</li>
+    <li>Family Office Advisory Services</li>
+    <li>VentureX · Startup Grind Princeton (co-hosts)</li>
+  </ul>
+</div>
+
+<!-- ═══════════════ ATTENDEE PROFILE ═══════════════ -->
+<h2 class="section">👥 Expected attendee profile</h2>
+
+<div class="target priority3">
+  <div class="signals" style="grid-template-columns: 1fr;">
+    <p style="font-size:13.5px;margin:0 0 8px;"><strong>Industries:</strong> AI, biotech, clean tech, alternative assets — plus opportunistic CPG/beverage (Pricklee is the reference case).</p>
+    <p style="font-size:13.5px;margin:0 0 8px;"><strong>Founders:</strong> Predominantly NJ / tri-state, early-stage (pre-seed to Series A), industry-agnostic mix. ~170 total registered at Dec 2025.</p>
+    <p style="font-size:13.5px;margin:0 0 8px;"><strong>Investors:</strong> Regional angels + a handful of institutional early-stage funds. NOT Sand Hill / national-tier VC crowd.</p>
+    <p style="font-size:13.5px;margin:0;"><strong>Bottom line:</strong> BevGenie is a national/vertical-AI play; most of the room isn't stage-fit or thesis-fit. Ben Jen is the one clean signal.</p>
+  </div>
+</div>
+
+<!-- ═══════════════ IF SHYAM ATTENDS ═══════════════ -->
+<h2 class="section">🎯 If Shyam attends — game plan</h2>
+
+<div class="target priority1">
+  <div class="signals" style="grid-template-columns: 1fr;">
+    <p style="font-size:13.5px;margin:0 0 10px;"><strong>Highest-leverage sequence:</strong></p>
+    <ol style="margin:0 0 12px 18px;padding:0;font-size:13.5px;line-height:1.7;">
+      <li><strong>Before the event:</strong> Email <code>christopher@1435capital.com</code> to confirm Ben Jen's attendance + request a specific 15-min slot. If Ben isn't there, reconsider the whole trip.</li>
+      <li><strong>On arrival:</strong> Find Ben early. Reference Pricklee explicitly in the intro. Get his beverage-thesis read + operational-pain observation from Pricklee's scaling.</li>
+      <li><strong>Attend the Fundraising &amp; Valuation for AI Startups panel</strong> (10:20 AM, Catalano moderating) — audience will include founders in AI-thesis-adjacent categories. Not a direct BevGenie audience but scan for anyone building agentic infra for a vertical.</li>
+      <li><strong>Scan the room for beverage founders</strong> — Pricklee-type brands could become future customers even if their investors don't back BevGenie directly.</li>
+      <li><strong>Skip the panels unrelated to AI/data/beverage.</strong> Free schedule to work the floor.</li>
+      <li><strong>End of day:</strong> Follow up with Ben (and any beverage founders) same-night. Don't wait.</li>
+    </ol>
+    <p style="font-size:13.5px;margin:0;"><strong>Time investment estimate:</strong> ~5 hours event + ~2 hours travel round-trip from NYC. Worth it ONLY if the Ben Jen conversation is confirmed pre-event or you're highly confident he'll be present.</p>
+  </div>
+</div>
+
+<!-- ═══════════════ FOOTER ═══════════════ -->
+<div class="footer-notes">
+  <h3>Sources</h3>
+  <ul>
+    <li><a href="https://www.eventbrite.com/e/njx-venture-summit-summer-2026-tickets-1983231077540" target="_blank">Eventbrite listing</a></li>
+    <li><a href="https://www.njxventuresummit.com/" target="_blank">njxventuresummit.com</a></li>
+    <li><a href="https://njbiz.com/njx-venture-summit-new-jersey-innovation-economy/" target="_blank">NJBIZ coverage of Dec 2025 summit</a> (Pricklee + BMI OrganBank investment announcements)</li>
+    <li><a href="https://www.citrincooperman.com/Events/NJx-Venture-Summit" target="_blank">Citrin Cooperman event page</a> (Catalano panel confirmation)</li>
+    <li><a href="https://1435capital.com/" target="_blank">1435 Capital</a> · <a href="https://www.crunchbase.com/person/ben-jen" target="_blank">Ben Jen · Crunchbase</a></li>
+  </ul>
+
+  <h3>What's NOT yet knowable (as of research date)</h3>
+  <ul>
+    <li>Full 2026 speaker + panelist lineup (Eventbrite + summit site both thin — only 2 speakers confirmed for July)</li>
+    <li>Full attendee list (no public list; expect ~170 based on Dec 2025 iteration)</li>
+    <li>Whether specific target investors (e.g. Ben Jen) will actually be there in person on July 8 — email <code>christopher@1435capital.com</code> to confirm before committing</li>
+    <li>Whether any specific beverage founders / brands are attending</li>
+  </ul>
+
+  <h3>Investor-language rule applied</h3>
+  <ul>
+    <li>BevGenie framed as "decision intelligence" + "beverage" throughout (per standing investor-comms rule).</li>
+    <li>The Pricklee reference is intentional — it's the load-bearing signal that makes this event worth Ben Jen's time.</li>
+  </ul>
+</div>
+
+</div>
+</body>
+</html>
