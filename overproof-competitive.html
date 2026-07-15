@@ -77,7 +77,7 @@
 </header>
 
 <div class="trust-map">
-  <strong>Trust map — v5 verification state (after 4 correction passes):</strong> This is our fifth pass on Overproof intel. Each earlier pass found new gaps (missed customers on logo wall, wrong data-source-ceiling claim, misidentified brand identities). This pass verified all ~15 named customer brands + agencies individually, and pulled scale/founder/leadership/growth data on each. <strong>Realistic accuracy: ~95% on facts + customer identities.</strong> Remaining uncertainty flagged inline at point-of-use. Every specific claim below is source-anchored in the footer's v5-corrections list.
+  <strong>Trust map — v6 (customer list definitively reconciled to live site):</strong> User caught a discrepancy between brief and live site. Direct raw-HTML pull of overproof.com confirmed <strong>16 total customers</strong> across the logo carousel (11 logos), homepage testimonials (5 with first names), case studies (4), and /agencies/ page (2 unique + 1 new find: Shared Spirits). Earlier agent sweeps missed the logo carousel because it's a JavaScript-rendered lazy-loaded Swiper widget; the raw HTML has all logos as `aria-label` attributes. <strong>All 15 brands from the brief + Shared Spirits (new) are verified on the live site.</strong> Source-page attribution now explicit for each customer.
 </div>
 
 <!-- ═══════════════ VERDICT ═══════════════ -->
@@ -265,7 +265,23 @@
   <p>Brentwood, TN. Spirits/wine sampling + promo firm. Contacts: Justin Maestas, Sherman Mohr (CEO). Uses Overproof's Tastings platform for ambassador management. Written case study exists. <em>Not to be confused with South African "Liquid 2 Lip Brands" (Jacques Botha) — different company.</em></p>
 </div>
 
-<h3 class="subsection">Who's NOT in the customer base (still holds after 4 verification passes)</h3>
+<div class="card neutral">
+  <h4>Shared Spirits (new find in v6 sweep)</h4>
+  <p>Named on Overproof's /agencies/ page alongside Nova Collective + Liquid to Lips. Missed by earlier passes. Beverage activation agency — verify size/geography/client roster before including in the marketing strategy as a partnership-channel reference.</p>
+</div>
+
+<h3 class="subsection">Source-page attribution — where each customer appears on overproof.com</h3>
+<div class="card neutral">
+  <p><strong>Verified via direct raw-HTML pull of overproof.com:</strong></p>
+  <ul>
+    <li><strong>Logo carousel (11 logos, homepage):</strong> Bare Zero Proof · Big Hat Spirits · Tequila Corrido · Promo Social · North State Promos · High Wire Distilling · Uncle Nearest · Truman Vodka · Beyond Distilling · Red Hazel Spirit Co · <em>+ 1 unnamed placeholder (labeled `get_attachment_url (1)`, uploaded July 2025) — likely Southern Star per user screenshot</em></li>
+    <li><strong>Homepage testimonials (5 with first-name attributions):</strong> Island Getaway Rum (Mandy) · Big Hat Spirits (Matt) · Tequila Corrido (Rose) · Nova Collective Agency (Whitney) · Crossfire Hurricane Rum (Kyle)</li>
+    <li><strong>Case Studies index (/case-studies/, 4 written cases):</strong> Tequila Corrido (Rose Sarti, Brand Manager) · Big Hat Spirits (Matthew Loeffl, Account Director) · BARE ZERO PROOF (Andy Borbely, National Advocacy Director) · Liquid 2 Lips Marketing (Sherman G. Mohr, CEO)</li>
+    <li><strong>/agencies/ page:</strong> Nova Collective · Liquid to Lips · Shared Spirits</li>
+  </ul>
+</div>
+
+<h3 class="subsection">Who's NOT in the customer base (still holds after 5 verification passes)</h3>
 <div class="card weak">
   <ul>
     <li><strong>Zero tier-1 supplier logos:</strong> Diageo, Constellation, Beam Suntory, Molson Coors, Bacardi, Pernod Ricard, Brown-Forman, Campari, Sazerac, Proximo, Mast-Jägermeister — none appear as customers. All appear only in Overproof's research content.</li>
@@ -480,6 +496,16 @@
     <li><strong>Liquid 2 Lips Marketing:</strong> <a href="https://liquidtolipsmarketing.com/" target="_blank">liquidtolipsmarketing.com</a></li>
     <li><strong>PromoSocial:</strong> <a href="https://promosocial.com/" target="_blank">promosocial.com</a></li>
     <li><strong>North State Promos:</strong> <a href="https://www.northstatepromos.com/" target="_blank">northstatepromos.com</a></li>
+  </ul>
+
+  <h3>v6 correction — customer list reconciled to live site</h3>
+  <ul>
+    <li><strong>My earlier "not on live site" finding was WRONG.</strong> User caught the discrepancy. Direct raw-HTML pull confirmed the logo carousel exists — it's an Elementor lazy-loaded Swiper widget with all 11 logos exposed as `aria-label` attributes. My earlier agent's browser render didn't trigger the carousel load, so it missed them all.</li>
+    <li><strong>All 11 logo-carousel brands verified on live site:</strong> Bare Zero Proof · Big Hat Spirits · Tequila Corrido · Promo Social · North State Promos · High Wire Distilling · Uncle Nearest · Truman Vodka · Beyond Distilling · Red Hazel Spirit Co · + 1 unnamed placeholder (likely Southern Star). Image files exist in Overproof's WordPress uploads directory (dates March 2024 – July 2025).</li>
+    <li><strong>New find: Shared Spirits</strong> — beverage activation agency on /agencies/ page. Missed by earlier passes.</li>
+    <li><strong>PromoSocial spelling:</strong> Overproof's site shows "Promo Social" (two words). Both spellings used elsewhere; the two-word form is what appears on-site.</li>
+    <li><strong>Uncle Nearest counterpoint remains valid:</strong> Their logo IS on the live carousel (uploaded October 2024). Receivership context (Aug 2025 default, Fawn Weaver step-down June 1, 2026) stands.</li>
+    <li><strong>Total confirmed customers: 16</strong> (up from 15 in v5; up from 8 in the erroneous "reconciliation" I did before checking the raw HTML).</li>
   </ul>
 
   <h3>v5 correction / verification log</h3>
