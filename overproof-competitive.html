@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Overproof — Competitive Intel &amp; Displacement Plan · BevGenie AI</title>
+<style>
+  * { box-sizing: border-box; }
+  body { font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", Helvetica, Arial, sans-serif; background: #faf9f7; color: #1a1a1a; margin: 0; line-height: 1.5; -webkit-font-smoothing: antialiased; }
+  .wrap { max-width: 1180px; margin: 0 auto; padding: 32px 28px 80px; }
+  .tab-nav { display: flex; gap: 0; border-bottom: 1px solid #e6e2dc; margin-bottom: 24px; flex-wrap: wrap; }
+  .tab-nav a { padding: 10px 18px; text-decoration: none; color: #6c6760; font-size: 13px; font-weight: 500; border-bottom: 2px solid transparent; margin-bottom: -1px; }
+  .tab-nav a:hover { color: #1a1a1a; }
+  .tab-nav a.active { color: #1a1a1a; border-bottom-color: #5a3a86; font-weight: 600; }
+  header.top { border-bottom: 1px solid #e6e2dc; padding-bottom: 18px; margin-bottom: 28px; }
+  header.top .eyebrow { font-size: 11px; text-transform: uppercase; letter-spacing: 1.2px; color: #5a3a86; font-weight: 600; }
+  header.top h1 { margin: 6px 0 4px; font-size: 28px; font-weight: 600; letter-spacing: -0.4px; }
+  header.top .meta { font-size: 13px; color: #6c6760; }
+  header.top .meta a { color: #4a6b9a; }
+  .verdict { background: #fff; border: 1px solid #e6e2dc; border-left: 5px solid #5a3a86; border-radius: 10px; padding: 20px 24px; margin: 0 0 28px; }
+  .verdict h2 { margin: 0 0 8px; font-size: 16px; color: #5a3a86; text-transform: uppercase; letter-spacing: 1px; font-weight: 600; }
+  .verdict p { margin: 0 0 8px; }
+  .verdict p:last-child { margin-bottom: 0; }
+  .scope-note { background: #fdf6e8; border-left: 4px solid #b48f3a; padding: 14px 18px; margin-bottom: 28px; border-radius: 4px; font-size: 13px; color: #6b4f15; }
+  .scope-note strong { color: #4a3a0c; }
+  h2.section { font-size: 20px; font-weight: 600; margin: 36px 0 14px; border-bottom: 2px solid #1a1a1a; padding-bottom: 6px; letter-spacing: -0.3px; }
+  h2.section .count { font-size: 13px; color: #6c6760; font-weight: 400; margin-left: 8px; }
+  h3.subsection { font-size: 15px; font-weight: 600; margin: 22px 0 10px; color: #2c4d80; text-transform: uppercase; letter-spacing: 0.6px; }
+  .facts { background: #fff; border: 1px solid #e6e2dc; border-radius: 8px; padding: 16px 20px; margin-bottom: 16px; }
+  .facts dl { margin: 0; display: grid; grid-template-columns: 160px 1fr; gap: 8px 14px; font-size: 13.5px; }
+  .facts dt { color: #6c6760; font-weight: 500; font-size: 12px; text-transform: uppercase; letter-spacing: 0.4px; padding-top: 2px; }
+  .facts dd { margin: 0; color: #1a1a1a; }
+  .card { background: #fff; border: 1px solid #e6e2dc; border-radius: 8px; padding: 16px 20px; margin-bottom: 12px; }
+  .card.strong { border-left: 5px solid #5b8a3a; }
+  .card.weak { border-left: 5px solid #b85a4d; background: #fdf6f5; }
+  .card.neutral { border-left: 5px solid #8b8985; }
+  .card.opportunity { border-left: 5px solid #5b8a3a; background: #f4f8f2; }
+  .card h4 { margin: 0 0 6px; font-size: 15px; font-weight: 600; }
+  .card p { margin: 0 0 8px; font-size: 13.5px; }
+  .card p:last-child { margin-bottom: 0; }
+  .card ul { margin: 6px 0 6px 18px; padding: 0; font-size: 13.5px; }
+  .card ul li { margin-bottom: 4px; }
+  .quote { background: #f6f3fa; border-left: 3px solid #5a3a86; padding: 10px 14px; margin: 12px 0; border-radius: 4px; font-size: 13.5px; font-style: italic; color: #43286e; }
+  .footer-notes { margin-top: 40px; padding-top: 24px; border-top: 1px solid #e6e2dc; font-size: 12.5px; color: #6c6760; }
+  .footer-notes h3 { color: #1a1a1a; font-size: 13px; margin: 0 0 8px; }
+  .footer-notes ul { margin: 4px 0 14px 18px; padding: 0; }
+  .footer-notes li { margin-bottom: 4px; }
+  a { color: #4a6b9a; }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<nav class="tab-nav">
+  <a href="index.html">Main Brief — Full Pipeline</a>
+  <a href="agent-conference-may2026.html">Agent Conference · May 4-5</a>
+  <a href="vc-reverse-pitch-may13.html">VCReversePitch · May 13</a>
+  <a href="bevnet-live-june10-11.html">BevNETLive Workshop</a>
+  <a href="bevnet-live-full-event.html">BevNETLive Full Event</a>
+  <a href="vc-reverse-pitch-sf-june23.html">VCReversePitch · SF Jun 23</a>
+  <a href="owls-brew-customer.html">Owl's Brew · Customer</a>
+  <a href="njx-summit-jul8.html">NJx Summit · Jul 8</a>
+  <a href="overproof-competitive.html" class="active">Overproof · Competitive</a>
+</nav>
+
+<header class="top">
+  <div class="eyebrow">Competitive intel + displacement plan · Miami-based BevAlc AI/CRM platform · founded 2018</div>
+  <h1>Overproof — Competitive Intel &amp; Marketing Plan</h1>
+  <div class="meta">Overproof (Lymion Group Inc, DBA Overproof) · <a href="https://overproof.com/" target="_blank">overproof.com</a> · Miami FL HQ · ~36 employees · Founded 2018 by Marc de Kuyper (De Kuyper family, 11th generation)</div>
+</header>
+
+<div class="scope-note">
+  <strong>What this brief is:</strong> Competitive intel on Overproof + a marketing plan for displacement. Overproof is the closest publicly-visible competitor to BevGenie AI in the BevAlc-intelligence space — but their positioning (field-execution CRM) differs materially from ours (decision intelligence for commercial teams). This brief maps where they're strong, where they're exposed, which of their customers we should target, and how to position.
+</div>
+
+<div class="verdict">
+  <h2>Verdict — Adjacent, not head-on. Positioning contrast is the wedge.</h2>
+  <p><strong>Overproof is a field-execution CRM with a menu database + tasting-event platform, positioned as "AI-powered sales execution and business intelligence for beverage alcohol."</strong> They sell to Field Sales — the rep in the car, the account visit, the tasting-event coordinator. Their core substrate is (a) proprietary on-premise menu data (10M+ menus) and (b) brand-imported depletions and (c) rep-activity capture.</p>
+  <p><strong>BevGenie AI is decision intelligence for supplier commercial teams</strong> — Sales Ops, Category Insights, VP Commercial. Our substrate is TTB shipments, NABCA control-state data, and syndicated retail scan — the currencies senior commercial leaders actually price plans against. <strong>Overproof has no public claim of TTB, NABCA, or IRI/Circana scan integration.</strong> That's a real data-source ceiling and our clearest technical wedge.</p>
+  <p><strong>Two structural exposures make Overproof vulnerable:</strong> (1) <strong>Zero tier-1 supplier logos publicly named</strong> — all testimonials on their homepage are sub-scale craft brands (Island Getaway Rum, Big Hat Spirits, Tequila Corrido, Crossfire Hurricane Rum) — so enterprise prospects doing diligence find no peer proof. (2) <strong>~$4M raised total, last public round April 2020, no Series A reported</strong> — 6-year-old capital base at ~36 headcount signals either bootstrapped-and-slow or stalled-fundraise, either way a durability concern for enterprise buyers.</p>
+  <p><strong>Best switch-target segment:</strong> mid-to-upper-mid suppliers (150K–2M cases) that outgrew Overproof Platform, hit its data-source ceiling on Enterprise, and whose <strong>Sales Ops / Category Insights buyer</strong> is driving the tooling decision (not the Field Sales lead — Overproof sells to Field Sales, and that buyer rarely controls BI budget). Control-state-heavy brands are also a strong target given Overproof has no NABCA story.</p>
+  <p><strong>Weak switch-target:</strong> early-stage craft under 50K cases. Overproof's activation service (Overproof TEAM) is genuinely useful there and our decision-intelligence framing is above their altitude.</p>
+</div>
+
+<!-- ═══════════════ COMPANY FACTS ═══════════════ -->
+<h2 class="section">📇 Company facts</h2>
+
+<div class="facts">
+  <dl>
+    <dt>Legal entity</dt><dd>Lymion Group Inc, DBA Overproof</dd>
+    <dt>Founded</dt><dd>2018 by <strong>Marc de Kuyper</strong>, 11th generation of the De Kuyper Royal Distillers family; former CEO Royal Dutch Distillers</dd>
+    <dt>HQ</dt><dd>425 NW 26th St, Miami, FL</dd>
+    <dt>Headcount</dt><dd>~36 employees (ZoomInfo + LinkedIn)</dd>
+    <dt>Funding</dt><dd><strong>~$4M total seed across multiple tranches</strong>. Last public round: <strong>$1.25M seed (April 2020)</strong>. No Series A publicly reported. Unverified whether any private capital raised since 2020.</dd>
+    <dt>CEO</dt><dd>Marc de Kuyper (Founder)</dd>
+    <dt>CRO</dt><dd>Diana Arellano (promoted from VP Marketing to CRO Nov 2023)</dd>
+    <dt>CPO</dt><dd>Peter Stephenson (product, tech, UX, data analytics)</dd>
+    <dt>Category self-description</dt><dd>"AI-powered sales execution and business intelligence platform for the beverage alcohol industry"</dd>
+    <dt>Reviews footprint</dt><dd>Zero populated G2 / Capterra / TrustRadius reviews — no independent-review moat.</dd>
+  </dl>
+</div>
+
+<!-- ═══════════════ PRODUCT ═══════════════ -->
+<h2 class="section">🧩 Product modules (7 verified from their site)</h2>
+
+<div class="card neutral">
+  <h4>Overproof Platform</h4>
+  <p>CRM/planning for reps + sales reporting for managers + depletion &amp; menu insights. Explicitly positioned for brands doing <strong>1K–150K cases/year</strong>. This is their core mid-market SKU.</p>
+</div>
+
+<div class="card neutral">
+  <h4>Overproof App</h4>
+  <p>Field-rep mobile — route planning, account visits, follow-ups, goals. Enforces + captures rep activity.</p>
+</div>
+
+<div class="card neutral">
+  <h4>Tastings</h4>
+  <p>Off-premise sampling program management — scheduling, staffing, photos, samples poured, feedback capture. Also sold to agencies as "Tastings for Agencies."</p>
+</div>
+
+<div class="card neutral">
+  <h4>F&amp;B Insights / BarInsights</h4>
+  <p>On-premise consumption analytics + <strong>proprietary menu database of 10M+ menus</strong> for account prospecting. This is Overproof's strongest single differentiator — data no competitor has assembled at this scale.</p>
+</div>
+
+<div class="card neutral">
+  <h4>Sixdots</h4>
+  <p>Mobile ordering in bars/restaurants (referenced in Serchen listing; less prominent on main site).</p>
+</div>
+
+<div class="card neutral">
+  <h4>Overproof TEAM</h4>
+  <p>Nationwide market-representation service launched Sep 2021. Turnkey activation staffing for brands too small to build their own field team.</p>
+</div>
+
+<div class="card neutral">
+  <h4>Enterprise Solutions</h4>
+  <p>For brands ≥150K cases/year. Includes custom AI/software dev + data syndication + "Overproof Agent" (NL-query data analyst) + 4 "Accelerators": Sales Impact, Sales Optimization (AI lead scoring), Market Expansion (under-penetrated geo), Menu KPI Tracking.</p>
+</div>
+
+<h3 class="subsection">Data sources — the critical gap</h3>
+<div class="card weak">
+  <h4>⚠️ No public claim of TTB, NABCA, or IRI/Circana scan integration</h4>
+  <p>Overproof's data spine appears to be (1) proprietary on-premise menu data, (2) depletion feeds imported per brand, (3) tasting-event capture, (4) field-rep activity. That's a real substrate for field execution, but <strong>it is NOT the substrate senior commercial leaders use to plan.</strong> TTB shipments + NABCA control-state + syndicated retail scan are the currencies of chain reviews, distributor QBRs, and pricing decisions. Overproof has no public story here.</p>
+  <p><strong>This is our clearest technical wedge.</strong> "We're built on the data your VP Commercial is already using; Overproof isn't."</p>
+</div>
+
+<!-- ═══════════════ CUSTOMERS ═══════════════ -->
+<h2 class="section">🎯 Customers — the big finding</h2>
+
+<div class="card weak">
+  <h4>🚨 ZERO tier-1 supplier logos publicly named. Only small craft brands are testimonial-featured.</h4>
+  <p><strong>Named customers on their homepage:</strong></p>
+  <ul>
+    <li><strong>Island Getaway Rum</strong> (Mandy)</li>
+    <li><strong>Big Hat Spirits</strong> (Matt)</li>
+    <li><strong>Tequila Corrido</strong> (Rose)</li>
+    <li><strong>Crossfire Hurricane Rum</strong> (Kyle)</li>
+    <li><strong>The Nova Collective Agency</strong> (Whitney) — an agency using Tastings, not a supplier</li>
+  </ul>
+  <p><strong>Searches for Diageo, Constellation, Beam Suntory, Molson Coors + "Overproof" returned zero customer-relationship results.</strong> Their Enterprise tier claims to serve 150K+ case brands, but no logo wall, named case study, or press release identifies any specific enterprise customer.</p>
+  <p><strong>What testimonial language tells us:</strong> phrases like <em>"obtain and track important data we were missing," "user-friendliness," "organize customer base"</em> suggest customers are brands <strong>without existing sales tooling</strong> — first-time CRM adopters — rather than sophisticated commercial-ops teams. This confirms the 1K–150K case-band positioning is real.</p>
+  <p><strong>Emerging brands we've been tracking</strong> (Aplós, Recess, Trip, BREZ, Culture Pop, Owl's Brew, BIOLYTE): no public evidence any of them use Overproof.</p>
+</div>
+
+<!-- ═══════════════ PRICING ═══════════════ -->
+<h2 class="section">💰 Pricing — UNVERIFIED (quote-only)</h2>
+
+<div class="card weak">
+  <h4>Pricing is entirely private. Any specific number is speculation.</h4>
+  <ul>
+    <li><strong>No pricing on overproof.com</strong> — all CTAs are "Book Demo."</li>
+    <li><strong>SourceForge listing:</strong> zero reviews, no pricing.</li>
+    <li><strong>No G2, Capterra, or TrustRadius pages with populated review data</strong> surfaced.</li>
+    <li><strong>No LinkedIn or press mentions</strong> of deal size or seat pricing.</li>
+  </ul>
+  <p><strong>Suggested next step if pricing matters:</strong> Hiral (or a friendly contact) books a demo call as a mid-market brand prospect. Overproof will send a quote. That's the cheapest way to get a real number without cold-outreach guessing.</p>
+</div>
+
+<!-- ═══════════════ RECENT NEWS ═══════════════ -->
+<h2 class="section">📰 Recent news (last 24 months)</h2>
+
+<div class="card neutral">
+  <h4>March 29, 2026 — Overproof Ventures launched (but the relationship is UNVERIFIED)</h4>
+  <p><strong>Overproof Ventures</strong> launched as an investment platform for emerging beverage brands (per Brewbound + BevNET, Mar 29, 2026). Managing Partner: <strong>Alex Staniloff</strong>. General Partner: <strong>Paul Geller</strong>. Domain: <strong>overproofvc.com</strong> (separate from overproof.com).</p>
+  <p><strong>⚠️ Critical caveat:</strong> It's not publicly confirmed whether Overproof Ventures is (a) a spin-out by Marc de Kuyper, (b) a related-brand licensee, or (c) an entirely unrelated fund using the same name. No press release explicitly links it to Lymion Group. <strong>Treat as a separate entity until confirmed</strong> — but be aware press may conflate the two.</p>
+</div>
+
+<div class="card neutral">
+  <h4>November 2023 — Diana Arellano promoted from VP Marketing to CRO</h4>
+  <p>Signals shift toward revenue/GTM focus. She's now the commercial owner. Relevant if any of our positioning shows up in her outbound messaging.</p>
+</div>
+
+<div class="card neutral">
+  <h4>September 2021 — Overproof TEAM launched</h4>
+  <p>Nationwide market-representation service. Turnkey activation staffing. Extends their fit for sub-scale brands that don't have field teams. Nothing similar in BevGenie's product surface — this is a services offering, not software.</p>
+</div>
+
+<div class="card neutral">
+  <h4>Ongoing product marketing pushes</h4>
+  <p>"Overproof Agent" (NL-query data analyst for enterprise tier) + 4 Accelerators (Sales Impact, Sales Optimization, Market Expansion, Menu KPI Tracking) are the current enterprise-tier marketing narrative. Specific launch dates unverified but content is fresh on their enterprise page.</p>
+</div>
+
+<div class="card neutral">
+  <h4>Competitive positioning vs incumbents (Bar Chart, Karma, VIP iDIG, Encompass)</h4>
+  <p>No public statements from Overproof calling out these incumbents by name. Their site frames the category as "first and only AI-driven BI platform for BevAlc" without naming competitors. So no direct combat is happening publicly.</p>
+</div>
+
+<!-- ═══════════════ DISPLACEMENT / MARKETING PLAN ═══════════════ -->
+<h2 class="section">🎯 Marketing plan — how to displace their customers</h2>
+
+<h3 class="subsection">Segment A · Best switch-target (build inbound around this)</h3>
+<div class="card opportunity">
+  <h4>Mid-to-upper-mid suppliers (150K–2M cases) whose Sales Ops / Category Insights buyer drives BI decisions</h4>
+  <p><strong>The story:</strong> They probably outgrew Overproof Platform (which caps at 150K cases). They evaluated Enterprise but the data-source ceiling (no TTB / no NABCA / no scan) killed it for their VP Commercial. They're either currently patching with spreadsheets or evaluating VIP iDIG / Karma / Encompass — and haven't found a decision-intelligence layer above those data sources.</p>
+  <p><strong>Positioning:</strong> "Overproof is a field-execution CRM. We're the decision-intelligence layer on top of your existing distributor data — TTB, NABCA, syndicated scan — built for the people who actually own the plan, not the reps who execute it."</p>
+</div>
+
+<h3 class="subsection">Segment B · Second-best target</h3>
+<div class="card opportunity">
+  <h4>Brands with heavy control-state exposure (NABCA states)</h4>
+  <p><strong>The story:</strong> NABCA control-state markets (17 states + Montgomery County + parts of NC) drive a huge chunk of spirits revenue. Overproof has no visible NABCA story. Any brand with meaningful control-state exposure has to solve that data problem manually today.</p>
+  <p><strong>Positioning:</strong> "If you're doing chain reviews in Pennsylvania, Virginia, Michigan, Ohio, or Utah, you need NABCA depletion + pricing intelligence at your fingertips. Overproof doesn't have that. We do."</p>
+</div>
+
+<h3 class="subsection">Segment C · Opportunistic (agencies + activation firms)</h3>
+<div class="card opportunity">
+  <h4>Beverage agencies + brand-activation firms using Overproof's Tastings-for-Agencies module</h4>
+  <p><strong>The story:</strong> These agencies are doing execution work for multiple brands. Their VALUE-ADD would be if they could deliver commercial-intelligence insights to those brands, not just activation logistics. That's a natural upsell wedge for a partnership arrangement.</p>
+  <p><strong>Positioning:</strong> "Overproof gives you the field-team logistics. We give you the story you present to your brand-clients — why their plan is or isn't working, backed by real supplier data."</p>
+</div>
+
+<h3 class="subsection">Segment D · Weak target (skip)</h3>
+<div class="card weak">
+  <h4>Early-stage craft brands under 50K cases</h4>
+  <p>Overproof Platform + Overproof TEAM is genuinely useful for this segment (activation staffing, first-time CRM, basic depletion tracking). Our decision-intelligence framing is above their altitude. <strong>Don't compete here.</strong></p>
+</div>
+
+<h3 class="subsection">🎙️ 60-second competitive framing (for sales calls)</h3>
+<div class="quote">
+  "Overproof is a field-execution CRM with a menu database and a tasting-event platform. It's a good tool for what it does — helping small brands manage rep activity and on-premise sampling. But if your question is 'where is depletion decaying and why,' or 'which distributor incentive should I run in Q3,' or 'what pricing move do we take at Kroger before the category review,' Overproof isn't built for that. BevGenie is decision intelligence for your commercial team — Sales Ops, Category Insights, VP Commercial — built on TTB, NABCA, and syndicated scan. Different substrate. Different buyer."
+</div>
+
+<h3 class="subsection">📣 Channel + tactics for the marketing push</h3>
+<div class="card neutral">
+  <ul>
+    <li><strong>LinkedIn targeting:</strong> job-title layer (VP Sales, VP Commercial, Sales Ops Director, Category Insights Manager, Head of Revenue Growth Management) at supplier brands in the 150K–2M case range. Overproof's targeting is Field Sales; we go one seat up.</li>
+    <li><strong>Content angle:</strong> "The data your commercial team needs isn't in your CRM" — thought-leadership content that names the TTB/NABCA/scan gap without directly attacking Overproof. Position implicitly.</li>
+    <li><strong>Event presence:</strong> BevNET Live NYC/LA, Wine &amp; Spirits Wholesalers Convention, and NABCA annual conference — where the Sales Ops + Category Insights buyer actually is. Overproof shows up more at brand-founder events.</li>
+    <li><strong>Case-study manufacturing:</strong> First 2-3 BevGenie customer wins should be documented publicly with named logos + specific outcome numbers — direct contrast to Overproof's "small-craft-testimonial-only" pattern.</li>
+    <li><strong>Analyst positioning:</strong> Get on G2 / Capterra / TrustRadius early. Overproof has zero populated review pages. First-mover advantage on "AI for BevAlc supplier commercial teams" as a review category.</li>
+    <li><strong>Partnership plays:</strong> Warm relationships with VIP (iDIG/KARMA), SPINS, Circana. If we can position as the decision layer ABOVE their data feeds, we become their upsell path — and become an incumbent-side threat to Overproof's own iDIG-substitute play.</li>
+  </ul>
+</div>
+
+<h3 class="subsection">🔍 Next intel to pursue</h3>
+<div class="card neutral">
+  <ul>
+    <li><strong>Get a demo of Overproof</strong> (Hiral posing as a mid-market brand prospect) — surfaces real pricing + product depth + how their sales team qualifies.</li>
+    <li><strong>Track Overproof Ventures</strong> more carefully — if it's actually connected to Marc de Kuyper, that changes their strategic positioning meaningfully (they'd be able to invest in emerging brands + tie tooling to portfolio).</li>
+    <li><strong>Watch for tier-1 supplier logo announcements</strong> — if Diageo or Constellation shows up on their customer list in the next 12 months, our positioning narrative needs to sharpen.</li>
+    <li><strong>Monitor their pricing / seat model changes</strong> via G2 or job-post signals (they hired more sales/CS people = probably expanding customer base + likely lowering barriers).</li>
+    <li><strong>LinkedIn-verify Alex Staniloff + Paul Geller</strong> (Overproof Ventures leadership) — worth knowing who they are + how connected they are to Marc de Kuyper.</li>
+  </ul>
+</div>
+
+<!-- ═══════════════ FOOTER ═══════════════ -->
+<div class="footer-notes">
+  <h3>Sources verified</h3>
+  <ul>
+    <li><a href="https://overproof.com/" target="_blank">overproof.com homepage</a> · <a href="https://overproof.com/enterprise/" target="_blank">Enterprise page</a> · <a href="https://overproof.com/team/" target="_blank">Team page</a></li>
+    <li><a href="https://www.prnewswire.com/news-releases/overproof-launches-overproof-team-nationwide-market-representation-for-beverage-alcohol-brands-301381849.html" target="_blank">Overproof TEAM launch PRNewswire (Sep 2021)</a></li>
+    <li><a href="https://www.brewbound.com/pr/2026/03/29/overproof-ventures-launches-investment-platform-targeting-the-structural-capital-gap-in-beverage" target="_blank">Overproof Ventures launch — Brewbound (Mar 2026)</a></li>
+    <li><a href="https://www.bevnet.com/pr/2026/03/29/overproof-ventures-launches-investment-platform-targeting-the-structural-capital-gap-in-beverage" target="_blank">Overproof Ventures launch — BevNET (Mar 2026)</a></li>
+    <li><a href="https://www.refreshmiami.com/miami-based-overproof-raises-1-25-million-in-seed-funding/" target="_blank">$1.25M seed — Refresh Miami (Apr 2020)</a></li>
+    <li><a href="https://www.finsmes.com/2020/04/overproof-raises-1-25m-in-fourth-seed-funding-round.html" target="_blank">$1.25M seed — FinSMEs (Apr 2020)</a></li>
+    <li><a href="https://www.crunchbase.com/organization/lymion-group-inc" target="_blank">Crunchbase — Lymion Group Inc</a> (403 on direct fetch)</li>
+    <li><a href="https://www.linkedin.com/in/marcdekuyper" target="_blank">Marc de Kuyper LinkedIn</a></li>
+    <li><a href="https://sourceforge.net/software/product/Overproof/" target="_blank">SourceForge listing</a> (0 reviews)</li>
+  </ul>
+
+  <h3>What's NOT yet knowable</h3>
+  <ul>
+    <li>Whether Overproof has raised any private capital since April 2020 (last public round)</li>
+    <li>Actual pricing tiers, seat costs, or contract structure — quote-only</li>
+    <li>Real named tier-1 supplier customers (if any) — none publicly disclosed</li>
+    <li>Whether Overproof Ventures (Mar 2026 launch) is genuinely related to Overproof software, or a same-name unrelated fund</li>
+    <li>Actual product depth on data-source integration — no TTB/NABCA/scan claim public, but they may have private integrations not marketed</li>
+  </ul>
+
+  <h3>Investor-language rule applied</h3>
+  <ul>
+    <li>BevGenie positioning throughout is "decision intelligence" + "beverage" (per standing rule).</li>
+    <li>The framing contrast (field-execution CRM vs decision intelligence) is the operative competitive story.</li>
+  </ul>
+</div>
+
+</div>
+</body>
+</html>
