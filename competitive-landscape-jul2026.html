@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Competitive Landscape — July 2026 · BevGenie AI (Internal)</title>
+<style>
+  * { box-sizing: border-box; }
+  body { font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", Helvetica, Arial, sans-serif; background: #faf9f7; color: #1a1a1a; margin: 0; line-height: 1.5; -webkit-font-smoothing: antialiased; }
+  .wrap { max-width: 1180px; margin: 0 auto; padding: 32px 28px 80px; }
+  .tab-nav { display: flex; gap: 0; border-bottom: 1px solid #e6e2dc; margin-bottom: 24px; flex-wrap: wrap; }
+  .tab-nav a { padding: 10px 18px; text-decoration: none; color: #6c6760; font-size: 13px; font-weight: 500; border-bottom: 2px solid transparent; margin-bottom: -1px; }
+  .tab-nav a:hover { color: #1a1a1a; }
+  .tab-nav a.active { color: #1a1a1a; border-bottom-color: #5a3a86; font-weight: 600; }
+  header.top { border-bottom: 1px solid #e6e2dc; padding-bottom: 18px; margin-bottom: 28px; }
+  header.top .eyebrow { font-size: 11px; text-transform: uppercase; letter-spacing: 1.2px; color: #5a3a86; font-weight: 600; }
+  header.top h1 { margin: 6px 0 4px; font-size: 28px; font-weight: 600; letter-spacing: -0.4px; }
+  header.top .meta { font-size: 13px; color: #6c6760; }
+  header.top .meta a { color: #4a6b9a; }
+  .internal-flag { background: #f6f3fa; border: 1px solid #d9cfe8; border-radius: 6px; padding: 8px 14px; margin-bottom: 18px; font-size: 12px; color: #43286e; }
+  .trust-map { background: #fdf6e8; border-left: 4px solid #b48f3a; padding: 14px 18px; margin-bottom: 28px; border-radius: 4px; font-size: 13px; color: #6b4f15; }
+  .trust-map strong { color: #4a3a0c; }
+  .trust-map ul { margin: 8px 0 0 18px; padding: 0; }
+  .trust-map li { margin-bottom: 5px; }
+  .verdict { background: #fff; border: 1px solid #e6e2dc; border-left: 5px solid #5a3a86; border-radius: 10px; padding: 20px 24px; margin: 0 0 28px; }
+  .verdict h2 { margin: 0 0 8px; font-size: 16px; color: #5a3a86; text-transform: uppercase; letter-spacing: 1px; font-weight: 600; }
+  .verdict p { margin: 0 0 10px; }
+  .verdict p:last-child { margin-bottom: 0; }
+  h2.section { font-size: 20px; font-weight: 600; margin: 36px 0 14px; border-bottom: 2px solid #1a1a1a; padding-bottom: 6px; letter-spacing: -0.3px; }
+  h2.section .count { font-size: 13px; color: #6c6760; font-weight: 400; margin-left: 8px; }
+  h3.subsection { font-size: 15px; font-weight: 600; margin: 22px 0 10px; color: #2c4d80; text-transform: uppercase; letter-spacing: 0.6px; }
+  .facts { background: #fff; border: 1px solid #e6e2dc; border-radius: 8px; padding: 16px 20px; margin-bottom: 16px; }
+  .facts dl { margin: 0; display: grid; grid-template-columns: 160px 1fr; gap: 8px 14px; font-size: 13.5px; }
+  .facts dt { color: #6c6760; font-weight: 500; font-size: 12px; text-transform: uppercase; letter-spacing: 0.4px; padding-top: 2px; }
+  .facts dd { margin: 0; color: #1a1a1a; }
+  .card { background: #fff; border: 1px solid #e6e2dc; border-radius: 8px; padding: 16px 20px; margin-bottom: 12px; }
+  .card.strong { border-left: 5px solid #5b8a3a; }
+  .card.weak { border-left: 5px solid #b85a4d; background: #fdf6f5; }
+  .card.neutral { border-left: 5px solid #8b8985; }
+  .card.opportunity { border-left: 5px solid #5b8a3a; background: #f4f8f2; }
+  .card.warning { border-left: 5px solid #b48f3a; background: #fdf6e8; }
+  .card.critical { border-left: 5px solid #b85a4d; background: #fdf3f1; }
+  .card h4 { margin: 0 0 6px; font-size: 15px; font-weight: 600; }
+  .card p { margin: 0 0 8px; font-size: 13.5px; }
+  .card p:last-child { margin-bottom: 0; }
+  .card ul { margin: 6px 0 6px 18px; padding: 0; font-size: 13.5px; }
+  .card ul li { margin-bottom: 4px; }
+  .card .stat-row { display: grid; grid-template-columns: 130px 1fr; gap: 4px 14px; font-size: 13px; margin: 4px 0; }
+  .card .stat-row .k { color: #6c6760; font-weight: 500; font-size: 11.5px; text-transform: uppercase; letter-spacing: 0.4px; padding-top: 2px; }
+  .quote { background: #f6f3fa; border-left: 3px solid #5a3a86; padding: 10px 14px; margin: 12px 0; border-radius: 4px; font-size: 13.5px; font-style: italic; color: #43286e; }
+  .plan-table { width: 100%; border-collapse: collapse; font-size: 13px; margin: 12px 0; }
+  .plan-table th { text-align: left; padding: 8px 10px; font-size: 11.5px; text-transform: uppercase; letter-spacing: 0.4px; color: #6c6760; background: #f6f4f0; border-bottom: 1px solid #e6e2dc; }
+  .plan-table td { padding: 10px; border-bottom: 1px solid #f0ede5; vertical-align: top; }
+  .plan-table td strong { color: #1a1a1a; }
+  .tag { display: inline-block; font-size: 10.5px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; padding: 2px 7px; border-radius: 3px; margin-left: 6px; vertical-align: middle; }
+  .tag.confirmed { background: #e8f2e3; color: #3d6b28; }
+  .tag.plausible { background: #fdf6e8; color: #8a6a1c; }
+  .tag.aggregator { background: #fdf0ee; color: #9c4436; }
+  .tag.notfound { background: #f0eeeb; color: #6c6760; }
+  .footer-notes { margin-top: 40px; padding-top: 24px; border-top: 1px solid #e6e2dc; font-size: 12.5px; color: #6c6760; }
+  .footer-notes h3 { color: #1a1a1a; font-size: 13px; margin: 0 0 8px; }
+  .footer-notes ul { margin: 4px 0 14px 18px; padding: 0; }
+  .footer-notes li { margin-bottom: 4px; }
+  a { color: #4a6b9a; }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<nav class="tab-nav">
+  <a href="index.html">Main Brief — Full Pipeline</a>
+  <a href="agent-conference-may2026.html">Agent Conference · May 4-5</a>
+  <a href="vc-reverse-pitch-may13.html">VCReversePitch · May 13</a>
+  <a href="bevnet-live-june10-11.html">BevNETLive Workshop</a>
+  <a href="bevnet-live-full-event.html">BevNETLive Full Event</a>
+  <a href="vc-reverse-pitch-sf-june23.html">VCReversePitch · SF Jun 23</a>
+  <a href="owls-brew-customer.html">Owl's Brew · Customer</a>
+  <a href="njx-summit-jul8.html">NJx Summit · Jul 8</a>
+  <a href="overproof-competitive.html">Overproof · Competitive</a>
+  <a href="competitive-landscape-jul2026.html" class="active">Competitive Landscape · Jul 2026</a>
+</nav>
+
+<header class="top">
+  <div class="eyebrow">v1 · internal competitive landscape · pass-1 triage (4 parallel sweeps) + independent primary verification of the load-bearing claim</div>
+  <h1>Competitive Landscape — July 2026</h1>
+  <div class="meta">Window swept: Jan 1 – Jul 16, 2026 · Compiled Jul 16, 2026 · Supersedes the competitive map implied by <a href="overproof-competitive.html">overproof-competitive.html</a> and HANDOFF §8</div>
+</header>
+
+<div class="internal-flag">
+  <strong>INTERNAL DOCUMENT.</strong> Uses operator vocabulary — "agentic AI" and "BevAlc" appear freely per the standing rule. <strong>Do not forward to investors or reuse these paragraphs in investor comms without translating to "decision intelligence" / "beverage."</strong> Several findings here are also deliberately blunter about our own exposure than an external artifact would be.
+</div>
+
+<!-- ═══════════════ TRUST MAP ═══════════════ -->
+<div class="trust-map">
+  <strong>Trust map — v1. This is a pass-1 triage brief. It has not yet had a claim-by-claim second-source audit, and it should not be treated as carrying the same weight as the 7-pass Overproof brief.</strong>
+  <ul>
+    <li><strong>Independently verified by me at the primary source (highest confidence):</strong> the Lymion Group Chapter 7 filing — case number, court, chapter, filing date, trustee, judge, and open status were re-queried against CourtListener's docket API directly, separately from the agent that surfaced it. Uncle Nearest's Chapter 11 (3:26-bk-30470) was confirmed in the same query.</li>
+    <li><strong>Primary-source verified by sweep agents (high confidence):</strong> VIP's Apr 14 announcement (GlobeNewswire wire); Encompass product copy (own site); Leadbeam's Form D and EDGAR filing history; Leadbeam's logo wall (images downloaded and visually inspected); Overproof's frozen sitemap, deleted team page, and empty careers page; Glimpse's $35M round (company blog + a16z's own post + TechCrunch); SGWS July 10 announcement; IWSR Jul 14 Bevtrac; DISCUS Feb 5 figures; RNDC/Reyes closing (company release).</li>
+    <li><strong>Aggregator-only — NOT verified, flagged inline, do not launder:</strong> Overproof's $4.5M Dec 2022 convertible note (Crunchbase, no Form D exists); Encompass "$40.3M May 2025" (<em>this figure is wrong — see corrections</em>); StartX as Leadbeam co-investor; Overproof's ~36 headcount; the ~$100M Uncle Nearest valuation.</li>
+    <li><strong>Self-attested, never independently verified:</strong> Overproof's reported "passed on a $258M acquisition" (de Kuyper to a local outlet, 2023); Glimpse's scale claims (200+ brands, $1B+ invoices, 91% win rate); Leadbeam's case-study metrics; every vendor's own AI capability copy, including VIP's and Encompass's.</li>
+    <li><strong>Explicitly NOT FOUND (confident negatives, not gaps):</strong> any Leadbeam beverage product; any Leadbeam 2026 raise; any Overproof 2026 product/partnership/hire; any link between Overproof Ventures and de Kuyper/Lymion; any press coverage of the Lymion Chapter 7; any Glimpse move toward beverage; any syndicated depletions/TTB/NABCA analytics product from any player in the set.</li>
+    <li><strong>Could not verify:</strong> Sunbiz officer registration for Lymion (Cloudflare-blocked at fetch time); the full Chapter 7 schedules — assets, liabilities, creditor matrix — which sit behind PACER's paywall. <strong>Pulling those schedules is the single highest-value next step in this file.</strong></li>
+  </ul>
+</div>
+
+<!-- ═══════════════ VERDICT ═══════════════ -->
+<div class="verdict">
+  <h2>Verdict — 4 things that change our competitive posture</h2>
+
+  <p><strong>1. Overproof's operating entity filed for Chapter 7 liquidation on May 15, 2026, and nobody has reported it.</strong> <em>In re Lymion Group, Inc.</em>, Case No. <strong>26-16319</strong>, U.S. Bankruptcy Court, S.D. Florida. Chapter 7 is liquidation, not reorganization. Trustee Drew M. Dillworth; Judge Peter D. Russin; case open. On Jul 15 the trustee subpoenaed <strong>JPMorgan Chase</strong> and <strong>Grant Thornton</strong> — the signature of a forensic review of pre-petition transfers. Meanwhile overproof.com is still running six "Book a Demo" CTAs and published a blog post yesterday, with zero public disclosure. <strong>We have spent seven verification passes building a displacement strategy against a company that is being wound up.</strong></p>
+
+  <p><strong>2. The real threat is VIP, and we have no card for it.</strong> On <strong>Apr 14, 2026</strong> Vermont Information Processing announced an expanded AI platform under a new tagline — <strong>"Empowering Smart Decisions"</strong> — with CEO Andrew Criezis positioning VIP to deliver <em>"an agentic future for the beverage industry."</em> New products: <strong>iDIG Analytics</strong>, Predictive Order, Orderstream Forecasting. VIP has collected distributor-level depletions <strong>since 1973</strong>, embedded Nielsen POS into iDIG in 2016, and runs ~1,000 employees. Every other name on this list competes with us for budget. <strong>VIP competes with us for the thesis</strong> — they already own the data and are now claiming the synthesis layer on top of it. This lands directly on the positioning in <a href="owls-brew-customer.html">owls-brew-customer.html</a>, which pitches BevGenie as <em>complementing</em> "HubSpot + VIP/SPINS by sitting above them and synthesizing."</p>
+
+  <p><strong>3. Leadbeam has no beverage product and is taking beverage logos anyway.</strong> No depletion tracking, no three-tier plumbing, no VIP/Karma/Encompass integration, no beverage case study, and no BevGenie comparison page — they don't see us. Beverage is 1 of ~20 SEO verticals sitting next to pharma and waste management, and the liquor content is a Sept 2025 artifact. <strong>But their logo wall now carries No Sleep Beverage</strong> — a multi-brand spirits portfolio founded by an ex-Pernod Ricard USA M&amp;A lead, added 16 days after it announced its platform — <strong>and AIR/Al Fakher</strong> (~$400M FY25 revenue, Nasdaq-listed May 18), added Jul 3. The threat model is not "Leadbeam builds a beverage product." It is <strong>"Leadbeam's horizontal product is already good enough that a spirits portfolio bought it anyway"</strong> — which is worse, because it needs no roadmap change from them.</p>
+
+  <p><strong>Strategic implication:</strong> the competitive map in HANDOFF §8 — Overproof and Leadbeam as the two direct threats, Glimpse as validation — does not survive this sweep. <strong>The new map is VIP and Encompass as the real contest, Leadbeam as a horizontal encroacher on a stretched seed, Overproof as a cautionary case study, and Glimpse as weaker validation than we've been claiming</strong> (Scotch and Santé are better). Our sharpest remaining structural argument is the white space in §7: <strong>nobody in this set sells syndicated depletions/TTB/NABCA analytics.</strong> The incumbents own <em>transactional</em> data — orders, routes, invoices, scans — and are racing agentic AI on top of it.</p>
+</div>
+
+<!-- ═══════════════ THE MAP ═══════════════ -->
+<h2 class="section">🗺️ The revised map <span class="count">at a glance</span></h2>
+
+<table class="plan-table">
+  <tr>
+    <th>Player</th><th>Old classification</th><th>New classification</th><th>What changed</th>
+  </tr>
+  <tr>
+    <td><strong>VIP</strong> / Vermont Information Processing</td>
+    <td>Infrastructure — a data source we sit on top of. No card.</td>
+    <td>🔴 <strong>Primary strategic threat</strong></td>
+    <td>Apr 14, 2026: repositioned to "Empowering Smart Decisions," claims an "agentic future for the beverage industry." Owns the depletions pipe since 1973.</td>
+  </tr>
+  <tr>
+    <td><strong>Encompass Technologies</strong></td>
+    <td>Named once, in passing, on an unfinished to-do.</td>
+    <td>🔴 <strong>Closest functional overlap</strong></td>
+    <td>Self-describes "AI-Native — built in, not bolted on." ReportingIQ (NL reporting), OrderIQ (depletion velocity), Cowork ("Agentic AI that executes complex, end-to-end workflows"). Shipping now.</td>
+  </tr>
+  <tr>
+    <td><strong>Leadbeam</strong></td>
+    <td>Direct competitor.</td>
+    <td>🟡 <strong>Horizontal encroacher</strong></td>
+    <td>Still no beverage product. But two BevAlc/tobacco logos landed in 2026 — on $2M raised and nothing since Sept 2024.</td>
+  </tr>
+  <tr>
+    <td><strong>Overproof</strong> (Lymion Group)</td>
+    <td>Direct competitor for beverage TAM. Displacement target.</td>
+    <td>⚫ <strong>Chapter 7 — case study, not competitor</strong></td>
+    <td>Filed for liquidation May 15, 2026. Unreported. Product still runs; trademark and platform are estate assets that can be sold.</td>
+  </tr>
+  <tr>
+    <td><strong>Glimpse</strong></td>
+    <td>Category-validating neighbor; market-validation evidence.</td>
+    <td>⚪ <strong>Not a competitor; narrower validation</strong></td>
+    <td>Classification holds <em>more</em> firmly — they sell deductions automation to AP/finance. But they don't validate the beverage-data category. Scotch and Santé do.</td>
+  </tr>
+  <tr>
+    <td><strong>Scotch</strong> ⭐ / <strong>Santé</strong> ⭐</td>
+    <td>Unknown — not on our radar.</td>
+    <td>⚪ <strong>Not competitors; better validators</strong></td>
+    <td>$27.6M combined raised in 2026 on the thesis that a ~$250B BevAlc market runs on 1970s systems. Retail-tier only.</td>
+  </tr>
+</table>
+
+<!-- ═══════════════ VIP ═══════════════ -->
+<h2 class="section">🔴 VIP — the competitor we don't have a card for</h2>
+
+<div class="facts">
+  <dl>
+    <dt>Entity</dt><dd>Vermont Information Processing (VIP) · Colchester, VT · private · ~1,000 employees</dd>
+    <dt>Products in scope</dt><dd><strong>iDIG</strong> (depletion/market data), <strong>KARMA</strong>, <strong>iDIG Analytics</strong> (new), Predictive Order (new), Orderstream Forecasting (new)</dd>
+    <dt>Data position</dt><dd>Has collected distributor retail-level depletions <strong>since 1973</strong>. Acquired Nielsen's Beverage Data Network assets and embedded <strong>Nielsen POS into iDIG in 2016</strong>.</dd>
+    <dt>Reach</dt><dd>~16–20k users across all three tiers <span class="tag plausible">Plausible</span></dd>
+    <dt>The event</dt><dd><strong>Apr 14, 2026</strong> — expanded AI platform, new product line, company-wide AI-literacy investment. New tagline: <strong>"Empowering Smart Decisions."</strong></dd>
+    <dt>Rebrand</dt><dd>vtinfo.com now redirects to <strong>vipinsights.com</strong> — an active, in-flight rebrand</dd>
+  </dl>
+</div>
+
+<div class="card critical">
+  <h4>Why this is the finding of the sweep</h4>
+  <p>CEO <strong>Andrew Criezis</strong>, in the Apr 14 wire, positions VIP to help deliver <strong>"an agentic future for the beverage industry."</strong> Their own site copy now reads: <em>"enterprise-grade AI… transforming decades of deep market data into actionable intelligence."</em></p>
+  <p>Read that against our own positioning. <strong>That is our sentence.</strong> The difference is that VIP has the depletions and we integrate them.</p>
+  <p>Everyone else on this list is competing for the same budget line. VIP is competing for the <em>premise</em> — the argument that decades of fragmented BevAlc data need an intelligence layer on top. If the company that owns the data supply builds that layer credibly, our "we sit above your systems and synthesize" pitch becomes a feature request they can close.</p>
+  <p>They also ran a company-wide "AI Week" Apr 13–17 with CDW, Atlassian, McKinsey QuantumBlack and monday.com — i.e. this is an org-wide capability push, not a press release.</p>
+</div>
+
+<div class="card warning">
+  <h4>⚠️ The direct hit on our stated positioning</h4>
+  <p><a href="owls-brew-customer.html">owls-brew-customer.html</a> currently pitches BevGenie as <em>"complements HubSpot + VIP/SPINS by sitting above them and synthesizing for…"</em>, and names <strong>"VIP iDIG + KARMA (de-facto BevAlc-distributor data standard)"</strong> as distributor analytics infrastructure.</p>
+  <p>That framing was correct when written. As of Apr 14 it is <strong>contested</strong>. We are not positioned above a passive data utility any more — we are positioned above a vendor that has announced it is building the same layer, with a structural data advantage we cannot replicate.</p>
+  <p><strong>This needs an answer before the next customer or investor conversation that touches VIP.</strong> The Owl's Brew brief should not be re-sent as-is.</p>
+</div>
+
+<div class="card neutral">
+  <h4>What we do NOT know — and must not guess</h4>
+  <ul>
+    <li><strong>No 2026 funding</strong> verifiable for VIP. <span class="tag notfound">Not found</span> They're private, ~50 years old, and likely don't need it.</li>
+    <li><strong>Whether iDIG Analytics is actually good</strong> is entirely unknown. All capability copy is self-attested vendor marketing. We have not seen the product, a demo, a customer, or a review. <strong>An announcement is not a shipped product</strong> — this is exactly the trap we'd flag if a competitor said it about us.</li>
+    <li><strong>No syndicated three-tier market-data analytics product surfaced</strong> from VIP either. iDIG touches depletions; that is not the same as the syndicated TTB/NABCA analytics surface. See §7.</li>
+  </ul>
+</div>
+
+<div class="card opportunity">
+  <h4>The counter-argument we can still make</h4>
+  <p>Incumbency in data is not incumbency in reasoning. VIP's advantage is a 50-year pipe; their constraint is a 50-year architecture, a distributor-first customer base, and an install-base upgrade path. The honest wedge is not "we have better data" — <strong>we don't, they do</strong> — it's that the decision surface we're building is cross-source by design (TTB + NABCA + POS + menu/social + shipments), where iDIG Analytics is intelligence <em>on VIP's own data</em>.</p>
+  <p><strong>Test this claim before leaning on it.</strong> If iDIG Analytics ingests third-party sources, this wedge closes and we need a different one.</p>
+</div>
+
+<!-- ═══════════════ ENCOMPASS ═══════════════ -->
+<h2 class="section">🔴 Encompass Technologies — closest functional overlap, already shipping</h2>
+
+<div class="facts">
+  <dl>
+    <dt>Entity</dt><dd>Encompass Technologies · CEO Patrick Tickle · Cove Hill Partners–backed</dd>
+    <dt>Self-description</dt><dd><strong>"AI-Native"</strong> — <em>"built in, not bolted on"</em></dd>
+    <dt>Product surface</dt><dd>Production Cloud · Distribution Cloud · vintrace · DSDLink · PayLink</dd>
+    <dt>AI products</dt><dd><strong>ReportingIQ</strong> (natural-language reporting: ask a question, get the chart) · <strong>OrderIQ</strong> (suggested orders built on <strong>depletion velocity</strong>) · <strong>Encompass Cowork</strong> (<em>"Agentic AI that executes complex, end-to-end workflows"</em>)</dd>
+    <dt>Tiers served</dt><dd>Producers, distributors <strong>and</strong> retailers — from the incumbent system-of-record position</dd>
+    <dt>Funding</dt><dd>Cove Hill strategic investment, <strong>Feb 23, 2022</strong>, <strong>amount undisclosed</strong>. No 2026 raise found. <span class="tag notfound">Not found</span></dd>
+  </dl>
+</div>
+
+<div class="card critical">
+  <h4>Read their product names against our own launch messaging</h4>
+  <p><strong>ReportingIQ is "ask a question, get the chart." Our tagline is "answers, not dashboards."</strong> Those are the same promise, and theirs is shipping from inside the system of record. <strong>Encompass Cowork uses the literal phrase "Agentic AI."</strong></p>
+  <p>This does not make our positioning wrong. It makes it <strong>uncontested only in our own materials</strong>. Anyone doing diligence on us — investor or customer — can find Encompass in one search, and "answers not dashboards" will not read as differentiated to them.</p>
+  <p><strong>OrderIQ building on depletion velocity is the specific overlap to watch.</strong> Along with VIP's iDIG, it's one of only two confirmed depletions-based AI products found anywhere in this sweep.</p>
+</div>
+
+<div class="card weak">
+  <h4>🔴 Correction to prior briefs — a bad number we nearly inherited</h4>
+  <p>The widely-repeated <strong>"Encompass raised $40.3M in May 2025"</strong> figure is <strong>aggregator-only</strong> (Tracxn / Crunchbase / PitchBook mirrors) with <strong>no primary release, wire, or trade-press confirmation anywhere</strong>. <span class="tag aggregator">Aggregator</span></p>
+  <p>The real, primary-sourced event is the <strong>Cove Hill investment of Feb 23, 2022, amount undisclosed</strong> (<a href="https://www.businesswire.com/news/home/20220223005171/en/Encompass-Technologies-Receives-Strategic-Investment-From-Cove-Hill-Partners" target="_blank">BusinessWire</a>).</p>
+  <p><strong>This figure is not currently in any of our briefs</strong> — Encompass is named only twice, both in passing. But it is exactly the kind of number that walks into a deck unchallenged. Flagging it here so it never does.</p>
+</div>
+
+<!-- ═══════════════ LEADBEAM ═══════════════ -->
+<h2 class="section">🟡 Leadbeam — no beverage product, beverage logos anyway</h2>
+
+<div class="facts">
+  <dl>
+    <dt>Entity</dt><dd>LeadBeam, Inc. · Delaware · <strong>2835 Brewster Ave, Redwood City, CA</strong> (per Form D; site says SF) · incorporated 2023</dd>
+    <dt>Founders</dt><dd><strong>Soham Tikekar</strong> (Co-Founder &amp; CEO; sole officer/director on the Form D) · <strong>Kennan Murphy-Sierra</strong> (ex-Meta, ex-Yext PM; product + AI) · <strong>Gabe Naviasky</strong> (Salesforce admin; sales/growth/RevOps)</dd>
+    <dt>Total raised</dt><dd><strong>$2,025,001</strong> — one Form D, filed Oct 11 2024, first sale Sept 26 2024, <strong>5 investors, $0 remaining</strong> <span class="tag confirmed">Confirmed</span></dd>
+    <dt>Since then</dt><dd><strong>Nothing.</strong> EDGAR has exactly one filing for LeadBeam, Inc. (CIK 0002040990) across all time. No 2026 activity. <span class="tag confirmed">Confirmed</span></dd>
+    <dt>Backer</dt><dd><strong>Engineering Capital</strong> (named on their own site). StartX appears only on aggregators. <span class="tag aggregator">Aggregator</span></dd>
+    <dt>Positioning shift</dt><dd>"AI-Powered Field Sales <strong>Software</strong>" → <strong>"The AI-Native Operating System for Field Sales"</strong> (shipped between Apr 19 and Jun 2026)</dd>
+    <dt>New integration</dt><dd><strong>SAP</strong>, added ~Apr 2026 — the ERP backbone of large CPG. Zoho + Pipedrive added ~Feb 2026.</dd>
+    <dt>Product set</dt><dd>Atlas (territory intel) · Compass (routing) · Beamly (voice AI companion) · Pulse (voice/photo→CRM) · Studio (leader dashboard) · Leadbeam CRM — <strong>all shipped June 2025, not 2026</strong></dd>
+    <dt>Open roles</dt><dd>6 — incl. <strong>Head of Engineering, New Delhi</strong> (Director) and <strong>first AEs, NYC</strong>. Applications route to a founder's personal mailbox; no ATS.</dd>
+  </dl>
+</div>
+
+<div class="card warning">
+  <h4>The two logos that matter</h4>
+  <p><strong>No Sleep Beverage</strong> <span class="tag confirmed">Confirmed — logo added 2026-04-26</span> — an alcohol beverage portfolio platform, West Palm Beach FL, founded 2023 by <strong>Nick Papanicolaou</strong> (ex-Pernod Ricard USA M&amp;A lead). On <strong>Apr 10, 2026</strong> it launched a platform company acquiring Whiskey Del Bac, Nine Banded Whiskey and Ume Plum Liqueur; portfolio also includes Madre Mezcal, Juliet Wine, Barr Hill Gin, Yoju (RTD), Artet. Distribution focus: Phoenix, Tucson, Austin, SE Florida.</p>
+  <p><strong>The timing is the signal:</strong> No Sleep announces its spirits platform Apr 10 → its logo appears on Leadbeam Apr 26. <strong>A multi-brand spirits company running field reps on Leadbeam is our exact ICP, and they didn't pick us.</strong></p>
+  <p><strong>AIR / Advanced Inhalation Rituals</strong> <span class="tag confirmed">Confirmed — logo added 2026-07-03</span> — Dubai; owns <strong>Al Fakher</strong> (~47% global hookah share), Hookah.com, OOKA. <strong>FY2025 revenue ~$400M, adj. EBITDA ~$139M.</strong> Completed a SPAC merger with Cantor Equity Partners III and <strong>began trading on Nasdaq as "AIIR" on May 18, 2026</strong> at ~$1.75B EV. Leadbeam landed a newly-public $400M-revenue global CPG <strong>six weeks after its listing</strong>. Hookah reps call on c-stores, smoke shops and lounges — overlapping call points with liquor.</p>
+</div>
+
+<div class="card neutral">
+  <h4>The honest read — the alarming headline is narrower than it looks</h4>
+  <p><strong>There is no beverage product.</strong> <span class="tag notfound">Not found</span> No depletion tracking, no distributor/three-tier features, no VIP/Karma/Encompass integration, no beverage case study, no beverage sales motion.</p>
+  <p><strong>The liquor content is a 2025 artifact.</strong> <code>/blog/increase-beverage-sales</code> and <code>/blog/liquor-sales</code> first appear in Wayback on <strong>Sept 3 and Sept 5, 2025</strong>. Both are generic field-sales copy with liquor framing. Beverage is 1 of ~20 equal-weight SEO verticals alongside pharma, medtech, telecom, insurance, agriculture, energy, waste and logistics.</p>
+  <p><strong>They don't see us.</strong> Their 11 competitor comparison pages target Badger Maps, Salesforce Maps, SalesRabbit, Spotio, Map My Customers, Geopointe, Agentforce, Slack Elevate, Voiceline, Myko AI and Donna. <strong>No BevGenie page exists.</strong></p>
+  <p><strong>So the threat model is not "Leadbeam builds a beverage product."</strong> It's that their horizontal product is already good enough that a spirits portfolio bought it anyway — which requires no roadmap change from them, and is therefore harder to counter.</p>
+</div>
+
+<div class="card opportunity">
+  <h4>The counterweight — and the tripwire to watch</h4>
+  <p><strong>$2M raised, nothing since Sept 2024, 22 months in.</strong> They are landing Nasdaq-listed logos on a seed budget while offshoring engineering to a New Delhi hub and hiring what their own job post calls "one of our <strong>first</strong> Account Executives" — i.e. founder-led sales is only now being replaced.</p>
+  <p>Either a raise is imminent and unannounced, or they are stretching a $2M seed very thin. <strong>A new Form D is the single highest-signal tripwire on this company. It is currently clean — check it monthly.</strong></p>
+  <p><em>Caveat:</em> absence of a Form D rules out a conventional priced Series A with counsel involved. It does not rule out a small SAFE or note round, which can go unfiled or be filed late.</p>
+  <p><strong>Do not trust their public headcount stat.</strong> "14 Team members / 300 Users / 10,000 hours saved" is <strong>byte-identical across Sept 2025, Jan 2026 and May 2026 snapshots</strong> — a frozen marketing block, not a live figure. Their /about-us also still carries an unshipped Webflow placeholder reading "Bessie Cooper / Nursing Assistant"; the team section was never populated.</p>
+</div>
+
+<!-- ═══════════════ OVERPROOF ═══════════════ -->
+<h2 class="section">⚫ Overproof — Chapter 7 <span class="count">the competitor that stopped being one</span></h2>
+
+<div class="card critical">
+  <h4>The filing</h4>
+  <div class="stat-row"><span class="k">Case</span><span><em>In re Lymion Group, Inc.</em>, Case No. <strong>26-16319</strong></span></div>
+  <div class="stat-row"><span class="k">Court</span><span>U.S. Bankruptcy Court, <strong>Southern District of Florida</strong></span></div>
+  <div class="stat-row"><span class="k">Filed</span><span><strong>May 15, 2026</strong> — voluntary petition, <strong>Chapter 7 (liquidation, not reorganization)</strong>. Filing fee $338.</span></div>
+  <div class="stat-row"><span class="k">Trustee</span><span><strong>Drew M. Dillworth</strong> · counsel Daniel J. Halperin (Stearns Weaver Miller), employment approved 7/14/2026</span></div>
+  <div class="stat-row"><span class="k">Judge</span><span>Peter D. Russin</span></div>
+  <div class="stat-row"><span class="k">Status</span><span><strong>Open and escalating</strong> — <code>dateTerminated: null</code>. <strong>Notice of Assets</strong> filed/certified 7/14/2026 → it is an asset case; the trustee is hunting assets and creditors may recover.</span></div>
+  <div class="stat-row"><span class="k">Jul 15, 2026</span><span>Trustee executed subpoenas on <strong>JPMorgan Chase Bank, N.A.</strong> and <strong>Grant Thornton, LLP</strong> (docket entries 31, 32) — <strong>the signature of a forensic investigation into pre-petition transfers.</strong></span></div>
+  <div class="stat-row"><span class="k">Source</span><span><a href="https://www.courtlistener.com/docket/73349907/lymion-group-inc/" target="_blank">CourtListener docket 73349907</a> · PACER case 847261 · <strong>re-verified independently against the API on Jul 16, 2026</strong></span></div>
+  <p style="margin-top:10px;"><strong>Identity link:</strong> docket entries 12/15/22/24/25 are filed by "<strong>Creditor Marc De Kuyper</strong>" — matching the CEO registered at Florida Sunbiz for LYMION GROUP INC, and matching the Lymion↔Overproof identity already established across our seven prior passes. Filing venue (S.D. Fla.) matches Overproof's Miami HQ.</p>
+</div>
+
+<div class="card warning">
+  <h4>The corroborating picture — every independent signal points the same way</h4>
+  <ul>
+    <li><strong>2026 Florida annual report NEVER FILED.</strong> Due <strong>May 1, 2026</strong>; Chapter 7 filed <strong>May 15</strong>. They filed on time every year 2021–25 (Feb'21, Mar'22, Jan'23, Mar'24, Feb'25). <strong>The streak breaks exactly at the bankruptcy.</strong> $400 late fee accruing; administrative dissolution ~Sept 25, 2026.</li>
+    <li><strong>The entire leadership page was deleted</strong> between Feb 3 and Jul 16, 2026, with no replacement. <code>/team/</code> now 404s and WordPress fuzzy-redirects it to a 2020 post titled <em>"Team Building Activities For The Workplace."</em> Ten candidate replacement URLs all 404. <strong>The header nav "About Us" link still points at the dead URL</strong> — a partial cleanup someone abandoned.</li>
+    <li><strong>Marketing site frozen since Sept 2025.</strong> Not one company page modified in 2026 (homepage lastmod 2025-09-17; enterprise 2025-09-09; careers 2025-08-06). All 79 posts published in 2026 are third-party industry news — zero product, feature, funding or partnership posts.</li>
+    <li><strong>Zero open roles</strong>, no ATS. Careers page literally reads <em>"Our current job openings are listed below. Job Openings"</em> followed by nothing. Dec 2024 had a live role; Aug 2025, Feb 2026 and today are empty.</li>
+    <li><strong>LinkedIn dormant ~10 months</strong> (last post ≈Sept 2025). 17 employees listed — down from a reported 52 in Mar 2023.</li>
+    <li><strong>No customer logo added or removed all year.</strong> The Feb 3 archived homepage carousel is <strong>byte-identical</strong> to today's live raw HTML. Newest logo asset is July 2025.</li>
+    <li><strong>Creditors appearing:</strong> Jayaram Law (5/28), Nicolette Amico (6/9). <strong>Marc De Kuyper is himself a creditor</strong> of the estate, and moved for sanctions against <strong>Folder It S.A.</strong> and <strong>Fit4 Growth LLC</strong> for <em>"Intentional And Willful Violation Of The Automatic Stay"</em> (5/29); hearings continued 6/17 → 7/8 → again.</li>
+    <li><strong>Pre-bankruptcy litigation:</strong> <em>Brent Christopher Berge 2012 Trust v. Lymion Group</em>, 2:25-cv-04577 (D. Ariz.) — briefing Jan 8/20/27, 2026, roughly four months before the filing.</li>
+  </ul>
+</div>
+
+<div class="card weak">
+  <h4>⚠️ The site is still selling, with zero disclosure</h4>
+  <p>overproof.com carries <strong>6 "Book a Demo" CTAs and 10 HubSpot lead-capture forms</strong>, a working login (<code>portal.overproof.com</code> → "Overproof Web Portal"), a "© 2026 – Overproof" footer, and blog posts as recent as <strong>Jul 15, 2026</strong>. A grep of the full raw HTML of every page for <code>bankrupt / chapter 7 / wind down / liquidat / trustee / ceased / no longer</code> returns <strong>zero hits</strong>.</p>
+  <p>Prospects and existing customers have no public signal that the entity behind the product is in liquidation. <strong>We are not going to be the ones to tell them</strong> — see the cautions below — but it is worth knowing that anyone currently in an Overproof sales cycle is in one with a Chapter 7 estate.</p>
+</div>
+
+<div class="card neutral">
+  <h4>The trajectory, in two data points</h4>
+  <p><strong>Mar 23, 2023</strong> (Refresh Miami): <strong>52 employees</strong> (21 in Wynwood), <em>"plans to raise a Series A this summer, targeting $20 to $25 million,"</em> and <em>"passed on a $258M acquisition opportunity"</em> the prior year.</p>
+  <p><strong>Jul 16, 2026:</strong> 17 on LinkedIn, no Series A ever filed or announced, <strong>Chapter 7 liquidation.</strong></p>
+  <p>⚠️ <strong>That article is 2023, not 2026</strong> — a search summarizer misreported it as April 2026, and the $258M / 52-person / Series A figures are <strong>three years stale</strong>. The $258M is also <strong>self-attested by de Kuyper to a local outlet and never independently verified.</strong> <span class="tag aggregator">Self-attested</span> <strong>Do not let it be load-bearing.</strong></p>
+</div>
+
+<div class="card neutral">
+  <h4>Baseline corrections to <a href="overproof-competitive.html">overproof-competitive.html</a></h4>
+  <ul>
+    <li><strong>"Uncle Nearest is in federal receivership"</strong> → <strong>upgrade: Chapter 11 bankruptcy, filed Mar 17, 2026</strong>, Case <strong>3:26-bk-30470</strong>, Bankr. E.D. Tenn., Judge Suzanne H. Bauknight. <em>(Verified by me directly at CourtListener.)</em> Our briefs are one stage behind.</li>
+    <li><strong>"11 customer logos"</strong> → <strong>15 unique named customers.</strong> The previously-unidentified 11th logo is <strong>Southern Star</strong> (its label is the unset CMS artifact <code>get_attachment_url (1)</code>). Four more named customers appear only in text testimonials / case studies and the logo wall misses them: <strong>Crossfire Hurricane Rum</strong>, <strong>Island Getaway Rum</strong>, <strong>The Nova Collective Agency</strong>, <strong>Liquid 2 Lips Marketing</strong>.</li>
+    <li><strong>"$4M seed, last raise April 2020, no Series A"</strong> → add: Crunchbase shows a <strong>$4.5M convertible note dated Dec 1, 2022</strong>. <span class="tag aggregator">Aggregator — no Form D exists</span></li>
+    <li><strong>Team page (10 execs)</strong> → <strong>deleted.</strong> Cite the <a href="http://web.archive.org/web/20260203090153/https://overproof.com/team/" target="_blank">Feb 3, 2026 Wayback snapshot</a>, not the live URL. Roster as of that snapshot: Marc De Kuyper (CEO) · Peter Stephenson (CPO) · Diana Arellano (CRO) · Patrick Hoogendijk (CFO) · Nikita Wallin (COO) · Dr. Ed Dobbles (CAO) · Krista Schubert (Sr. Sales Mgr) · Oswaldo Otero (VP Product) · Christian Henning (VP Data Eng) · John Mouyal (VP Enterprise Partnerships).</li>
+    <li><strong>Diana Arellano (CRO)</strong> — <strong>plausible departure.</strong> <span class="tag plausible">Plausible</span> LinkedIn no longer surfaces Overproof as current; headline now reads "World's Best Golf Destinations." Render was sign-in-gated and partial — <strong>needs Nithya's LinkedIn paste to confirm.</strong> The other 8 execs are <strong>UNVERIFIED</strong> and left that way rather than padded.</li>
+    <li><strong>TTB absent / Nielsen-Circana-NABCA</strong> ✅ <strong>still true, re-verified Jul 16.</strong> Enterprise page names exactly those three; <code>TTB</code> returns 0 hits across every page; <code>API</code> returns 0 hits.</li>
+    <li><strong>Overproof Ventures ≠ Lymion</strong> ✅ <strong>still true, re-verified Jul 16.</strong> See cautions.</li>
+  </ul>
+</div>
+
+<div class="card weak">
+  <h4>🚨 Four cautions before any of this leaves this file</h4>
+  <ul>
+    <li><strong>The Chapter 7 is genuinely unreported.</strong> No trade outlet has it. That's an information edge — but it also means <strong>no third party has corroborated it</strong>. Cite the docket number directly and expect to be asked to prove it. It will hold; the filing is real and was verified at the primary source twice, independently.</li>
+    <li><strong>Liquidating company ≠ vanishing product.</strong> The portal still runs (CNAME → <code>app.overproof2.com</code>, Google Workspace MX active). Chapter 7 assets — <strong>including the OVERPROOF trademark (Reg. 7099431, owned by Lymion, registered 2023-07-04) and the platform itself</strong> — can be sold. A buyer could continue the product under new ownership. That trademark is precisely the kind of asset Trustee Dillworth is inventorying.</li>
+    <li><strong>Do NOT reach for "Overproof Ventures is the founder's escape hatch."</strong> It is the tempting story and the evidence is <strong>zero</strong>. A full raw-HTML scrape of overproofvc.com (home/thesis/team/contact) returns <code>kuyper: 0, lymion: 0, overproof.com: 0, marc: 0, miami: 0, portfolio: 0</code>. The Mar 29 launch PR names only Staniloff/Nguyen/Geller, is datelined NEW YORK / CALGARY, and never mentions de Kuyper, Lymion or Miami. TTABVUE shows <strong>no opposition or cancellation proceeding</strong> on the trademark. <strong>Asserting a link is the one claim in this brief that could be falsified.</strong> Our prior "treat as distinct" call was correct — maintain it.</li>
+    <li><strong>Overproof Ventures also isn't a lifeline.</strong> No SEC Form D (EDGAR full-text "Overproof Ventures" → 0), no fund size, no LPs, no first close, <strong>no portfolio companies</strong>. Site disclaimer: <em>"does not constitute an offer to sell."</em> Thesis marked "v1.0." Claims "EST · 2024" despite a Mar 2026 launch. <strong>Launched ≠ operational.</strong></li>
+  </ul>
+</div>
+
+<!-- ═══════════════ VALIDATION ═══════════════ -->
+<h2 class="section">⚪ Glimpse, Scotch, Santé — the validation story needs fixing</h2>
+
+<div class="card neutral">
+  <h4>Glimpse — "not a competitor" holds, and holds harder than we assumed</h4>
+  <p><strong>The round is confirmed on all four elements:</strong> <strong>$35M</strong>, led by <strong>a16z</strong> with 8VC and Y Combinator participating, <strong>Mar 25, 2026</strong>. <strong>Valuation never disclosed</strong> in any source. <span class="tag notfound">Not found</span> Total raised $52M. Sources: <a href="https://www.tryglimpse.com/post/seriesa" target="_blank">company blog</a> · <a href="https://techcrunch.com/2026/03/25/a16z-backed-glimpse-raises-new-funds-accelerates-dispute-tracking-automation-for-cpg-brands/" target="_blank">TechCrunch</a> · a16z's own post.</p>
+  <p><strong>What they actually sell:</strong> AI-automated <strong>retail deduction dispute management</strong> — agents log into retailer portals, classify each deduction, validate against internal data, file disputes. <strong>The buyer is the controller, not the commercial leader.</strong> 27 employees, NYC, founded 2024, YC S20.</p>
+  <p><strong>No beverage move whatsoever.</strong> <span class="tag notfound">Not found</span> Zero three-tier, depletions, TTB or NABCA content anywhere. Their only beverage exposure is <em>customers</em> — Lemon Perfect, Kin Euphorics, BERO — <strong>all non-alcoholic CPG brands buying deductions software</strong>. Post-round output (Apr–Jul) is entirely deductions case studies. Roadmap direction is <em>deeper into back-office finance</em>, not sideways into market intelligence.</p>
+</div>
+
+<div class="card warning">
+  <h4>⚠️ The narrative fix — HANDOFF §8 overstates this</h4>
+  <p>HANDOFF §8 says to "use as market-validation evidence in investor narrative." <strong>That's the loose version and it's exposed.</strong> <em>(Credit where due: <a href="bevnet-live-full-event.html">bevnet-live-full-event.html</a> is already precise — it says "back-office finance, complement not competitor." The brief is more careful than the handoff.)</strong></p>
+  <p><strong>The precise, defensible claim:</strong> a16z will write $35M for AI-native software attacking CPG operational pain, from a 27-person company, 11 months after a $10M round. That's real, and usable as evidence about <em>a16z's appetite and pace</em>.</p>
+  <p><strong>The claim that gets us punctured:</strong> "Glimpse proves the beverage-data category is validated." It doesn't — Glimpse isn't in that category. An investor says <em>"that's a deductions company, what does it have to do with you?"</em> and structurally the answer is <strong>nothing</strong>.</p>
+  <p>⚠️ <strong>Two date traps:</strong> (1) A live search snippet dates the raise to "June 29, 2026" — <strong>false</strong>; it conflates the funding with a same-day blog post. The date is <strong>Mar 25, 2026</strong>. (2) Glimpse has called <strong>two consecutive rounds "Series A"</strong> — a $10M 8VC-led "oversubscribed Series A" on Apr 8, 2025, then the $35M a16z "Series A" in Mar 2026. Expect confusion if anyone reconciles their funding history.</p>
+</div>
+
+<div class="card opportunity">
+  <h4>⭐ Use these instead — Scotch and Santé</h4>
+  <table class="plan-table">
+    <tr><th>Company</th><th>Round</th><th>Lead</th><th>Date</th><th>What</th></tr>
+    <tr>
+      <td><strong>Scotch</strong></td>
+      <td><strong>$20M Series A</strong> ($30M total; $10M seed Sep 2024)</td>
+      <td><strong>VMG Partners</strong></td>
+      <td><strong>Jun 4, 2026</strong></td>
+      <td>AI-native OS for <strong>liquor retailers</strong> — POS hardware, software, payments, state-by-state compliance</td>
+    </tr>
+    <tr>
+      <td><strong>Santé</strong></td>
+      <td><strong>$7.6M seed</strong></td>
+      <td><strong>Bonfire Ventures</strong></td>
+      <td><strong>Feb 2026</strong></td>
+      <td>AI OS for <strong>wine/liquor retailers</strong> — inventory, POS, e-comm, payments. Founder Darren Fike</td>
+    </tr>
+  </table>
+  <p>Neither was on our radar. <strong>Both are retail-tier only</strong> — no distributor or supplier angle, no depletions — so <strong>neither is a competitor.</strong> But <strong>$27.6M raised in 2026 on the thesis that a ~$250B BevAlc market still runs on 1970s systems</strong> is far closer to actual category validation than Glimpse, and <strong>Scotch's June round is the most recent relevant datapoint we have.</strong></p>
+  <p><strong>Recommend: promote Scotch/Santé into the investor narrative ahead of Glimpse.</strong></p>
+</div>
+
+<!-- ═══════════════ WHITE SPACE ═══════════════ -->
+<h2 class="section">🎯 The white space — our strongest structural argument</h2>
+
+<div class="card opportunity">
+  <h4>Nobody in this set sells syndicated depletions/TTB/NABCA analytics</h4>
+  <p>Across four parallel sweeps covering VIP, Encompass, Leadbeam, Overproof, Glimpse, Provi/SevenFifty, Park Street, Fintech/Lilypad, Andavi/GreatVines, GoSpotCheck/FORM, Repsly, Thirstie, Scotch and Santé — <strong>no player was confirmed to sell a syndicated three-tier market-data analytics product.</strong></p>
+  <p>The incumbents own <strong>transactional</strong> data — orders, routes, invoices, scans — and are racing agentic AI on top of it. <strong>Only VIP (iDIG) and Encompass (OrderIQ/depletion velocity) touch depletions at all</strong>, and neither surfaced a syndicated market-data surface.</p>
+  <p><strong>This is the gap our architecture argument should sit on.</strong></p>
+</div>
+
+<div class="card warning">
+  <h4>⚠️ But the TTB data story is NOT a "the environment is changing" argument</h4>
+  <p>Checked directly at ttb.gov: <strong>no 2026 change to COLA data availability.</strong> <span class="tag notfound">Not found</span> The Public COLA Registry is live, free, no registration required, page last updated Jan 2, 2026. No outage, deprecation, access restriction, rate limiting or API change. NABCA: <strong>no 2026 licensing or access change found</strong> (caveat: NABCA terms are commercial and not public — absence of public evidence ≠ absence of change; a direct inquiry would be needed).</p>
+  <p><strong>So there is no 2026 regulatory catalyst here.</strong> If our narrative needs "the data environment is shifting, creating an opening," <strong>this does not support it.</strong></p>
+  <p><strong>The durable argument is the opposite, and it's stronger:</strong> TTB data is <em>stably</em> public but <em>structurally hard to use</em> — HTML/XML/CSV extracts, <strong>no modern REST API</strong>, ~48-hour lag, pre-1999 gaps — and NABCA is <em>stably</em> expensive and licensed. Third parties resell scraped access, which is itself evidence there's no official API. <strong>Difficulty of integration is the moat, not regulatory change.</strong> That's been true for years; don't frame it as news.</p>
+</div>
+
+<!-- ═══════════════ MARKET CONTEXT ═══════════════ -->
+<h2 class="section">📊 Market context — what changed under us</h2>
+
+<div class="card opportunity">
+  <h4>⭐ The best artifact in this entire sweep isn't about a competitor</h4>
+  <p><strong>Jul 10, 2026 — Southern Glazer's</strong> announced a net reduction of ~1% of its US workforce (~250 roles), moving to a "hybrid" model — field sales + inside sales + digital commerce — and shifting an additional 1% of its independent customer base to a redesigned inside-sales unit ("customer solutions team") and the <strong>Proof Commerce</strong> platform.</p>
+  <div class="quote">"The marketplace is clearly signalling us to think differently about how we operate and best serve a portion of independent customers. We are redirecting our resources where the business is moving and towards areas of growth… and <strong>using AI to help us adapt to a changing market.</strong>"<br>— <strong>Wayne E. Chaplin, President &amp; CEO, Southern Glazer's</strong> (<a href="https://www.thespiritsbusiness.com/2026/07/southern-glazers-to-axe-1-of-jobs-in-us/" target="_blank">Spirits Business, Jul 10, 2026</a>)</div>
+  <p><strong>The largest US alcohol distributor is publicly replacing human coverage of independent accounts with AI and digital commerce.</strong> Named CEO, on the record, six days ago. <strong>That is our category being validated by the biggest player in the three-tier middle</strong> — and it is a stronger investor artifact than anything about Overproof.</p>
+  <p>They also ran a separate ~1% corporate cut on Feb 26 under the "2030 Vision" plan. SGWS operates 47 US markets + Canada. <strong>Note the named persona: Zachary Poelma, SVP of <em>Commercial Intelligence</em></strong> — a reachable buyer title at the largest distributor in the country, whose stated goal is to be the hospitality industry's "most valued selling, logistics and insights provider."</p>
+</div>
+
+<div class="card neutral">
+  <h4>RNDC isn't consolidating — it's being dismantled</h4>
+  <p><strong>Reyes transaction closed May 29, 2026</strong> — 11 markets transitioned (AZ, CO, FL, LA, MD, OK, SC, TX, VA, DC; Hawaii pending regulatory approval). Advisors: Kirkland &amp; Ellis, <strong>Lazard, AlixPartners</strong>, Joele Frank — <em>that roster is itself a distress signal.</em> Terms undisclosed.</p>
+  <p><strong>Illinois exit for lack of financing.</strong> WARN notice: Niles (165) + Romeoville (100) + 15 remote = <strong>280 workers</strong>; terminations within 14 days after <strong>Aug 14, 2026</strong>. RNDC "explored options to secure capital" — <strong>none was available.</strong></p>
+  <p><strong>Use 2,774</strong> — the WARN-filing figure for workers potentially affected. Circulating figures of "nearly 5,400" (TheStreet) and "4,600" (FreightWaves) are <strong>aggregator-only and mutually inconsistent.</strong> <span class="tag aggregator">Aggregator</span></p>
+  <p>Prior context: RNDC exited California in 2025; SGWS picked up Rémy Cointreau and Edrington. <strong>NOT FOUND: any RNDC Chapter 11, credit downgrade, or rating action.</strong> <span class="tag notfound">Not found</span> RNDC is private; no public rating coverage. <strong>Do not imply bankruptcy.</strong></p>
+  <p>Also: <strong>Breakthru</strong> layoffs "somewhere in the 500 range" (Feb 26 press approximation, not a WARN count). <span class="tag plausible">Plausible</span></p>
+</div>
+
+<div class="card weak">
+  <h4>🚩 The Gen Z premise flipped two days ago — do not assert the decline</h4>
+  <p><strong>IWSR H1 2026 Bevtrac, published Jul 14, 2026</strong> (15 markets, 7th in series): <strong>74% of Gen Z</strong> (LDA–28) now drink, vs. a <strong>76% adult average</strong> — up from <strong>66% in 2023</strong>. Millennials highest at 81%. <strong>Boomers are now the LOWEST cohort at 71%.</strong></p>
+  <div class="quote">"The narrative that Gen Z is the generation of moderation is now <strong>conclusively debunked</strong>… it may actually be the Boomers, not Gen Z, who deserve the title."<br>— <strong>Marten Lodewijks, President/MD, IWSR</strong> (<a href="https://www.thespiritsbusiness.com/2026/07/gen-z-moderation-conclusively-debunked-says-iwsr/" target="_blank">Spirits Business, Jul 14, 2026</a>)</div>
+  <p>✅ <strong>Checked: none of our briefs currently assert a Gen Z drinking decline. Nothing to retract.</strong> But if it's in anyone's verbal pitch, <strong>it is now falsifiable in front of an informed investor.</strong></p>
+  <p><strong>The defensible version is better anyway:</strong> participation is roughly flat (76% vs 75% three years ago), but <strong>intensity is structurally declining — 3.9 drinks per occasion, down from 4.4</strong> in both 2024 and 2025 — and mix is fragmenting toward RTD and cocktails. IWSR calls the volume decline <em>"structural rather than cyclical."</em> <strong>Mix complexity is a much better argument for a decision layer than demand collapse.</strong></p>
+</div>
+
+<div class="card weak">
+  <h4>🚩 Two more data landmines</h4>
+  <p><strong>1. A "US spirits sales fell 15.4%" figure is circulating and it is unsupported.</strong> <strong>DISCUS primary data (Feb 5, 2026 briefing, FY2025): supplier sales $36.4B, −2.2% in value; volume 318.1M 9L cases, +1.9%.</strong> ✅ <strong>Checked: the 15.4% figure is not in any of our briefs.</strong> If it appears in a draft, remove it.</p>
+  <p><strong>2. DISCUS and IWSR disagree, and we must not blend them.</strong> DISCUS (Feb 2026): US spirits volume <strong>+1.9%</strong>. IWSR (Apr 2026): total bev-alc volumes <strong>−2%</strong>, spirits <strong>−4%</strong>. These are <strong>not contradictory errors</strong> — DISCUS measures US supplier sales/depletions, IWSR measures global volumes. <strong>Citing "spirits volume" without naming source and scope is how a brief gets caught. Always attribute.</strong></p>
+  <p><strong>Category shape worth knowing:</strong> spirits hold <strong>42.4%</strong> of total bev-alc (4th straight year of lead); each share point ≈ <strong>$860M</strong> in supplier revenue. <strong>Pre-mixed cocktails / spirits RTDs are the ONLY major category growing — $3.8B, +16.4%</strong>, volume nearly quadrupled in 5 years (23.5M → 85.6M cases). Vodka −3.0%, tequila/mezcal −4.1%, American whiskey −0.9%, cordials −3.2%. <strong>Every other major category declined in both value and volume.</strong></p>
+  <p><strong>GLP-1 is our weakest evidentiary area.</strong> <span class="tag plausible">Plausible at best</span> The only figure available is EY-Parthenon's <strong>March 2025</strong> survey (44% of users drink less; 82% sustain after stopping) — a 2025 survey, not 2026 data. <strong>NOT FOUND: any 2026 primary study isolating GLP-1's measured effect on category volumes.</strong> Every causal claim encountered was consultancy or trade commentary. <strong>Treat GLP-1 as a narrative risk factor, not a quantified driver.</strong></p>
+</div>
+
+<div class="card warning">
+  <h4>⚠️ Uncle Nearest — the counterpoint inverted, and our talk track is now wrong twice</h4>
+  <p><strong>Status upgrade: Chapter 11 filed Mar 17, 2026</strong> (Case 3:26-bk-30470, E.D. Tenn., Judge Suzanne H. Bauknight) — our briefs still say "federal receivership." <em>Verified directly at CourtListener.</em></p>
+  <p><strong>The narrative inverted on Jul 7.</strong> Receiver Phillip G. Young Jr. filed a <strong>counterclaim against the lender</strong>, Farm Credit Mid-America, alleging negligence and gross negligence — claiming ex-CFO <strong>Michael Senzaki</strong> ran a years-long fraud that swelled the revolver from $35M to ~$67M via <strong>28 sole-signature drawdowns</strong> the lender never verified with the CEO, while earning ~$400K in fees. Counterclaim: <em>"The more Mr. Senzaki borrowed, the more Farm Credit earned in fees."</em> Farm Credit "strongly disagrees."</p>
+  <p><strong>The story moved from "brand mismanaged itself into collapse" to "a CFO allegedly defrauded the company while the lender rubber-stamped it."</strong></p>
+  <p><strong>Why this breaks our talk track — two separate problems with <code>overproof-competitive.html</code> line 438:</strong></p>
+  <ul>
+    <li><strong>It still says Weaver "stepped down."</strong> She was <strong>terminated by the receiver effective June 1, 2026</strong> — now confirmed <em>in the court record</em> (the Weavers' own Jul 7 joint answer, Doc. 218, confirms termination notices "on or about June 1, 2026"), not just the Q4 filing. Our v7 correction log claims this was "corrected across all three mentions" — <strong>it caught the two prose mentions and missed the quote block.</strong> The correction log is currently overstating its own completeness. <em>(Nuance: Keith Weaver's answer notes he was not an employee — "both were terminated as employees" is imprecise for Keith.)</em></li>
+    <li><strong>The counterpoint itself is now reputationally live.</strong> Deployed to a prospect, "their flagship customer collapsed" risks landing as punching at a Black-owned brand whose founder is arguably an alleged <em>victim</em> — while the receiver's own filing says one phone call to Weaver could have exposed it. <strong>And no decision-intelligence platform detects a CFO forging financials and sole-signing drawdowns.</strong> That was a controls/audit/lender-diligence failure, not a market-intelligence failure. <strong>If we imply our tooling would have caught it, a technical investor takes it apart.</strong></li>
+  </ul>
+  <p><strong>The defensible version is narrower and stronger:</strong> Overproof's flagship logo is an asset in bankruptcy, under <strong>SDNY and SEC subpoena</strong>, mid-sale to an undisclosed buyer. That's <strong>logo-wall and customer-concentration risk — not a product indictment.</strong></p>
+  <p><strong>🚨 Do NOT state the Senzaki fraud as fact.</strong> Every allegation traces to a single source — the receiver's own counterclaim, describing interviews by investigators Uncle Nearest retained. <strong>Senzaki has not responded in the court record and nothing shows criminal charges.</strong> The federal subpoenas (SDNY + SEC) are confirmed, but the filing does not say what is being investigated or whether anyone is a target.</p>
+  <p><strong>⏰ Shelf life:</strong> an LOI was signed May 29 (confidential investment firm with African-American ownership/leadership; purchase agreement expected ~45 days from Jun 1 → <strong>window closes now</strong>). <strong>NOT FOUND: any confirmation a definitive agreement has been signed.</strong> Press speculation that the buyer is <strong>MarcyPen Capital Partners</strong> is <strong>explicitly unconfirmed — do not repeat as fact.</strong> <span class="tag aggregator">Speculation</span> <strong>Recheck this section before it informs anything.</strong></p>
+</div>
+
+<div class="card opportunity">
+  <h4>⭐ A BD target list fell out of the market sweep</h4>
+  <p>NABCA runs an ongoing editorial series, <a href="https://www.nabca.org/ai-beverage-alcohol-marketplace" target="_blank">"AI in the Beverage Alcohol Marketplace"</a> — evidence the control-state establishment is actively engaging with agentic AI. <strong>Named participants are exactly the people who buy what we sell:</strong></p>
+  <ul>
+    <li><strong>Amit Parulekar</strong> — Director, Global Advanced Analytics &amp; AI Strategy, <strong>Brown-Forman</strong> (with Alex Nicolaica). Also presented <em>"Crafting the Future: Generative AI in the Alcohol Beverage Industry"</em> at NABCA's 30th Annual Administrator's Conference.</li>
+    <li><strong>Pierre-Yves Calloc'h</strong> (with Leyla Bossy) — <strong>Pernod Ricard</strong></li>
+    <li><strong>Gabriel Sanchez</strong>, Director of Innovation and AI, and <strong>Chad Rich</strong>, VP IT — <strong>Gallo</strong></li>
+    <li><strong>George Wilson</strong> — <strong>Heaven Hill</strong> · <strong>Shreyas Shukla</strong> — Info-Tech Research Group</li>
+  </ul>
+  <p>Plus <strong>Zachary Poelma</strong>, SVP Commercial Intelligence, <strong>Southern Glazer's</strong> (above). <em>Series pages are undated — treat as ongoing.</em></p>
+  <p><strong>This is arguably more actionable than any competitive finding in this brief.</strong></p>
+</div>
+
+<div class="card neutral">
+  <h4>AI adoption elsewhere — thinner than it looks</h4>
+  <p><strong>PepsiCo (CES 2026)</strong> — multi-year collaboration with Siemens and NVIDIA on digital twins + AI, described as "first-of-its-kind" for a global CPG. ⚠️ <strong>This is manufacturing/supply-chain digital twin, NOT commercial decision intelligence.</strong> Usable as "big CPG is deploying AI"; <strong>not an analog to us. Don't overstate the adjacency.</strong></p>
+  <p><strong>Coca-Cola / Diageo / AB InBev — STALE, do not use as 2026 evidence.</strong> Coca-Cola's Azure OpenAI figures are 2024 and aggregator-only; Diageo's FlavorPrint predates the window by years; AB InBev's Beck's Autonomous was a 2023 marketing stunt. <strong>NOT FOUND: any 2026 AI announcement from any of the three.</strong> <span class="tag notfound">Not found</span></p>
+  <p><strong>Also NOT FOUND:</strong> any major retailer publicly deploying AI decision tools in BevAlc in 2026; any 2026 AI announcement from RNDC, Breakthru or Johnson Brothers.</p>
+  <p><strong>Useful framing, weak sourcing</strong> <span class="tag plausible">Plausible</span> — Beverage Information Group (Feb 25, 2026): most orgs have AI/ML in <strong>isolated pockets, 10–30% of workflows</strong>; <strong>fewer than 1 in 6</strong> report extensive integration; BevAlc wholesalers run <strong>point solutions without alignment across sales, supply chain and delivery execution</strong>. <em>Survey and sample not identified in the source — attribute to BIG, don't launder as industry fact.</em> But note: <strong>"point solutions without cross-functional alignment" is a near-perfect articulation of the gap we sell into.</strong></p>
+</div>
+
+<!-- ═══════════════ OPEN DECISIONS ═══════════════ -->
+<h2 class="section">✅ Open decisions — what this brief does NOT resolve</h2>
+
+<div class="card warning">
+  <h4>Four things that need a human call</h4>
+  <ul>
+    <li><strong>What happens to <a href="overproof-competitive.html">overproof-competitive.html</a>?</strong> It's our most-verified artifact (7 passes) and it is now a detailed displacement strategy against a company in Chapter 7. <strong>This is a rewrite, not a v8 correction.</strong> Options: (a) retire it and link here; (b) keep it, re-framed as a case study; (c) leave it and rely on this brief to supersede. <strong>Nothing has been changed in it.</strong></li>
+    <li><strong>Line 438 — the Uncle Nearest talk track.</strong> Wrong twice (see above). Fix the wording, rewrite to the narrow logo-risk framing, or pull the counterpoint entirely? <strong>Untouched pending a decision.</strong></li>
+    <li><strong>The Owl's Brew VIP positioning.</strong> <a href="owls-brew-customer.html">owls-brew-customer.html</a> pitches us as complementing VIP. That's contested as of Apr 14. <strong>Don't re-send that brief as-is.</strong></li>
+    <li><strong>Does the Chapter 7 go anywhere?</strong> It's unreported, uncorroborated by any third party, and it concerns a company whose customers don't know. There are real questions — commercial, reputational, and about our own confidence — in using it externally at all. <strong>That's a judgment call for Nithya and Shyam, not a research output.</strong></li>
+  </ul>
+</div>
+
+<div class="card neutral">
+  <h4>Highest-value next research steps, ranked</h4>
+  <ol>
+    <li><strong>Pull the Chapter 7 schedules from PACER</strong> (assets, liabilities, creditor matrix, statement of financial affairs). This quantifies the estate and names every creditor — including, potentially, customers and data vendors. CourtListener's HTML docket 403s and its search API caps at 3 documents per response, so only ~19 of ~32 entries were recovered.</li>
+    <li><strong>Get a VIP iDIG Analytics demo or a customer who's seen it.</strong> Everything we know is self-attested vendor copy. <strong>An announcement is not a product.</strong> This is the single biggest unknown in our competitive picture.</li>
+    <li><strong>LinkedIn ground-truth pass</strong> (needs Nithya): Diana Arellano's current role; the other 8 Overproof execs; whether anyone from Overproof has landed at a competitor. <strong>⚠️ ZoomInfo, Equilar, theorg.com, RocketReach, success.ai and AeroLeads all still list these people as current Overproof executives. They are stale by construction and will keep listing staff of a liquidated company. Aggregator presence is NOT evidence of employment.</strong></li>
+    <li><strong>Second-source audit of this brief.</strong> This is pass 1. It has not had the 30–40 claim treatment.</li>
+  </ol>
+</div>
+
+<!-- ═══════════════ FOOTER ═══════════════ -->
+<div class="footer-notes">
+
+  <h3>v1 — initial build (Jul 16, 2026)</h3>
+  <ul>
+    <li><strong>Method:</strong> 4 parallel research agents (Overproof · Leadbeam · Glimpse+adjacent · market context), each instructed to label every finding CONFIRMED / PLAUSIBLE / AGGREGATOR-ONLY / NOT FOUND with source URL and date, and to return confident negatives rather than pad.</li>
+    <li><strong>The single load-bearing claim — the Lymion Chapter 7 — was re-verified by me independently</strong> against the CourtListener docket API, separately from the agent that surfaced it, before it was reported to Nithya. Case number, court, chapter, filing date, trustee, judge and open status all confirmed. Uncle Nearest's Chapter 11 was confirmed in the same query.</li>
+    <li><strong>Supersedes HANDOFF §8's competitive map</strong> (Overproof + Leadbeam as direct threats; Glimpse as validation). That map does not survive this sweep.</li>
+    <li><strong>Net-new to our intelligence:</strong> VIP's Apr 14 repositioning · Encompass's AI product line · Overproof's Chapter 7 · Leadbeam's two BevAlc/tobacco logos · Scotch · Santé · the SGWS Chaplin quote · the NABCA AI target list · Uncle Nearest's Chapter 11 upgrade.</li>
+    <li><strong>Corrections caught before they entered any brief:</strong> Encompass "$40.3M May 2025" (aggregator-only; real event is Feb 2022, undisclosed) · the "15.4% spirits decline" figure (DISCUS says −2.2% value / +1.9% volume) · Glimpse's raise date ("June 29" snippet is false; it's Mar 25) · "iDIG is a data consortium" (wrong — it's a VIP product, which obscures the most serious competitor on the list) · Fintech/iControl dated 2026 (actually Mar 2024) · barcart.com now being Proximo's consumer site, not the B2B SaaS.</li>
+  </ul>
+
+  <h3>Landmines to add to HANDOFF §10 (new techniques this sweep proved out)</h3>
+  <ul>
+    <li><strong>Vendor alt text lies.</strong> Leadbeam's logo wall has 3 of 15 alt attributes wrong — including a phantom <strong>"ClearCross"</strong> that is actually <strong>ClassPass</strong>. A text-only scrape would have invented a customer that doesn't exist. <strong>Download and visually inspect logo images.</strong> (Same class as the Overproof Swiper-carousel miss in v5.)</li>
+    <li><strong>CMS blog dates are unusable.</strong> Every Leadbeam post carries a bulk-stamped <code>datePublished</code> from a CMS migration — the beverage post reads "July 2026" but shipped <strong>Sept 2025</strong>. Off by ten months. <strong>Use Wayback CDX first-seen instead.</strong></li>
+    <li><strong>CDN ObjectID timestamps date site changes to the second.</strong> Webflow CDN filenames are MongoDB ObjectIDs whose first 4 bytes are the upload epoch — this dated every Leadbeam site change with no reliance on Wayback coverage.</li>
+    <li><strong>Trade press blocks automated fetches.</strong> thespiritsbusiness.com, brewbound.com, distilledspirits.org, crunchbase.com and pitchbook.com all return <strong>403</strong>. Use curl with a browser UA and paragraph extraction — which also recovers exact <code>post-publish-date</code> metadata.</li>
+    <li><strong>Naive <code>grep -i</code> manufactures fake findings.</strong> This sweep caught and discarded: <code>Provi</code> → "<strong>provi</strong>de" · <code>IRI</code> → "sp<strong>iri</strong>ts" · <code>Snowflake</code> → FontAwesome <code>fa-snowflake-o</code> · <code>Pernod</code> → "wra<strong>pperNod</strong>e" · <code>Tito</code> → "com<strong>petito</strong>rs". <strong>Four fake data partners avoided. Use word boundaries.</strong></li>
+    <li><strong>Sunbiz and EDGAR full-text are Cloudflare-gated</strong> at times; EDGAR's API needs a control query (searching a known-present term) to prove a zero result is a real negative rather than a broken query.</li>
+  </ul>
+
+  <h3>Vocabulary rule applied</h3>
+  <ul>
+    <li><strong>Internal document</strong> — "agentic AI" and "BevAlc" used freely per the standing rule.</li>
+    <li><strong>Investor-facing translation required before reuse:</strong> "decision intelligence" (never "agentic AI"/"AI agents") and "beverage" (never "BevAlc").</li>
+  </ul>
+
+</div>
+
+</div>
+</body>
+</html>
