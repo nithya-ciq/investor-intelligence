@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Drinks With Benefits — Summit + Festival · Sept 16–17, 2026 · Attend-or-Skip (Internal)</title>
+<style>
+  * { box-sizing: border-box; }
+  body { font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", Helvetica, Arial, sans-serif; background: #faf9f7; color: #1a1a1a; margin: 0; line-height: 1.5; -webkit-font-smoothing: antialiased; }
+  .wrap { max-width: 1180px; margin: 0 auto; padding: 32px 28px 80px; }
+  .tab-nav { display: flex; gap: 0; border-bottom: 1px solid #e6e2dc; margin-bottom: 24px; flex-wrap: wrap; }
+  .tab-nav a { padding: 10px 18px; text-decoration: none; color: #6c6760; font-size: 13px; font-weight: 500; border-bottom: 2px solid transparent; margin-bottom: -1px; }
+  .tab-nav a:hover { color: #1a1a1a; }
+  .tab-nav a.active { color: #1a1a1a; border-bottom-color: #5a3a86; font-weight: 600; }
+  header.top { border-bottom: 1px solid #e6e2dc; padding-bottom: 18px; margin-bottom: 28px; }
+  header.top .eyebrow { font-size: 11px; text-transform: uppercase; letter-spacing: 1.2px; color: #5a3a86; font-weight: 600; }
+  header.top h1 { margin: 6px 0 4px; font-size: 28px; font-weight: 600; letter-spacing: -0.4px; }
+  header.top .meta { font-size: 13px; color: #6c6760; }
+  header.top .meta a { color: #4a6b9a; }
+  .internal-flag { background: #f6f3fa; border: 1px solid #d9cfe8; border-radius: 6px; padding: 8px 14px; margin-bottom: 18px; font-size: 12px; color: #43286e; }
+  .trust-map { background: #fdf6e8; border-left: 4px solid #b48f3a; padding: 14px 18px; margin-bottom: 28px; border-radius: 4px; font-size: 13px; color: #6b4f15; }
+  .trust-map strong { color: #4a3a0c; }
+  .trust-map ul { margin: 8px 0 0 18px; padding: 0; }
+  .trust-map li { margin-bottom: 5px; }
+  .verdict { background: #fff; border: 1px solid #e6e2dc; border-left: 5px solid #5a3a86; border-radius: 10px; padding: 20px 24px; margin: 0 0 28px; }
+  .verdict h2 { margin: 0 0 8px; font-size: 16px; color: #5a3a86; text-transform: uppercase; letter-spacing: 1px; font-weight: 600; }
+  .verdict p { margin: 0 0 10px; }
+  .verdict p:last-child { margin-bottom: 0; }
+  .verdict .rec { font-size: 15px; }
+  h2.section { font-size: 20px; font-weight: 600; margin: 36px 0 14px; border-bottom: 2px solid #1a1a1a; padding-bottom: 6px; letter-spacing: -0.3px; }
+  h2.section .count { font-size: 13px; color: #6c6760; font-weight: 400; margin-left: 8px; }
+  h3.subsection { font-size: 15px; font-weight: 600; margin: 22px 0 10px; color: #2c4d80; text-transform: uppercase; letter-spacing: 0.6px; }
+  .facts { background: #fff; border: 1px solid #e6e2dc; border-radius: 8px; padding: 16px 20px; margin-bottom: 16px; }
+  .facts dl { margin: 0; display: grid; grid-template-columns: 150px 1fr; gap: 8px 14px; font-size: 13.5px; }
+  .facts dt { color: #6c6760; font-weight: 500; font-size: 12px; text-transform: uppercase; letter-spacing: 0.4px; padding-top: 2px; }
+  .facts dd { margin: 0; color: #1a1a1a; }
+  .cols { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  @media (max-width: 720px) { .cols { grid-template-columns: 1fr; } .facts dl { grid-template-columns: 120px 1fr; } }
+  .card { background: #fff; border: 1px solid #e6e2dc; border-radius: 8px; padding: 16px 20px; margin-bottom: 12px; }
+  .card.strong { border-left: 5px solid #5b8a3a; }
+  .card.weak { border-left: 5px solid #b85a4d; background: #fdf6f5; }
+  .card.neutral { border-left: 5px solid #8b8985; }
+  .card.opportunity { border-left: 5px solid #5b8a3a; background: #f4f8f2; }
+  .card.warning { border-left: 5px solid #b48f3a; background: #fdf6e8; }
+  .card h4 { margin: 0 0 6px; font-size: 15px; font-weight: 600; }
+  .card p { margin: 0 0 8px; font-size: 13.5px; }
+  .card p:last-child { margin-bottom: 0; }
+  .card ul { margin: 6px 0 6px 18px; padding: 0; font-size: 13.5px; }
+  .card ul li { margin-bottom: 4px; }
+  .card .ask { background: #f6f3fa; border-left: 3px solid #5a3a86; padding: 8px 12px; margin: 8px 0 0; border-radius: 4px; font-size: 13px; color: #43286e; }
+  .plan-table { width: 100%; border-collapse: collapse; font-size: 13px; margin: 12px 0; }
+  .plan-table th { text-align: left; padding: 8px 10px; font-size: 11.5px; text-transform: uppercase; letter-spacing: 0.4px; color: #6c6760; background: #f6f4f0; border-bottom: 1px solid #e6e2dc; }
+  .plan-table td { padding: 9px 10px; border-bottom: 1px solid #f0ede5; vertical-align: top; }
+  .plan-table td strong { color: #1a1a1a; }
+  .tag { display: inline-block; font-size: 10.5px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; padding: 2px 7px; border-radius: 3px; white-space: nowrap; }
+  .tag.strong { background: #e8f2e3; color: #3d6b28; }
+  .tag.moderate { background: #fdf6e8; color: #8a6a1c; }
+  .tag.weak { background: #f0eeeb; color: #6c6760; }
+  .tag.confirmed { background: #e8f2e3; color: #3d6b28; }
+  .tag.aggregator { background: #fdf0ee; color: #9c4436; }
+  .tag.flag { background: #fdf0ee; color: #9c4436; }
+  .footer-notes { margin-top: 40px; padding-top: 24px; border-top: 1px solid #e6e2dc; font-size: 12.5px; color: #6c6760; }
+  .footer-notes h3 { color: #1a1a1a; font-size: 13px; margin: 0 0 8px; }
+  .footer-notes ul { margin: 4px 0 14px 18px; padding: 0; }
+  .footer-notes li { margin-bottom: 4px; }
+  a { color: #4a6b9a; }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<nav class="tab-nav">
+  <a href="index.html">Main Brief — Full Pipeline</a>
+  <a href="agent-conference-may2026.html">Agent Conference · May 4-5</a>
+  <a href="vc-reverse-pitch-may13.html">VCReversePitch · May 13</a>
+  <a href="bevnet-live-june10-11.html">BevNETLive Workshop</a>
+  <a href="bevnet-live-full-event.html">BevNETLive Full Event</a>
+  <a href="vc-reverse-pitch-sf-june23.html">VCReversePitch · SF Jun 23</a>
+  <a href="owls-brew-customer.html">Owl's Brew · Customer</a>
+  <a href="njx-summit-jul8.html">NJx Summit · Jul 8</a>
+  <a href="overproof-competitive.html">Overproof · Competitive</a>
+  <a href="competitive-landscape-jul2026.html">Competitive Landscape · Jul 2026</a>
+  <a href="drinks-with-benefits-sept2026.html" class="active">Drinks With Benefits · Sep 16-17</a>
+</nav>
+
+<header class="top">
+  <div class="eyebrow">v1.1 · attend-or-skip brief · non-alcoholic beverage events · 3 sweeps + adversarial audit (27 claims, clean) + load-bearing facts re-verified by hand</div>
+  <h1>Drinks With Benefits — Summit + Festival · Sept 16–17, 2026</h1>
+  <div class="meta">NYC · Organized by The Daily Pour (Bottle Raiders, Inc.) · Compiled Jul 24, 2026 · Requested: who's attending (brands, sponsors, speakers, investors) + BevGenie customer fit + is it worth going</div>
+</header>
+
+<div class="internal-flag">
+  <strong>INTERNAL — attend-or-skip decision brief.</strong> Operator vocabulary used freely. Names real people (standard for briefs). Contains a candid read on which attendees are and are not worth our time — <strong>not for forwarding.</strong>
+</div>
+
+<!-- ═══════════════ TRUST MAP ═══════════════ -->
+<div class="trust-map">
+  <strong>Trust map — v1 (pass-1 triage). Three parallel research sweeps; the load-bearing facts were re-verified by hand given that an agent fabricated a finding elsewhere in this project today.</strong>
+  <ul>
+    <li><strong>Verified by me directly at the primary source:</strong> both event dates/venues (event pages); the <strong>$250 Summit ticket</strong> ($259.77 all-in) and $65–120 festival prices (TicketSpice checkout); <strong>Brian Rosen / InvestBev as alcohol-focused</strong> (their homepage: "Alcohol PE &amp; Barrel Asset Investments"); the <strong>Mingle Mocktails × RNDC</strong> national deal (PR Newswire).</li>
+    <li><strong>Primary-source verified by sweep agents:</strong> the full 44-brand festival sponsor roster (count-reconciled: 44 sponsors + 6 restaurants = 50 logomarks on the page, nothing inferred); Athletic Brewing scale; the big-alcohol parents behind several NA sponsor brands; the organizer's credibility and 2025 inaugural turnout.</li>
+    <li><strong>Aggregator-only — flagged, not trusted as fact:</strong> Ghia's funding/door counts; Mingle's revenue band; Rachel Martin's "CEO" styling; several headcount/valuation figures. Treated as directional.</li>
+    <li><strong>Corrections caught in the event's own framing:</strong> "Athletic Beer" → Athletic Brewing; Emily Onkey is <strong>CMO, not CEO</strong>; Nick Pelis is Spirited Away's <strong>new owner, not founder</strong>; "Nicholas Guillant" is <strong>not an Opius founder</strong>; "Industry Collective" is an <strong>advisory network, not a fund</strong>; Hightail is a <strong>THC/hemp</strong> brand, not NA. Details in §Corrections.</li>
+    <li><strong>NOT independently verified (honest gaps):</strong> Oceano's and Medase's stated sponsor tiers (event-page claims only); whether the big-alcohol sponsor <em>parents</em> send actual decision-makers vs. brand reps; Colicchio catering the lunch personally (organizer claim). Do not overstate these.</li>
+  </ul>
+</div>
+
+<!-- ═══════════════ VERDICT ═══════════════ -->
+<div class="verdict">
+  <h2>Verdict — go, but go narrow</h2>
+  <p class="rec"><strong>Attend the Summit (Sept 16, $250, one person). Treat the Festival (Sept 17) as an optional add-on, not a reason to go.</strong></p>
+  <p><strong>1. Read the room honestly: this is a non-alcoholic event, and BevGenie sells to beverage <em>alcohol</em>.</strong> Most of the 80-person Summit and the 44-brand Festival floor are single-product NA startups, sommeliers, retailers and a dietitian — <strong>off-ICP</strong>. If we go expecting a lead-gen bonanza, we'll be disappointed. This is a <strong>market-education and relationship-seeding</strong> play, on the single trend (moderation / NA / functional) that our own investor narrative leans on.</p>
+  <p><strong>2. But the few right people justify the $250.</strong> Three verified reasons to be in that room: (a) <strong>Brian Rosen / InvestBev</strong> — the one genuine <em>alcohol</em> capital allocator present, a plausible BevGenie investor and a source of portfolio-company customers; (b) <strong>Bill Shufelt (Athletic Brewing)</strong> and <strong>Laura Taylor (Mingle Mocktails)</strong> — the two NA founders who actually run through alcohol three-tier distributors and national chains, i.e. real depletion/category-review problems; (c) the moderation thesis itself, straight from the founders driving it.</p>
+  <p><strong>3. The sharpest single hook is already in hand.</strong> Mingle's national distributor is <strong>RNDC — the wholesaler now being dismantled</strong> (sold 11 markets to Reyes, exiting Illinois; see <a href="competitive-landscape-jul2026.html">Competitive Landscape · Jul 2026</a>). A brand whose distribution is mid-disruption is a live, unscripted demonstration of exactly what BevGenie surfaces. That's a conversation opener, not a pitch.</p>
+  <p><strong>4. The non-obvious Festival value isn't the NA startups — it's their parents.</strong> Several sponsor brands are NA lines of real three-tier alcohol companies: <strong>Asahi Group, Trinchero (FRE + Luminara + Seaglass — three brands), Cantine Riunite (Riunite + Maschio), and Lucas Bols (Fluere).</strong> Those <em>parents</em> are ICP. Worth walking the Trade hour (5–6pm) to see who staffs those booths — but temper expectations: a brand ambassador at a tasting table is not a buyer.</p>
+</div>
+
+<!-- ═══════════════ WHY WE CARE ═══════════════ -->
+<h2 class="section">🧭 The honest strategic question: why would a BevAlc company go to a non-alc event?</h2>
+
+<div class="card neutral">
+  <p>Worth answering plainly, because the naïve answer ("these are all potential customers!") is wrong and would waste the day.</p>
+  <ul>
+    <li><strong>Not because NA startups are customers.</strong> A DTC mocktail brand in a few thousand doors has no depletion base worth analyzing. Most of this room is too small for decision intelligence to matter.</li>
+    <li><strong>Because the distribution rails are shared.</strong> The brands that matter (Athletic, Mingle) run through the <em>same</em> alcohol distributors (RNDC, national wholesalers) and the <em>same</em> chain retailers as spirits and beer. For those brands, the category-review and distributor-QBR half of BevGenie's value prop applies directly — even though the TTB-excise / NABCA-control-state half does not, since NA sits outside that data.</li>
+    <li><strong>Because the moderation trend is our own tailwind.</strong> Our investor narrative rests on the mix fragmenting toward NA/RTD/functional (verified: IWSR, Jul 14 — participation flat, intensity structurally declining). This is the room where that trend's operators and capital gather. Being fluent in it strengthens the pitch; being absent from it is a small tell.</li>
+    <li><strong>Because the big alcohol parents are here.</strong> Asahi, Trinchero, Riunite and Bols showing up in NA is the clearest evidence that ICP-scale companies treat this as a real category — and those parents, not their NA SKUs, are the customers.</li>
+  </ul>
+  <p><strong>So the trip is defensible — as intelligence and relationships, priced at $250. It is not a pipeline event. Set expectations accordingly.</strong></p>
+</div>
+
+<!-- ═══════════════ THE TWO EVENTS ═══════════════ -->
+<h2 class="section">📅 The two events at a glance</h2>
+
+<div class="cols">
+  <div class="facts">
+    <dl>
+      <dt>Event</dt><dd><strong>The Drinks With Benefits Summit</strong> ⭐ the one to attend</dd>
+      <dt>Date</dt><dd>Wed, Sept 16, 2026</dd>
+      <dt>Venue</dt><dd>The Maze — "Members Only AF Club," 43 W 24th St, NYC (NYC's first alcohol-free members club; F&amp;B by Tom Colicchio's Crafted Hospitality)</dd>
+      <dt>Format</dt><dd>80-person curated gathering · 6 panels · networking · catered lunch · cocktail-comp announcement</dd>
+      <dt>Ticket</dt><dd><strong>$250</strong> Summit only ($259.77 w/ fee) · $315 bundle w/ festival GA · $335 VIP bundle (cap 20)</dd>
+      <dt>Audience</dt><dd>Founders, investors, industry innovators in NA/functional beverage</dd>
+      <dt>Why go</dt><dd>The investors + the 2–3 real-fit founders + the trend, in one room</dd>
+    </dl>
+  </div>
+  <div class="facts">
+    <dl>
+      <dt>Event</dt><dd><strong>Drinks With Benefits</strong> (Festival) — optional</dd>
+      <dt>Date</dt><dd>Thu, Sept 17, 2026</dd>
+      <dt>Venue</dt><dd>The Altman Building, NYC</dd>
+      <dt>Format</dt><dd>Alcohol-free festival · <strong>Trade 5–6pm</strong> + Consumer 6–10pm · tasting gallery, wellness, food hall, NA wine salon, mixology lab</dd>
+      <dt>Ticket</dt><dd>Early-bird GA $65 / VIP $100 · after Aug 1: GA $85 / VIP $120</dd>
+      <dt>Audience</dt><dd>Mostly consumers; ~44 brand sponsors; 2nd annual (2025 drew ~900–1,000 / 70+ sponsors)</dd>
+      <dt>Why go</dt><dd>Only the <strong>Trade hour</strong>, and only to scout the big-alcohol NA parents' booths</dd>
+    </dl>
+  </div>
+</div>
+
+<div class="card neutral">
+  <p><strong>Organizer credibility — CONFIRMED, not a pop-up.</strong> Bottle Raiders, Inc. is a drinks media + events company founded by <strong>Dan Abrams</strong> (TV host; also founder of Mediaite/Abrams Media) — the Whiskey/Bottle Raiders lineage dates to ~2020, though the operator's own About page self-dates to 2024. Rebranded to "The Daily Pour" Sept 2025. The <strong>inaugural Drinks With Benefits (Sept 27, 2025)</strong> at the same venue drew <strong>~900–1,000 attendees and 70+ sponsors</strong> (the recap's headline says 900+, its body says 1,000+; it says "sponsors," not "brands"); 2026 is the second annual. Real media backing, established venue, prior sell-through.</p>
+</div>
+
+<!-- ═══════════════ WHO TO MEET ═══════════════ -->
+<h2 class="section">🎯 Who to actually meet <span class="count">tiered by real fit, not by billing</span></h2>
+
+<h3 class="subsection">🔥 Tier 1 — worth planning the day around</h3>
+
+<div class="card strong">
+  <h4>Brian Rosen — Founder &amp; Managing Partner, InvestBev <span class="tag strong">Strong</span></h4>
+  <p><strong>The single clean fit in the room.</strong> InvestBev is a Chicago PE/credit platform dedicated to <em>alcohol</em> — verified from their own site: "Alcohol PE &amp; Barrel Asset Investments," "the largest private equity firm focused on the adult beverage industry." Legal entity Growth Beverage Group, LP; AUM figures are inconsistent across their own materials ($100M+ equity AUM on the homepage today; $200M cited in the 2024 VPC release; ~$250M in older claims) — treat as self-reported; $50M Victory Park Capital credit facility (Jul 2024). Portfolio: Ten to One rum, Thomas Ashbourne (RTD), CANN, ReserveBar, Pilot Project Brewing.</p>
+  <p>He's a plausible <strong>investor</strong> in BevGenie <em>and</em> a source of <strong>portfolio-company customers</strong> — spirits/RTD brands are exactly our three-tier ICP. He's publicly cautious on NA ("less than 1% of consumption… don't invest based on a fad"), which is useful signal: he's here for the deal flow, not the kombucha.</p>
+  <div class="ask"><strong>Ask:</strong> "You've been vocal that NA is &lt;1% and not a thesis on its own — where do you think the durable margin in this category actually sits, supplier or distributor side?" Then: how his portfolio brands handle chain category reviews and distributor depletions today.</div>
+</div>
+
+<div class="card strong">
+  <h4>Bill Shufelt — Co-Founder &amp; CEO, Athletic Brewing <span class="tag strong">Strong</span></h4>
+  <p><strong>The largest, most distribution-complex operator on the list.</strong> #1 NA beer in US grocery; ~400k barrels (2024); all 50 states via grocery/retail chains + beer distributors + DTC. Minority stakes from Keurig Dr Pepper (2022) and General Atlantic (2024). Also speaking at BevNET Live NYC 2026.</p>
+  <p>Multi-state + chain category reviews + distributor depletions = our problem statement, minus the TTB/NABCA compliance layer (NA beer sits outside it). The category-review + depletions half of the value prop fits cleanly.</p>
+  <div class="ask"><strong>Ask:</strong> "At 50-state scale across beer distributors and grocery, where does your team still lose time stitching depletion and chain-review data together?" Listen for the fragmentation pain — that's the wedge.</div>
+</div>
+
+<div class="card strong">
+  <h4>Laura Taylor — Founder, Mingle Mocktails <span class="tag strong">Strong</span></h4>
+  <p><strong>The cleanest three-tier customer profile here — and the best live hook.</strong> National chains (Whole Foods, Walmart, Publix, Target, Total Wine) plus a <strong>March 2024 national distribution deal with RNDC</strong> (verified, PR Newswire), authorized across 30 markets for on-premise. Bethenny Frankel angel backing.</p>
+  <p><strong>The hook:</strong> RNDC is the wholesaler currently being dismantled — sold 11 markets to Reyes (closed May 29, 2026), exiting Illinois. Mingle's national distribution is mid-disruption <em>right now</em>. A brand living through a distributor collapse is exactly the scenario BevGenie's decision intelligence is built to navigate. Don't pitch it — surface it.</p>
+  <div class="ask"><strong>Ask:</strong> "With everything happening at RNDC — the Reyes markets, the Illinois exit — how are you keeping visibility on depletions where your distributor footprint is shifting under you?" This is a real, current, unscripted problem she is almost certainly living.</div>
+</div>
+
+<h3 class="subsection">⚠️ Tier 2 — meet if the schedule allows</h3>
+
+<div class="card warning">
+  <h4>Emily Onkey — Co-Founder &amp; CMO, Aplós <span class="tag moderate">Moderate ↗</span> <span class="tag flag">not CEO — event page wrong</span></h4>
+  <p>Functional NA "spirits" + RTD. Real momentum: <strong>2,000+ new retail doors in 2025</strong>, 1,000+ on-premise placements (Four Seasons, Soho House, Michelin), $5M raise Nov 2025. <strong>Open question that decides the fit:</strong> does Aplós ride <em>alcohol</em> three-tier distributors or specialty/natural-channel ones? If the former, this is Strong. Worth a qualifying conversation. <em>(Event page lists her as CEO — she's CMO; CEO is co-founder David Fudge.)</em></p>
+</div>
+
+<div class="card warning">
+  <h4>Mélanie Masarin — Founder &amp; CEO, Ghia <span class="tag moderate">Moderate</span></h4>
+  <p>NA aperitif + Le Spritz. Notable because Masarin herself has publicly framed Ghia as operating inside "this three-tier distribution system ruled by alcohol giants" — the strongest founder-side articulation on the list that our tool is conceptually relevant. But verified scale is thin (funding/door counts are aggregator-only) and much of the business is DTC. Worth a conversation, not a slam-dunk.</p>
+</div>
+
+<div class="card warning">
+  <h4>Dante Catena — Domaine EdeM (Catena Institute of Wine) <span class="tag moderate">Moderate</span></h4>
+  <p>Yes, the Catena Zapata family of Argentina. EdeM's NA line (<strong>BRUNETTE by EdeM</strong>, a 0.0 sparkling) is new — US launch Oct 2025 — but sits atop one of Argentina's largest wineries with real US import/distribution infrastructure. If EdeM scales through Catena Zapata's existing importer/distributor network, decision-intelligence becomes relevant. The parent gives it legs.</p>
+</div>
+
+<div class="card warning">
+  <h4>Dan Gasper — Managing Partner, Nex Drinks / Co-Founder, Distill Ventures <span class="tag moderate">Moderate (connector)</span></h4>
+  <p>A genuine capital allocator and the deepest distribution mind in the room — Nex self-describes as an ANA-specialist investor with 200+ wholesaler/retail relationships; he co-founded Diageo-backed Distill Ventures (Seedlip). <strong>But his fund is non-alc only</strong>, so his portfolio falls outside our data scope. Value is as a distribution-savvy investor who'll instantly grasp the product — and a route to alcohol-side capital — not as a customer channel.</p>
+</div>
+
+<div class="card warning">
+  <h4>Taylor Foxman — Founder &amp; CEO, The Industry Collective <span class="tag moderate">Moderate (connector)</span> <span class="tag flag">advisory, not a fund</span></h4>
+  <p>Writes no checks herself, but advises ~7 VC firms and runs deal flow for 3 angel communities, with an alcohol-heavy client/brand network (ex-comms for Pernod Ricard, Campari, Patrón, Boston Beer). Best used as a <strong>warm-intro node</strong> to actual alcohol investors and brands.</p>
+</div>
+
+<!-- ═══════════════ FULL ROSTER ═══════════════ -->
+<h2 class="section">🗂️ Full speaker roster with fit scores</h2>
+
+<table class="plan-table">
+  <tr><th>Person</th><th>Company / role</th><th>Type</th><th>BevGenie fit</th></tr>
+  <tr><td><strong>Brian Rosen</strong></td><td>InvestBev — Founder/MP</td><td>Alcohol PE/credit</td><td><span class="tag strong">Strong</span> only clean investor fit</td></tr>
+  <tr><td><strong>Bill Shufelt</strong></td><td>Athletic Brewing — CEO</td><td>NA beer, national + distributors</td><td><span class="tag strong">Strong</span></td></tr>
+  <tr><td><strong>Laura Taylor</strong></td><td>Mingle Mocktails — Founder</td><td>NA, RNDC three-tier + chains, ~45 states</td><td><span class="tag strong">Strong</span> + live RNDC hook</td></tr>
+  <tr><td>Emily Onkey</td><td>Aplós — Co-Founder/<strong>CMO</strong></td><td>NA spirits, 2,000+ doors (channel TBD)</td><td><span class="tag moderate">Moderate ↗</span></td></tr>
+  <tr><td>Mélanie Masarin</td><td>Ghia — Founder/CEO</td><td>NA aperitif, three-tier + DTC</td><td><span class="tag moderate">Moderate</span></td></tr>
+  <tr><td>Dante Catena</td><td>Domaine EdeM (Catena)</td><td>NA wine off major winery</td><td><span class="tag moderate">Moderate</span></td></tr>
+  <tr><td>Dan Gasper</td><td>Nex Drinks / Distill Ventures</td><td>ANA-specialist investor</td><td><span class="tag moderate">Moderate</span> connector</td></tr>
+  <tr><td>Taylor Foxman</td><td>The Industry Collective</td><td>Advisory network (not a fund)</td><td><span class="tag moderate">Moderate</span> connector</td></tr>
+  <tr><td>Lawrence Bremer</td><td>St. Buena Vida — Founder</td><td>NA wine, right channel, ~25 doors/3 states</td><td><span class="tag weak">Weak</span> too early — recheck 18–24mo</td></tr>
+  <tr><td>Rachel Martin</td><td>Oceano Zero — Founder</td><td>NA wine, distribution unverified</td><td><span class="tag weak">Weak</span> data-limited</td></tr>
+  <tr><td>Marcos Salazar</td><td>ANBA — CEO</td><td>NA trade association</td><td><span class="tag weak">Weak</span> connector, off-category</td></tr>
+  <tr><td>Nicolas Guillant</td><td>Opius — US commercial (not founder)</td><td>NA spirits, operator</td><td><span class="tag weak">Weak</span></td></tr>
+  <tr><td>Anna Baskin</td><td>Hightail — Co-Founder</td><td><strong>THC/hemp</strong>, DTC single-metro</td><td><span class="tag weak">Weak</span> wrong category</td></tr>
+  <tr><td>Monica Cornitcher</td><td>Medase — Co-Founder</td><td>NA cocktails, no scale disclosed</td><td><span class="tag weak">Weak</span></td></tr>
+  <tr><td>Aqxyl Storms</td><td>Minus Moonshine</td><td>Single-store NA retailer</td><td><span class="tag weak">Weak</span> wrong entity type</td></tr>
+  <tr><td>Nick Pelis</td><td>Spirited Away (new owner)</td><td>Single-store NA retailer</td><td><span class="tag weak">Weak</span></td></tr>
+  <tr><td>Abe Zarate</td><td>Crane Club — Wine Director</td><td>On-premise buyer, one venue</td><td><span class="tag weak">Weak</span> possible NA design partner</td></tr>
+  <tr><td>Caleb Ganzer</td><td>Hospitality operator / somm</td><td>Multi-concept operator</td><td><span class="tag weak">Weak</span> ⚠ see reputational note</td></tr>
+  <tr><td>Vanessa Rissetto</td><td>Culina Health — CEO</td><td>Nutrition health-tech</td><td><span class="tag weak">Weak</span> none</td></tr>
+  <tr><td>Tom Colicchio</td><td>Crafted / The Maze F&amp;B</td><td>Chef / venue partner</td><td><span class="tag weak">Weak</span> none</td></tr>
+</table>
+
+<div class="card warning">
+  <h4>⚠️ One reputational flag before any outreach</h4>
+  <p><strong>Caleb Ganzer</strong> (billed "Multi-Concept Hospitality Operator") was <strong>arrested July 2021 and charged with arson</strong> for setting fires to Manhattan outdoor-dining structures; he reached an agreement with the Manhattan DA in April 2022 (Wine Spectator). Not a fit for us regardless, but worth knowing before he appears in any photo or follow-up. His 2023–2026 activity beyond this listing is NOT FOUND.</p>
+</div>
+
+<!-- ═══════════════ FESTIVAL SPONSORS ═══════════════ -->
+<h2 class="section">🏷️ Festival sponsor roster <span class="count">44 brands · the parents are the story</span></h2>
+
+<div class="card opportunity">
+  <h4>⭐ The four sponsor brands that actually matter — NA lines of real three-tier alcohol companies</h4>
+  <p>Most of the 44 sponsors are independent NA startups too small for three-tier complexity. These four are not — their <strong>parents</strong> are ICP-scale and already live in the alcohol distribution system:</p>
+  <ul>
+    <li><strong>Asahi</strong> (NA beer) → <strong>Asahi Group Holdings</strong> — global brewer (Peroni, Grolsch, Fuller's), large US three-tier footprint. <span class="tag strong">Strongest parent flag</span></li>
+    <li><strong>FRE</strong> + <strong>Luminara</strong> + <strong>Seaglass</strong> (alcohol-removed wine) → <strong>Trinchero Family Estates</strong> (Sutter Home, Ménage à Trois) — large US wine &amp; spirits company. <em>Three brands on the floor, one ICP parent — the biggest single-parent concentration here.</em> (Corrected in v1.1: Seaglass is also Trinchero; and Luminara is Trinchero, not Jackson Family Wines.)</li>
+    <li><strong>Riunite</strong> + <strong>Maschio</strong> (NA sparkling) → <strong>Cantine Riunite &amp; CIV</strong> — Italy's largest wine co-op; US NA launch Oct 2025.</li>
+    <li><strong>Fluere</strong> (NA spirits) → <strong>Lucas Bols</strong> — Amsterdam spirits house (acquired Fluere 2023).</li>
+  </ul>
+  <p><strong>Play:</strong> walk the Trade hour (5–6pm Sept 17) and see who staffs those four booths. If a commercial/insights person from Asahi or Trinchero is there, that's the most valuable badge on the floor. <strong>Caveat: a brand ambassador pouring samples is not a buyer — confirm the role before investing the conversation.</strong></p>
+</div>
+
+<div class="card neutral">
+  <h4>Full roster by tier (verified present in page HTML; none inferred)</h4>
+  <p><strong>Gold (1):</strong> Oceano</p>
+  <p><strong>Silver (8):</strong> FRE · Luminara · <strong>Seaglass</strong> · Solubrae · Bimble · Kavayn · Medase · Saicho <em>(FRE, Luminara AND Seaglass are all Trinchero NA brands)</em></p>
+  <p><strong>Bronze (17):</strong> Bark &amp; Bitter · Edem · Lyre's · Mingle Mocktails · Myce · Oktane · Teapot · Tomorrow Cellars · Zeronimo · Feelz · Fluere · Lapos / Zero Proof · Maschio · Riunite · Rewine · Yasaa · The Zero Proof</p>
+  <p><strong>Brass (6):</strong> Bite Me · Kylie Minogue · Nxt Dib · Ohho · Sylva · Vineyard Wines</p>
+  <p><strong>Copper (12):</strong> Aplos · Asahi · Bero · BKE Kombucha · Disco Fizz · Equilibria · Ghia · KavaHaven · Undone · Varnum Vintners · Ito En · East x West</p>
+  <p style="margin-top:8px;"><em>Notable independents: Lyre's (well-funded NA spirits, Australia — £18m raise 2023), Bero (Tom Holland's NA beer), Zeronimo (ultra-premium dealcoholized wine). Ito En is large but tea-only — no alcohol relevance. "The Zero Proof" is an NA marketplace/retailer, not a producer.</em></p>
+</div>
+
+<!-- ═══════════════ CORRECTIONS ═══════════════ -->
+<h2 class="section">✏️ Corrections to the event's own framing</h2>
+<div class="card neutral">
+  <ul>
+    <li><strong>"Athletic Beer"</strong> → the company is <strong>Athletic Brewing Company</strong>.</li>
+    <li><strong>Emily Onkey is CMO, not CEO</strong> of Aplós (the event page and an aggregator both err; CEO is co-founder David Fudge).</li>
+    <li><strong>"Nicholas Guillant — Opius"</strong> is <strong>not an Opius founder</strong> — he's a Miami-based US commercial executive (exact title unverified). Opius's founders are Leander Beuckels &amp; Lucas Lambrechts. Spelling is <strong>Nicolas Guillant</strong>.</li>
+    <li><strong>"The Industry Collective" is an advisory/membership network, not a fund</strong> — Taylor Foxman writes no checks herself.</li>
+    <li><strong>Nick Pelis is Spirited Away's new owner (acquired Dec 2025), not its founder</strong> (founder: Douglas Watters). Pelis also founded Denizen Rum.</li>
+    <li><strong>Hightail is a THC/hemp beverage brand, not NA</strong> — only its "Halo" sub-line is non-alcoholic. Category mismatch for an "NA founders" summit.</li>
+    <li><strong>Luminara's parent is Trinchero Family Estates, not Jackson Family Wines</strong> (a common misattribution, checked and rejected).</li>
+    <li><strong>Tom Colicchio personally catering the Sept 16 lunch</strong> is an organizer claim; his verified tie is that his Crafted Hospitality is The Maze's F&amp;B partner. Don't overstate his presence.</li>
+  </ul>
+</div>
+
+<!-- ═══════════════ RECOMMENDATION ═══════════════ -->
+<h2 class="section">✅ Recommendation</h2>
+<div class="card opportunity">
+  <ul>
+    <li><strong>Go to the Summit (Sept 16). One person, $250.</strong> Cheap for a targeted-networking day. Target list, in order: <strong>Brian Rosen, Laura Taylor, Bill Shufelt</strong>, then Onkey / Masarin / Catena / Gasper / Foxman if time allows.</li>
+    <li><strong>Bundle the Festival Trade hour only if the $65 add-on is trivial</strong> — go at 5pm, scout the Asahi / Trinchero / Riunite / Bols booths, leave before the consumer crush at 6pm. Skip the consumer session entirely; it has no BD value.</li>
+    <li><strong>Go in as a listener, not a seller.</strong> The RNDC-disruption hook with Laura Taylor is the one place to let the product speak — and even there, surface the problem, don't pitch the tool.</li>
+    <li><strong>Set the internal expectation now:</strong> this is intelligence + relationships on the moderation trend, not a pipeline event. Judge it by "did we meet Rosen and 2 real-fit founders," not by leads.</li>
+    <li><strong>Before committing, one open check:</strong> confirm whether the Tier-1 people are actually confirmed to attend (the event page lists panelists, but panelist ≠ present-all-day, and rosters shift). Worth a note to the organizer.</li>
+  </ul>
+</div>
+
+<!-- ═══════════════ FOOTER ═══════════════ -->
+<div class="footer-notes">
+  <h3>v1.1 — adversarial audit applied (Jul 24, 2026)</h3>
+  <ul>
+    <li><strong>The audit came back clean — no fabrications, nothing WRONG-on-substance.</strong> All 27 load-bearing claims survived, including the full 44-brand sponsor roster (which I also re-extracted from raw HTML myself) and the four parent-company attributions. This is the strongest first-audit result of the project's recent briefs — a payoff of hand-verifying the roster before writing rather than after.</li>
+    <li><strong>Correction that <em>strengthens</em> the thesis:</strong> <strong>Seaglass</strong> (a Silver sponsor) is also a Trinchero NA brand. So Trinchero has <strong>three</strong> brands on the festival floor (FRE + Luminara + Seaglass), not two — the biggest single-parent concentration at the event. Corrected upward.</li>
+    <li><strong>Small factual fixes:</strong> product name is <strong>"BRUNETTE by EdeM,"</strong> not "BRUNETTE 0.0"; 2025 attendance softened to <strong>~900–1,000</strong> (the organizer's own recap says 900+ in the headline, 1,000+ in the body) and "70+ <strong>sponsors</strong>," not "brands."</li>
+    <li><strong>Softenings:</strong> InvestBev's AUM is inconsistent across their own materials ($100M+ / $200M / ~$250M) — now flagged as self-reported rather than asserted; Nex Drinks' "200+ wholesaler relationships" attributed to Gasper's own bio; the organizer's founding year noted as ~2020-lineage / 2024-self-dated.</li>
+    <li><strong>Ganzer disposition clarified:</strong> the April 2022 DA agreement was a deferred/conditional dismissal (restitution + alternative-to-incarceration), <strong>not a conviction</strong> — the brief says "reached an agreement," which is correct; do not upgrade it to "convicted."</li>
+    <li><strong>Bonus connective find:</strong> the audit cross-checked that <strong>Bill Shufelt chairs the ANBA board and Laura Taylor sits on it</strong> (Marcos Salazar's trade body) — so our two STRONG founder targets and the connector are already networked. A warm-intro path runs through ANBA.</li>
+  </ul>
+
+  <h3>v1 — initial build (Jul 24, 2026)</h3>
+  <ul>
+    <li><strong>Method:</strong> 3 parallel research agents (capital-side speakers · founder/operator speakers · sponsor roster + logistics), each instructed to label findings CONFIRMED / PLAUSIBLE / AGGREGATOR-ONLY / NOT FOUND with source + date, and to flag any stated affiliation they couldn't verify.</li>
+    <li><strong>Load-bearing claims re-verified by hand</strong> (given an agent fabricated a finding elsewhere in this project today): both event dates/venues; the $250 Summit and $65–120 festival prices (TicketSpice checkout, direct); InvestBev's alcohol focus (their homepage); the Mingle × RNDC national deal (PR Newswire). The RNDC-distress cross-reference is from this project's own verified <a href="competitive-landscape-jul2026.html">Competitive Landscape · Jul 2026</a>.</li>
+    <li><strong>Sponsor roster is count-reconciled:</strong> 44 sponsor logomarks + 6 restaurant logomarks = 50 total on the page; nothing inferred or added to fill a tier.</li>
+    <li><strong>8 corrections to the event's own framing</strong> caught and listed (titles, founder-vs-owner, fund-vs-advisory, category mismatches, a parent-company misattribution).</li>
+    <li><strong>Honest scope:</strong> this is pass-1 triage. It has not had a full second-source audit. The fit scores are judgment calls on public information; several founders' distribution channels (Aplós, Oceano) are genuinely unconfirmed and marked as such.</li>
+  </ul>
+  <h3>Vocabulary rule applied</h3>
+  <ul>
+    <li><strong>Internal document</strong> — operator vocabulary used freely. If any of this is repackaged for an investor-facing artifact, translate to "decision intelligence" / "beverage" per the standing rule.</li>
+  </ul>
+</div>
+
+</div>
+</body>
+</html>
