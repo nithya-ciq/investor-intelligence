@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BDev Ventures — Investor Intelligence Brief · BevGenie AI</title>
+<style>
+  * { box-sizing: border-box; }
+  body { font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", Helvetica, Arial, sans-serif; background: #faf9f7; color: #1a1a1a; margin: 0; line-height: 1.5; -webkit-font-smoothing: antialiased; }
+  .wrap { max-width: 1180px; margin: 0 auto; padding: 32px 28px 80px; }
+  .tab-nav { display: flex; gap: 0; border-bottom: 1px solid #e6e2dc; margin-bottom: 24px; flex-wrap: wrap; }
+  .tab-nav a { padding: 10px 18px; text-decoration: none; color: #6c6760; font-size: 13px; font-weight: 500; border-bottom: 2px solid transparent; margin-bottom: -1px; }
+  .tab-nav a:hover { color: #1a1a1a; }
+  .tab-nav a.active { color: #1a1a1a; border-bottom-color: #5a3a86; font-weight: 600; }
+  header.top { border-bottom: 1px solid #e6e2dc; padding-bottom: 18px; margin-bottom: 28px; }
+  header.top .eyebrow { font-size: 11px; text-transform: uppercase; letter-spacing: 1.2px; color: #5a3a86; font-weight: 600; }
+  header.top h1 { margin: 6px 0 4px; font-size: 28px; font-weight: 600; letter-spacing: -0.4px; }
+  header.top .meta { font-size: 13px; color: #6c6760; }
+  header.top .meta a { color: #4a6b9a; }
+  .trust-map { background: #fdf6e8; border-left: 4px solid #b48f3a; padding: 14px 18px; margin-bottom: 28px; border-radius: 4px; font-size: 13px; color: #6b4f15; }
+  .trust-map strong { color: #4a3a0c; }
+  .trust-map ul { margin: 8px 0 0 18px; padding: 0; }
+  .trust-map li { margin-bottom: 5px; }
+  .verdict { background: #fff; border: 1px solid #e6e2dc; border-left: 5px solid #5a3a86; border-radius: 10px; padding: 20px 24px; margin: 0 0 28px; }
+  .verdict h2 { margin: 0 0 10px; font-size: 16px; color: #5a3a86; text-transform: uppercase; letter-spacing: 1px; font-weight: 600; }
+  .verdict ol { margin: 0; padding-left: 20px; }
+  .verdict li { margin-bottom: 10px; font-size: 14px; }
+  .verdict li:last-child { margin-bottom: 0; }
+  h2.section { font-size: 20px; font-weight: 600; margin: 36px 0 14px; border-bottom: 2px solid #1a1a1a; padding-bottom: 6px; letter-spacing: -0.3px; }
+  h2.section .count { font-size: 13px; color: #6c6760; font-weight: 400; margin-left: 8px; }
+  h3.subsection { font-size: 15px; font-weight: 600; margin: 22px 0 10px; color: #2c4d80; text-transform: uppercase; letter-spacing: 0.6px; }
+  .facts { background: #fff; border: 1px solid #e6e2dc; border-radius: 8px; padding: 16px 20px; margin-bottom: 16px; }
+  .facts dl { margin: 0; display: grid; grid-template-columns: 190px 1fr; gap: 8px 14px; font-size: 13.5px; }
+  .facts dt { color: #6c6760; font-weight: 500; font-size: 12px; text-transform: uppercase; letter-spacing: 0.4px; padding-top: 2px; }
+  .facts dd { margin: 0; color: #1a1a1a; }
+  .card { background: #fff; border: 1px solid #e6e2dc; border-radius: 8px; padding: 16px 20px; margin-bottom: 12px; }
+  .card.strong { border-left: 5px solid #5b8a3a; }
+  .card.weak { border-left: 5px solid #b85a4d; background: #fdf6f5; }
+  .card.neutral { border-left: 5px solid #8b8985; }
+  .card.opportunity { border-left: 5px solid #5b8a3a; background: #f4f8f2; }
+  .card.warning { border-left: 5px solid #b48f3a; background: #fdf6e8; }
+  .card h4 { margin: 0 0 6px; font-size: 15px; font-weight: 600; }
+  .card p { margin: 0 0 8px; font-size: 13.5px; }
+  .card p:last-child { margin-bottom: 0; }
+  .card ul { margin: 6px 0 6px 18px; padding: 0; font-size: 13.5px; }
+  .card ul li { margin-bottom: 4px; }
+  .card .stat-row { display: grid; grid-template-columns: 150px 1fr; gap: 4px 14px; font-size: 13px; margin: 4px 0; }
+  .card .stat-row .k { color: #6c6760; font-weight: 500; font-size: 11.5px; text-transform: uppercase; letter-spacing: 0.4px; padding-top: 2px; }
+  .quote { background: #f6f3fa; border-left: 3px solid #5a3a86; padding: 10px 14px; margin: 12px 0; border-radius: 4px; font-size: 13.5px; font-style: italic; color: #43286e; }
+  .plan-table { width: 100%; border-collapse: collapse; font-size: 13px; margin: 12px 0; }
+  .plan-table th { text-align: left; padding: 8px 10px; font-size: 11.5px; text-transform: uppercase; letter-spacing: 0.4px; color: #6c6760; background: #f6f4f0; border-bottom: 1px solid #e6e2dc; position: sticky; top: 0; }
+  .plan-table td { padding: 9px 10px; border-bottom: 1px solid #f0ede5; vertical-align: top; }
+  .plan-table td a { color: #4a6b9a; text-decoration: none; font-weight: 500; }
+  .plan-table td a:hover { text-decoration: underline; }
+  .stage { display: inline-block; padding: 2px 8px; border-radius: 10px; font-size: 11px; font-weight: 600; letter-spacing: 0.2px; }
+  .st-seed { background: #eef3e8; color: #3f6b25; }
+  .st-a { background: #e8eef6; color: #2c4d80; }
+  .st-g { background: #f3ecf8; color: #5a3a86; }
+  .grid2 { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 12px; }
+  .cluster { display: grid; grid-template-columns: 210px 1fr; gap: 6px 14px; font-size: 13.5px; margin: 8px 0; align-items: start; }
+  .cluster .n { font-weight: 600; color: #2c4d80; }
+  .bar { background: #f0ede5; border-radius: 4px; height: 18px; position: relative; margin: 3px 0; }
+  .bar > span { display: block; height: 18px; border-radius: 4px; background: #5a3a86; }
+  .barrow { display: grid; grid-template-columns: 140px 1fr 46px; gap: 10px; align-items: center; font-size: 12.5px; margin-bottom: 5px; }
+  .barrow .v { font-weight: 600; text-align: right; }
+  .footer-notes { margin-top: 40px; padding-top: 24px; border-top: 1px solid #e6e2dc; font-size: 12.5px; color: #6c6760; }
+  .footer-notes h3 { color: #1a1a1a; font-size: 13px; margin: 0 0 8px; }
+  .footer-notes ul { margin: 4px 0 14px 18px; padding: 0; }
+  .footer-notes li { margin-bottom: 4px; }
+  a { color: #4a6b9a; }
+  .flag { display: inline-block; background: #fdf6e8; color: #6b4f15; border: 1px solid #e5d6ae; border-radius: 3px; font-size: 10.5px; font-weight: 600; padding: 1px 6px; text-transform: uppercase; letter-spacing: 0.4px; vertical-align: middle; }
+  .flag.ok { background: #eef3e8; color: #3f6b25; border-color: #cadcbc; }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<nav class="tab-nav">
+  <a href="index.html">Main Brief — Full Pipeline</a>
+  <a href="agent-conference-may2026.html">Agent Conference · May 4-5</a>
+  <a href="vc-reverse-pitch-may13.html">VCReversePitch · May 13</a>
+  <a href="bevnet-live-june10-11.html">BevNETLive Workshop</a>
+  <a href="bevnet-live-full-event.html">BevNETLive Full Event</a>
+  <a href="vc-reverse-pitch-sf-june23.html">VCReversePitch · SF Jun 23</a>
+  <a href="owls-brew-customer.html">Owl's Brew · Customer</a>
+  <a href="njx-summit-jul8.html">NJx Summit · Jul 8</a>
+  <a href="overproof-competitive.html">Overproof · Competitive</a>
+  <a href="competitive-landscape-jul2026.html">Competitive Landscape · Jul 2026</a>
+  <a href="drinks-with-benefits-sept2026.html">Drinks With Benefits · Sep 16-17</a>
+  <a href="bdev-ventures-investor.html" class="active">BDev Ventures · Investor</a>
+</nav>
+
+<header class="top">
+  <div class="eyebrow">v2 · Inbound investor brief · prepared Sept 3, 2026 · re-verified same day</div>
+  <h1>BDev Ventures &mdash; Investor Intelligence &amp; Approach Brief</h1>
+  <div class="meta">BDev Ventures (investment arm of BairesDev) &middot; <a href="https://www.bdevventures.com/" target="_blank" rel="noopener">bdevventures.com</a> &middot; 800 W. El Camino Real, Suite 180, Mountain View CA 94040 &middot; Founded 2021 &middot; 49 portfolio companies listed publicly · 3 stated exits<br>
+  <strong>Trigger:</strong> inbound cold email from Jonathan Wallace (Investment Associate), addressed to Hiral</div>
+</header>
+
+<div class="trust-map">
+  <strong>Trust map &mdash; read this before quoting any number.</strong>
+  <ul>
+    <li><span class="flag ok">Primary verified</span> Everything sourced from bdevventures.com raw HTML on Sept 3, 2026: the WinDifferent model, US/LATAM geography, team roster and titles, and the <strong>full 49-company portfolio with per-company industry, founding year, year invested and round</strong>. The stage and sector analysis below is computed from that table, not from a third party.</li>
+    <li><span class="flag">Aggregator only</span> Check size, the ARR floors, "beyond founder-led sales" and "minority, non-invasive" positions. <strong>BDev publishes none of them.</strong> In the v2 pass we read SuperScout, ProDevs and Startup Intros directly rather than through search summaries, and they <strong>disagree with each other</strong> &mdash; see section 4 for who says what. The $0.5M software ARR floor is the only figure carried by two independent sources; the services tier and the founder-led-sales rule rest on one source each. Confirm every line on the call.</li>
+    <li><span class="flag">Retracted in v2</span> v1 quoted a criterion of a "large addressable market in terms of contacts." <strong>No fetched source contains that phrasing</strong> &mdash; it came from a search-engine synthesis, not a page. It has been removed as a quotation and reframed as our own inference about a volume-outbound engine. This is the kind of laundering the archive's methodology exists to catch.</li>
+    <li><span class="flag">Discrepancy</span> Portfolio count is reported four different ways: BDev's homepage claims <strong>"80+ companies"</strong>; their own portfolio page lists <strong>49</strong>; Startup Intros says <strong>59</strong>; a PitchBook-derived summary says <strong>76 investments</strong>. Only the 49 is independently checkable, because we counted it. Do not repeat any of the others as fact.</li>
+    <li><span class="flag">Unresolved</span> One aggregator summary names <strong>Bruno Rovagnati as "Co-Founder &amp; Managing Partner"</strong> of BDev Ventures. <strong>That name does not appear on BDev's own team page</strong>, which lists Nacho De Marco (Co-Founder&ndash;GP) and Fernando Galano (GP). Either a founder is absent from their site or the aggregator is wrong; we could not resolve it from primary sources. Do not use the name in conversation until verified.</li>
+    <li><span class="flag">Self-attested</span> "220,000+ leads delivered", "$40M+ revenue generated for our startups", "50+ investments globally, 25% achieving markups", "largest bootstrapped tech unicorn in Latin America". All are BDev's own claims on their own site with no external audit. Do not let these carry weight in a decision.</li>
+  </ul>
+</div>
+
+<div class="verdict">
+  <h2>Verdict</h2>
+  <ol>
+    <li><strong>This is not a conventional VC &mdash; it is a lead-generation engine that also writes cheques.</strong> BDev is BairesDev's investment arm, and their differentiator is WinDifferent, the outbound machine that scaled BairesDev itself. They run it for portfolio companies at their own cost. Judge them on that engine, not on their capital.</li>
+    <li><strong>Their strength lands exactly on our weakest number.</strong> Our pipeline coverage sits at roughly 2.3&times; against a 3&ndash;4&times; target &mdash; top-of-funnel is our binding constraint, and a partner whose whole value-add is qualified lead flow is a genuine strategic fit. They also claim to deliver results <em>before</em> investing, which makes them cheap to test.</li>
+    <li><strong>The gating risk is traction, not fit.</strong> Their reported floor of ~$0.5M ARR is well above where BevGenie AI is today. They do write Pre-Seed and Angel cheques, so the floor is softer than advertised &mdash; but treat this first call as relationship-building and engine-diligence, not as a live round. Ask their real floor in the first ten minutes.</li>
+  </ol>
+</div>
+
+<h2 class="section">1. Firm facts <span class="count">primary-source verified</span></h2>
+<div class="facts">
+  <dl>
+    <dt>Entity</dt><dd>BDev Ventures &mdash; investment arm of BairesDev</dd>
+    <dt>Founded</dt><dd>2021 (BairesDev founded 2009)</dd>
+    <dt>HQ</dt><dd>800 W. El Camino Real, Suite 180, Mountain View, CA 94040</dd>
+    <dt>Geography</dt><dd>United States and Latin America</dd>
+    <dt>Stage (their words)</dt><dd>"Seed through growth"</dd>
+    <dt>Stage (observed)</dt><dd>Seed-dominant. 22 Seed + 1 Pre-Seed + 1 Angel + 2 Seed variants vs 10 Series A and 2 Growth. <strong>No Series B observed</strong> despite third-party claims of "Seed to Series B".</dd>
+    <dt>Sector</dt><dd>Horizontal B2B software. No vertical specialism; HR Tech is the largest single cluster.</dd>
+    <dt>Portfolio listed</dt><dd>49 companies (site claims 80+ &mdash; see trust map)</dd>
+    <dt>Investment pace</dt><dd>2021: 2 &middot; 2022: 4 &middot; 2023: 8 &middot; 2024: 16 &middot; 2025: 12 &middot; 7 undated. Accelerating and high-volume.</dd>
+    <dt>Beverage / CPG exposure</dt><dd><strong>Zero.</strong> No beverage, CPG, or three-tier distribution company in the portfolio.</dd>
+    <dt>Fund size / AUM</dt><dd><strong>Not disclosed anywhere.</strong> BDev publishes no fund size; PitchBook's AUM field is blank. Do not assume a large fund, and do not let the "$250k&ndash;$5M" range imply one. <span class="flag">open question</span></dd>
+    <dt>Lead or follow?</dt><dd><strong>Unknown.</strong> No source states whether they lead rounds, price them, or only participate. Given cheque sizes and "non-invasive" positioning, participation is more likely than leading &mdash; but that is inference. <span class="flag">open question</span></dd>
+    <dt>Fund vintage / deployment</dt><dd><strong>Unknown.</strong> Whether they are investing from a first or later fund, and how much runway that fund has left, is not public. Directly relevant to whether a relationship built now can be funded later. <span class="flag">open question</span></dd>
+  </dl>
+</div>
+
+<h2 class="section">2. The model &mdash; what they actually sell</h2>
+
+<div class="card strong">
+  <h4>Capital + WinDifferent, with the risk on their side</h4>
+  <p>BDev's homepage headline is literally <em>"Capital + Lead Generation = Growth"</em>. WinDifferent is their proprietary outbound lead-generation platform &mdash; the same engine that grew BairesDev from zero into one of the largest bootstrapped software outsourcing firms in the world. They deploy it for a <em>select</em> subset of portfolio companies.</p>
+  <div class="quote">"We take on the cost and risk of running our GTM tools for our portfolio companies. We only succeed when you succeed."</div>
+  <div class="quote">"We don't take a board seat and disappear. We work closely with a select group of portfolio companies on the things that actually drive revenue."</div>
+  <p><strong>Why this matters to us:</strong> most investors offer advice; this one offers pipeline. That is the single input BevGenie AI needs most right now. It is also the claim most worth stress-testing &mdash; see the call-prep questions in section 7.</p>
+</div>
+
+<div class="card warning">
+  <h4>"Select portfolio companies" is doing a lot of work</h4>
+  <p>Both the tangible-value-add copy and the approach copy limit the GTM engine to a <em>select group</em>. With 49&ndash;80 companies and one engine, most of the portfolio cannot be getting the full treatment. <strong>Establish in writing whether BevGenie AI would be inside or outside that select group, and what the selection criterion is.</strong> An investment that assumes lead flow which never arrives is worse than a smaller cheque from a passive investor.</p>
+</div>
+
+<div class="card neutral">
+  <h4>They try before they buy</h4>
+  <p>Their contact page states they drive growth <em>"not through abstract promises, but by delivering tangible results before we invest."</em> Expect them to propose running a lead campaign for BevGenie AI as part of diligence. That is a genuine, low-cost opportunity for us: we get a live read on the engine's quality in our vertical <strong>before</strong> any equity conversation, and their performance in beverage is itself the diligence answer.</p>
+</div>
+
+<h2 class="section">3. Focus areas <span class="count">computed from their own 49-company table</span></h2>
+
+<h3 class="subsection">Sector clusters</h3>
+<div class="card">
+  <div class="barrow"><div>HR Tech</div><div class="bar"><span style="width:56%"></span></div><div class="v">10</div></div>
+  <div class="barrow"><div>AI platforms &amp; data</div><div class="bar"><span style="width:39%"></span></div><div class="v">7</div></div>
+  <div class="barrow"><div>FinTech / WealthTech</div><div class="bar"><span style="width:33%"></span></div><div class="v">6</div></div>
+  <div class="barrow"><div>PropTech / CRE</div><div class="bar"><span style="width:17%"></span></div><div class="v">3</div></div>
+  <div class="barrow"><div>Productivity / martech</div><div class="bar"><span style="width:17%"></span></div><div class="v">3</div></div>
+  <div class="barrow"><div>Logistics / supply chain</div><div class="bar"><span style="width:11%"></span></div><div class="v">2</div></div>
+  <div class="barrow"><div>Long tail (18 one-offs)</div><div class="bar"><span style="width:100%;background:#8b8985"></span></div><div class="v">18</div></div>
+  <p style="margin-top:12px"><strong>Read:</strong> horizontal B2B software with an HR Tech tilt and a real LATAM contingent &mdash; explicitly stated on their page for <strong>Tally Legal</strong> (Mexico incorporation), <strong>Pipo Sa&uacute;de</strong> (Brazil health benefits) and <strong>Worky</strong> (.mx), with several others (Fichap, Maslow, eBombo, Clickeat) LATAM by founder or domain rather than by stated HQ. The long tail is genuinely long: <strong>18 of 49 companies are one-offs in their own category</strong> &mdash; insurance, med tech, event ticketing, AR, climate, relocation, recycling. There is no vertical-SaaS thesis on display &mdash; which cuts both ways for us: no competing beverage investment, but also no domain fluency and no pattern-match for three-tier distribution.</p>
+</div>
+
+<h3 class="subsection">Stage distribution</h3>
+<div class="card">
+  <div class="barrow"><div>Seed (all variants)</div><div class="bar"><span style="width:100%"></span></div><div class="v">24</div></div>
+  <div class="barrow"><div>Series A</div><div class="bar"><span style="width:42%;"></span></div><div class="v">10</div></div>
+  <div class="barrow"><div>Growth</div><div class="bar"><span style="width:8%"></span></div><div class="v">2</div></div>
+  <div class="barrow"><div>Pre-Seed / Angel</div><div class="bar"><span style="width:8%"></span></div><div class="v">2</div></div>
+  <div class="barrow"><div>Not disclosed</div><div class="bar"><span style="width:46%"></span></div><div class="v">11</div></div>
+  <p style="margin-top:12px"><strong>Read:</strong> the centre of gravity is Seed. Critically for us, <strong>they have written at least one Pre-Seed (eBombo, 2022) and one Angel cheque (Tally Legal, 2024)</strong> &mdash; concrete, primary-source evidence that the "$0.5M ARR minimum" is not absolute. Use these two names on the call. <span class="flag ok">re-verified v2</span></p>
+</div>
+
+<h2 class="section">4. Investment criteria <span class="count">aggregator-sourced &mdash; unverified</span></h2>
+<div class="card warning">
+  <p>None of the following appears on BDev's own site. Multiple aggregators (SuperScout, ProDevs, OpenVC) report them consistently, which raises confidence but does not make them verified. <strong>Treat every line as a question to ask, not a fact to plan around.</strong></p>
+  <div class="stat-row"><div class="k">Check size</div><div><strong>Sources disagree.</strong> SuperScout and Startup Intros both say <strong>$250,000 &ndash; $5,000,000</strong>; ProDevs says <strong>$500,000 &ndash; $5,000,000</strong> and describes it as an <em>average</em> round that "varies based on the stage". Treat the floor as unknown between $250k and $500k.</div></div>
+  <div class="stat-row"><div class="k">Stages</div><div>SuperScout: "Seed, Seed Plus, and Series A". Startup Intros: "Seed to Series B". ProDevs: "seed to growth". BDev's own site: "Seed through growth". <strong>No Series B appears in their actual portfolio.</strong></div></div>
+  <div class="stat-row"><div class="k">ARR floor</div><div>&ge; <strong>$0.5M ARR</strong> for software / SaaS / product (on SuperScout <em>and</em> Startup Intros); &ge; <strong>$5M revenue</strong> for services businesses (Startup Intros only &mdash; SuperScout does not mention a services tier)</div></div>
+  <div class="stat-row"><div class="k">Sales maturity</div><div>Must have moved <em>beyond founder-led sales</em> and be "ready to scale" (Startup Intros only; absent from SuperScout and ProDevs)</div></div>
+  <div class="stat-row"><div class="k">Readiness</div><div>Operationally prepared to scale 3&ndash;5&times; on the WinDifferent platform</div></div>
+  <div class="stat-row"><div class="k">Ownership</div><div>Minority, non-invasive positions; founders retain control</div></div>
+  <p style="margin-top:10px"><strong>Correction from the v2 pass:</strong> v1 of this brief listed a "large addressable market <em>in terms of contacts</em>" as a stated BDev criterion. <strong>That phrasing could not be found on any source we fetched</strong> (SuperScout, ProDevs and Startup Intros were all read directly) and has been removed as a quotation. <strong>The underlying concern still stands, but as our own inference rather than their stated rule:</strong> WinDifferent is a volume-outbound engine, so it plausibly needs a wide contactable universe, and our ICP is roughly 1,200 US beverage brands with field teams &mdash; precise rather than large. Raise it ourselves on the call instead of attributing it to them; see the counter-framing in section 6.</p>
+</div>
+
+<h2 class="section">5. Portfolio <span class="count">49 companies &middot; from bdevventures.com/our-portfolio, Sept 3 2026</span></h2>
+<div class="card" style="padding:8px 12px">
+<div style="max-height:560px;overflow-y:auto">
+<table class="plan-table">
+<thead><tr><th>Company</th><th>Industry (their label)</th><th>Founded</th><th>Invested</th><th>Round</th></tr></thead>
+<tbody>
+<tr><td><a href="https://www.wedgehr.com/" target="_blank" rel="noopener">WedgeHR</a></td><td>HR Tech</td><td>2023</td><td>2025</td><td><span class="stage st-a">Series A</span></td></tr>
+<tr><td><a href="https://sphere.tech/" target="_blank" rel="noopener">Sphere</a></td><td>Augmented Reality Software</td><td>2018</td><td>2025</td><td><span class="stage st-a">Series A</span></td></tr>
+<tr><td><a href="https://skyfireai.com/" target="_blank" rel="noopener">Skyfire AI</a></td><td>AI-powered Drone Solutions</td><td>2023</td><td>2025</td><td><span class="stage st-seed">Seed</span></td></tr>
+<tr><td><a href="https://www.piposaude.com.br/" target="_blank" rel="noopener">Pipo Saúde</a></td><td>Health Care</td><td>2019</td><td>2025</td><td><span class="stage st-a">Series A</span></td></tr>
+<tr><td><a href="https://optimhire.com/d/Search-job" target="_blank" rel="noopener">OptimHire</a></td><td>—</td><td>2018</td><td>2025</td><td><span class="stage ">—</span></td></tr>
+<tr><td><a href="https://www.golendica.com/" target="_blank" rel="noopener">Lendica</a></td><td>Finance Platform</td><td>2020</td><td>2025</td><td><span class="stage st-seed">Seed</span></td></tr>
+<tr><td><a href="https://estatespace.com" target="_blank" rel="noopener">EstateSpace</a></td><td>Wealth Tech</td><td>2019</td><td>2025</td><td><span class="stage st-a">Series A</span></td></tr>
+<tr><td><a href="https://eqvista.com/" target="_blank" rel="noopener">Eqvista</a></td><td>FinTech</td><td>2018</td><td>2025</td><td><span class="stage st-seed">Seed</span></td></tr>
+<tr><td><a href="https://cerbrec.com/" target="_blank" rel="noopener">Cerbrec</a></td><td>AI Data Analytics</td><td>2023</td><td>2025</td><td><span class="stage st-seed">Seed</span></td></tr>
+<tr><td><a href="https://cend.com/" target="_blank" rel="noopener">Cend</a></td><td>Relocation Management Platform</td><td>2021</td><td>2025</td><td><span class="stage st-a">Series A</span></td></tr>
+<tr><td><a href="https://goboon.co" target="_blank" rel="noopener">Boon</a></td><td>HRTech</td><td>2015</td><td>2025</td><td><span class="stage st-seed">Seed</span></td></tr>
+<tr><td><a href="https://youratlas.com/" target="_blank" rel="noopener">Atlas</a></td><td>Voice AI Platform</td><td>2024</td><td>2025</td><td><span class="stage st-seed">Seed</span></td></tr>
+<tr><td><a href="https://edarkstore.com/" target="_blank" rel="noopener">eDarkstore</a></td><td>Logistics &amp; Fulfilment Tech</td><td>2021</td><td>2024</td><td><span class="stage st-seed">Seed</span></td></tr>
+<tr><td><a href="https://www.zoneomics.com" target="_blank" rel="noopener">Zoneomics</a></td><td>PropTech</td><td>2018</td><td>2024</td><td><span class="stage st-seed">Seed</span></td></tr>
+<tr><td><a href="https://www.untap.pe/" target="_blank" rel="noopener">Untap</a></td><td>Portfolio Management Software</td><td>2020</td><td>2024</td><td><span class="stage st-seed">Seed</span></td></tr>
+<tr><td><a href="https://www.tallylegal.io" target="_blank" rel="noopener">Tally Legal</a></td><td>Business and Legal Services</td><td>2019</td><td>2024</td><td><span class="stage st-seed">Angel</span></td></tr>
+<tr><td><a href="https://www.stroveapp.ai/" target="_blank" rel="noopener">Strove</a></td><td>Corporate Wellness (Platform)</td><td>2021</td><td>2024</td><td><span class="stage st-seed">Seed</span></td></tr>
+<tr><td><a href="https://recyclops.com/" target="_blank" rel="noopener">Recyclops</a></td><td>Recycling Gig Economy Platform</td><td>2013</td><td>2024</td><td><span class="stage st-seed">Seed</span></td></tr>
+<tr><td><a href="https://www.qureos.com/" target="_blank" rel="noopener">Qureos</a></td><td>HR Tech</td><td>2021</td><td>2024</td><td><span class="stage st-seed">Seed</span></td></tr>
+<tr><td><a href="https://www.personal.ai/" target="_blank" rel="noopener">Personal.ai</a></td><td>Gen AI Platform</td><td>2020</td><td>2024</td><td><span class="stage st-seed">Seed</span></td></tr>
+<tr><td><a href="https://mgtinsurance.com/" target="_blank" rel="noopener">MGT Insurance</a></td><td>Insurance</td><td>2020</td><td>2024</td><td><span class="stage st-seed">Seed</span></td></tr>
+<tr><td><a href="https://www.lapzo.com/" target="_blank" rel="noopener">Lapzo</a></td><td>HR Tech</td><td>2017</td><td>2024</td><td><span class="stage ">—</span></td></tr>
+<tr><td><a href="https://www.jobsforhumanity.com/" target="_blank" rel="noopener">Jobs for Humanity</a></td><td>HRTech</td><td>2020</td><td>2024</td><td><span class="stage st-seed">Seed</span></td></tr>
+<tr><td><a href="https://www.insightswm.com/" target="_blank" rel="noopener">Insights WM</a></td><td>Wealth Management Platform</td><td>2020</td><td>2024</td><td><span class="stage st-seed">Seed</span></td></tr>
+<tr><td><a href="https://grydd.com/" target="_blank" rel="noopener">Grydd</a></td><td>Supply Chain Platform</td><td>2018</td><td>2024</td><td><span class="stage st-a">Series A</span></td></tr>
+<tr><td><a href="https://flexpressai.com/" target="_blank" rel="noopener">Flexpress AI</a></td><td>Web Engineering</td><td>2020</td><td>2024</td><td><span class="stage st-seed">Seed</span></td></tr>
+<tr><td><a href="https://www.cretelligent.com/" target="_blank" rel="noopener">Cretelligent</a></td><td>PropTech – Commercial RE Analytics</td><td>2014</td><td>2024</td><td><span class="stage st-g">Growth</span></td></tr>
+<tr><td><a href="https://www.citizenticket.com/" target="_blank" rel="noopener">Citizen Ticket</a></td><td>Event Ticketing Platform</td><td>2013</td><td>2024</td><td><span class="stage st-g">Growth</span></td></tr>
+<tr><td><a href="https://mdisrupt.com/" target="_blank" rel="noopener">mDisrupt</a></td><td>Med Tech</td><td>2019</td><td>2023</td><td><span class="stage st-seed">Seed – Priced Round</span></td></tr>
+<tr><td><a href="https://www.worky.mx/" target="_blank" rel="noopener">Worky</a></td><td>HR Tech</td><td>2017</td><td>2023</td><td><span class="stage st-seed">Seed</span></td></tr>
+<tr><td><a href="https://www.pinata.ai" target="_blank" rel="noopener">Pinata</a></td><td>Fintech</td><td>2019</td><td>2023</td><td><span class="stage st-a">Series A</span></td></tr>
+<tr><td><a href="https://nwo.ai/" target="_blank" rel="noopener">NWO.ai</a></td><td>Customer Insights AI Visualization</td><td>2020 (Launched product in late 2021/early 2022).</td><td>2023</td><td><span class="stage st-a">Series A</span></td></tr>
+<tr><td><a href="https://maslow.hr" target="_blank" rel="noopener">Maslow</a></td><td>HR Tech</td><td>2022</td><td>2023</td><td><span class="stage st-seed">Seed</span></td></tr>
+<tr><td><a href="https://www.lately.ai/" target="_blank" rel="noopener">Lately.ai</a></td><td>AI Content Creation</td><td>2014</td><td>2023</td><td><span class="stage st-seed">Seed – Bridge Round</span></td></tr>
+<tr><td><a href="https://fichap.com/" target="_blank" rel="noopener">Fichap</a></td><td>HR Tech – Management</td><td>2019</td><td>2023</td><td><span class="stage st-a">Series A</span></td></tr>
+<tr><td><a href="https://www.eventcombo.com/" target="_blank" rel="noopener">Eventcombo</a></td><td>Event Tech</td><td>2015</td><td>2023</td><td><span class="stage st-seed">Seed</span></td></tr>
+<tr><td><a href="https://ebombo.com/" target="_blank" rel="noopener">eBombo</a></td><td>HR Tech</td><td>2020</td><td>2022</td><td><span class="stage st-seed">Pre-Seed</span></td></tr>
+<tr><td><a href="https://hownd.com/" target="_blank" rel="noopener">Hownd</a></td><td>Marketing</td><td>2015</td><td>2022</td><td><span class="stage ">—</span></td></tr>
+<tr><td><a href="https://www.askhandle.com/" target="_blank" rel="noopener">Handle</a></td><td>Productivity Tech</td><td>2021</td><td>2022</td><td><span class="stage ">—</span></td></tr>
+<tr><td><a href="https://weclickeat.com/" target="_blank" rel="noopener">Clickeat</a></td><td>Climate Tech</td><td>2008</td><td>2022</td><td><span class="stage st-seed">Seed</span></td></tr>
+<tr><td><a href="https://www.projectcor.com" target="_blank" rel="noopener">Project COR</a></td><td>Productivity Tech</td><td>2015</td><td>2021</td><td><span class="stage st-a">Series A</span></td></tr>
+<tr><td><a href="https://chatterworks.com/" target="_blank" rel="noopener">ChatterWorks</a></td><td>HR Tech</td><td>2020</td><td>2021</td><td><span class="stage st-seed">Seed</span></td></tr>
+<tr><td><a href="https://www.webee.io/" target="_blank" rel="noopener">Webee</a></td><td>—</td><td>2013</td><td>—</td><td><span class="stage ">—</span></td></tr>
+<tr><td><a href="https://www.verifee.com/" target="_blank" rel="noopener">VeriFee</a></td><td>FinTech</td><td>2001</td><td>—</td><td><span class="stage ">—</span></td></tr>
+<tr><td><a href="https://taqtile.com/" target="_blank" rel="noopener">Taqtile</a></td><td>Augmented Reality Software</td><td>2011</td><td>—</td><td><span class="stage ">—</span></td></tr>
+<tr><td><a href="https://www.prophia.com/" target="_blank" rel="noopener">Prophia</a></td><td>PropTech</td><td>2018</td><td>—</td><td><span class="stage ">—</span></td></tr>
+<tr><td><a href="https://www.nickelytics.com/" target="_blank" rel="noopener">Nickelytics</a></td><td>—</td><td>2019</td><td>—</td><td><span class="stage ">—</span></td></tr>
+<tr><td><a href="https://www.lemonlight.com/" target="_blank" rel="noopener">Lemonlight</a></td><td>Video Production Platform</td><td>2014</td><td>—</td><td><span class="stage ">—</span></td></tr>
+<tr><td><a href="https://www.allie-ai.com/" target="_blank" rel="noopener">Allie AI</a></td><td>AI Manufacturing Software</td><td>2022</td><td>—</td><td><span class="stage ">—</span></td></tr>
+</tbody>
+</table>
+</div>
+</div>
+<p style="font-size:12.5px;color:#6c6760;margin-top:4px"><strong>Exits stated on their portfolio page &mdash; three, not one:</strong> <strong>NWO.ai</strong> acquired by Growth Protocol (November 2024); <strong>Nickelytics</strong> acquired by T72 Club (July 2024); <strong>Project COR</strong> marked simply "Acquired" with no acquirer or date given. Eleven entries carry no disclosed round and seven no disclosed year &mdash; shown as &mdash; rather than guessed. <span class="flag ok">added v2</span></p>
+
+<h2 class="section">6. Fit assessment for BevGenie AI</h2>
+
+<div class="grid2">
+  <div class="card opportunity">
+    <h4>Arguments for engaging</h4>
+    <ul>
+      <li><strong>They solve our actual bottleneck.</strong> Coverage at ~2.3&times; means top-of-funnel is the constraint. Lead flow is the one form of help that changes our trajectory this quarter.</li>
+      <li><strong>Free diligence in both directions.</strong> They deliver results before investing, so we can measure their engine on beverage targets at no equity cost.</li>
+      <li><strong>Operator-led, not spreadsheet-led.</strong> Nacho De Marco built BairesDev from zero; Collin Groves has done 30+ investments and built five CVCs. They have scaled an outbound motion for real.</li>
+      <li><strong>Stage is compatible in principle.</strong> Seed-dominant, with proven Pre-Seed (eBombo) and Angel (Tally Legal) exceptions.</li>
+      <li><strong>No conflicting portfolio company.</strong> Nothing in beverage, CPG or field-sales software to create a conflict.</li>
+    </ul>
+  </div>
+  <div class="card weak">
+    <h4>Arguments for caution</h4>
+    <ul>
+      <li><strong>We are probably below their traction floor</strong> if the ~$0.5M ARR figure is real.</li>
+      <li><strong>"Beyond founder-led sales" is a direct miss</strong> &mdash; our motion is still founder-led by design at this stage.</li>
+      <li><strong>Our market is narrow by their standards.</strong> A ~1,200-account ICP is not the contact volume their engine is tuned for.</li>
+      <li><strong>Zero vertical fluency.</strong> No portfolio company touches TTB, NABCA or three-tier distribution; we would carry the entire education burden.</li>
+      <li><strong>Cold, templated, associate-level outreach.</strong> The "reply 'no thanks' and we'll pause our outreach" postscript is a mass-send tell. This is sourcing, not conviction.</li>
+      <li><strong>Unaudited self-reported performance</strong> and a portfolio count that does not reconcile with their own page.</li>
+    </ul>
+  </div>
+</div>
+
+<div class="card neutral">
+  <h4>How to answer the "is the market big enough?" objection, if it comes</h4>
+  <p>Do not defend the 1,200-brand number on its own &mdash; it invites the wrong comparison. Reframe on the <strong>three-tier structure</strong>: the contactable universe is beverage brands <em>plus</em> distributors <em>plus</em> broker and rep agencies, each of which is a buyer of decision intelligence in its own right, and each of which multiplies reach into the others. Pair that with the TTB and NABCA data advantage, which gives a defensible, signal-rich targeting layer their generic engine cannot reproduce in this category. The honest framing: <em>narrow universe, unusually high signal per contact</em> &mdash; which is a better fit for precision outbound than for volume outbound, and that distinction is worth surfacing rather than hiding.</p>
+</div>
+
+<h2 class="section">7. Approach plan</h2>
+
+<div class="card strong">
+  <h4>Recommended posture</h4>
+  <p>Take the call. Treat it as <strong>engine diligence plus relationship-building for a later round</strong>, not as a live raise. The asymmetry is favourable: their model gives away GTM value before any equity discussion, so the downside of a first conversation is an hour, and the upside is a free read on whether their outbound machine works in beverage.</p>
+  <p><strong>Owner:</strong> the email went to Hiral, so decide internally who replies before anyone responds &mdash; a split reply to a cold sourcing email reads badly.</p>
+</div>
+
+<div class="card">
+  <h4>Vocabulary discipline for all BDev contact</h4>
+  <p>This is investor-facing. <strong>Use "decision intelligence" &mdash; never "agentic AI" or "AI agents". Use "beverage" &mdash; never "BevAlc". Refer to the company as BevGenie AI.</strong> These are Shyam's exact words with VCs and the rules do not bend for a warm-sounding associate email.</p>
+</div>
+
+<div class="card">
+  <h4>Questions to ask on the first call &mdash; in priority order</h4>
+  <ul>
+    <li><strong>What is your actual traction floor?</strong> Name eBombo (Pre-Seed, 2022) and Tally Legal (Angel, 2024) and ask what made those exceptions work. This single answer determines whether the rest of the conversation is live or a year early.</li>
+    <li><strong>Which portfolio companies get WinDifferent, and how is "select" decided?</strong> Get the selection criterion, not reassurance.</li>
+    <li><strong>Show us WinDifferent's results in a narrow vertical.</strong> Their case studies will be volume markets; ask specifically for a precision-ICP example. If they have none, the engine may not fit our category.</li>
+    <li><strong>Would you run a paid or free pilot campaign on beverage targets before any term sheet?</strong> This is the highest-value ask on the call.</li>
+    <li><strong>What is the real check range at our stage, and is it a priced round or a SAFE?</strong></li>
+    <li><strong>Reconcile the portfolio count</strong> &mdash; 49 listed vs 80+ claimed. Ask neutrally; the answer tells you how carefully they handle numbers.</li>
+    <li><strong>What does "non-invasive" mean concretely</strong> &mdash; board seat, observer rights, information rights, pro-rata?</li>
+    <li><strong>What is BairesDev's relationship to the fund</strong> &mdash; is there any expectation that portfolio companies use BairesDev's outsourcing services?</li>
+    <li><strong>How large is the fund, what vintage, and how much is left to deploy?</strong> None of this is public. It determines whether a relationship built now can actually be funded in 12&ndash;18 months.</li>
+    <li><strong>Do you lead or follow?</strong> Also unstated. Affects whether they can anchor a round or only fill one.</li>
+  </ul>
+</div>
+
+<div class="card neutral">
+  <h4>Suggested reply &mdash; short, warm, non-committal</h4>
+  <div class="quote" style="font-style:normal;color:#1a1a1a;background:#fff;border-left-color:#8b8985">
+    Hi Jonathan,<br><br>
+    Thanks for reaching out &mdash; the WinDifferent model is the part of BDev's approach that caught our attention, since it is unusual for an investor to carry GTM execution risk directly.<br><br>
+    Quick context so we do not waste your time: BevGenie AI is a decision intelligence platform for the beverage industry &mdash; we help brands and their distribution partners turn permit, depletion and account data into field-sales decisions. We are early in commercial traction and deliberately founder-led on sales right now, so if BDev has a firm revenue floor it would be useful to know it up front.<br><br>
+    If you are still interested on that basis, happy to find 30 minutes this week or next.<br><br>
+    Best,<br>
+    [Name]
+  </div>
+  <p style="margin-top:10px"><strong>Why this shape:</strong> it names their differentiator specifically (proving we did the work, and separating us from the mass-reply pile), states our stage honestly rather than discovering the mismatch on the call, and puts the traction question on them &mdash; which is the fastest route to knowing whether this is real. It uses investor vocabulary throughout and claims nothing we cannot substantiate.</p>
+</div>
+
+<h2 class="section">8. People</h2>
+
+<div class="card strong">
+  <h4>Jonathan Wallace &mdash; Associate <span class="flag ok">verified on site</span></h4>
+  <div class="stat-row"><div class="k">Role</div><div>Listed under "Investment Team" as <strong>Associate</strong> on bdevventures.com/team (his email signature says "Investment Associate")</div></div>
+  <div class="stat-row"><div class="k">Contact</div><div>jwallace@bdevventures.com &middot; <a href="https://www.linkedin.com/in/jonathan-wallace-4376149a/" target="_blank" rel="noopener">LinkedIn</a> (linked from BDev's own homepage)</div></div>
+  <div class="stat-row"><div class="k">Read</div><div>Sourcing-level contact. He is the door, not the decision. Be responsive and precise with him, but expect the substantive conversation to move to Groves or Theobald-van Gent.</div></div>
+</div>
+
+<div class="card">
+  <h4>Collin Groves &mdash; Partner, leads investment &amp; diligence</h4>
+  <p>Has made 30+ investments in software-driven companies at BDev. Previously created five corporate venture funds (energy, insurance, biotech, agtech) at EY-Parthenon as a founding member of its CVC practice; ran $5B of M&amp;A and $1B of digital strategy work as a strategy consultant. Began his career at Phillips 66. MBA Georgetown, BBA Finance Oklahoma.</p>
+  <p><strong>Read:</strong> this is the diligence gatekeeper and the most likely person to interrogate our unit economics. His AgTech CVC background is the closest thing in the firm to physical-goods supply-chain fluency &mdash; the nearest available analogue to three-tier distribution. <strong>Ask to be routed to him.</strong></p>
+</div>
+
+<div class="card">
+  <h4>Keshia Theobald-van Gent &mdash; Partner</h4>
+  <p>Leads a team of investors at BDev. Named a 2025 Woman of Influence by the Silicon Valley Business Journal; BDev's own post credits her with driving 50+ investments globally, of which it says 25% achieved markups <span class="flag">self-attested</span>. Publishes on SaaS business models and machine learning in SaaS.</p>
+  <p><strong>Read:</strong> writes publicly about SaaS model evolution &mdash; the partner most likely to engage on our pricing and packaging thinking.</p>
+</div>
+
+<div class="card neutral">
+  <h4>Nacho De Marco &mdash; Co-Founder, General Partner</h4>
+  <p>Founder and CEO of BairesDev, which he started in 2009 and grew into what BDev describes as the largest bootstrapped tech unicorn in Latin America <span class="flag">self-attested</span>. Author of <em>IT Outsourcing to Latin America</em>; member of the Forbes Technology Council and Fast Company Impact Council. Also an investor and board member in biotech and e-learning companies.</p>
+  <p><strong>Read:</strong> the firm's credibility rests on his operating record. Also the reason the fund's instincts are outsourcing-and-outbound shaped rather than vertical-SaaS shaped. Fernando Galano is the second General Partner; no biography is published for him.</p>
+</div>
+
+<div class="footer-notes">
+  <h3>Sources</h3>
+  <ul>
+    <li>Primary: <a href="https://www.bdevventures.com/" target="_blank" rel="noopener">bdevventures.com</a> &middot; <a href="https://www.bdevventures.com/our-portfolio/" target="_blank" rel="noopener">/our-portfolio</a> &middot; <a href="https://www.bdevventures.com/team/" target="_blank" rel="noopener">/team</a> &middot; <a href="https://www.bdevventures.com/contact-us/" target="_blank" rel="noopener">/contact-us</a> &middot; <a href="https://www.bdevventures.com/insights/" target="_blank" rel="noopener">/insights</a>. All fetched from raw HTML on Sept 3, 2026 rather than rendered, per the lazy-load landmine noted in the handoff.</li>
+    <li>Aggregator, flagged as unverified throughout: SuperScout, ProDevs, OpenVC, Crunchbase.</li>
+    <li>Inbound email from Jonathan Wallace, supplied by Nithya Sept 3, 2026.</li>
+  </ul>
+
+  <h3>v2 corrections &mdash; independent re-verification pass (Sept 3, 2026)</h3>
+  <ul>
+    <li><strong>Sector cluster counts were wrong in v1 and are corrected.</strong> v1 stated PropTech 4, AI 6, Logistics 3, Productivity 5, other 15. Recomputed programmatically from BDev's own industry labels: <strong>HR Tech 10, AI platforms &amp; data 7, FinTech/WealthTech 6, PropTech 3, Productivity/martech 3, Logistics 2, long tail 18.</strong> The v1 bar widths were also not proportional to the counts; they now are. HR Tech (10) and FinTech (6) were correct in v1.</li>
+    <li><strong>Pre-Seed cheque mis-attributed.</strong> v1 named ChatterWorks as the Pre-Seed (2022). Verified against the raw page: <strong>eBombo is the Pre-Seed, 2022; ChatterWorks was a Seed in 2021.</strong> The portfolio table was correct throughout &mdash; the error was in the prose and in the call-prep question, both fixed. This came from a one-record field offset in the original text parse, the same class of bug caught before publication in v1.</li>
+    <li><strong>Two exits were missed.</strong> v1 named only NWO.ai. Their page also states <strong>Nickelytics acquired by T72 Club (July 2024)</strong> and <strong>Project COR "Acquired"</strong> with no acquirer or date. Three stated exits, not one.</li>
+    <li><strong>A criterion was retracted.</strong> The "large addressable market in terms of contacts" line in v1 traced to a search-engine synthesis, not to any page &mdash; SuperScout, ProDevs and Startup Intros were each fetched directly in this pass and none contains it. Removed as a quotation, retained as our own clearly-labelled inference. The section-4 conclusion that leaned on it has been rewritten.</li>
+    <li><strong>Check size is less settled than v1 implied.</strong> SuperScout and Startup Intros say $250k&ndash;$5M; ProDevs says $500k&ndash;$5M and calls it an average. The floor should be treated as unknown in that range.</li>
+    <li><strong>Stage claims conflict across sources</strong> (Seed&ndash;Series A vs Seed&ndash;Series B vs seed-to-growth). Recorded in section 4. BDev's own portfolio contains no Series B.</li>
+    <li><strong>LATAM claim tightened.</strong> v1 listed seven companies as LATAM. Only Tally Legal (Mexico), Pipo Sa&uacute;de (Brazil) and Worky (.mx) are supported by the page text; the rest are inference from founder names or domains and are now labelled as such.</li>
+    <li><strong>Three gaps in v1 now recorded as explicit unknowns</strong> rather than left unmentioned: <strong>fund size/AUM</strong> (undisclosed; PitchBook's field is blank), <strong>whether they lead or follow</strong>, and <strong>fund vintage and remaining deployable capital</strong>. All three are now open questions in section 1 and on the call list.</li>
+    <li><strong>A fourth portfolio count and an unexplained founder name surfaced.</strong> A PitchBook-derived summary reports 76 investments and names Bruno Rovagnati as co-founder and managing partner; that name is absent from BDev's own team page. Both are logged in the trust map as unresolved rather than adopted.</li>
+    <li><strong>Re-confirmed unchanged</strong> against the saved primary HTML: the "80+ companies / 220,000+ leads / $40M+ revenue" figures and their exact wording; "from Seed through growth"; Collin Groves' "over 30 investments" and "5 Corporate Venture Capital funds in the Energy, Insurance, BioTech, and AgTech spaces while at EY-Parthenon"; Nacho De Marco's "largest bootstrapped tech unicorn in Latin America"; Jonathan Wallace listed as Associate; the Mountain View address; Tally Legal Angel 2024; NWO.ai's acquisition; and all 49 table rows.</li>
+  </ul>
+
+  <h3>v1 &mdash; initial build (Sept 3, 2026)</h3>
+  <ul>
+    <li>Built from a single primary-source pass over five bdevventures.com pages plus two cross-check searches. <strong>At v1 this brief had had one verification pass.</strong> A second, independent pass followed the same day &mdash; see the v2 log above. Confidence on primary-source facts is now high; confidence on the aggregator-sourced criteria in section 4 remains deliberately low and is labelled in place.</li>
+    <li>Portfolio table generated programmatically from the page's own markup so all 49 rows are transcription-error-free. An initial parse mis-aligned per-company fields by one record; corrected and spot-verified against the raw text for WedgeHR (Series A 2025), Atlas (Seed 2025) and Cerbrec (Seed 2025) before publication.</li>
+    <li>Check size, ARR floor, sales-maturity and ownership criteria are aggregator-only and are labelled as such everywhere they appear. They are <strong>not</strong> load-bearing in the verdict.</li>
+    <li>Open items for v2: confirm the four aggregator criteria on the call; resolve the 49-vs-80 portfolio count; obtain a Fernando Galano biography; establish whether WinDifferent has any precision-ICP case study.</li>
+  </ul>
+</div>
+
+</div>
+</body>
+</html>
