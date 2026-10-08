@@ -1,0 +1,598 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>NBWA 89th Annual Convention &mdash; Floor &amp; Program Brief, Oct 11-14 2026</title>
+<style>
+  * { box-sizing: border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    background: #faf9f7;
+    color: #1a1a1a;
+    margin: 0;
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+  }
+  .wrap { max-width: 1240px; margin: 0 auto; padding: 32px 28px 80px; }
+  header.top {
+    border-bottom: 1px solid #e6e2dc;
+    padding-bottom: 18px;
+    margin-bottom: 28px;
+  }
+  header.top .eyebrow {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 1.2px;
+    color: #b48f3a;
+    font-weight: 600;
+  }
+  header.top h1 {
+    margin: 6px 0 4px;
+    font-size: 28px;
+    font-weight: 600;
+    letter-spacing: -0.4px;
+  }
+  header.top .meta {
+    font-size: 13px;
+    color: #6c6760;
+  }
+  header.top .meta a { color: #4a6b9a; }
+
+  .verdict {
+    background: #fff;
+    border: 1px solid #e6e2dc;
+    border-radius: 10px;
+    padding: 20px 24px;
+    margin: 0 0 24px;
+  }
+  .verdict h2 {
+    margin: 0 0 8px;
+    font-size: 16px;
+    color: #b48f3a;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: 600;
+  }
+  .verdict p { margin: 0 0 8px; }
+  .verdict p:last-child { margin-bottom: 0; }
+
+  .changes-box {
+    background: #fdf6e8;
+    border-left: 4px solid #b48f3a;
+    padding: 16px 20px;
+    margin-bottom: 28px;
+    border-radius: 4px;
+    font-size: 14px;
+  }
+  .changes-box h3 { margin: 0 0 8px; font-size: 14px; color: #6b4f15; }
+  .changes-box ul { margin: 4px 0 0 16px; padding: 0; }
+  .changes-box li { margin-bottom: 4px; }
+
+  .routing-rubric {
+    background: #fff;
+    border: 1px solid #e6e2dc;
+    border-radius: 8px;
+    padding: 16px 20px;
+    margin-bottom: 28px;
+    font-size: 13px;
+  }
+  .routing-rubric h3 { margin: 0 0 10px; font-size: 14px; }
+  .routing-rubric table { width: 100%; border-collapse: collapse; }
+  .routing-rubric td { padding: 4px 8px; border-bottom: 1px solid #f0ede5; }
+  .routing-rubric td:first-child { color: #6c6760; width: 50%; }
+  .routing-rubric td:last-child { font-weight: 500; }
+  .pill { display: inline-block; padding: 1px 8px; border-radius: 10px; font-size: 11px; font-weight: 500; letter-spacing: 0.3px; margin-right: 4px; }
+  .pill.shyam { background: #e8eef9; color: #2c4d80; }
+  .pill.srini { background: #ede4f6; color: #5a3a86; }
+  .pill.gauri { background: #f9ebe4; color: #8a4520; }
+  .pill.hiral { background: #e4f3ee; color: #2d6a4f; }
+  .pill.harini { background: #faf2dc; color: #7a5d10; }
+
+  h2.section {
+    font-size: 20px;
+    font-weight: 600;
+    margin: 36px 0 14px;
+    border-bottom: 2px solid #1a1a1a;
+    padding-bottom: 6px;
+    letter-spacing: -0.3px;
+  }
+  h2.section .count {
+    font-size: 13px;
+    color: #6c6760;
+    font-weight: 400;
+    margin-left: 8px;
+  }
+  .tier-blurb {
+    font-size: 13px;
+    color: #6c6760;
+    font-style: italic;
+    margin: -8px 0 16px;
+  }
+
+  .investor {
+    background: #fff;
+    border: 1px solid #e6e2dc;
+    border-radius: 8px;
+    padding: 18px 20px;
+    margin-bottom: 14px;
+  }
+  .investor.tier1 { border-left: 4px solid #5b8a3a; }
+  .investor.tier2 { border-left: 4px solid #b48f3a; }
+  .investor.tier3 { border-left: 4px solid #8b8985; }
+  .investor.misfit { border-left: 4px solid #b85a4d; opacity: 0.85; }
+  .investor.new { border-left: 4px solid #4a6b9a; }
+
+  .investor-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 6px;
+  }
+  .investor-head .name {
+    font-size: 17px;
+    font-weight: 600;
+  }
+  .investor-head .name .partner {
+    font-weight: 400;
+    color: #6c6760;
+    font-size: 14px;
+    margin-left: 6px;
+  }
+  .investor-head .badges { display: flex; gap: 6px; flex-wrap: wrap; align-items: center; }
+  .investor-head .score {
+    font-size: 12px;
+    background: #1a1a1a;
+    color: #fff;
+    padding: 3px 10px;
+    border-radius: 12px;
+    font-weight: 500;
+    letter-spacing: 0.4px;
+  }
+  .investor.tier1 .score { background: #5b8a3a; }
+  .investor.tier2 .score { background: #b48f3a; }
+  .investor.tier3 .score { background: #8b8985; }
+  .investor.misfit .score { background: #b85a4d; }
+  .investor.new .score { background: #4a6b9a; }
+  .pitch-form-pill {
+    display: inline-block;
+    background: #5b8a3a;
+    color: #fff;
+    padding: 3px 10px;
+    border-radius: 12px;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.3px;
+    text-transform: uppercase;
+  }
+  .pitch-form-pill a { color: #fff; text-decoration: none; }
+  .pitch-form-pill a:hover { text-decoration: underline; }
+  .women-pill {
+    display: inline-block;
+    background: #ede4f6;
+    color: #5a3a86;
+    padding: 3px 10px;
+    border-radius: 12px;
+    font-size: 11px;
+    font-weight: 500;
+  }
+  .investor .meta-row {
+    font-size: 12.5px;
+    color: #6c6760;
+    margin-bottom: 10px;
+  }
+  .investor .verified-source {
+    font-size: 11px;
+    color: #5b8a3a;
+    margin-bottom: 8px;
+    font-style: italic;
+  }
+  .investor .unverified-source {
+    font-size: 11px;
+    color: #b85a4d;
+    margin-bottom: 8px;
+    font-style: italic;
+  }
+  .signals {
+    display: grid;
+    grid-template-columns: 150px 1fr;
+    gap: 4px 14px;
+    font-size: 13.5px;
+    margin-top: 8px;
+  }
+  .signals .label {
+    color: #6c6760;
+    font-weight: 500;
+    text-transform: uppercase;
+    font-size: 11px;
+    letter-spacing: 0.4px;
+    padding-top: 2px;
+  }
+  .signals .val { color: #1a1a1a; }
+  .signals .val.fomo {
+    background: #fdf6e8;
+    padding: 4px 8px;
+    border-radius: 4px;
+    border-left: 2px solid #b48f3a;
+    font-weight: 500;
+  }
+  .signals .val.warn {
+    background: #fbe9e6;
+    padding: 4px 8px;
+    border-radius: 4px;
+    border-left: 2px solid #b85a4d;
+  }
+  .signals .val.routing {
+    background: #f3f5fb;
+    padding: 4px 8px;
+    border-radius: 4px;
+    border-left: 2px solid #4a6b9a;
+    font-weight: 500;
+  }
+  .lead-with {
+    background: #f4f8f2;
+    border-left: 3px solid #5b8a3a;
+    padding: 10px 14px;
+    margin-top: 10px;
+    border-radius: 4px;
+    font-size: 13.5px;
+  }
+  .lead-with .lwl {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.6px;
+    color: #5b8a3a;
+    font-weight: 600;
+    margin-bottom: 3px;
+    display: block;
+  }
+  .lead-with em { color: #1a1a1a; font-style: italic; }
+  .next-step {
+    margin-top: 8px;
+    font-size: 12.5px;
+    color: #6c6760;
+  }
+  .next-step strong { color: #1a1a1a; }
+  .compact-list {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+  }
+  .firm-only {
+    background: #fff;
+    border: 1px solid #e6e2dc;
+    border-radius: 6px;
+    padding: 10px 14px;
+    font-size: 13px;
+  }
+  .firm-only .name { font-weight: 500; display: block; margin-bottom: 2px; }
+  .firm-only .speculation { color: #6c6760; font-size: 12.5px; display: block; }
+  .firm-only .ask { color: #b48f3a; font-size: 11.5px; text-transform: uppercase; letter-spacing: 0.5px; font-weight: 500; display: block; margin-top: 3px; }
+
+  .direction-banner {
+    background: #f3f5fb;
+    color: #2c4d80;
+    padding: 6px 12px;
+    border-radius: 4px;
+    font-size: 11.5px;
+    text-transform: uppercase;
+    letter-spacing: 0.6px;
+    font-weight: 600;
+    display: inline-block;
+    margin-bottom: 8px;
+  }
+
+  .footer-notes {
+    margin-top: 40px;
+    padding-top: 24px;
+    border-top: 1px solid #e6e2dc;
+    font-size: 12.5px;
+    color: #6c6760;
+  }
+  .footer-notes h3 { color: #1a1a1a; font-size: 13px; margin: 0 0 8px; }
+  .footer-notes ul { margin: 4px 0 14px 18px; padding: 0; }
+  .footer-notes li { margin-bottom: 3px; }
+  .legend {
+    display: flex;
+    gap: 14px;
+    flex-wrap: wrap;
+    font-size: 12px;
+    margin-bottom: 18px;
+  }
+  .legend .item {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    color: #6c6760;
+  }
+  .legend .swatch {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    border-radius: 2px;
+  }
+  a { color: #4a6b9a; }
+
+  /* ─── Tab nav (shared across all 3 pages) ─── */
+  .tab-nav {
+    display: flex;
+    gap: 0;
+    border-bottom: 1px solid #e6e2dc;
+    margin-bottom: 24px;
+    flex-wrap: wrap;
+  }
+  .tab-nav a {
+    padding: 10px 18px;
+    text-decoration: none;
+    color: #6c6760;
+    font-size: 13px;
+    font-weight: 500;
+    border-bottom: 2px solid transparent;
+    margin-bottom: -1px;
+    transition: color 0.15s, border-color 0.15s;
+  }
+  .tab-nav a:hover { color: #1a1a1a; }
+  .tab-nav a.active { color: #1a1a1a; border-bottom-color: #5b8a3a; font-weight: 600; }
+
+  .contact-box { background:#f3f5fb; border-left:3px solid #4a6b9a; border-radius:4px; padding:11px 14px; margin-top:10px; font-size:13.5px; }
+  .contact-box .cbl { font-size:10.5px; text-transform:uppercase; letter-spacing:0.7px; color:#2c4d80; font-weight:700; display:block; margin-bottom:7px; }
+  .person { display:grid; grid-template-columns:225px 1fr; gap:2px 12px; padding:6px 0; border-top:1px solid #e2e8f4; }
+  .person.first { border-top:none; padding-top:0; }
+  .person .pn { font-weight:600; }
+  .person .pe { font-size:11.5px; color:#2c4d80; font-family:ui-monospace,SFMono-Regular,Menlo,monospace; }
+  .person .pr { color:#3a4a63; font-size:13px; }
+  .person .pnote { color:#6c6760; font-size:12.5px; font-style:italic; }
+  .path { background:#fff; border:1px dashed #c9d3e6; border-radius:4px; padding:9px 13px; margin-top:9px; font-size:13px; }
+  .path .pl { font-size:10px; text-transform:uppercase; letter-spacing:0.6px; font-weight:700; margin-right:7px; padding:2px 7px; border-radius:9px; white-space:nowrap; }
+  .pl-warm { background:#e4f3ee; color:#1f5c43; }
+  .pl-cold { background:#f9ebe4; color:#7a3d1c; }
+  .pl-none { background:#f0eeea; color:#6c6760; }
+  .hist { margin-top:8px; font-size:12.5px; color:#6c6760; }
+  .hist strong { color:#1a1a1a; }
+  .fixbox { background:#fbe9e6; border-left:3px solid #b85a4d; border-radius:4px; padding:9px 13px; margin-top:9px; font-size:13px; color:#6e2f26; }
+  .fixbox .fl { font-size:10px; text-transform:uppercase; letter-spacing:0.7px; font-weight:700; display:block; margin-bottom:3px; }
+  .status-pill { display:inline-block; padding:3px 9px; border-radius:11px; font-size:10.5px; font-weight:600; letter-spacing:0.3px; }
+  .sp-live { background:#e4f3ee; color:#1f5c43; }
+  .sp-dead { background:#fbe9e6; color:#a8392a; }
+  .sp-bev  { background:#faf2dc; color:#6d5210; }
+  .sp-warn { background:#fdf6e8; color:#7a5d10; }
+  .sp-up   { background:#ede4f6; color:#4b2f70; }
+  .trust-map { background:#fdf6e8; border-left:4px solid #b48f3a; padding:14px 18px; margin-bottom:26px; border-radius:4px; font-size:13px; color:#6b4f15; }
+  .trust-map strong { color:#4a3a0c; }
+  .trust-map ul { margin:8px 0 0 18px; padding:0; } .trust-map li { margin-bottom:6px; }
+  .verdict { background:#fff; border:1px solid #e6e2dc; border-left:5px solid #5b8a3a; border-radius:10px; padding:20px 24px; margin:0 0 26px; }
+  .verdict h2 { margin:0 0 10px; font-size:16px; color:#3f6b25; text-transform:uppercase; letter-spacing:1px; font-weight:600; }
+  .verdict ol { margin:0; padding-left:20px; } .verdict li { margin-bottom:10px; font-size:14px; } .verdict li:last-child { margin-bottom:0; }
+  .tailgrid { display:grid; grid-template-columns:repeat(auto-fill,minmax(210px,1fr)); gap:8px; }
+  .hyg { width:100%; border-collapse:collapse; font-size:13px; margin:10px 0; }
+  .hyg th { text-align:left; padding:8px 10px; font-size:11.5px; text-transform:uppercase; letter-spacing:0.4px; color:#6c6760; background:#f6f4f0; border-bottom:1px solid #e6e2dc; }
+  .hyg td { padding:9px 10px; border-bottom:1px solid #f0ede5; vertical-align:top; }
+  .footer-notes { margin-top:40px; padding-top:24px; border-top:1px solid #e6e2dc; font-size:12.5px; color:#6c6760; }
+  .footer-notes h3 { color:#1a1a1a; font-size:13px; margin:0 0 8px; }
+  .footer-notes ul { margin:4px 0 14px 18px; padding:0; } .footer-notes li { margin-bottom:4px; }
+  .deadline { background:#5b8a3a; color:#fff; padding:3px 9px; border-radius:11px; font-size:10.5px; font-weight:700; }
+  code { background:#f2efea; padding:1px 5px; border-radius:3px; font-size:12px; }
+
+  .srcbox{background:#f6f7f4;border-left:3px solid #5b8a3a;border-radius:4px;padding:9px 13px;margin:10px 0;font-size:12.5px;color:#3d4a33}
+  .srcbox code{background:#fff}
+  table.hyg{width:100%;border-collapse:collapse;font-size:13px;margin:10px 0}
+  table.hyg th{background:#f0eeea;text-align:left;padding:7px 9px;font-size:11px;text-transform:uppercase;letter-spacing:.5px;color:#6c6760;border-bottom:1px solid #e6e2dc}
+  table.hyg td{padding:7px 9px;border-bottom:1px solid #efece7;vertical-align:top}
+  .seg{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:6px;margin:8px 0}
+  .segc{background:#fff;border:1px solid #e6e2dc;border-radius:4px;padding:8px 11px;font-size:12.5px}
+  .segc b{display:block;font-size:19px;color:#5a3a86}
+  .go{background:#e4f3ee;color:#1f5c43;font-weight:700;padding:2px 8px;border-radius:10px;font-size:10.5px}
+  .maybe{background:#fdf6e8;color:#7a5d10;font-weight:700;padding:2px 8px;border-radius:10px;font-size:10.5px}
+  .skip{background:#f0eeea;color:#6c6760;font-weight:700;padding:2px 8px;border-radius:10px;font-size:10.5px}
+  .hour{display:grid;grid-template-columns:120px 1fr;gap:4px 12px;font-size:13px;border-top:1px solid #efece7;padding:7px 0}
+  .hour .t{font-weight:600;color:#5a3a86;font-variant-numeric:tabular-nums}
+</style></head><body>
+<div class="wrap">
+<nav class="tab-nav">
+  <a href="index.html">Main Brief &mdash; Full Pipeline</a>
+  <a href="agent-conference-may2026.html">Agent Conference &middot; May 4-5</a>
+  <a href="vc-reverse-pitch-may13.html">VCReversePitch &middot; May 13</a>
+  <a href="bevnet-live-june10-11.html">BevNETLive Workshop</a>
+  <a href="bevnet-live-full-event.html">BevNETLive Full Event</a>
+  <a href="vc-reverse-pitch-sf-june23.html">VCReversePitch &middot; SF Jun 23</a>
+  <a href="owls-brew-customer.html">Owl&rsquo;s Brew &middot; Customer</a>
+  <a href="njx-summit-jul8.html">NJx Summit &middot; Jul 8</a>
+  <a href="overproof-competitive.html">Overproof &middot; Competitive</a>
+  <a href="competitive-landscape-jul2026.html">Competitive Landscape &middot; Jul 2026</a>
+  <a href="drinks-with-benefits-sept2026.html">Drinks With Benefits &middot; Sep 16-17</a>
+  <a href="bdev-ventures-investor.html">BDev Ventures &middot; Investor</a>
+  <a href="investor-contacts-sept2026.html">Investor Contacts &middot; Sep 2026</a>
+  <a href="vc-reverse-pitch-nyc-sept10.html">VCReversePitch &middot; NYC Sep 10</a>
+  <a href="nbwa-convention-oct2026.html" class="active">NBWA Convention &middot; Oct 11-14</a>
+</nav>
+<header class="top">
+  <div class="eyebrow">Event brief &middot; v1 &middot; built Oct 8 2026 &middot; every figure cited to the page that states it</div>
+  <h1>NBWA 89th Annual Convention &amp; Product Showcase</h1>
+  <div class="meta">Oct 11&ndash;14 2026 &middot; Hyatt Regency Orlando, FL &middot; <strong>we are exhibiting at Booth 304</strong> &middot; brief compiled three days out</div>
+</header>
+
+<div class="verdict">
+  <strong>Read this first &mdash; four things decide how this trip goes.</strong>
+  <ul>
+    <li><strong>The exhibit hall is open once, for five hours.</strong> The Product Showcase runs <strong>Monday Oct 12, 12:00&ndash;5:00 p.m.</strong> and appears on no other day of the published schedule. Everything the booth is going to achieve has to happen inside that window. <span class="src">[annual-convention]</span></li>
+    <li><strong>Every registration deadline has already passed.</strong> Full refund closed <strong>Sept 21</strong>; the $100-per-person window closed <strong>Oct 5</strong>; after Oct 5 there are no refunds. The money is spent either way &mdash; this is now purely about execution. <span class="src">[annual-convention]</span></li>
+    <li><strong>Neither Sera Luce nor Elevado is exhibiting.</strong> Checked against the full 172-name exhibitor list. <strong>&ldquo;Elevated BI&rdquo; at booth 927 is a different company</strong> &mdash; a competitor presenting on AI agents &mdash; and must not be mistaken for Elevado. <span class="src">[event map]</span></li>
+    <li><strong>Our competitors bought the room; we bought a table.</strong> Ohanafy sponsors the Welcome Reception, VIP sponsors the Making Moves Reception, iSellBeer the BIECC Reception, VXP two more, Greater two more. <strong>VIP and Encompass each have a seminar <em>and</em> an Innovation Showcase slot. We have neither.</strong> <span class="src">[annual-convention, seminars, BIECC]</span></li>
+  </ul>
+</div>
+
+<div class="srcbox"><strong>Sources used, and what each one gave.</strong> <code>nbwa.org/event/annual-convention/</code> (headline numbers, prices, refund deadlines, hotel, day-by-day schedule, session sponsors) &middot; <code>nbwa.org/annual-convention-seminars/</code> (all 19 seminars with speakers) &middot; <code>nbwa.org/event/biecc-innovation-showcase/</code> (showcase format and presenter list) &middot; <code>nbwa.org/annual-convention-sponsorship/</code> (contacts only &mdash; it carries no prices) &middot; the <strong>2026 Sponsorship Prospectus PDF</strong> it links to (actual sponsorship pricing) &middot; the <strong>2026 Innovation Showcase Program PDF</strong> (minute-by-minute running order) &middot; and the <strong>a2z event map</strong> (all 172 exhibitors with booth numbers). Cited inline as <span class="src">[page]</span>.</div>
+
+<h2 class="section">1. The event by the numbers <span class="count">and which deadlines are gone</span></h2>
+<p class="tier-blurb"><strong>NBWA&rsquo;s own pages disagree with each other on three of the headline figures.</strong> Where they conflict, both numbers are shown and the more reliable one is named.</p>
+<table class="hyg"><thead><tr><th style="width:150px">Figure</th><th style="width:230px">What the page says</th><th>Which page, and the catch</th></tr></thead><tbody>
+<tr><td><strong>Attendees</strong></td><td><strong>1,800</strong> in the headline stats; &ldquo;nearly two thousand&rdquo; in the intro; &ldquo;more than <strong>1,700</strong> distributor decision-makers and industry partners&rdquo; in the exhibit section</td><td><span class="src">[annual-convention]</span> Three different figures on one page. <strong>Treat ~1,700&ndash;1,800 as the honest range</strong>; the &ldquo;nearly two thousand&rdquo; is marketing copy.</td></tr>
+<tr><td><strong>Exhibitors</strong></td><td><strong>&ldquo;165+ Vendors&rdquo;</strong> in headline stats, <strong>&ldquo;nearly 200 exhibitors&rdquo;</strong> in the showcase section</td><td><span class="src">[annual-convention]</span> Both are wrong. <strong>The event map states &ldquo;172 Exhibitors&rdquo;</strong> and lists exactly 172 with booth numbers. <strong>Use 172.</strong> <span class="src">[event map]</span></td></tr>
+<tr><td><strong>Seminars</strong></td><td><strong>&ldquo;19 Education Seminars&rdquo;</strong> in headline stats; <strong>&ldquo;18 expert-led sessions&rdquo;</strong> lower on the same page</td><td><span class="src">[annual-convention]</span> <strong>19 is right</strong> &mdash; the seminars page says 19 and lists 19. <span class="src">[seminars]</span></td></tr>
+<tr><td><strong>Showcase floor</strong></td><td><strong>22,500 sq. ft.</strong></td><td><span class="src">[annual-convention]</span></td></tr>
+<tr><td><strong>Innovation Showcase</strong></td><td>&ldquo;nearly two dozen solution providers&rdquo;</td><td><span class="src">[BIECC]</span> The list shows <strong>20 unique companies</strong> (iSellBeer appears twice). The program PDF confirms <strong>20 presentation slots, 2:00&ndash;3:50 p.m.</strong></td></tr>
+<tr><td><strong>Registration</strong></td><td>NBWA members: <strong>$799</strong> for registrants 1&ndash;2; <strong>$699</strong> for 3&ndash;4; <strong>$599</strong> for 5 or more</td><td><span class="src">[annual-convention]</span> Per-person, tiered by how many your company sends.</td></tr>
+<tr><td><strong>Hotel</strong></td><td>NBWA&rsquo;s main room block <strong>has sold out</strong>; overflow at <strong>The Rosen Centre Orlando</strong>, 9840 International Drive &mdash; &ldquo;just a six-minute walk&rdquo;</td><td><span class="src">[annual-convention]</span> If anyone is still unbooked, this is the only block left.</td></tr>
+</tbody></table>
+
+<div class="fixbox"><span class="fl">⚠ Deadlines &mdash; all three refund windows closed before this brief was written</span>
+<strong>Sept 21 2026</strong> &mdash; last day for a 100% refund. <strong>Passed.</strong><br>
+<strong>Sept 22 &ndash; Oct 5 2026</strong> &mdash; cancellation with a $100 administrative fee per person. <strong>Passed.</strong><br>
+<strong>After Oct 5 2026</strong> &mdash; no refunds on registration fees. <strong>We are here.</strong> <span class="src">[annual-convention]</span><br><br>
+<strong>No sponsorship or artwork deadline is published anywhere.</strong> The sponsorship page carries no dates at all, and a full-text search of the 25-page prospectus returns no deadline, due-by or cut-off language. Any remaining sponsorship would have to be priced and dated by emailing NBWA directly &mdash; see &sect;7.</div><h2 class="section">2. The floor <span class="count">172 exhibitors, classified</span></h2>
+<p class="tier-blurb">Classified by what each company sells, from the exhibitor list on the event map. <strong>There is no &ldquo;distributors&rdquo; segment on the floor, and that is the single most important thing about this show:</strong> distributors are not exhibitors here, they are the <em>audience</em>. The ~1,700 distributor decision-makers walk the hall; the 172 companies in it are all selling to them. <span class="src">[event map, annual-convention]</span></p>
+<div class="seg">
+  <div class="segc"><b>70</b>Beverage brands &amp; suppliers &mdash; breweries, RTDs, spirits, water, energy, hemp/THC</div>
+  <div class="segc"><b>52</b>Logistics, fleet &amp; warehouse &mdash; trucks, trailers, forklifts, racking, routing hardware, telematics</div>
+  <div class="segc"><b>30</b>Distributor technology &mdash; <strong>our segment</strong></div>
+  <div class="segc"><b>20</b>Services &mdash; HR, payroll, insurance, construction, legal, staffing, mileage reimbursement</div>
+  <div class="segc"><b>0</b>Distributors exhibiting &mdash; they attend as buyers, not vendors</div>
+</div>
+<h3 class="subsection">Which segments are our buyers</h3>
+<p class="tier-blurb"><strong>None of the 172 is our buyer.</strong> Our buyer is the distributor walking the aisle, and no distributor has a booth. That inverts the usual trade-show instinct: <strong>the floor is our competitive set, not our pipeline.</strong> The two segments that matter to us are:</p>
+<ul>
+<li><strong>Distributor technology (30) &mdash; the competitive set.</strong> This is who we are measured against in every conversation at our booth, and it includes the two firms our own competitive brief names as the primary threats.<br><span style="font-size:12.5px;color:#6c6760">99Bottles <span class="src">908</span> &middot; AeriTek <span class="src">217</span> &middot; Andavi Solutions <span class="src">301</span> &middot; BevGenie <span class="src">304</span> &middot; Beverage Distribution Consultants, Inc <span class="src">718</span> &middot; Big Systems <span class="src">801</span> &middot; Block One Automation <span class="src">717</span> &middot; Brother International Corporation <span class="src">604</span> &middot; Cirrus Tech, Inc <span class="src">700</span> &middot; Digital Media Warehouse <span class="src">424</span> &middot; Distributors Solutions, LLC <span class="src">423</span> &middot; DraftLine Technologies <span class="src">312</span> &middot; EasyCheck <span class="src">813</span> &middot; Elevated BI <span class="src">927</span> &middot; Encompass Technologies <span class="src">517</span> &middot; Fintech <span class="src">601</span> &middot; Groundhog <span class="src">306</span> &middot; Link Technology Group <span class="src">721</span> &middot; Ohanafy <span class="src">200</span> &middot; ProGlove <span class="src">411</span> &middot; Provi <span class="src">521</span> &middot; Revalgo <span class="src">1018</span> &middot; Salient - Margin Minder <span class="src">904</span> &middot; TrueCase <span class="src">526</span> &middot; Velocitor Solutions <span class="src">205</span> &middot; Vermont Information Processing <span class="src">800</span> &middot; Volume x Profit Technologies (VXP) <span class="src">400</span> &middot; Wise Systems <span class="src">618</span> &middot; Yask <span class="src">207</span> &middot; iSellBeer <span class="src">512</span></span></li>
+<li><strong>Beverage brands &amp; suppliers (70) &mdash; the adjacent buyer.</strong> Not NBWA&rsquo;s target audience, but <strong>supplier-side commercial teams are exactly who BevGenie sells to</strong>, and 70 of them have paid to stand in this hall for two days. This is the segment our competitors are <em>not</em> working.</li>
+</ul>
+<p class="tier-blurb"><strong>Logistics/fleet (52) and Services (20) are noise for us</strong> &mdash; they sell trucks, racking and payroll to the same audience and compete for attention, not for budget against us.</p>
+
+<h3 class="subsection">The 30 in our segment, with booths</h3>
+<p class="tier-blurb">99Bottles <span class="src">908</span> &middot; AeriTek <span class="src">217</span> &middot; Andavi Solutions <span class="src">301</span> &middot; BevGenie <span class="src">304</span> &middot; Beverage Distribution Consultants, Inc <span class="src">718</span> &middot; Big Systems <span class="src">801</span> &middot; Block One Automation <span class="src">717</span> &middot; Brother International Corporation <span class="src">604</span> &middot; Cirrus Tech, Inc <span class="src">700</span> &middot; Digital Media Warehouse <span class="src">424</span> &middot; Distributors Solutions, LLC <span class="src">423</span> &middot; DraftLine Technologies <span class="src">312</span> &middot; EasyCheck <span class="src">813</span> &middot; Elevated BI <span class="src">927</span> &middot; Encompass Technologies <span class="src">517</span> &middot; Fintech <span class="src">601</span> &middot; Groundhog <span class="src">306</span> &middot; Link Technology Group <span class="src">721</span> &middot; Ohanafy <span class="src">200</span> &middot; ProGlove <span class="src">411</span> &middot; Provi <span class="src">521</span> &middot; Revalgo <span class="src">1018</span> &middot; Salient - Margin Minder <span class="src">904</span> &middot; TrueCase <span class="src">526</span> &middot; Velocitor Solutions <span class="src">205</span> &middot; Vermont Information Processing <span class="src">800</span> &middot; Volume x Profit Technologies (VXP) <span class="src">400</span> &middot; Wise Systems <span class="src">618</span> &middot; Yask <span class="src">207</span> &middot; iSellBeer <span class="src">512</span></p>
+<div class="fixbox"><span class="fl">⚠ Where we are standing</span><strong>Booth 304 sits in the 300 aisle, three booths from Andavi Solutions (301)</strong> &mdash; a distributor-technology competitor that also has an Innovation Showcase slot. The rest of the aisle is logistics: Rehrig Pacific (300), Great Dane (303), PowerBoss (305), Keg Logistics (310), Bolzoni (311), Maxon Lift (313), Ryder (317), Big Joe Forklifts (325), with Groundhog (306) and DraftLine (312) as the other tech neighbours. <strong>We are the software stand in a forklift aisle.</strong> That is good for standing out and bad for qualified traffic &mdash; the people browsing this aisle are shopping for warehouse equipment. <span class="src">[event map]</span><br><br>
+<strong>The density is elsewhere:</strong> Ohanafy (200), VIP (800), Encompass (517), Provi (521), iSellBeer (512), VXP (400), Cirrus Tech (700), Elevated BI (927). <strong>Plan to walk those, because they will not walk to us.</strong></div><h2 class="section">3. Our customers on the floor <span class="count">neither is exhibiting</span></h2>
+<p class="tier-blurb">Both names were checked against the complete 172-entry exhibitor list, by exact match and by fuzzy search on every fragment of each name. <strong>Neither appears, and neither does any parent or distributor associated with them.</strong> <span class="src">[event map]</span></p>
+
+<div class="investor tier3">
+  <div class="investor-head"><div class="name">Sera Luce</div><div class="badges"><span class="status-pill sp-dead">Not exhibiting</span><span class="status-pill sp-warn">Attendance unknown</span></div></div>
+  <div class="meta-row">A canned ready-to-drink <strong>Venetian Spritz</strong>, 9% ABV, made with Garganega wine from the Veneto &middot; founded by <strong>Justin Pass</strong> &middot; operated by <strong>Sette Sei Beverages LLC</strong></div>
+  <div class="verified-source">✓ Checked Oct 8 2026 against the full exhibitor list &mdash; <strong>absent</strong>. Company background from press coverage, not from NBWA.</div>
+  <div class="signals"><span class="label">What to do</span><span class="val"><strong>Nothing at the booth &mdash; there is nobody to meet.</strong> Sette Sei is not exhibiting, and neither is Vintage Imports, the distributor named in its press coverage. <strong>The useful move is to go on their behalf, not to look for them.</strong> They are a small RTD brand whose entire problem is getting distributor attention, and we will be standing in a room with ~1,700 distributor decision-makers. <strong>Ask Justin Pass before Friday which three states he wants in front of</strong>, then use our floor time to find out who covers those states and bring back names. That is a favour worth more than a meeting, and it is also the single best proof that our product understands his problem.</span></div>
+  <div class="next-step"><strong>Next step:</strong> message this week &mdash; see &sect;6.</div>
+</div>
+
+<div class="investor tier3">
+  <div class="investor-head"><div class="name">Elevado</div><div class="badges"><span class="status-pill sp-dead">Not exhibiting</span><span class="status-pill sp-live">But the hemp session is for them</span></div></div>
+  <div class="meta-row">A <strong>microdosed / THC cocktail</strong> brand &middot; reported parent <strong>Chaco Flaco Drinks</strong>, Tucson AZ &middot; brand portfolio of <strong>Emergent Beverages</strong></div>
+  <div class="verified-source">✓ Checked Oct 8 2026 against the full exhibitor list &mdash; <strong>absent</strong>, and so are Emergent Beverages and Chaco Flaco. Background from third-party coverage, some of it over a year old &mdash; treat the parent and distribution details as unconfirmed.</div>
+  <div class="fixbox"><span class="fl">⚠ Do not confuse these two companies</span><strong>&ldquo;Elevated BI&rdquo; at booth 927 is not Elevado.</strong> Elevated BI is a distributor analytics vendor &mdash; <em>a competitor</em> &mdash; presenting <em>&ldquo;A Seven Agent Army: AI Watching Your Bottom Line&rdquo;</em> on Tuesday and holding a 2:45 p.m. Innovation Showcase slot. The names are one letter apart in conversation. <strong>Anyone on the stand who says &ldquo;our customer Elevated BI&rdquo; has just told a competitor we are their vendor.</strong> <span class="src">[event map, seminars, BIECC]</span></div>
+  <div class="signals"><span class="label">What to do</span><span class="val"><strong>Go to the hemp session for them.</strong> Tuesday 12:30&ndash;1:45 p.m., <em>&ldquo;Zero Hour for Hemp Beverages: What Happens Next?&rdquo;</em> with <strong>Christopher Lackner, Founder and President of the Hemp Beverage Alliance</strong> &mdash; the single most consequential regulatory question hanging over Elevado&rsquo;s category, answered in a room full of the distributors who decide whether to carry it. <strong>Take notes and send them to Elevado the same evening.</strong> There are also seven hemp/THC-adjacent exhibitors on the floor to read the category from &mdash; Cornbread Hemp (709), Vivazen (625), Torch Drinks (911), Lotus Lifestyle (821), Oracle Organix (1005), StoneRidge THICK STICKS (221) and Deckiez Energy Pouches (422). <span class="src">[seminars, event map]</span></span></div>
+  <div class="next-step"><strong>Next step:</strong> tell them before Friday that we will be in that session, and ask what they want answered.</div>
+</div>
+
+<h2 class="section">4. Who to actually meet <span class="count">named, with the reason</span></h2>
+<div class="fixbox"><span class="fl">⚠ The attendee list is not published &mdash; so this is built from who is provably in the building</span><strong>NBWA publishes no distributor attendee list.</strong> There is no page naming the ~1,700 people who walk the hall, so nobody can hand you a target list from public sources. <strong>What <em>is</em> public is the speaker roster</strong> &mdash; and it names nine distributor-side executives who are definitionally on site, on a stage, at a known time. <strong>That is the only reliable named-distributor list this event gives you, and it is better than a floor crawl because you know exactly where each person will be standing.</strong> <span class="src">[seminars]</span></div>
+
+<h3 class="subsection">Distributor decision-makers &mdash; all confirmed on a stage</h3>
+<table class="hyg"><thead><tr><th style="width:170px">Person</th><th style="width:210px">Company and title</th><th>Why them, and where to stand</th></tr></thead><tbody>
+<tr><td><strong>LJ Del Papa</strong></td><td>EVP &amp; Chief Commercial Officer, <strong>Del Papa Distributing</strong></td><td><strong>The highest-value name at the show for us.</strong> A chief <em>commercial</em> officer who is on stage specifically to talk about AI deployment &mdash; <em>&ldquo;Beyond the AI Hype: Real Deployments in Beverage Distribution&rdquo;</em>, Tue 8:00&ndash;9:15. He is presenting <em>with Encompass</em>, which tells you he has already bought someone else&rsquo;s answer to our question. Worth hearing precisely for that.</td></tr>
+<tr><td><strong>Steve Holtsclaw</strong></td><td>VP, Technology Solutions &amp; Integration, <strong>Del Papa Distributing</strong></td><td>Same session. <strong>The technical buyer sitting next to the commercial buyer</strong> &mdash; the exact pair our product has to win together. If you only catch one room exit this week, make it this one.</td></tr>
+<tr><td><strong>Rebecca Maisel</strong></td><td>Chief Corporate Strategy Officer, <strong>Gulf Distributing Holdings</strong></td><td>On <em>&ldquo;Building for What&rsquo;s Next: How Distributors Are Rethinking the Foundation of Their Business&rdquo;</em>, Mon 8:00&ndash;9:15 &mdash; a strategy officer publicly rethinking the foundation of a distribution business is the ideal first conversation.</td></tr>
+<tr><td><strong>Louis Maisel</strong></td><td>Chief Operating Officer, <strong>Gulf Distributing Holdings</strong></td><td>Same session, operations side. Note the session is co-presented with <strong>Ohanafy</strong>, a competitor &mdash; Gulf is already someone&rsquo;s reference customer.</td></tr>
+<tr><td><strong>Aaron Caffey</strong></td><td>Executive Vice President, <strong>United Carolina Beverages</strong></td><td>On the Tue 8:00 leadership panel. EVP at a regional house &mdash; the size of operator who buys a decision layer without a two-year committee.</td></tr>
+<tr><td><strong>Rob Puri</strong></td><td>VP of Sales &amp; Marketing, <strong>Shore Point Distributing</strong></td><td>Same panel. <strong>A VP of Sales is the closest thing on the roster to our actual persona</strong> &mdash; the person whose reps are the ones we make faster.</td></tr>
+<tr><td><strong>Katie Wildman</strong></td><td>Partner, <strong>L&amp;F Distributors</strong></td><td>Presenting Tue 12:30 on workforce health. Wrong topic for us, right seniority at a large Texas/New Mexico house.</td></tr>
+<tr><td><strong>Derick Hugh</strong></td><td><strong>Reed Beverage</strong> &mdash; <em>no title published</em></td><td>On the Tue 8:00 panel. The seminars page gives his company but <strong>no job title</strong>; do not guess one in an intro.</td></tr>
+<tr><td><strong>Matthew Bossier</strong></td><td>President, <strong>BevCap Management</strong></td><td>Tue 8:00, AI in HR. BevCap is also a <strong>Supporting sponsor</strong> and exhibits at <strong>booth 617</strong> &mdash; a rare case where you can find the speaker at a stand afterwards. <span class="src">[annual-convention, event map]</span></td></tr>
+</tbody></table>
+
+<h3 class="subsection">Suppliers worth the walk &mdash; our actual customer profile</h3>
+<p class="tier-blurb">These are the 70-strong brand segment, filtered to houses big enough to have a commercial team that owns depletion and shelf decisions &mdash; i.e. people with the problem we solve. All booth numbers from the event map.</p>
+<ul>
+<li><strong>Diageo Beer Company (600)</strong> &mdash; the largest supplier name on the floor and a multi-brand commercial organisation. If one supplier conversation happens this week, it should be this one.</li>
+<li><strong>Pabst Brewing Company (901)</strong> &middot; <strong>Tilray Beverages (805)</strong> &middot; <strong>Niagara Bottling (318)</strong> &mdash; all multi-brand portfolios with real three-tier execution problems. Niagara is also the closest booth to ours in this group.</li>
+<li><strong>good2grow (418)</strong> &middot; <strong>Deschutes Brewery (724)</strong> &middot; <strong>Lakefront Brewery (404)</strong> &middot; <strong>Stevens Point Brewery / Ciderboys (405)</strong> &middot; <strong>Vermont Hard Cider (804)</strong> &mdash; mid-size, independent, and precisely the tier that cannot afford a data team.</li>
+<li><strong>Happy Dad Hard Seltzer (701)</strong> &middot; <strong>NOCA Beverages (824)</strong> &middot; <strong>Carbliss (417)</strong> &middot; <strong>Sundial Cocktails (925)</strong> &middot; <strong>Mixed-Up Cocktail Co (827)</strong> &mdash; the RTD cohort, <strong>the same category as both our customers</strong>. Walk these for category intelligence we can hand Sera Luce and Elevado.</li>
+</ul>
+<h2 class="section">5. The program, in day order <span class="count">go / maybe / skip, and who is in the room</span></h2>
+<p class="tier-blurb">All 19 seminars plus the general sessions and the Innovation Showcase, in the order they happen. Titles and speakers verbatim from the seminars page; times from the convention schedule. <strong>Note the structural trap: the Monday and Tuesday morning seminars run seven and seven in parallel</strong> &mdash; you can attend one per slot, so the choices below are mutually exclusive. <span class="src">[seminars, annual-convention]</span></p>
+
+<h3 class="subsection">Sunday Oct 11 &mdash; the day the competition presents</h3>
+<div class="hour"><div class="t">1:00&ndash;2:00</div><div><span class="maybe">MAYBE</span> <strong>BIECC Innovation Showcase Pre-Reception</strong>, sponsored by VXP. Low cost, and the room is the BIECC audience before they sit down. <span class="src">[annual-convention]</span></div></div>
+<div class="hour"><div class="t">2:00&ndash;4:00</div><div><span class="go">GO &mdash; non-negotiable</span> <strong>BIECC Innovation Showcase.</strong> Twenty 5-minute pitches, included in registration. <strong>This is the entire competitive set presenting their 2026 positioning, back to back, in two hours.</strong> The running order from the program PDF: <strong>2:10 Provi</strong> (Sean Kiley, VP &amp; GM Distributor Partnerships, booth 521) &middot; <strong>2:15 Fintech</strong> (Rachael Jecusco, Senior Product Manager, 601) &middot; <strong>2:20 Descartes</strong> (Chris Doiron &amp; Ken Currie, 516) &middot; <strong>2:25 Ohanafy</strong> (Dave Gillette, 200) &middot; <strong>2:30 VIP</strong> (Brian Kelly, 800) &middot; <strong>2:35 Encompass</strong> (517) &middot; <strong>2:40 Andavi Solutions</strong> (301) &middot; <strong>2:45 Elevated BI</strong> (Austin Bristow, 927) &middot; <strong>2:50 Wise Systems</strong> (618) &middot; <strong>2:55 Block One Automation</strong> (717) &middot; <strong>3:00 Symbotic</strong> &middot; <strong>3:05 Cirrus Tech</strong> (video, 700) &middot; <strong>3:10 Hy-Tek</strong> (216) &middot; <strong>3:15 KPI Solutions</strong> (500) &middot; <strong>3:20 Toyota Automated Logistics</strong> (620) &middot; <strong>3:25 Rehrig Pacific</strong> (Scott Corte, 300) &middot; <strong>3:30 Beverage Distribution Consultants</strong> (718) &middot; <strong>3:35 iSellBeer</strong> (Tracy Neal, 512) &middot; <strong>3:40 VXP</strong> (400) &middot; <strong>3:45 Greater Industries Labs</strong> (605). <strong>The 2:25&ndash;2:45 run &mdash; Ohanafy, VIP, Encompass, Andavi, Elevated BI &mdash; is twenty minutes that will tell you more about our market than a quarter of desk research.</strong> <span class="src">[BIECC, Innovation Showcase Program PDF]</span></div></div>
+<div class="hour"><div class="t">4:00&ndash;5:30</div><div><span class="skip">SKIP</span> <strong>NBWA Distributor Member Only Meeting</strong> (Wells Fargo). Members only &mdash; we cannot attend. <span class="src">[annual-convention]</span></div></div>
+<div class="hour"><div class="t">5:30&ndash;6:30</div><div><span class="go">GO</span> <strong>BIECC Reception</strong>, sponsored by <strong>iSellBeer</strong>. The same audience, now with a drink in hand. Two invite-only receptions run in parallel (Next Generation &amp; Emerging Leaders, sponsored by VXP; NBWA PAC Chairman&rsquo;s Circle, sponsored by Greater) &mdash; <strong>we are not invited to either</strong>. <span class="src">[annual-convention]</span></div></div>
+<div class="hour"><div class="t">6:30&ndash;8:30</div><div><span class="go">GO</span> <strong>Welcome Reception</strong>, sponsored by <strong>Ohanafy</strong> &mdash; a direct competitor whose branding will be on the room where the whole convention meets for the first time. Two hours, everybody present, no competing session. <strong>The highest-density networking of the week, and we are drinking under a competitor&rsquo;s logo.</strong> <span class="src">[annual-convention]</span></div></div>
+
+<h3 class="subsection">Monday Oct 12 &mdash; the only day the hall is open</h3>
+<div class="hour"><div class="t">8:00&ndash;9:15</div><div><span class="go">GO &mdash; pick one</span> <strong>Seven seminars in parallel.</strong> <strong>First choice: &ldquo;Building for What&rsquo;s Next: How Distributors Are Rethinking the Foundation of Their Business&rdquo;</strong> &mdash; Rebecca Maisel (Chief Corporate Strategy Officer) and Louis Maisel (COO) of Gulf Distributing Holdings, with Ian Padrick (CEO) and Davis Bryson (CMO) of <strong>Ohanafy</strong>. Two distributor C-level buyers <em>and</em> a competitor&rsquo;s full pitch in one room. <strong>Second choice: &ldquo;Convergence 202: Maintaining Distributor Value in the Era of Total Beverage&rdquo;</strong> &mdash; Drew Jaglom and James Rieger (Tannenbaum Helpern) with Randy Jozwiakowski (Managing Partner, Paragon Beverage Advisors): the structural argument for why distributors need a decision layer at all. <span class="maybe">MAYBE</span> &ldquo;Investing in the Market: How to Deploy Resources to Maximize Profit&rdquo; &mdash; Nick Rellas (Founder) and Matt Ellis (CRO) of <strong>Greater</strong>, who sponsor the Bush keynote. <span class="skip">SKIP</span> the three coaching/leadership sessions (BUMP Williams, In:trench, Fox Sales Coaching, Volume X Profit) &mdash; real topics, wrong buyer. <span class="src">[seminars]</span></div></div>
+<div class="hour"><div class="t">9:30&ndash;12:00</div><div><span class="maybe">MAYBE</span> <strong>Opening General Session</strong> (Texas Capital Bank). Panels listed: <em>&ldquo;Turning Occasions into Cases: How Beer Wins When People Gather&rdquo;</em> and <em>&ldquo;The Great Convergence&rdquo;</em>. <strong>Send one person, keep one setting up the booth.</strong> <span class="src">[annual-convention]</span></div></div>
+<div class="hour"><div class="t">12:00&ndash;5:00</div><div><span class="go">GO &mdash; this is the show</span> <strong>Product Showcase. Booth 304. The only hours the hall is open all week.</strong> Full staffing, no exceptions, no wandering. <span class="src">[annual-convention]</span></div></div>
+<div class="hour"><div class="t">Evening</div><div><span class="go">GO</span> <strong>Supplier Hospitalities.</strong> No times or hosts are published &mdash; ask at registration on Sunday which suppliers are hosting and where. <strong>This is where the 70 brand exhibitors actually talk.</strong> <span class="src">[annual-convention]</span></div></div>
+
+<h3 class="subsection">Tuesday Oct 13 &mdash; the heaviest day for us</h3>
+<div class="hour"><div class="t">8:00&ndash;9:15</div><div><span class="go">GO &mdash; pick one</span> <strong>Seven in parallel, and two of them are the competitive main event.</strong> <strong>First choice: &ldquo;Beyond the AI Hype: Real Deployments in Beverage Distribution&rdquo;</strong> &mdash; Patrick Tickle (CEO) and Emiliano Delucia (CTO/CPO) of <strong>Encompass Technologies</strong> with <strong>LJ Del Papa (EVP &amp; Chief Commercial Officer)</strong> and <strong>Steve Holtsclaw (VP Technology Solutions &amp; Integration)</strong> of Del Papa Distributing. <strong>A competitor and their flagship customer on stage together &mdash; the commercial and technical buyer we need, describing what they already bought and why.</strong> <strong>Close second: &ldquo;The Agentic Future of Beverage Distribution: Data, Disruption, and the Distributors Who Will Win&rdquo;</strong> &mdash; Andrew Criezis (CEO) and Lucinda Ochwat (Head of Sales) of <strong>Vermont Information Processing</strong>. VIP owns distributor depletions; this is them claiming the agentic future out loud. <strong>Split the team and cover both.</strong> <span class="maybe">MAYBE</span> &ldquo;When Business Starts Managing You&rdquo; &mdash; four distributor executives (Lori Scheiffler, Tamarron; Derick Hugh, Reed Beverage; Aaron Caffey, EVP United Carolina Beverages; Rob Puri, VP Sales &amp; Marketing, Shore Point). <strong>Richest distributor-buyer density of any session</strong>, if you can spare a third body. <span class="skip">SKIP</span> draft beer execution, AI in HR, fuel costs (Descartes), order accuracy (Rehrig Pacific). <span class="src">[seminars]</span></div></div>
+<div class="hour"><div class="t">9:30&ndash;12:00</div><div><span class="maybe">MAYBE</span> <strong>General Session</strong> (Northern Trust) with <strong>George W. Bush, 43rd President</strong>, in a program sponsored by <strong>Greater</strong>. <strong>Everyone will be in this room</strong>, which makes it the worst time to look for a quiet conversation and the best time to be seen at the exits. Also listed: Dr. Jason G. Halbert (Chief Behavioral Science Officer, Greater Industries) and Bruce Mehlman (Founder, Mehlman Consulting). <span class="src">[annual-convention]</span></div></div>
+<div class="hour"><div class="t">12:30&ndash;1:45</div><div><span class="go">GO</span> <strong>&ldquo;Zero Hour for Hemp Beverages: What Happens Next?&rdquo;</strong> &mdash; Christopher Lackner, Founder and President, Hemp Beverage Alliance. <strong>Go for Elevado</strong> (see &sect;3). <span class="maybe">MAYBE</span> &ldquo;Pockets of Growth&rdquo; &mdash; Kaleigh Theriault (Director, Beverage Alcohol Thought Leadership) and Andrew Hummel (Senior Director), <strong>NielsenIQ</strong> &mdash; the category data our customers pay for. <span class="maybe">MAYBE</span> &ldquo;A Seven Agent Army: AI Watching Your Bottom Line&rdquo; &mdash; Austin Bristow, Owner, <strong>Elevated BI</strong>: a competitor&rsquo;s agent story, 75 minutes. <span class="skip">SKIP</span> Cirrus Tech consolidation, L&amp;F workforce health. <span class="src">[seminars]</span></div></div>
+<div class="hour"><div class="t">2:00&ndash;5:30</div><div><span class="maybe">MAYBE</span> <strong>Making Moves General Session</strong> (3-Tier Beverages &amp; NIQ) &mdash; the fifth annual BREW and Alliance for Women in Beer event. <span class="src">[annual-convention]</span></div></div>
+<div class="hour"><div class="t">5:30&ndash;7:30</div><div><span class="go">GO</span> <strong>Making Moves Reception &mdash; sponsored by VIP.</strong> Two hours, and our largest competitor is paying for the drinks. <span class="src">[annual-convention]</span></div></div>
+
+<h3 class="subsection">Wednesday Oct 14 &mdash; thin, and most people leave</h3>
+<div class="hour"><div class="t">7:30&ndash;8:00</div><div><span class="maybe">MAYBE</span> <strong>Making Moves Breakfast</strong> (Greater). <span class="src">[annual-convention]</span></div></div>
+<div class="hour"><div class="t">8:00&ndash;12:00</div><div><span class="skip">SKIP</span> <strong>Making Moves General Session</strong> (3-Tier Beverages &amp; NIQ) &mdash; no exhibit hall, no seminars, and the buyers we came for are travelling. <strong>Better spent writing follow-ups while names are fresh.</strong> <span class="src">[annual-convention]</span></div></div>
+<div class="hour"><div class="t">12:00&ndash;1:00</div><div><span class="skip">SKIP</span> <strong>Making Moves Grab &amp; Go Lunch</strong> (Rehrig Pacific). Fly home. <span class="src">[annual-convention]</span></div></div>
+<h2 class="section">6. The plan <span class="count">three days out</span></h2>
+
+<h3 class="subsection">Before we go &mdash; message these this week</h3>
+<p class="tier-blurb"><strong>The brief is being written on Oct 8 and the show opens Oct 11.</strong> Everything below is a two-day window, so it is ordered by what stops being possible first.</p>
+<table class="hyg"><thead><tr><th style="width:150px">Who</th><th style="width:120px">By when</th><th>The message</th></tr></thead><tbody>
+<tr><td><strong>Justin Pass</strong>, Sera Luce</td><td><strong>Thu Oct 9</strong></td><td>&ldquo;We&rsquo;ll be in front of ~1,700 beer distributors Monday. Which three states do you most need coverage in? We&rsquo;ll bring back names.&rdquo; <strong>Needs an answer before we fly.</strong></td></tr>
+<tr><td><strong>Elevado</strong></td><td><strong>Thu Oct 9</strong></td><td>&ldquo;We&rsquo;re attending the Hemp Beverage Alliance session on Tuesday. What do you want answered?&rdquo; Gives the notes a purpose and a recipient.</td></tr>
+<tr><td><strong>Riley Bryson</strong>, NBWA Meetings &amp; Membership Coordinator &mdash; <code>rbryson@nbwa.org</code></td><td><strong>Thu Oct 9</strong></td><td>Confirm booth 304 logistics and ask <strong>which suppliers are hosting Monday-evening hospitalities and where</strong> &mdash; that is not published anywhere. <span class="src">[annual-convention]</span></td></tr>
+<tr><td><strong>Emma McElherne</strong>, NBWA Sponsorship Manager &mdash; <code>emcelherne@corcexpo.com</code>, 312-265-9638</td><td><strong>Thu Oct 9</strong></td><td>Ask what is still available. <strong>Three items are plausibly still buyable and cheap relative to the trip:</strong> <strong>Push Notification $2,500</strong> (alerts the whole app audience to a booth promotion during hall hours), <strong>Exhibit Hall Booth Crawl $1,000</strong> (stamp-collection game that routes attendees to participating booths &mdash; 10 slots), and <strong>Floor Decal Pathway $2,500</strong> (four floor clings leading to the booth). <strong>Given we are a software stand in a forklift aisle, the Booth Crawl at $1,000 is the single highest-leverage spend available.</strong> <span class="src">[prospectus PDF]</span></td></tr>
+<tr><td><strong>Madison Schmelig</strong> &mdash; <code>mschmelig@corcexpo.com</code></td><td>If needed</td><td>Booth reservations contact, for anything physical about 304. <span class="src">[annual-convention]</span></td></tr>
+<tr><td>Anyone unbooked</td><td><strong>Immediately</strong></td><td><strong>The NBWA block is sold out.</strong> Only the Rosen Centre Orlando overflow remains, six minutes&rsquo; walk. <span class="src">[annual-convention]</span></td></tr>
+</tbody></table>
+
+<h3 class="subsection">At the booth &mdash; 304, Monday 12:00&ndash;5:00</h3>
+<ul>
+<li><strong>Treat it as a five-hour event, not a two-day presence.</strong> There is no second day to catch anyone. Everyone on the team should be at 304 or deliberately working the aisle &mdash; nobody in a seminar during hall hours.</li>
+<li><strong>Lead with the aisle problem.</strong> Our neighbours sell forklifts, trailers and racking. Traffic arriving at 304 is in warehouse-buying mode. <strong>The opening line has to reframe in one sentence</strong> &mdash; what the rep sees, not what the warehouse holds.</li>
+<li><strong>Vocabulary.</strong> Distributors and suppliers are the audience here, so operator language is correct &mdash; this is not an investor room. But the moment anyone from the investor list appears, switch to &ldquo;decision intelligence&rdquo;.</li>
+<li><strong>Do not name Elevated BI as a customer.</strong> See the warning in &sect;3. Our customers are <strong>Sera Luce</strong> and <strong>Elevado</strong>.</li>
+<li><strong>Qualify by segment, fast.</strong> A distributor badge is a buyer. A supplier badge is a buyer. A vendor badge from the 30-strong tech segment is a competitor &mdash; be courteous and brief.</li>
+<li><strong>Capture states, not just cards.</strong> Every distributor conversation should end with which states they cover &mdash; that is what makes the Sera Luce favour deliverable.</li>
+</ul>
+
+<h3 class="subsection">On the floor, by day and hour</h3>
+<div class="hour"><div class="t">Sun 2:00&ndash;4:00</div><div><strong>Innovation Showcase, seated, taking notes.</strong> Twenty competitors in two hours. Priority window is <strong>2:25&ndash;2:45</strong>: Ohanafy, VIP, Encompass, Andavi, Elevated BI.</div></div>
+<div class="hour"><div class="t">Sun 5:30&ndash;8:30</div><div><strong>BIECC Reception then Welcome Reception.</strong> Three hours of unstructured access to the whole convention before anyone is tired. <strong>The best networking of the week happens before the show officially starts.</strong></div></div>
+<div class="hour"><div class="t">Mon 8:00&ndash;9:15</div><div><strong>Gulf Distributing session</strong> (Rebecca and Louis Maisel). Catch them at the room exit, not during Q&amp;A.</div></div>
+<div class="hour"><div class="t">Mon 9:30&ndash;12:00</div><div><strong>One person to the Opening General Session; everyone else builds the booth.</strong></div></div>
+<div class="hour"><div class="t">Mon 12:00&ndash;5:00</div><div><strong>Booth 304, fully staffed.</strong> If there is a quiet stretch, send <em>one</em> person to walk the supplier booths in &sect;4 &mdash; Diageo (600), Pabst (901), Tilray (805), Niagara (318) &mdash; and the RTD cohort for customer intelligence.</div></div>
+<div class="hour"><div class="t">Mon evening</div><div><strong>Supplier hospitalities</strong>, venues to be confirmed at registration.</div></div>
+<div class="hour"><div class="t">Tue 8:00&ndash;9:15</div><div><strong>Split: one into Encompass + Del Papa, one into VIP.</strong> If a third is available, the four-distributor leadership panel. <strong>Del Papa&rsquo;s two executives are the single highest-value room exit of the week.</strong></div></div>
+<div class="hour"><div class="t">Tue 12:30&ndash;1:45</div><div><strong>Hemp Beverage Alliance session for Elevado.</strong> Notes sent the same evening.</div></div>
+<div class="hour"><div class="t">Tue 5:30&ndash;7:30</div><div><strong>Making Moves Reception.</strong> Last high-density room of the convention.</div></div>
+<div class="hour"><div class="t">Wed</div><div><strong>Write-up, not attendance.</strong> No hall, no seminars, buyers travelling.</div></div>
+
+<h3 class="subsection">After &mdash; the follow-up</h3>
+<ul>
+<li><strong>Same evening, every evening:</strong> the hemp notes to Elevado on Tuesday night, and any state-coverage names to Sera Luce as they land. <strong>Promised intelligence delivered during the event is worth several times the same note sent next week.</strong></li>
+<li><strong>Within 48 hours of the hall closing</strong> &mdash; by Wednesday Oct 15 &mdash; every distributor conversation written up with the states they cover, before the badges blur.</li>
+<li><strong>A competitive update to <a href="competitive-landscape-jul2026.html">the competitive-landscape brief</a>.</strong> This event will produce a better read on VIP, Encompass, Ohanafy, Provi and Elevated BI in three days than desk research managed in a quarter &mdash; four of the five are presenting their own positioning out loud.</li>
+<li><strong>One honest scoring question afterwards:</strong> we paid for a booth in a hall open five hours, in an aisle of forklift vendors, at a show where four competitors hold podium slots and five sponsor the receptions. <strong>Decide before the 90th convention whether the right spend next year is a booth at all, or a seminar submission and a reception sponsorship instead.</strong></li>
+</ul>
+
+<h2 class="section">7. What the pages don&rsquo;t tell us <span class="count">the gaps, stated plainly</span></h2>
+<ul>
+<li><strong>Who is actually attending.</strong> No attendee or distributor list is published anywhere. The ~1,700 figure is the only public description of the audience. <strong>Every named distributor in &sect;4 came from the speaker roster, because that is the only public source of names.</strong></li>
+<li><strong>Whether Sera Luce or Elevado will be in the building.</strong> We know they are not <em>exhibiting</em>. Attendance without a booth is invisible from public pages &mdash; <strong>only they can tell us, which is why the Thursday messages matter.</strong></li>
+<li><strong>Who the Platinum, Gold and Silver sponsors are.</strong> The convention page shows <strong>7 Platinum, 5 Gold and 10 Silver logos as images with no alt text and generic filenames</strong> (<code>Convention-Platinum-Sponsors-3.png</code>), so <strong>the names are not machine-readable and are not stated anywhere in text.</strong> Only the 18 Supporting sponsors are listed as text: ARCO National Construction Beverage Group, autoreimbursement.com, Benchmark Beverage Co., BevCap Management, Cardata, Cirrus Tech, Draftline Technologies, Frazier, Great Dane, Hochheiser &amp; Akmal, IntelliShift, iSellBeer, KPI Solutions, Lantech, Mickey Truck Bodies, ORTEC, Parallel Products, Tannenbaum Helpern. <strong>Note the page text elsewhere says &ldquo;Silver: 9&rdquo; while the page renders 10 logos &mdash; one of the two is wrong and we cannot tell which.</strong> <span class="src">[annual-convention]</span></li>
+<li><strong>Booth and exhibit-space pricing.</strong> Neither the sponsorship page nor the 25-page prospectus states a booth price. The prospectus prices <em>branding</em> items only &mdash; from <strong>Exhibit Hall Booth Crawl at $1,000</strong> up to <strong>General Session Keynote Speaker Sponsor at $100,000</strong>. What we paid for 304 is not derivable from public pages.</li>
+<li><strong>Any sponsorship or artwork deadline.</strong> A full-text search of the prospectus returns <strong>no deadline, due-by, cut-off or artwork-due language at all</strong>. The only published dates on any page are the three refund deadlines, all now passed.</li>
+<li><strong>Seminar rooms.</strong> The seminars page gives <strong>no room assignments</strong> &mdash; and with seven sessions running in parallel twice, room numbers decide whether the split in &sect;6 is physically possible. <strong>Get the room list at registration on Sunday.</strong></li>
+<li><strong>Monday&rsquo;s supplier hospitalities.</strong> The schedule lists them as &ldquo;Evening&rdquo; with <strong>no host, venue or time</strong>. For a company whose buyers are supplier commercial teams, this is the most valuable unpublished information at the show.</li>
+<li><strong>One speaker&rsquo;s title is missing at source.</strong> <strong>Derick Hugh</strong> is listed with his company (Reed Beverage) but <strong>no job title</strong>. <strong>Theresa Gallion</strong> is named in a session description as an employment attorney with <strong>no company and no title</strong>. Do not fill either gap with a guess.</li>
+<li><strong>Whether we are a sponsor.</strong> BevGenie does not appear in the Supporting list and is not a BIECC presenter. Because the three paid tiers are unreadable images, <strong>this brief cannot confirm from public pages whether we hold any sponsorship</strong> &mdash; someone internal should simply say.</li>
+</ul>
+
+<div class="footer-notes">
+  <h3>v1 &mdash; built Oct 8 2026, three days before the show</h3>
+  <ul>
+    <li><strong>Every figure here is cited to the page that states it</strong>, and where NBWA&rsquo;s pages contradict each other the conflict is shown rather than resolved silently. The exhibitor count is the one number taken from the event map in preference to the marketing pages, because the map both states &ldquo;172 Exhibitors&rdquo; and lists 172.</li>
+    <li><strong>No name, title or number in this brief was invented.</strong> Speaker names and titles are verbatim from the seminars page; booth numbers verbatim from the event map; sponsorship prices from the prospectus PDF; the Innovation Showcase running order from the Showcase Program PDF. Gaps are listed in &sect;7 rather than filled.</li>
+    <li><strong>All five requested pages were read in full</strong>, plus two PDFs they link to. The sponsorship page carries contacts only &mdash; its substance is in the prospectus, which is why that was fetched separately.</li>
+  </ul>
+</div>
+</div>
+</body>
+</html>
