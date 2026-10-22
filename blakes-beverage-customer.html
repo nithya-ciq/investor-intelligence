@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Blake&rsquo;s Beverage Co. &mdash; Prospect Intelligence for Hiral&rsquo;s Follow-Up</title>
+<style>
+  * { box-sizing: border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    background: #faf9f7;
+    color: #1a1a1a;
+    margin: 0;
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+  }
+  .wrap { max-width: 1240px; margin: 0 auto; padding: 32px 28px 80px; }
+  header.top {
+    border-bottom: 1px solid #e6e2dc;
+    padding-bottom: 18px;
+    margin-bottom: 28px;
+  }
+  header.top .eyebrow {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 1.2px;
+    color: #b48f3a;
+    font-weight: 600;
+  }
+  header.top h1 {
+    margin: 6px 0 4px;
+    font-size: 28px;
+    font-weight: 600;
+    letter-spacing: -0.4px;
+  }
+  header.top .meta {
+    font-size: 13px;
+    color: #6c6760;
+  }
+  header.top .meta a { color: #4a6b9a; }
+
+  .verdict {
+    background: #fff;
+    border: 1px solid #e6e2dc;
+    border-radius: 10px;
+    padding: 20px 24px;
+    margin: 0 0 24px;
+  }
+  .verdict h2 {
+    margin: 0 0 8px;
+    font-size: 16px;
+    color: #b48f3a;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: 600;
+  }
+  .verdict p { margin: 0 0 8px; }
+  .verdict p:last-child { margin-bottom: 0; }
+
+  .changes-box {
+    background: #fdf6e8;
+    border-left: 4px solid #b48f3a;
+    padding: 16px 20px;
+    margin-bottom: 28px;
+    border-radius: 4px;
+    font-size: 14px;
+  }
+  .changes-box h3 { margin: 0 0 8px; font-size: 14px; color: #6b4f15; }
+  .changes-box ul { margin: 4px 0 0 16px; padding: 0; }
+  .changes-box li { margin-bottom: 4px; }
+
+  .routing-rubric {
+    background: #fff;
+    border: 1px solid #e6e2dc;
+    border-radius: 8px;
+    padding: 16px 20px;
+    margin-bottom: 28px;
+    font-size: 13px;
+  }
+  .routing-rubric h3 { margin: 0 0 10px; font-size: 14px; }
+  .routing-rubric table { width: 100%; border-collapse: collapse; }
+  .routing-rubric td { padding: 4px 8px; border-bottom: 1px solid #f0ede5; }
+  .routing-rubric td:first-child { color: #6c6760; width: 50%; }
+  .routing-rubric td:last-child { font-weight: 500; }
+  .pill { display: inline-block; padding: 1px 8px; border-radius: 10px; font-size: 11px; font-weight: 500; letter-spacing: 0.3px; margin-right: 4px; }
+  .pill.shyam { background: #e8eef9; color: #2c4d80; }
+  .pill.srini { background: #ede4f6; color: #5a3a86; }
+  .pill.gauri { background: #f9ebe4; color: #8a4520; }
+  .pill.hiral { background: #e4f3ee; color: #2d6a4f; }
+  .pill.harini { background: #faf2dc; color: #7a5d10; }
+
+  h2.section {
+    font-size: 20px;
+    font-weight: 600;
+    margin: 36px 0 14px;
+    border-bottom: 2px solid #1a1a1a;
+    padding-bottom: 6px;
+    letter-spacing: -0.3px;
+  }
+  h2.section .count {
+    font-size: 13px;
+    color: #6c6760;
+    font-weight: 400;
+    margin-left: 8px;
+  }
+  .tier-blurb {
+    font-size: 13px;
+    color: #6c6760;
+    font-style: italic;
+    margin: -8px 0 16px;
+  }
+
+  .investor {
+    background: #fff;
+    border: 1px solid #e6e2dc;
+    border-radius: 8px;
+    padding: 18px 20px;
+    margin-bottom: 14px;
+  }
+  .investor.tier1 { border-left: 4px solid #5b8a3a; }
+  .investor.tier2 { border-left: 4px solid #b48f3a; }
+  .investor.tier3 { border-left: 4px solid #8b8985; }
+  .investor.misfit { border-left: 4px solid #b85a4d; opacity: 0.85; }
+  .investor.new { border-left: 4px solid #4a6b9a; }
+
+  .investor-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 6px;
+  }
+  .investor-head .name {
+    font-size: 17px;
+    font-weight: 600;
+  }
+  .investor-head .name .partner {
+    font-weight: 400;
+    color: #6c6760;
+    font-size: 14px;
+    margin-left: 6px;
+  }
+  .investor-head .badges { display: flex; gap: 6px; flex-wrap: wrap; align-items: center; }
+  .investor-head .score {
+    font-size: 12px;
+    background: #1a1a1a;
+    color: #fff;
+    padding: 3px 10px;
+    border-radius: 12px;
+    font-weight: 500;
+    letter-spacing: 0.4px;
+  }
+  .investor.tier1 .score { background: #5b8a3a; }
+  .investor.tier2 .score { background: #b48f3a; }
+  .investor.tier3 .score { background: #8b8985; }
+  .investor.misfit .score { background: #b85a4d; }
+  .investor.new .score { background: #4a6b9a; }
+  .pitch-form-pill {
+    display: inline-block;
+    background: #5b8a3a;
+    color: #fff;
+    padding: 3px 10px;
+    border-radius: 12px;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.3px;
+    text-transform: uppercase;
+  }
+  .pitch-form-pill a { color: #fff; text-decoration: none; }
+  .pitch-form-pill a:hover { text-decoration: underline; }
+  .women-pill {
+    display: inline-block;
+    background: #ede4f6;
+    color: #5a3a86;
+    padding: 3px 10px;
+    border-radius: 12px;
+    font-size: 11px;
+    font-weight: 500;
+  }
+  .investor .meta-row {
+    font-size: 12.5px;
+    color: #6c6760;
+    margin-bottom: 10px;
+  }
+  .investor .verified-source {
+    font-size: 11px;
+    color: #5b8a3a;
+    margin-bottom: 8px;
+    font-style: italic;
+  }
+  .investor .unverified-source {
+    font-size: 11px;
+    color: #b85a4d;
+    margin-bottom: 8px;
+    font-style: italic;
+  }
+  .signals {
+    display: grid;
+    grid-template-columns: 150px 1fr;
+    gap: 4px 14px;
+    font-size: 13.5px;
+    margin-top: 8px;
+  }
+  .signals .label {
+    color: #6c6760;
+    font-weight: 500;
+    text-transform: uppercase;
+    font-size: 11px;
+    letter-spacing: 0.4px;
+    padding-top: 2px;
+  }
+  .signals .val { color: #1a1a1a; }
+  .signals .val.fomo {
+    background: #fdf6e8;
+    padding: 4px 8px;
+    border-radius: 4px;
+    border-left: 2px solid #b48f3a;
+    font-weight: 500;
+  }
+  .signals .val.warn {
+    background: #fbe9e6;
+    padding: 4px 8px;
+    border-radius: 4px;
+    border-left: 2px solid #b85a4d;
+  }
+  .signals .val.routing {
+    background: #f3f5fb;
+    padding: 4px 8px;
+    border-radius: 4px;
+    border-left: 2px solid #4a6b9a;
+    font-weight: 500;
+  }
+  .lead-with {
+    background: #f4f8f2;
+    border-left: 3px solid #5b8a3a;
+    padding: 10px 14px;
+    margin-top: 10px;
+    border-radius: 4px;
+    font-size: 13.5px;
+  }
+  .lead-with .lwl {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.6px;
+    color: #5b8a3a;
+    font-weight: 600;
+    margin-bottom: 3px;
+    display: block;
+  }
+  .lead-with em { color: #1a1a1a; font-style: italic; }
+  .next-step {
+    margin-top: 8px;
+    font-size: 12.5px;
+    color: #6c6760;
+  }
+  .next-step strong { color: #1a1a1a; }
+  .compact-list {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+  }
+  .firm-only {
+    background: #fff;
+    border: 1px solid #e6e2dc;
+    border-radius: 6px;
+    padding: 10px 14px;
+    font-size: 13px;
+  }
+  .firm-only .name { font-weight: 500; display: block; margin-bottom: 2px; }
+  .firm-only .speculation { color: #6c6760; font-size: 12.5px; display: block; }
+  .firm-only .ask { color: #b48f3a; font-size: 11.5px; text-transform: uppercase; letter-spacing: 0.5px; font-weight: 500; display: block; margin-top: 3px; }
+
+  .direction-banner {
+    background: #f3f5fb;
+    color: #2c4d80;
+    padding: 6px 12px;
+    border-radius: 4px;
+    font-size: 11.5px;
+    text-transform: uppercase;
+    letter-spacing: 0.6px;
+    font-weight: 600;
+    display: inline-block;
+    margin-bottom: 8px;
+  }
+
+  .footer-notes {
+    margin-top: 40px;
+    padding-top: 24px;
+    border-top: 1px solid #e6e2dc;
+    font-size: 12.5px;
+    color: #6c6760;
+  }
+  .footer-notes h3 { color: #1a1a1a; font-size: 13px; margin: 0 0 8px; }
+  .footer-notes ul { margin: 4px 0 14px 18px; padding: 0; }
+  .footer-notes li { margin-bottom: 3px; }
+  .legend {
+    display: flex;
+    gap: 14px;
+    flex-wrap: wrap;
+    font-size: 12px;
+    margin-bottom: 18px;
+  }
+  .legend .item {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    color: #6c6760;
+  }
+  .legend .swatch {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    border-radius: 2px;
+  }
+  a { color: #4a6b9a; }
+
+  /* ─── Tab nav (shared across all 3 pages) ─── */
+  .tab-nav {
+    display: flex;
+    gap: 0;
+    border-bottom: 1px solid #e6e2dc;
+    margin-bottom: 24px;
+    flex-wrap: wrap;
+  }
+  .tab-nav a {
+    padding: 10px 18px;
+    text-decoration: none;
+    color: #6c6760;
+    font-size: 13px;
+    font-weight: 500;
+    border-bottom: 2px solid transparent;
+    margin-bottom: -1px;
+    transition: color 0.15s, border-color 0.15s;
+  }
+  .tab-nav a:hover { color: #1a1a1a; }
+  .tab-nav a.active { color: #1a1a1a; border-bottom-color: #5b8a3a; font-weight: 600; }
+
+  .contact-box { background:#f3f5fb; border-left:3px solid #4a6b9a; border-radius:4px; padding:11px 14px; margin-top:10px; font-size:13.5px; }
+  .contact-box .cbl { font-size:10.5px; text-transform:uppercase; letter-spacing:0.7px; color:#2c4d80; font-weight:700; display:block; margin-bottom:7px; }
+  .person { display:grid; grid-template-columns:225px 1fr; gap:2px 12px; padding:6px 0; border-top:1px solid #e2e8f4; }
+  .person.first { border-top:none; padding-top:0; }
+  .person .pn { font-weight:600; }
+  .person .pe { font-size:11.5px; color:#2c4d80; font-family:ui-monospace,SFMono-Regular,Menlo,monospace; }
+  .person .pr { color:#3a4a63; font-size:13px; }
+  .person .pnote { color:#6c6760; font-size:12.5px; font-style:italic; }
+  .path { background:#fff; border:1px dashed #c9d3e6; border-radius:4px; padding:9px 13px; margin-top:9px; font-size:13px; }
+  .path .pl { font-size:10px; text-transform:uppercase; letter-spacing:0.6px; font-weight:700; margin-right:7px; padding:2px 7px; border-radius:9px; white-space:nowrap; }
+  .pl-warm { background:#e4f3ee; color:#1f5c43; }
+  .pl-cold { background:#f9ebe4; color:#7a3d1c; }
+  .pl-none { background:#f0eeea; color:#6c6760; }
+  .hist { margin-top:8px; font-size:12.5px; color:#6c6760; }
+  .hist strong { color:#1a1a1a; }
+  .fixbox { background:#fbe9e6; border-left:3px solid #b85a4d; border-radius:4px; padding:9px 13px; margin-top:9px; font-size:13px; color:#6e2f26; }
+  .fixbox .fl { font-size:10px; text-transform:uppercase; letter-spacing:0.7px; font-weight:700; display:block; margin-bottom:3px; }
+  .status-pill { display:inline-block; padding:3px 9px; border-radius:11px; font-size:10.5px; font-weight:600; letter-spacing:0.3px; }
+  .sp-live { background:#e4f3ee; color:#1f5c43; }
+  .sp-dead { background:#fbe9e6; color:#a8392a; }
+  .sp-bev  { background:#faf2dc; color:#6d5210; }
+  .sp-warn { background:#fdf6e8; color:#7a5d10; }
+  .sp-up   { background:#ede4f6; color:#4b2f70; }
+  .trust-map { background:#fdf6e8; border-left:4px solid #b48f3a; padding:14px 18px; margin-bottom:26px; border-radius:4px; font-size:13px; color:#6b4f15; }
+  .trust-map strong { color:#4a3a0c; }
+  .trust-map ul { margin:8px 0 0 18px; padding:0; } .trust-map li { margin-bottom:6px; }
+  .verdict { background:#fff; border:1px solid #e6e2dc; border-left:5px solid #5b8a3a; border-radius:10px; padding:20px 24px; margin:0 0 26px; }
+  .verdict h2 { margin:0 0 10px; font-size:16px; color:#3f6b25; text-transform:uppercase; letter-spacing:1px; font-weight:600; }
+  .verdict ol { margin:0; padding-left:20px; } .verdict li { margin-bottom:10px; font-size:14px; } .verdict li:last-child { margin-bottom:0; }
+  .tailgrid { display:grid; grid-template-columns:repeat(auto-fill,minmax(210px,1fr)); gap:8px; }
+  .hyg { width:100%; border-collapse:collapse; font-size:13px; margin:10px 0; }
+  .hyg th { text-align:left; padding:8px 10px; font-size:11.5px; text-transform:uppercase; letter-spacing:0.4px; color:#6c6760; background:#f6f4f0; border-bottom:1px solid #e6e2dc; }
+  .hyg td { padding:9px 10px; border-bottom:1px solid #f0ede5; vertical-align:top; }
+  .footer-notes { margin-top:40px; padding-top:24px; border-top:1px solid #e6e2dc; font-size:12.5px; color:#6c6760; }
+  .footer-notes h3 { color:#1a1a1a; font-size:13px; margin:0 0 8px; }
+  .footer-notes ul { margin:4px 0 14px 18px; padding:0; } .footer-notes li { margin-bottom:4px; }
+  .deadline { background:#5b8a3a; color:#fff; padding:3px 9px; border-radius:11px; font-size:10.5px; font-weight:700; }
+  code { background:#f2efea; padding:1px 5px; border-radius:3px; font-size:12px; }
+
+  table.hyg{width:100%;border-collapse:collapse;font-size:13px;margin:10px 0}
+  table.hyg th{background:#f0eeea;text-align:left;padding:7px 9px;font-size:11px;text-transform:uppercase;letter-spacing:.5px;color:#6c6760;border-bottom:1px solid #e6e2dc}
+  table.hyg td{padding:7px 9px;border-bottom:1px solid #efece7;vertical-align:top}
+  .seg{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:6px;margin:8px 0}
+  .segc{background:#fff;border:1px solid #e6e2dc;border-radius:4px;padding:8px 11px;font-size:12.5px}
+  .segc b{display:block;font-size:20px;color:#5a3a86}
+  .draft{background:#fff;border:1px solid #c9d3e6;border-left:4px solid #4a6b9a;border-radius:4px;padding:14px 16px;margin:12px 0;font-size:14px;line-height:1.62}
+  .draft .dl{font-size:10.5px;text-transform:uppercase;letter-spacing:.7px;color:#2c4d80;font-weight:700;display:block;margin-bottom:8px}
+  .srcbox{background:#f6f7f4;border-left:3px solid #5b8a3a;border-radius:4px;padding:9px 13px;margin:10px 0;font-size:12.5px;color:#3d4a33}
+</style></head><body>
+<div class="wrap">
+<nav class="tab-nav">
+  <a href="index.html">Main Brief — Full Pipeline</a>
+  <a href="agent-conference-may2026.html">Agent Conference · May 4-5</a>
+  <a href="vc-reverse-pitch-may13.html">VCReversePitch · May 13</a>
+  <a href="bevnet-live-june10-11.html">BevNETLive Workshop</a>
+  <a href="bevnet-live-full-event.html">BevNETLive Full Event</a>
+  <a href="vc-reverse-pitch-sf-june23.html">VCReversePitch · SF Jun 23</a>
+  <a href="owls-brew-customer.html">Owl's Brew · Customer</a>
+  <a href="njx-summit-jul8.html">NJx Summit · Jul 8</a>
+  <a href="overproof-competitive.html">Overproof · Competitive</a>
+  <a href="competitive-landscape-jul2026.html">Competitive Landscape · Jul 2026</a>
+  <a href="drinks-with-benefits-sept2026.html">Drinks With Benefits · Sep 16-17</a>
+  <a href="bdev-ventures-investor.html">BDev Ventures · Investor</a>
+  <a href="investor-contacts-sept2026.html">Investor Contacts · Sep 2026</a>
+  <a href="vc-reverse-pitch-nyc-sept10.html">VCReversePitch · NYC Sep 10</a>
+  <a href="nbwa-convention-oct2026.html">NBWA Convention &middot; Oct 11-14</a>
+  <a href="blakes-beverage-customer.html" class="active">Blake&rsquo;s Beverage &middot; Prospect</a>
+</nav>
+<header class="top">
+  <div class="eyebrow">Prospect brief &middot; v1 &middot; built Oct 22 2026 &middot; for Hiral&rsquo;s LinkedIn follow-up to Andrew Blake</div>
+  <h1>Blake&rsquo;s Beverage Co. &mdash; Andrew Blake</h1>
+  <div class="meta">Armada, Michigan &middot; Blake&rsquo;s Hard Cider &middot; Austin Eastciders &middot; AVID Cider Co. &middot; <strong>~$60M revenue &middot; ~2M cases &middot; 45 states &middot; ~100 employees</strong><br>
+  First touch Aug 27 (no reply) &middot; he is a 1st-degree connection &middot; <strong>he recently followed the BevGenie page</strong></div>
+</header>
+
+<div class="verdict">
+  <strong>The whole follow-up turns on one line on their own website.</strong>
+  <ul>
+    <li><strong>Their About page bands all 45 states into Core / Growing / In Distribution, and footnotes it: <em>&ldquo;VIP depletions, trailing 12 months, August 2026.&rdquo;</em></strong> They already buy depletion data, they already think in depletion terms, and they are comfortable publishing a data-derived view of their own business. <strong>Do not pitch them &ldquo;you need data.&rdquo; They have data. What they have is 12 &ldquo;Growing&rdquo; states and 23 that are only &ldquo;In Distribution&rdquo;, and a decision about which ones to push.</strong> <span class="src">[blakesbevco.com/pages/about]</span></li>
+    <li><strong>Andrew co-founded an AI company, and its pitch is structurally identical to ours.</strong> Aloan sells AI underwriting to lenders, and its own site says: <em>&ldquo;A lot of lending still happens by hand&hellip; someone has to collect the borrower&rsquo;s documents, pull the numbers into a spread, and assemble the credit memo.&rdquo;</em> <strong>He is already making our argument for a living, in a different industry.</strong> He needs no convincing that AI belongs in a document-heavy commercial workflow. <span class="src">[aloan.ai/company, LinkedIn]</span></li>
+    <li><strong>The #2 at Blake&rsquo;s runs that AI company.</strong> Blake&rsquo;s Beverage lists <strong>Mitchell Barnard as President</strong>; Aloan lists <strong>Mitch Barnard as Chief Executive Officer</strong>. Same name, same orbit, overlapping dates. <strong>If that is one person &mdash; and it is very hard to read it otherwise &mdash; the two most senior people at this company are both building applied AI right now.</strong> <span class="src">[blakesbevco.com, aloan.ai]</span></li>
+    <li><strong>He said the quiet part himself, on the record.</strong> Brewbound, <strong>Mar 20 2026</strong>: the brands have found a rhythm, <em>&ldquo;But the company still has work to do to <strong>fully integrate the brands and strengthen cohesion across portfolios</strong>, founder and CEO Andrew Blake shared.&rdquo;</em> <strong>That sentence is the product brief for what we sell.</strong> <span class="src">[Brewbound Mar 20 2026]</span></li>
+  </ul>
+</div>
+
+<h2 class="section">1. The company, by their own numbers <span class="count">all from their About page, current as of August 2026</span></h2>
+<div class="seg">
+  <div class="segc"><b>45</b>states in distribution</div>
+  <div class="segc"><b>~2M</b>cases a year</div>
+  <div class="segc"><b>~100</b>employees</div>
+  <div class="segc"><b>3</b>cider brands</div>
+  <div class="segc"><b>80</b>years of family farming</div>
+</div>
+<table class="hyg"><thead><tr><th style="width:150px">Fact</th><th>Detail, and the source</th></tr></thead><tbody>
+<tr><td><strong>Revenue</strong></td><td><strong>~$54M expected 2024, &ldquo;upwards of $60M&rdquo; expected 2025.</strong> Both are projections, not reported results. Sales grew 10% from 2022 to 2023. <span class="src">[Food Dive, Oct 14 2024]</span></td></tr>
+<tr><td><strong>Production</strong></td><td>From 50 cases a day hand-bottled in 2013 to <strong>close to 6,000 cases a day</strong> a decade later. <span class="src">[Food Dive]</span></td></tr>
+<tr><td><strong>Sites</strong></td><td><strong>Armada, Michigan</strong> (the orchard, and where Blake&rsquo;s Hard Cider is made) &middot; <strong>Wolcott, New York</strong> (production) &middot; <strong>Austin, Texas</strong> (Austin Eastciders). Avid is deliberately not tied to a town &mdash; <em>&ldquo;a West Coast brand rather than one tied to a town.&rdquo;</em> <span class="src">[About page]</span></td></tr>
+<tr><td><strong>How it was built</strong></td><td>Blake&rsquo;s Hard Cider founded <strong>2013</strong>; acquired <strong>Avid Cider (Oregon) in 2022</strong>; <strong>Austin Eastciders joined in 2023</strong> in a cashless deal where its owners took stock and a board seat. The three became Blake&rsquo;s Beverage Co., <strong>the second-largest cider company in the US</strong>. <span class="src">[About page, Brewbound, Crain&rsquo;s Detroit]</span></td></tr>
+<tr><td><strong>The farm</strong></td><td>Blake&rsquo;s Orchard &amp; Cider Mill, four retail locations, <strong>2&ndash;3 million visitors a year</strong>. <span class="src">[Food Dive]</span> <em>Note a conflict: his LinkedIn says a 1,000-acre orchard; Food Dive says a 1,500-acre property. Don&rsquo;t cite an acreage.</em></td></tr>
+<tr><td><strong>Flagship products</strong></td><td><strong>Triple Jam</strong> (6.5% ABV, strawberry/blackberry/raspberry) is the sales leader, up 24% 2022&rarr;2023. <strong>American Apple</strong> (8% imperial) rose 85% in 2023. <strong>Big Jam</strong> launched 2024. <span class="src">[Food Dive]</span></td></tr>
+</tbody></table>
+
+<div class="fixbox"><span class="fl">⚠ The state-count figure moves a lot &mdash; use 45 and cite their own page</span>
+Published figures run <strong>29 states</strong> (Food Dive, Oct 2024), <strong>35 states</strong> (merger announcement), <strong>40 states</strong> (a later article) and <strong>45 states</strong> (their own About page, August 2026). These are different scopes and different dates. <strong>45 is theirs, it is the most recent, and quoting a company its own number is always safe.</strong></div>
+
+<h2 class="section">2. The opening &mdash; their own market banding <span class="count">this is the message</span></h2>
+<p class="tier-blurb">Blake&rsquo;s publishes its 45 states in three volume bands, footnoted <em>&ldquo;VIP depletions, trailing 12 months, August 2026&rdquo;</em>. <strong>This is the single most useful artefact in the whole research pass</strong> &mdash; it tells you exactly how they see their own business, in their own words, derived from their own data.</p>
+<table class="hyg"><thead><tr><th style="width:150px">Band</th><th style="width:60px">Count</th><th>States</th></tr></thead><tbody>
+<tr><td><strong>Core markets</strong></td><td><strong>10</strong></td><td>TX, MI, NC, NY, OH, AR, TN, FL, PA, IL</td></tr>
+<tr><td><strong>Growing</strong></td><td><strong>12</strong></td><td>GA, IN, OR, SC, VA, WI, MN, MO, MD, AZ, NJ, KY</td></tr>
+<tr><td><strong>In distribution</strong></td><td><strong>23</strong></td><td>OK, SD, NM, AL, DC, KS, NV, CA, WA, CO, NH, IA, NE, MT, ND, MA, LA, CT, WV, ID, RI, VT, AK</td></tr>
+</tbody></table>
+<div class="srcbox"><strong>Why this is the opening and not a footnote.</strong> A company that bands its markets off trailing-twelve-month depletions is not a company you teach about data. <strong>It is a company that has already done the hard part and is now sitting on the harder question:</strong> twenty-three states where the product is merely <em>present</em>, twelve where it is <em>moving</em>, and a finite amount of sales attention to allocate between them. <strong>VIP tells them what happened. It does not tell them which of the twelve to push, which of the twenty-three to quietly exit, or which account in Georgia looks like the accounts that worked in Tennessee.</strong> That gap is the entire product.</div>
+
+<h2 class="section">3. Why he is an unusually good fit <span class="count">five reasons, in order of force</span></h2>
+<ul>
+<li><strong>He is building the same argument in another industry.</strong> Aloan is an AI-native commercial underwriting platform &mdash; financial spreading, ratio calculation, policy compliance, credit memo generation, covenant monitoring. Its founding story is that <em>&ldquo;a lot of lending still happens by hand.&rdquo;</em> <strong>Swap &ldquo;lending&rdquo; for &ldquo;beverage commercial teams&rdquo; and that is our deck.</strong> He has presented at <strong>FinovateSpring 2026 and FinovateFall 2026</strong>. <span class="src">[aloan.ai, Finovate]</span></li>
+<li><strong>Three brands, four regions, one P&amp;L.</strong> His own strategy quote: <em>&ldquo;We have these geographical brands that can really speak to the local trends and flavor profiles of the Pac-Northwest or Austin, Texas or the Midwest or the East Coast.&rdquo;</em> The plan is to spot a local winner and scale it nationally with company resources. <strong>&ldquo;Which local signal is real enough to scale?&rdquo; is a depletion-data question, and getting it wrong is expensive.</strong> <span class="src">[Brewbound Mar 18 2024]</span></li>
+<li><strong>A brand-new route to market where they have least visibility.</strong> <strong>Giddy Up</strong> launched <strong>Mar 11 2026</strong> under Austin Eastciders: an <strong>11% ABV wine-based punch, 19.2 oz single-serve, $3.49, aimed at convenience stores</strong>, pushed through SXSW and Willie Nelson&rsquo;s Luck Ranch. <strong>Single-serve c-store is a completely different execution problem from 4-packs in grocery</strong> &mdash; more accounts, faster velocity, far thinner visibility on who actually reorders. <span class="src">[Bev Info Group, Business Wire, Mar 2026]</span></li>
+<li><strong>They have form in fourth-category RTD.</strong> Before Giddy Up there was <strong>Tuesday Cocktail Club</strong> (Avid, Feb 2024, 10.5% ABV wine-based RTD, Oregon and Washington). Avid co-founder <strong>Samantha Roberts</strong>: <em>&ldquo;We were missing this whole segment of the RTD category that was going through the roof.&rdquo;</em> <span class="src">[Brewbound Mar 18 2024]</span></li>
+<li><strong>The size is right.</strong> ~$60M and ~100 employees is big enough to feel portfolio-level pain across 45 states, and small enough that there is no internal data team to build this. <strong>And they are &ldquo;actively looking&rdquo; for strategic M&amp;A</strong> &mdash; every acquisition makes the integration problem worse. <span class="src">[Brewbound Mar 20 2026]</span></li>
+</ul>
+
+<h2 class="section">4. Who else is in the room <span class="count">named from their own site</span></h2>
+<table class="hyg"><thead><tr><th style="width:190px">Person</th><th style="width:170px">Role</th><th>Why they matter to us</th></tr></thead><tbody>
+<tr><td><strong>Andrew Blake</strong></td><td>CEO &amp; Founder</td><td>Our contact. MSU Economics, 2011. Founded the cider brand in 2013 after two years of R&amp;D in his garage, sampling at tailgates.</td></tr>
+<tr><td><strong>Mitchell Barnard</strong></td><td>President</td><td><strong>Almost certainly the Mitch Barnard who is CEO of Aloan</strong> &mdash; tax attorney by training, M&amp;A background, founded and sold a company, ran a private credit fund. <strong>Confirm before naming him, but if right, he is the most AI-fluent operator in the building.</strong></td></tr>
+<tr><td><strong>Amanda Gleason</strong></td><td><strong>Chief Sales Officer</strong></td><td><strong>The real economic buyer.</strong> Whatever Andrew says, this lands or dies with the CSO. Ask to be pointed at her.</td></tr>
+<tr><td><strong>Dillon Stawecki</strong></td><td>Chief Operating Officer</td><td>Operations across three production sites.</td></tr>
+<tr><td><strong>Jillian Curran</strong></td><td>Chief Financial Officer</td><td>Signs for it.</td></tr>
+<tr><td><strong>Rachel Bernstein</strong> &middot; <strong>Dan Wales</strong></td><td>CMO &middot; Chief People Officer</td><td>Not buyers for us.</td></tr>
+<tr><td><strong>Samantha Roberts</strong></td><td>Co-founder, Avid Cider</td><td>Drove the first wine-based RTD. Brand-level innovation voice on the West Coast.</td></tr>
+</tbody></table>
+<div class="fixbox"><span class="fl">⚠ One stale name to avoid</span>Trade coverage from the 2023 merger said <strong>Chase Kushak</strong>, former Founders Brewing COO, would lead Blake&rsquo;s Beverage as president. <strong>Their current About page lists Mitchell Barnard as President.</strong> Do not reference Kushak.</div>
+
+<h2 class="section">5. The category context <span class="count">so the framing doesn&rsquo;t insult him</span></h2>
+<ul>
+<li><strong>Cider is small and roughly flat.</strong> About <strong>$502M in total US multi-outlet sales for 2025</strong> (Circana), recovering modestly after a <strong>-1.8%</strong> dollar decline in 2024, with off-premise dollars <strong>+1.9%</strong> and volume <strong>+1.7%</strong> late in 2025. Cider holds roughly <strong>1.12% share</strong> of category dollars, and Circana flags <strong>low innovation</strong> as the drag.</li>
+<li><strong>The neighbours are worse.</strong> FMBs <strong>-3.6%</strong>; prepared cocktail case volume <strong>-5.2%</strong> and FMB/seltzer volume <strong>-10.9%</strong> (NIQ, Aug 2026); craft beer case volume <strong>-4.3%</strong> in early Oct 2026.</li>
+<li><strong>What that means for the message.</strong> Blake&rsquo;s is the <em>&ldquo;fastest growing&rdquo; independent cidery in the US</em> in a category with about one percent share and no tailwind. <strong>Growth in that position comes from execution, not from the category lifting you.</strong> That is the honest, flattering and accurate frame &mdash; and it is why the twelve &ldquo;Growing&rdquo; states matter so much. <strong>Never open with &ldquo;cider is declining.&rdquo; It isn&rsquo;t, it is his life&rsquo;s work, and he is beating it.</strong> <span class="src">[Circana via Bev Industry, NIQ, Vinetur]</span></li>
+</ul>
+
+<h2 class="section">6. The follow-up <span class="count">draft, and the reasoning behind it</span></h2>
+<p class="tier-blurb">The Aug 27 note led with <em>&ldquo;free trial in exchange for feedback.&rdquo;</em> It got no reply. <strong>The diagnosis is not that the offer was wrong &mdash; it is that it asked a CEO to evaluate a tool, which is work.</strong> A follow-up has one job: say something about <em>his</em> business he will recognise as true, and make the ask smaller than the first one.</p>
+
+<div class="draft"><span class="dl">Draft &mdash; short version, recommended</span>
+Hi Andrew &mdash; following up on my note from August, with something more specific than a trial offer.<br><br>
+Your About page bands all 45 states into core, growing and in-distribution off trailing-twelve VIP depletions. That is a sharper view of your own footprint than most companies your size have, so I&rsquo;ll skip the part where I tell you that you need data.<br><br>
+The part we work on is the next question: of the twelve states in &ldquo;growing&rdquo;, which ones actually look like Tennessee did before it became core &mdash; and which of the twenty-three are just shipping. Across three brands and four regions that answer lives in a lot of places at once, which I think is close to what you meant in March about still needing to strengthen cohesion across the portfolios.<br><br>
+Given what you&rsquo;re building at Aloan you don&rsquo;t need the AI argument from me. Worth 20 minutes to compare notes? Happy to come with a read on your growing markets rather than a demo.
+</div>
+
+<div class="srcbox"><strong>Why each line is there.</strong> <strong>The About-page open</strong> proves we did the work and flatters a real strength &mdash; it cannot read as a template. <strong>&ldquo;I&rsquo;ll skip the part where I tell you that you need data&rdquo;</strong> disarms the thing every vendor says to him. <strong>Naming Tennessee</strong> &mdash; a core state &mdash; against the growing twelve makes the problem concrete in his own geography. <strong>The March quote</strong> shows we read his trade coverage, and it lets him agree with himself rather than with us. <strong>The Aloan line is the close</strong>: it signals we know who he is, and it removes the entire &ldquo;does AI really work&rdquo; conversation in one sentence. <strong>&ldquo;A read on your growing markets rather than a demo&rdquo;</strong> inverts the original ask &mdash; we bring work to him instead of asking him to do some.</div>
+
+<div class="fixbox"><span class="fl">⚠ Three things not to do</span>
+<strong>Do not mention that he followed the BevGenie page.</strong> It is a real signal and the reason to send now, but saying it out loud reads as surveillance and kills the tone.<br>
+<strong>Do not name Mitchell Barnard until the Aloan link is confirmed.</strong> If it is the same person it is a strong second thread; if it is not, it is an embarrassing error in a first real conversation.<br>
+<strong>Do not lead with the free trial again.</strong> It is still the eventual offer, but it was the ask that got no reply, and repeating it adds nothing new to the thread.</div>
+
+<h2 class="section">7. What we could not verify <span class="count">stated plainly</span></h2>
+<ul>
+<li><strong>Whether Andrew is formally a co-founder of Aloan.</strong> His LinkedIn says Co-Founder, Sept 2025&ndash;present, and a PR Web release names him among the founders &mdash; but <strong>Aloan&rsquo;s own team page does not list him</strong>, and its AI-info page names only Mitch Barnard, Tim Diamond and Gerrit Yntema. <strong>Safe to reference &ldquo;what you&rsquo;re building at Aloan&rdquo;, because that is his own public claim. Not safe to call him a founder in writing.</strong></li>
+<li><strong>Whether Mitchell Barnard (President, Blake&rsquo;s) is Mitch Barnard (CEO, Aloan).</strong> Same name, same network, overlapping dates, and <strong>Marty Blake &mdash; who co-founded Crestmark Bank and helped grow it to a $316M sale in 2018 &mdash; sits on Aloan&rsquo;s board as Lead Independent Director</strong>, which makes a family-adjacent network very likely. <strong>Still an inference. Confirm before using.</strong></li>
+<li><strong>Nothing public about their current analytics stack beyond VIP.</strong> We know they use VIP depletions because they footnote it. We do not know what sits on top of it, whether anyone owns it internally, or whether they have looked at alternatives.</li>
+<li><strong>No 2026 revenue or case figure.</strong> The $54M/$60M numbers are 2024-vintage projections; the ~2M cases and ~100 employees come from their About page and are undated beyond &ldquo;August 2026&rdquo; for distribution.</li>
+<li><strong>Why the August message got no reply.</strong> Unknowable. He may not have seen it. <strong>He followed the BevGenie page after it, which is the only evidence we have and it points the right way.</strong></li>
+<li><strong>They were not at NBWA.</strong> Checked the full 172-exhibitor list from the <a href="nbwa-convention-oct2026.html">NBWA brief</a> &mdash; no Blake&rsquo;s, Austin Eastciders, Avid or Giddy Up. No shared-event hook to use.</li>
+</ul>
+
+<div class="footer-notes">
+  <h3>v1 &mdash; built Oct 22 2026</h3>
+  <ul>
+    <li><strong>Every figure is cited to the source that states it</strong>, and where sources disagree &mdash; state count, orchard acreage, Aloan&rsquo;s founder list &mdash; the conflict is shown rather than resolved silently.</li>
+    <li><strong>No name, title or number here was invented.</strong> The leadership team, the market bands and the headline stats come from <code>blakesbevco.com/pages/about</code>; the Aloan team from <code>aloan.ai/company</code>; quotes from Brewbound and Food Dive with dates attached.</li>
+    <li><strong>The single best finding is the footnote on their own About page:</strong> <em>&ldquo;VIP depletions, trailing 12 months, August 2026.&rdquo;</em> It changes the pitch from &ldquo;you need visibility&rdquo; to &ldquo;you already measure this, here is the decision it does not make for you&rdquo; &mdash; which is both truer and much harder to ignore.</li>
+  </ul>
+</div>
+</div>
+</body>
+</html>
